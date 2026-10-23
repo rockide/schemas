@@ -1,42 +1,14 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"$ref": "#/$defs/definition"
-		},
-		{
-			"type": "null"
-		}
-	],
+	"$ref": "#/$defs/definition",
 	"$defs": {
 		"definition": {
 			"type": "object",
 			"properties": {
 				"interactions": {
 					"anyOf": [
-						{
-							"anyOf": [
-								{
-									"$ref": "#/$defs/interaction"
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						{
-							"type": "array",
-							"items": {
-								"anyOf": [
-									{
-										"$ref": "#/$defs/interaction"
-									},
-									{
-										"type": "null"
-									}
-								]
-							}
-						}
+						{ "$ref": "#/$defs/interaction" },
+						{ "type": "array", "items": { "$ref": "#/$defs/interaction" } }
 					],
 					"default": []
 				}

@@ -55,14 +55,7 @@
 			"description": "Time (in seconds) the target must be in fireball range, and in view [ie, no solid terrain in-between the target and this entity], before a fireball can be shot."
 		},
 		"target_zone": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "Minimum and maximum distance, from the target, this entity can use this behavior."
 		},
 		"turn_speed": {

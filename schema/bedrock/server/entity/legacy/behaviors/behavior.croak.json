@@ -13,14 +13,7 @@
 			"description": ""
 		},
 		"duration": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"default": [4.5, 4.5],
 			"description": "Random range in seconds after which the croaking stops. Can also be a constant."
 		},
@@ -29,14 +22,7 @@
 			"description": "Conditions for the behavior to start and keep running. The interval between runs only starts after passing the filters."
 		},
 		"interval": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"default": [10, 20],
 			"description": "Random range in seconds between runs of this behavior. Can also be a constant."
 		},

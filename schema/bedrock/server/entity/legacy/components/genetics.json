@@ -1,52 +1,22 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"type": "object",
-			"properties": {
-				"genes": {
-					"anyOf": [
-						{
-							"anyOf": [
-								{
-									"$ref": "#/$defs/gene"
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						{
-							"type": "array",
-							"items": {
-								"anyOf": [
-									{
-										"$ref": "#/$defs/gene"
-									},
-									{
-										"type": "null"
-									}
-								]
-							}
-						}
-					],
-					"default": [],
-					"description": "The list of genes that this entity has and will cross with a partner during breeding."
-				},
-				"mutation_rate": {
-					"$ref": "#/$defs/float",
-					"default": 0.03125,
-					"description": "Chance that an allele will be replaced with a random one instead of the parent's allele during birth."
-				}
-			},
-			"additionalProperties": false,
-			"description": "Defines the way a mob's genes and alleles are passed on to its offspring, and how those traits manifest in the child. Compatible parent genes are crossed together, the alleles are handed down from the parents to the child, and any matching genetic variants fire off JSON events to modify the child and express the traits."
+	"type": "object",
+	"properties": {
+		"genes": {
+			"anyOf": [
+				{ "$ref": "#/$defs/gene" },
+				{ "type": "array", "items": { "$ref": "#/$defs/gene" } }
+			],
+			"default": [],
+			"description": "The list of genes that this entity has and will cross with a partner during breeding."
 		},
-		{
-			"type": "null",
-			"description": "Defines the way a mob's genes and alleles are passed on to its offspring, and how those traits manifest in the child. Compatible parent genes are crossed together, the alleles are handed down from the parents to the child, and any matching genetic variants fire off JSON events to modify the child and express the traits."
+		"mutation_rate": {
+			"$ref": "#/$defs/float",
+			"default": 0.03125,
+			"description": "Chance that an allele will be replaced with a random one instead of the parent's allele during birth."
 		}
-	],
+	},
+	"additionalProperties": false,
 	"$defs": {
 		"event": {
 			"$ref": "../general.json#/$defs/trigger",
@@ -68,29 +38,8 @@
 				},
 				"genetic_variants": {
 					"anyOf": [
-						{
-							"anyOf": [
-								{
-									"$ref": "#/$defs/variant"
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						{
-							"type": "array",
-							"items": {
-								"anyOf": [
-									{
-										"$ref": "#/$defs/variant"
-									},
-									{
-										"type": "null"
-									}
-								]
-							}
-						}
+						{ "$ref": "#/$defs/variant" },
+						{ "type": "array", "items": { "$ref": "#/$defs/variant" } }
 					],
 					"default": [],
 					"description": "The list of genetic variants for this gene. These check for particular allele combinations and fire events when all of them are satisfied."

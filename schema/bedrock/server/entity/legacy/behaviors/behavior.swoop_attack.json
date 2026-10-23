@@ -20,14 +20,7 @@
 			"description": "Added to the base size of the entity, to determine the target's maximum allowable distance, when trying to deal attack damage."
 		},
 		"delay_range": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"default": [10.0, 20.0],
 			"description": "Minimum and maximum cooldown time-range (in seconds) between each attempted swoop attack."
 		},

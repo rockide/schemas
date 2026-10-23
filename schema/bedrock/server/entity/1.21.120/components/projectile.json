@@ -1,218 +1,200 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"type": "object",
-			"properties": {
-				"anchor": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/anchor"
-				},
-				"angle_offset": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/angle_offset"
-				},
-				"angleoffset": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/angleoffset",
-					"doNotSuggest": true
-				},
-				"catchFire": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/catchFire",
-					"doNotSuggest": true
-				},
-				"catch_fire": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/catch_fire"
-				},
-				"critParticleOnHurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/critParticleOnHurt",
-					"doNotSuggest": true
-				},
-				"crit_particle_on_hurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/crit_particle_on_hurt"
-				},
-				"destroyOnHurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/destroyOnHurt",
-					"doNotSuggest": true
-				},
-				"destroy_on_hurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/destroy_on_hurt"
-				},
-				"gravity": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/gravity"
-				},
-				"hitGroundSound": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hitGroundSound",
-					"doNotSuggest": true
-				},
-				"hitSound": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hitSound",
-					"doNotSuggest": true
-				},
-				"hitWater": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hitWater",
-					"doNotSuggest": true
-				},
-				"hit_ground_sound": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_ground_sound"
-				},
-				"hit_nearest_passenger": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_nearest_passenger"
-				},
-				"hit_sound": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_sound"
-				},
-				"hit_water": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_water"
-				},
-				"homing": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/homing"
-				},
-				"ignored_entities": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/ignored_entities"
-				},
-				"inertia": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/inertia"
-				},
-				"is_dangerous": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/is_dangerous"
-				},
-				"isdangerous": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/isdangerous",
-					"doNotSuggest": true
-				},
-				"isolated_physics": {
-					"type": "boolean",
-					"default": false,
-					"description": "If `true`, the projectile uses a dedicated ballistic physics path and ignores generic actor movement systems (friction, drag, etc.). Recommended for custom projectiles."
-				},
-				"lightning": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/lightning"
-				},
-				"liquid_inertia": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/liquid_inertia"
-				},
-				"mHitNearestPassenger": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/mHitNearestPassenger",
-					"doNotSuggest": true
-				},
-				"multiple_targets": {
-					"type": "boolean",
-					"default": true,
-					"description": "If `true`, the projectile can hit more than one entity over the course of its flight; if `false`, it stops at the first entity it hits. Projectiles launched with the Piercing enchantment have this value set to `true`."
-				},
-				"multipletargets": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/multipletargets",
-					"doNotSuggest": true
-				},
-				"offset": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/offset"
-				},
-				"onFireTime": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/onFireTime",
-					"doNotSuggest": true
-				},
-				"onHit": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/onHit",
-					"doNotSuggest": true
-				},
-				"on_fire_time": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/on_fire_time"
-				},
-				"on_hit": {
-					"anyOf": [
-						{
-							"$ref": "#/$defs/on_hit",
-							"description": ""
-						},
-						{
-							"type": "null",
-							"description": ""
-						}
-					],
-					"description": "Map of on-hit subcomponents that drive what happens when the projectile impacts a block, fluid, or entity. Each key is a subcomponent name and its value is that subcomponent's configuration."
-				},
-				"particle": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/particle"
-				},
-				"potionEffect": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/potionEffect",
-					"doNotSuggest": true
-				},
-				"potion_effect": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/potion_effect"
-				},
-				"power": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/power"
-				},
-				"reflectOnHurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/reflectOnHurt",
-					"doNotSuggest": true
-				},
-				"reflect_immunity": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/reflect_immunity"
-				},
-				"reflect_on_hurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/reflect_on_hurt"
-				},
-				"shootSound": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shootSound",
-					"doNotSuggest": true
-				},
-				"shoot_sound": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shoot_sound"
-				},
-				"shoot_target": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shoot_target"
-				},
-				"shoottarget": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shoottarget",
-					"doNotSuggest": true
-				},
-				"should_bounce": {
-					"$ref": "#/$defs/should_bounce"
-				},
-				"shouldbounce": {
-					"$ref": "#/$defs/should_bounce",
-					"doNotSuggest": true
-				},
-				"splashRange": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/splashRange",
-					"doNotSuggest": true
-				},
-				"splash_range": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/splash_range"
-				},
-				"spread_fire": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/spread_fire"
-				},
-				"stopOnHurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/stopOnHurt",
-					"doNotSuggest": true
-				},
-				"stop_on_hurt": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/stop_on_hurt"
-				},
-				"uncertaintyBase": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertaintyBase",
-					"doNotSuggest": true
-				},
-				"uncertaintyMultiplier": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertaintyMultiplier",
-					"doNotSuggest": true
-				},
-				"uncertainty_base": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertainty_base"
-				},
-				"uncertainty_multiplier": {
-					"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertainty_multiplier"
-				}
-			},
-			"additionalProperties": false,
-			"description": ""
+	"type": "object",
+	"properties": {
+		"anchor": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/anchor"
 		},
-		{
-			"type": "null",
-			"description": ""
+		"angle_offset": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/angle_offset"
+		},
+		"angleoffset": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/angleoffset",
+			"doNotSuggest": true
+		},
+		"catchFire": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/catchFire",
+			"doNotSuggest": true
+		},
+		"catch_fire": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/catch_fire"
+		},
+		"critParticleOnHurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/critParticleOnHurt",
+			"doNotSuggest": true
+		},
+		"crit_particle_on_hurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/crit_particle_on_hurt"
+		},
+		"destroyOnHurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/destroyOnHurt",
+			"doNotSuggest": true
+		},
+		"destroy_on_hurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/destroy_on_hurt"
+		},
+		"gravity": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/gravity"
+		},
+		"hitGroundSound": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hitGroundSound",
+			"doNotSuggest": true
+		},
+		"hitSound": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hitSound",
+			"doNotSuggest": true
+		},
+		"hitWater": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hitWater",
+			"doNotSuggest": true
+		},
+		"hit_ground_sound": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_ground_sound"
+		},
+		"hit_nearest_passenger": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_nearest_passenger"
+		},
+		"hit_sound": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_sound"
+		},
+		"hit_water": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/hit_water"
+		},
+		"homing": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/homing"
+		},
+		"ignored_entities": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/ignored_entities"
+		},
+		"inertia": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/inertia"
+		},
+		"is_dangerous": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/is_dangerous"
+		},
+		"isdangerous": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/isdangerous",
+			"doNotSuggest": true
+		},
+		"isolated_physics": {
+			"type": "boolean",
+			"default": false,
+			"description": "If `true`, the projectile uses a dedicated ballistic physics path and ignores generic actor movement systems (friction, drag, etc.). Recommended for custom projectiles."
+		},
+		"lightning": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/lightning"
+		},
+		"liquid_inertia": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/liquid_inertia"
+		},
+		"mHitNearestPassenger": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/mHitNearestPassenger",
+			"doNotSuggest": true
+		},
+		"multiple_targets": {
+			"type": "boolean",
+			"default": true,
+			"description": "If `true`, the projectile can hit more than one entity over the course of its flight; if `false`, it stops at the first entity it hits. Projectiles launched with the Piercing enchantment have this value set to `true`."
+		},
+		"multipletargets": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/multipletargets",
+			"doNotSuggest": true
+		},
+		"offset": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/offset"
+		},
+		"onFireTime": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/onFireTime",
+			"doNotSuggest": true
+		},
+		"onHit": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/onHit",
+			"doNotSuggest": true
+		},
+		"on_fire_time": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/on_fire_time"
+		},
+		"on_hit": {
+			"$ref": "#/$defs/on_hit",
+			"description": "Map of on-hit subcomponents that drive what happens when the projectile impacts a block, fluid, or entity. Each key is a subcomponent name and its value is that subcomponent's configuration."
+		},
+		"particle": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/particle"
+		},
+		"potionEffect": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/potionEffect",
+			"doNotSuggest": true
+		},
+		"potion_effect": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/potion_effect"
+		},
+		"power": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/power"
+		},
+		"reflectOnHurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/reflectOnHurt",
+			"doNotSuggest": true
+		},
+		"reflect_immunity": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/reflect_immunity"
+		},
+		"reflect_on_hurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/reflect_on_hurt"
+		},
+		"shootSound": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shootSound",
+			"doNotSuggest": true
+		},
+		"shoot_sound": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shoot_sound"
+		},
+		"shoot_target": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shoot_target"
+		},
+		"shoottarget": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/shoottarget",
+			"doNotSuggest": true
+		},
+		"should_bounce": {
+			"$ref": "#/$defs/should_bounce"
+		},
+		"shouldbounce": {
+			"$ref": "#/$defs/should_bounce",
+			"doNotSuggest": true
+		},
+		"splashRange": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/splashRange",
+			"doNotSuggest": true
+		},
+		"splash_range": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/splash_range"
+		},
+		"spread_fire": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/spread_fire"
+		},
+		"stopOnHurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/stopOnHurt",
+			"doNotSuggest": true
+		},
+		"stop_on_hurt": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/stop_on_hurt"
+		},
+		"uncertaintyBase": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertaintyBase",
+			"doNotSuggest": true
+		},
+		"uncertaintyMultiplier": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertaintyMultiplier",
+			"doNotSuggest": true
+		},
+		"uncertainty_base": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertainty_base"
+		},
+		"uncertainty_multiplier": {
+			"$ref": "../../legacy/components/projectile.json#/$defs/root/properties/uncertainty_multiplier"
 		}
-	],
+	},
+	"additionalProperties": false,
 	"$defs": {
 		"impact_damage": {
 			"type": "object",
@@ -294,10 +276,6 @@
 							"items": false,
 							"minItems": 2,
 							"maxItems": 2,
-							"description": ""
-						},
-						{
-							"type": "null",
 							"description": ""
 						}
 					],

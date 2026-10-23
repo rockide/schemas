@@ -7,19 +7,9 @@
 		{
 			"type": "array",
 			"items": {
-				"anyOf": [
-					{
-						"$ref": "#/$defs/interaction"
-					},
-					{
-						"type": "null"
-					}
-				],
+				"$ref": "#/$defs/interaction",
 				"description": "Defines interactions with this entity."
 			}
-		},
-		{
-			"type": "null"
 		}
 	],
 	"$defs": {
@@ -39,22 +29,15 @@
 			"type": "object",
 			"properties": {
 				"add_items": {
-					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"table": {
-									"$ref": "../../../../../vanilla/server/paths.json#/$defs/loot_table_path",
-									"default": "",
-									"description": "File path, relative to the Behavior Pack's path, to the loot table file."
-								}
-							},
-							"additionalProperties": false
-						},
-						{
-							"type": "null"
+					"type": "object",
+					"properties": {
+						"table": {
+							"$ref": "../../../../../vanilla/server/paths.json#/$defs/loot_table_path",
+							"default": "",
+							"description": "File path, relative to the Behavior Pack's path, to the loot table file."
 						}
-					],
+					},
+					"additionalProperties": false,
 					"description": "Loot table with items to add to the player's inventory upon successful interaction."
 				},
 				"admire": {
@@ -123,39 +106,31 @@
 					"description": "Event to fire when the interaction occurs."
 				},
 				"particle_on_start": {
-					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"copper_event": {
-									"type": "string",
-									"enum": ["none", "wax_on", "wax_off", "scrape"],
-									"default": "none",
-									"description": ""
-								},
-								"particle_offset_towards_interactor": {
-									"type": "boolean",
-									"default": false,
-									"description": "Whether or not the particle will appear closer to who performed the interaction."
-								},
-								"particle_type": {
-									"$ref": "../../../../../vanilla/server/particle_type.json",
-									"default": "none",
-									"description": "The type of particle that will be spawned."
-								},
-								"particle_y_offset": {
-									"$ref": "#/$defs/float_value",
-									"default": 0,
-									"description": "Will offset the particle this amount in the y direction."
-								}
-							},
-							"additionalProperties": false,
-							"description": "Particle effect that will be triggered at the start of the interaction."
+					"type": "object",
+					"properties": {
+						"copper_event": {
+							"type": "string",
+							"enum": ["none", "wax_on", "wax_off", "scrape"],
+							"default": "none",
+							"description": ""
 						},
-						{
-							"type": "null"
+						"particle_offset_towards_interactor": {
+							"type": "boolean",
+							"default": false,
+							"description": "Whether or not the particle will appear closer to who performed the interaction."
+						},
+						"particle_type": {
+							"$ref": "../../../../../vanilla/server/particle_type.json",
+							"default": "none",
+							"description": "The type of particle that will be spawned."
+						},
+						"particle_y_offset": {
+							"$ref": "#/$defs/float_value",
+							"default": 0,
+							"description": "Will offset the particle this amount in the y direction."
 						}
-					],
+					},
+					"additionalProperties": false,
 					"description": "Particle effect that will be triggered at the start of the interaction."
 				},
 				"play_sounds": {
@@ -174,35 +149,28 @@
 					"description": "List of sounds to play when the interaction occurs."
 				},
 				"repair_entity_item": {
-					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"amount": {
-									"$ref": "#/$defs/int32_value",
-									"default": 1,
-									"description": "How much of the item durability should be restored upon interaction."
-								},
-								"slot": {
-									"type": "string",
-									"enum": [
-										"slot.weapon.mainhand",
-										"slot.weapon.offhand",
-										"slot.armor.head",
-										"slot.armor.chest",
-										"slot.armor.legs",
-										"slot.armor.feet",
-										"slot.armor.body"
-									],
-									"description": "The entity's slot containing the item to be repaired. Inventory slots are denoted by positive numbers. Equipment slots are denoted by 'slot.weapon.mainhand', 'slot.weapon.offhand', 'slot.armor.head', 'slot.armor.chest', 'slot.armor.legs', 'slot.armor.feet' and 'slot.armor.body'."
-								}
-							},
-							"additionalProperties": false
+					"type": "object",
+					"properties": {
+						"amount": {
+							"$ref": "#/$defs/int32_value",
+							"default": 1,
+							"description": "How much of the item durability should be restored upon interaction."
 						},
-						{
-							"type": "null"
+						"slot": {
+							"type": "string",
+							"enum": [
+								"slot.weapon.mainhand",
+								"slot.weapon.offhand",
+								"slot.armor.head",
+								"slot.armor.chest",
+								"slot.armor.legs",
+								"slot.armor.feet",
+								"slot.armor.body"
+							],
+							"description": "The entity's slot containing the item to be repaired. Inventory slots are denoted by positive numbers. Equipment slots are denoted by 'slot.weapon.mainhand', 'slot.weapon.offhand', 'slot.armor.head', 'slot.armor.chest', 'slot.armor.legs', 'slot.armor.feet' and 'slot.armor.body'."
 						}
-					],
+					},
+					"additionalProperties": false,
 					"description": "Allows to repair one of the entity's items."
 				},
 				"spawn_entities": {
@@ -221,27 +189,20 @@
 					"description": "List of entities to spawn when the interaction occurs."
 				},
 				"spawn_items": {
-					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"table": {
-									"$ref": "../../../../../vanilla/server/paths.json#/$defs/loot_table_path",
-									"default": "",
-									"description": "File path, relative to the Behavior Pack's path, to the loot table file."
-								},
-								"y_offset": {
-									"$ref": "#/$defs/float_value",
-									"default": 1,
-									"description": "Will offset the items spawn position this amount in the y direction."
-								}
-							},
-							"additionalProperties": false
+					"type": "object",
+					"properties": {
+						"table": {
+							"$ref": "../../../../../vanilla/server/paths.json#/$defs/loot_table_path",
+							"default": "",
+							"description": "File path, relative to the Behavior Pack's path, to the loot table file."
 						},
-						{
-							"type": "null"
+						"y_offset": {
+							"$ref": "#/$defs/float_value",
+							"default": 1,
+							"description": "Will offset the items spawn position this amount in the y direction."
 						}
-					],
+					},
+					"additionalProperties": false,
 					"description": "Loot table with items to drop on the ground upon successful interaction."
 				},
 				"swing": {

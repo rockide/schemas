@@ -13,14 +13,7 @@
 			"description": ""
 		},
 		"cooldown_range": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "Minimum and maximum cooldown time-range (positive, in seconds) between each attempted jump."
 		},
 		"forbidden_blocks": {
