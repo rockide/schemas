@@ -3,7 +3,7 @@
 	"type": "object",
 	"properties": {
 		"convert_trades_economy": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/convert_trades_economy"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/convert_trades_economy"
 		},
 		"cured_discount": {
 			"type": "object",
@@ -31,10 +31,10 @@
 			"description": "Range of cured villager discounts applied to trade prices."
 		},
 		"display_name": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/display_name"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/display_name"
 		},
 		"hero_demand_discount": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/hero_demand_discount"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/hero_demand_discount"
 		},
 		"max_cured_discount": {
 			"type": "object",
@@ -62,26 +62,26 @@
 			"description": "Maximum allowed range for cured villager discounts."
 		},
 		"max_nearby_cured_discount": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/max_nearby_cured_discount"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/max_nearby_cured_discount"
 		},
 		"nearby_cured_discount": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/nearby_cured_discount"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/nearby_cured_discount"
 		},
 		"new_screen": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/new_screen"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/new_screen"
 		},
 		"persist_trades": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/persist_trades"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/persist_trades"
 		},
 		"show_trade_screen": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/show_trade_screen"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/show_trade_screen"
 		},
 		"table": {
 			"$ref": "../../../../../vanilla/server/paths.json#/$defs/trading_path",
 			"description": "Path to the trade table JSON that defines available offers."
 		},
 		"use_legacy_price_formula": {
-			"$ref": "../../1.16.100/components/economy_trade_table.json#/anyOf/0/properties/use_legacy_price_formula"
+			"$ref": "../../1.16.100/components/economy_trade_table.json#/properties/use_legacy_price_formula"
 		}
 	},
 	"additionalProperties": false,

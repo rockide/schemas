@@ -5,9 +5,6 @@
 			"$ref": "#/$defs/definition"
 		},
 		{
-			"type": "null"
-		},
-		{
 			"type": "array",
 			"maxItems": 0
 		}
@@ -22,14 +19,7 @@
 					"description": "Determines if \"min_range_random_chance\" is used in the standard despawn rules"
 				},
 				"despawn_from_distance": {
-					"anyOf": [
-						{
-							"$ref": "#/$defs/distance"
-						},
-						{
-							"type": "null"
-						}
-					],
+					"$ref": "#/$defs/distance",
 					"description": "Specifies if the \"min_distance\" and \"max_distance\" are used in the standard despawn rules."
 				},
 				"despawn_from_inactivity": {

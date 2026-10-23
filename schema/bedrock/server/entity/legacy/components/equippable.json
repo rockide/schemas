@@ -1,31 +1,11 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"$ref": "#/$defs/definition"
-		},
-		{
-			"type": "null"
-		}
-	],
+	"$ref": "#/$defs/definition",
 	"$defs": {
 		"definition": {
 			"type": "object",
 			"properties": {
-				"slots": {
-					"type": "array",
-					"items": {
-						"anyOf": [
-							{
-								"$ref": "#/$defs/slot"
-							},
-							{
-								"type": "null"
-							}
-						]
-					},
-					"default": []
-				}
+				"slots": { "type": "array", "items": { "$ref": "#/$defs/slot" }, "default": [] }
 			},
 			"additionalProperties": false,
 			"description": "Defines an entity's behavior for having items equipped to it."

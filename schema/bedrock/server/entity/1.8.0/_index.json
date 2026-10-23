@@ -47,33 +47,26 @@
 					"$ref": "./description.json"
 				},
 				"events": {
-					"anyOf": [
-						{
-							"type": "null"
+					"type": "object",
+					"title": "Events",
+					"additionalProperties": {
+						"$ref": "./event.json",
+						"title": "Event Definition"
+					},
+					"properties": {
+						"minecraft:entity_born": {
+							"$ref": "./event.json"
 						},
-						{
-							"type": "object",
-							"title": "Events",
-							"additionalProperties": {
-								"$ref": "./event.json",
-								"title": "Event Definition"
-							},
-							"properties": {
-								"minecraft:entity_born": {
-									"$ref": "./event.json"
-								},
-								"minecraft:entity_spawned": {
-									"$ref": "./event.json"
-								},
-								"minecraft:on_prime": {
-									"$ref": "./event.json"
-								},
-								"minecraft:transformed": {
-									"$ref": "./event.json"
-								}
-							}
+						"minecraft:entity_spawned": {
+							"$ref": "./event.json"
+						},
+						"minecraft:on_prime": {
+							"$ref": "./event.json"
+						},
+						"minecraft:transformed": {
+							"$ref": "./event.json"
 						}
-					]
+					}
 				}
 			}
 		}

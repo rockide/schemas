@@ -4,16 +4,7 @@
 	"properties": {
 		"attack_interval": {
 			"anyOf": [
-				{
-					"anyOf": [
-						{
-							"$ref": "../general.json#/$defs/number_or_range"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
+				{ "$ref": "../general.json#/$defs/number_or_range" },
 				{
 					"type": "number",
 					"minimum": -3.4028234663852886e38,

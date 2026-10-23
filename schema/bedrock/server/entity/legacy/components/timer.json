@@ -1,13 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"$ref": "#/$defs/definition"
-		},
-		{
-			"type": "null"
-		}
-	],
+	"$ref": "#/$defs/definition",
 	"$defs": {
 		"definition": {
 			"type": "object",
@@ -24,16 +17,7 @@
 				},
 				"random_time_choices": {
 					"type": "array",
-					"items": {
-						"anyOf": [
-							{
-								"$ref": "#/$defs/choice"
-							},
-							{
-								"type": "null"
-							}
-						]
-					},
+					"items": { "$ref": "#/$defs/choice" },
 					"default": [],
 					"description": "This is a list of objects, representing one value in seconds that can be picked before firing the event and an optional weight. Incompatible with time."
 				},
