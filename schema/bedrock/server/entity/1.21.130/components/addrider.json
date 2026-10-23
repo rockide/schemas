@@ -2,20 +2,14 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "object",
 	"properties": {
-		"entity_type": {
-			"$ref": "../../legacy/components/addrider.json#/anyOf/0/properties/entity_type"
-		},
+		"entity_type": { "$ref": "../../legacy/components/addrider.json#/properties/entity_type" },
 		"riders": {
 			"type": "array",
-			"items": {
-				"$ref": "../../legacy/components/addrider.json#/anyOf/0"
-			},
+			"items": { "$ref": "../../legacy/components/addrider.json" },
 			"default": [],
 			"description": "List of riders to be added to the entity. Can only spawn as many riders as \"minecraft:rideable\" has \"seat_count\"."
 		},
-		"spawn_event": {
-			"$ref": "../../legacy/components/addrider.json#/anyOf/0/properties/spawn_event"
-		}
+		"spawn_event": { "$ref": "../../legacy/components/addrider.json#/properties/spawn_event" }
 	},
 	"additionalProperties": false,
 	"description": "Adds a rider to the entity. Requires minecraft:rideable."

@@ -13,25 +13,11 @@
 			"description": ""
 		},
 		"cooldown_range": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "Goal cooldown range in seconds. If specified, the cooldown will have to elapse even before the goal can be selected for the first time."
 		},
 		"duration_range": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "Goal duration range in seconds."
 		},
 		"on_end": {

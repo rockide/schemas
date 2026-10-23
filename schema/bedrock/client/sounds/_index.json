@@ -684,9 +684,6 @@
 				"block_sounds": {
 					"$ref": "#/$defs/block_sounds"
 				},
-				"entities": {
-					"type": ["null"]
-				},
 				"entity_sounds": {
 					"type": "object",
 					"additionalProperties": false,

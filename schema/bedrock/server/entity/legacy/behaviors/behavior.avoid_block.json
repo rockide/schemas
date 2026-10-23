@@ -45,14 +45,7 @@
 			"description": "Maximum distance to look for a block in xz."
 		},
 		"sound_interval": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "The range of time in seconds to randomly wait before playing the sound again."
 		},
 		"sprint_speed_modifier": {

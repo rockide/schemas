@@ -20,14 +20,7 @@
 			"description": "The duration in seconds that the celebration lasts for."
 		},
 		"fireworks_interval": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"default": [10, 20],
 			"description": "Minimum and maximum time between firework (positive, in seconds)."
 		},

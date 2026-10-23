@@ -1,13 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"$ref": "#/$defs/definition"
-		},
-		{
-			"type": "null"
-		}
-	],
+	"$ref": "#/$defs/definition",
 	"$defs": {
 		"definition": {
 			"type": "object",

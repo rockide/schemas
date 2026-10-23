@@ -3,14 +3,7 @@
 	"type": "object",
 	"properties": {
 		"attack_interval": {
-			"anyOf": [
-				{
-					"$ref": "../../legacy/general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../../legacy/general.json#/$defs/number_or_range",
 			"description": "Time range (in seconds) between searching for an attack target, range is in (0, \"attack_interval\"]. Only used if \"attack_interval\" is greater than 0, otherwise \"scan_interval\" is used."
 		},
 		"attack_owner": {

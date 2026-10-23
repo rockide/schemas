@@ -3,13 +3,11 @@
 	"type": "object",
 	"properties": {
 		"default_block_cost": {
-			"$ref": "../../legacy/components/preferred_path.json#/anyOf/0/properties/default_block_cost"
+			"$ref": "../../legacy/components/preferred_path.json#/properties/default_block_cost"
 		},
-		"jump_cost": {
-			"$ref": "../../legacy/components/preferred_path.json#/anyOf/0/properties/jump_cost"
-		},
+		"jump_cost": { "$ref": "../../legacy/components/preferred_path.json#/properties/jump_cost" },
 		"max_fall_blocks": {
-			"$ref": "../../legacy/components/preferred_path.json#/anyOf/0/properties/max_fall_blocks"
+			"$ref": "../../legacy/components/preferred_path.json#/properties/max_fall_blocks"
 		},
 		"preferred_path_blocks": {
 			"type": "array",

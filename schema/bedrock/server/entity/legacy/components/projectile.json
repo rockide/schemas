@@ -1,218 +1,200 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"anyOf": [
-		{
-			"type": "object",
-			"properties": {
-				"anchor": {
-					"$ref": "#/$defs/root/properties/anchor"
-				},
-				"angle_offset": {
-					"$ref": "#/$defs/root/properties/angle_offset"
-				},
-				"angleoffset": {
-					"$ref": "#/$defs/root/properties/angleoffset",
-					"doNotSuggest": true
-				},
-				"catchFire": {
-					"$ref": "#/$defs/root/properties/catchFire",
-					"doNotSuggest": true
-				},
-				"catch_fire": {
-					"$ref": "#/$defs/root/properties/catch_fire"
-				},
-				"critParticleOnHurt": {
-					"$ref": "#/$defs/root/properties/critParticleOnHurt",
-					"doNotSuggest": true
-				},
-				"crit_particle_on_hurt": {
-					"$ref": "#/$defs/root/properties/crit_particle_on_hurt"
-				},
-				"destroyOnHurt": {
-					"$ref": "#/$defs/root/properties/destroyOnHurt",
-					"doNotSuggest": true
-				},
-				"destroy_on_hurt": {
-					"$ref": "#/$defs/root/properties/destroy_on_hurt"
-				},
-				"gravity": {
-					"$ref": "#/$defs/root/properties/gravity"
-				},
-				"hitGroundSound": {
-					"$ref": "#/$defs/root/properties/hitGroundSound",
-					"doNotSuggest": true
-				},
-				"hitSound": {
-					"$ref": "#/$defs/root/properties/hitSound",
-					"doNotSuggest": true
-				},
-				"hitWater": {
-					"$ref": "#/$defs/root/properties/hitWater",
-					"doNotSuggest": true
-				},
-				"hit_ground_sound": {
-					"$ref": "#/$defs/root/properties/hit_ground_sound"
-				},
-				"hit_nearest_passenger": {
-					"$ref": "#/$defs/root/properties/hit_nearest_passenger"
-				},
-				"hit_sound": {
-					"$ref": "#/$defs/root/properties/hit_sound"
-				},
-				"hit_water": {
-					"$ref": "#/$defs/root/properties/hit_water"
-				},
-				"homing": {
-					"$ref": "#/$defs/root/properties/homing"
-				},
-				"ignored_entities": {
-					"$ref": "#/$defs/root/properties/ignored_entities"
-				},
-				"inertia": {
-					"$ref": "#/$defs/root/properties/inertia"
-				},
-				"is_dangerous": {
-					"$ref": "#/$defs/root/properties/is_dangerous"
-				},
-				"isdangerous": {
-					"$ref": "#/$defs/root/properties/isdangerous",
-					"doNotSuggest": true
-				},
-				"isolated_physics": {
-					"type": "boolean",
-					"default": false,
-					"description": "If `true`, the projectile uses a dedicated ballistic physics path and ignores generic actor movement systems (friction, drag, etc.). Recommended for custom projectiles."
-				},
-				"lightning": {
-					"$ref": "#/$defs/root/properties/lightning"
-				},
-				"liquid_inertia": {
-					"$ref": "#/$defs/root/properties/liquid_inertia"
-				},
-				"mHitNearestPassenger": {
-					"$ref": "#/$defs/root/properties/mHitNearestPassenger",
-					"doNotSuggest": true
-				},
-				"multiple_targets": {
-					"type": "boolean",
-					"default": true,
-					"description": "If `true`, the projectile can hit more than one entity over the course of its flight; if `false`, it stops at the first entity it hits. Projectiles launched with the Piercing enchantment have this value set to `true`."
-				},
-				"multipletargets": {
-					"$ref": "#/$defs/root/properties/multipletargets",
-					"doNotSuggest": true
-				},
-				"offset": {
-					"$ref": "#/$defs/root/properties/offset"
-				},
-				"onFireTime": {
-					"$ref": "#/$defs/root/properties/onFireTime",
-					"doNotSuggest": true
-				},
-				"onHit": {
-					"$ref": "#/$defs/root/properties/onHit",
-					"doNotSuggest": true
-				},
-				"on_fire_time": {
-					"$ref": "#/$defs/root/properties/on_fire_time"
-				},
-				"on_hit": {
-					"anyOf": [
-						{
-							"$ref": "#/$defs/on_hit",
-							"description": ""
-						},
-						{
-							"type": "null",
-							"description": ""
-						}
-					],
-					"description": "Map of on-hit subcomponents that drive what happens when the projectile impacts a block, fluid, or entity. Each key is a subcomponent name and its value is that subcomponent's configuration."
-				},
-				"particle": {
-					"$ref": "#/$defs/root/properties/particle"
-				},
-				"potionEffect": {
-					"$ref": "#/$defs/root/properties/potionEffect",
-					"doNotSuggest": true
-				},
-				"potion_effect": {
-					"$ref": "#/$defs/root/properties/potion_effect"
-				},
-				"power": {
-					"$ref": "#/$defs/root/properties/power"
-				},
-				"reflectOnHurt": {
-					"$ref": "#/$defs/root/properties/reflectOnHurt",
-					"doNotSuggest": true
-				},
-				"reflect_immunity": {
-					"$ref": "#/$defs/root/properties/reflect_immunity"
-				},
-				"reflect_on_hurt": {
-					"$ref": "#/$defs/root/properties/reflect_on_hurt"
-				},
-				"shootSound": {
-					"$ref": "#/$defs/root/properties/shootSound",
-					"doNotSuggest": true
-				},
-				"shoot_sound": {
-					"$ref": "#/$defs/root/properties/shoot_sound"
-				},
-				"shoot_target": {
-					"$ref": "#/$defs/root/properties/shoot_target"
-				},
-				"shoottarget": {
-					"$ref": "#/$defs/root/properties/shoottarget",
-					"doNotSuggest": true
-				},
-				"should_bounce": {
-					"$ref": "#/$defs/should_bounce"
-				},
-				"shouldbounce": {
-					"$ref": "#/$defs/should_bounce",
-					"doNotSuggest": true
-				},
-				"splashRange": {
-					"$ref": "#/$defs/root/properties/splashRange",
-					"doNotSuggest": true
-				},
-				"splash_range": {
-					"$ref": "#/$defs/root/properties/splash_range"
-				},
-				"spread_fire": {
-					"$ref": "#/$defs/root/properties/spread_fire"
-				},
-				"stopOnHurt": {
-					"$ref": "#/$defs/root/properties/stopOnHurt",
-					"doNotSuggest": true
-				},
-				"stop_on_hurt": {
-					"$ref": "#/$defs/root/properties/stop_on_hurt"
-				},
-				"uncertaintyBase": {
-					"$ref": "#/$defs/root/properties/uncertaintyBase",
-					"doNotSuggest": true
-				},
-				"uncertaintyMultiplier": {
-					"$ref": "#/$defs/root/properties/uncertaintyMultiplier",
-					"doNotSuggest": true
-				},
-				"uncertainty_base": {
-					"$ref": "#/$defs/root/properties/uncertainty_base"
-				},
-				"uncertainty_multiplier": {
-					"$ref": "#/$defs/root/properties/uncertainty_multiplier"
-				}
-			},
-			"additionalProperties": false,
-			"description": ""
+	"type": "object",
+	"properties": {
+		"anchor": {
+			"$ref": "#/$defs/root/properties/anchor"
 		},
-		{
-			"type": "null",
-			"description": ""
+		"angle_offset": {
+			"$ref": "#/$defs/root/properties/angle_offset"
+		},
+		"angleoffset": {
+			"$ref": "#/$defs/root/properties/angleoffset",
+			"doNotSuggest": true
+		},
+		"catchFire": {
+			"$ref": "#/$defs/root/properties/catchFire",
+			"doNotSuggest": true
+		},
+		"catch_fire": {
+			"$ref": "#/$defs/root/properties/catch_fire"
+		},
+		"critParticleOnHurt": {
+			"$ref": "#/$defs/root/properties/critParticleOnHurt",
+			"doNotSuggest": true
+		},
+		"crit_particle_on_hurt": {
+			"$ref": "#/$defs/root/properties/crit_particle_on_hurt"
+		},
+		"destroyOnHurt": {
+			"$ref": "#/$defs/root/properties/destroyOnHurt",
+			"doNotSuggest": true
+		},
+		"destroy_on_hurt": {
+			"$ref": "#/$defs/root/properties/destroy_on_hurt"
+		},
+		"gravity": {
+			"$ref": "#/$defs/root/properties/gravity"
+		},
+		"hitGroundSound": {
+			"$ref": "#/$defs/root/properties/hitGroundSound",
+			"doNotSuggest": true
+		},
+		"hitSound": {
+			"$ref": "#/$defs/root/properties/hitSound",
+			"doNotSuggest": true
+		},
+		"hitWater": {
+			"$ref": "#/$defs/root/properties/hitWater",
+			"doNotSuggest": true
+		},
+		"hit_ground_sound": {
+			"$ref": "#/$defs/root/properties/hit_ground_sound"
+		},
+		"hit_nearest_passenger": {
+			"$ref": "#/$defs/root/properties/hit_nearest_passenger"
+		},
+		"hit_sound": {
+			"$ref": "#/$defs/root/properties/hit_sound"
+		},
+		"hit_water": {
+			"$ref": "#/$defs/root/properties/hit_water"
+		},
+		"homing": {
+			"$ref": "#/$defs/root/properties/homing"
+		},
+		"ignored_entities": {
+			"$ref": "#/$defs/root/properties/ignored_entities"
+		},
+		"inertia": {
+			"$ref": "#/$defs/root/properties/inertia"
+		},
+		"is_dangerous": {
+			"$ref": "#/$defs/root/properties/is_dangerous"
+		},
+		"isdangerous": {
+			"$ref": "#/$defs/root/properties/isdangerous",
+			"doNotSuggest": true
+		},
+		"isolated_physics": {
+			"type": "boolean",
+			"default": false,
+			"description": "If `true`, the projectile uses a dedicated ballistic physics path and ignores generic actor movement systems (friction, drag, etc.). Recommended for custom projectiles."
+		},
+		"lightning": {
+			"$ref": "#/$defs/root/properties/lightning"
+		},
+		"liquid_inertia": {
+			"$ref": "#/$defs/root/properties/liquid_inertia"
+		},
+		"mHitNearestPassenger": {
+			"$ref": "#/$defs/root/properties/mHitNearestPassenger",
+			"doNotSuggest": true
+		},
+		"multiple_targets": {
+			"type": "boolean",
+			"default": true,
+			"description": "If `true`, the projectile can hit more than one entity over the course of its flight; if `false`, it stops at the first entity it hits. Projectiles launched with the Piercing enchantment have this value set to `true`."
+		},
+		"multipletargets": {
+			"$ref": "#/$defs/root/properties/multipletargets",
+			"doNotSuggest": true
+		},
+		"offset": {
+			"$ref": "#/$defs/root/properties/offset"
+		},
+		"onFireTime": {
+			"$ref": "#/$defs/root/properties/onFireTime",
+			"doNotSuggest": true
+		},
+		"onHit": {
+			"$ref": "#/$defs/root/properties/onHit",
+			"doNotSuggest": true
+		},
+		"on_fire_time": {
+			"$ref": "#/$defs/root/properties/on_fire_time"
+		},
+		"on_hit": {
+			"$ref": "#/$defs/on_hit",
+			"description": "Map of on-hit subcomponents that drive what happens when the projectile impacts a block, fluid, or entity. Each key is a subcomponent name and its value is that subcomponent's configuration."
+		},
+		"particle": {
+			"$ref": "#/$defs/root/properties/particle"
+		},
+		"potionEffect": {
+			"$ref": "#/$defs/root/properties/potionEffect",
+			"doNotSuggest": true
+		},
+		"potion_effect": {
+			"$ref": "#/$defs/root/properties/potion_effect"
+		},
+		"power": {
+			"$ref": "#/$defs/root/properties/power"
+		},
+		"reflectOnHurt": {
+			"$ref": "#/$defs/root/properties/reflectOnHurt",
+			"doNotSuggest": true
+		},
+		"reflect_immunity": {
+			"$ref": "#/$defs/root/properties/reflect_immunity"
+		},
+		"reflect_on_hurt": {
+			"$ref": "#/$defs/root/properties/reflect_on_hurt"
+		},
+		"shootSound": {
+			"$ref": "#/$defs/root/properties/shootSound",
+			"doNotSuggest": true
+		},
+		"shoot_sound": {
+			"$ref": "#/$defs/root/properties/shoot_sound"
+		},
+		"shoot_target": {
+			"$ref": "#/$defs/root/properties/shoot_target"
+		},
+		"shoottarget": {
+			"$ref": "#/$defs/root/properties/shoottarget",
+			"doNotSuggest": true
+		},
+		"should_bounce": {
+			"$ref": "#/$defs/should_bounce"
+		},
+		"shouldbounce": {
+			"$ref": "#/$defs/should_bounce",
+			"doNotSuggest": true
+		},
+		"splashRange": {
+			"$ref": "#/$defs/root/properties/splashRange",
+			"doNotSuggest": true
+		},
+		"splash_range": {
+			"$ref": "#/$defs/root/properties/splash_range"
+		},
+		"spread_fire": {
+			"$ref": "#/$defs/root/properties/spread_fire"
+		},
+		"stopOnHurt": {
+			"$ref": "#/$defs/root/properties/stopOnHurt",
+			"doNotSuggest": true
+		},
+		"stop_on_hurt": {
+			"$ref": "#/$defs/root/properties/stop_on_hurt"
+		},
+		"uncertaintyBase": {
+			"$ref": "#/$defs/root/properties/uncertaintyBase",
+			"doNotSuggest": true
+		},
+		"uncertaintyMultiplier": {
+			"$ref": "#/$defs/root/properties/uncertaintyMultiplier",
+			"doNotSuggest": true
+		},
+		"uncertainty_base": {
+			"$ref": "#/$defs/root/properties/uncertainty_base"
+		},
+		"uncertainty_multiplier": {
+			"$ref": "#/$defs/root/properties/uncertainty_multiplier"
 		}
-	],
+	},
+	"additionalProperties": false,
 	"$defs": {
 		"arrow_effect": {
 			"type": "object",
@@ -490,10 +472,6 @@
 							},
 							"additionalProperties": false,
 							"description": ""
-						},
-						{
-							"type": "null",
-							"description": ""
 						}
 					],
 					"description": ""
@@ -656,10 +634,6 @@
 							"items": false,
 							"minItems": 2,
 							"maxItems": 2,
-							"description": ""
-						},
-						{
-							"type": "null",
 							"description": ""
 						}
 					],
@@ -896,10 +870,6 @@
 							"minItems": 2,
 							"maxItems": 2,
 							"description": ""
-						},
-						{
-							"type": "null",
-							"description": ""
 						}
 					],
 					"description": "Range of damage to apply on impact. A random value in `[min, max]` is rolled per hit and the velocity-scaled `power_multiplier` term is added to it to define the projectile's base damage."
@@ -1133,10 +1103,6 @@
 						}
 					],
 					"items": true,
-					"description": ""
-				},
-				{
-					"type": "null",
 					"description": ""
 				}
 			],
@@ -1633,16 +1599,7 @@
 					"doNotSuggest": true
 				},
 				"onHit": {
-					"anyOf": [
-						{
-							"$ref": "#/$defs/on_hit_alias",
-							"description": ""
-						},
-						{
-							"type": "null",
-							"description": ""
-						}
-					],
+					"$ref": "#/$defs/on_hit_alias",
 					"description": "Map of on-hit subcomponents that drive what happens when the projectile impacts a block, fluid, or entity. Each key is a subcomponent name and its value is that subcomponent's configuration.",
 					"doNotSuggest": true
 				},

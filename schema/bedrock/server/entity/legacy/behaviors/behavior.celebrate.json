@@ -23,14 +23,7 @@
 			"description": "The duration in seconds that the celebration lasts for."
 		},
 		"jump_interval": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "Minimum and maximum time between jumping (positive, in seconds)."
 		},
 		"on_celebration_end_event": {
@@ -45,14 +38,7 @@
 			"description": ""
 		},
 		"sound_interval": {
-			"anyOf": [
-				{
-					"$ref": "../general.json#/$defs/number_or_range"
-				},
-				{
-					"type": "null"
-				}
-			],
+			"$ref": "../general.json#/$defs/number_or_range",
 			"description": "Minimum and maximum time between sound events (positive, in seconds)."
 		}
 	},
