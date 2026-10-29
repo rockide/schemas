@@ -5,10 +5,10 @@
 	"description": "Spawn rules definition for Minecraft Bedrock Edition entities.",
 	"properties": {
 		"format_version": {
-			"enum": ["1.8.0"]
+			"enum": ["1.8.0", "1.18.0"]
 		}
 	},
-	"anyOf": [
+	"allOf": [
 		{
 			"if": {
 				"properties": {
