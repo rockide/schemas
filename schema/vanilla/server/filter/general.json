@@ -170,31 +170,38 @@
 				},
 				{
 					"const": 6,
-					"description": "The block involved with the interaction."
+					"description": "The block involved with the interaction.",
+					"doNotSuggest": true
 				},
 				{
 					"const": 7,
-					"description": "The damaging actor involved with the interaction."
+					"description": "The damaging actor involved with the interaction.",
+					"doNotSuggest": true
 				},
 				{
 					"const": 1,
-					"description": "The other member of an interaction, not the caller."
+					"description": "The other member of an interaction, not the caller.",
+					"doNotSuggest": true
 				},
 				{
 					"const": 4,
-					"description": "The caller's current parent."
+					"description": "The caller's current parent.",
+					"doNotSuggest": true
 				},
 				{
 					"const": 2,
-					"description": "The player involved with the interaction."
+					"description": "The player involved with the interaction.",
+					"doNotSuggest": true
 				},
 				{
 					"const": 0,
-					"description": "The entity or object calling the test"
+					"description": "The entity or object calling the test",
+					"doNotSuggest": true
 				},
 				{
 					"const": 3,
-					"description": "The caller's current target."
+					"description": "The caller's current target.",
+					"doNotSuggest": true
 				}
 			]
 		}
