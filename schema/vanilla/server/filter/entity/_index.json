@@ -1558,13 +1558,15 @@
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/filter_item"
-					}
+					},
+					"doNotSuggest": true
 				},
 				"all": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/filter_item"
-					}
+					},
+					"doNotSuggest": true
 				},
 				"all_of": {
 					"type": "array",
@@ -1576,13 +1578,15 @@
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/filter_item"
-					}
+					},
+					"doNotSuggest": true
 				},
 				"any": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/filter_item"
-					}
+					},
+					"doNotSuggest": true
 				},
 				"any_of": {
 					"type": "array",
@@ -1594,7 +1598,8 @@
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/filter_item"
-					}
+					},
+					"doNotSuggest": true
 				},
 				"none_of": {
 					"type": "array",
