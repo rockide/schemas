@@ -7,7 +7,7 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"enum": ["1.10.0", "1.26.0"]
+			"const": "1.10.0"
 		},
 		"minecraft:attachable": {
 			"$ref": "#/$defs/attachable"
@@ -34,15 +34,22 @@
 					"$ref": "../../../../vanilla/definition/identifier.json"
 				},
 				"item": {
-					"type": "object",
-					"minProperties": 1,
-					"maxProperties": 1,
-					"propertyNames": {
-						"$ref": "../../../../vanilla/definition/identifier.json"
-					},
-					"additionalProperties": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
-					}
+					"oneOf": [
+						{
+							"$ref": "../../../../vanilla/definition/identifier.json"
+						},
+						{
+							"type": "object",
+							"minProperties": 1,
+							"maxProperties": 1,
+							"propertyNames": {
+								"$ref": "../../../../vanilla/definition/identifier.json"
+							},
+							"additionalProperties": {
+								"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
+							}
+						}
+					]
 				},
 				"min_engine_version": {
 					"anyOf": [
@@ -116,13 +123,13 @@
 							},
 							{
 								"type": "object",
+								"minProperties": 1,
+								"maxProperties": 1,
 								"propertyNames": {
 									"pattern": "^controller\\.render\\..+$"
 								},
-								"if": {
-									"propertyNames": {
-										"$ref": "../../../../vanilla/client/identifiers.json#/$defs/render_controller_identifier/anyOf/1"
-									}
+								"additionalProperties": {
+									"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 								}
 							}
 						]
@@ -137,8 +144,52 @@
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
+				"variables": {
+					"type": "object",
+					"propertyNames": {
+						"pattern": "^variable\\.[a-zA-Z_][a-zA-Z0-9_]*$"
+					},
+					"additionalProperties": {
+						"type": "string",
+						"const": "public"
+					}
+				},
+				"scale": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"scaleX": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"scaleY": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"scaleZ": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"scalex": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"scaley": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"scalez": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"should_update_bones_and_effects_offscreen": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
+				},
+				"should_update_effects_offscreen": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
+				},
 				"parent_setup": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"animate": {
 					"description": "List of animations to play. Each item can be a string animation name or an object mapping animation name to a Molang condition.",
@@ -151,8 +202,10 @@
 							},
 							{
 								"type": "object",
+								"minProperties": 1,
+								"maxProperties": 1,
 								"additionalProperties": {
-									"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+									"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 								}
 							}
 						]
@@ -162,14 +215,14 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 					}
 				},
 				"pre_animation": {
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 					}
 				}
 			}
