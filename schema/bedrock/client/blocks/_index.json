@@ -15,7 +15,8 @@
 					"maxItems": 3,
 					"items": {
 						"type": "integer",
-						"minimum": 0
+						"minimum": 0,
+						"maximum": 65535
 					}
 				},
 				{
@@ -59,10 +60,6 @@
 					"$ref": "../../../vanilla/client/identifiers.json#/$defs/block_sound_identifier",
 					"description": "Sound group to use for this block."
 				},
-				"sounds": {
-					"$ref": "../../../vanilla/client/identifiers.json#/$defs/block_sound_identifier",
-					"description": "Alias for sound group to use for this block."
-				},
 				"isotropic": {
 					"description": "Whether isotropic textures are used, either boolean or per-face map.",
 					"oneOf": [
@@ -73,10 +70,6 @@
 							"$ref": "#/$defs/isotropic_faces"
 						}
 					]
-				},
-				"brightness_gamma": {
-					"type": "number",
-					"description": "Gamma correction value for the block's brightness."
 				},
 				"ambient_occlusion_exponent": {
 					"type": "number",
@@ -184,11 +177,17 @@
 		"texture_faces": {
 			"type": "object",
 			"additionalProperties": false,
-			"properties": {
-				"all": {
-					"$ref": "../../../vanilla/client/identifiers.json#/$defs/terrain_texture_identifier",
-					"description": "Texture for all faces."
+			"oneOf": [
+				{
+					"required": ["up", "down", "side"],
+					"maxProperties": 3
 				},
+				{
+					"required": ["up", "down", "north", "south", "west", "east"],
+					"maxProperties": 6
+				}
+			],
+			"properties": {
 				"up": {
 					"$ref": "../../../vanilla/client/identifiers.json#/$defs/terrain_texture_identifier",
 					"description": "Texture for the top face."
@@ -222,11 +221,16 @@
 		"isotropic_faces": {
 			"type": "object",
 			"additionalProperties": false,
+			"not": {
+				"required": ["side"],
+				"anyOf": [
+					{ "required": ["north"] },
+					{ "required": ["south"] },
+					{ "required": ["west"] },
+					{ "required": ["east"] }
+				]
+			},
 			"properties": {
-				"all": {
-					"type": "boolean",
-					"description": "Apply isotropic setting to all faces."
-				},
 				"up": {
 					"type": "boolean",
 					"description": "Isotropic setting for the top face."
@@ -238,6 +242,18 @@
 				"side": {
 					"type": "boolean",
 					"description": "Isotropic setting for the side faces."
+				},
+				"north": {
+					"type": "boolean"
+				},
+				"south": {
+					"type": "boolean"
+				},
+				"west": {
+					"type": "boolean"
+				},
+				"east": {
+					"type": "boolean"
 				}
 			}
 		}

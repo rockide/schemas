@@ -5,6 +5,7 @@
 	"title": "minecraft:water_appearance",
 	"description": "Set the water surface color used during rendering. Biomes without this component will have default water surface color behavior.",
 	"additionalProperties": false,
+	"anyOf": [{ "required": ["surface_color"] }, { "required": ["surface_opacity"] }],
 	"properties": {
 		"surface_color": {
 			"$ref": "../../_shared.json#/$defs/color_rgb_255",
