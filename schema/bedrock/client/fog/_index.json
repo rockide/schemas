@@ -5,7 +5,7 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.16.100", "1.21.90"]
+			"enum": ["1.16.100", "1.21.0", "1.21.90", "1.26.20"]
 		}
 	},
 	"allOf": [
@@ -25,12 +25,36 @@
 			"if": {
 				"properties": {
 					"format_version": {
+						"enum": ["1.21.0"]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.21.0/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
 						"enum": ["1.21.90"]
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.21.90/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"enum": ["1.26.20"]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.26.20/_index.json"
 			}
 		}
 	]

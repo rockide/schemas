@@ -8,6 +8,7 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
+			"const": "1.16.100",
 			"description": "Resource pack version this fog setting was built for. Minimum version is 1.16.100."
 		},
 		"minecraft:fog_settings": {
@@ -36,32 +37,27 @@
 					"properties": {
 						"air": {
 							"description": "The fog settings when the camera is in the air.",
-							"additionalProperties": false,
-							"$ref": "#/$defs/distance_fog"
+							"$ref": "#/$defs/distance_fog_with_transition"
 						},
 						"weather": {
 							"description": "The fog settings for when the camera is in the air with active weather (rain, snow, etc..).",
-							"additionalProperties": false,
-							"$ref": "#/$defs/distance_fog"
+							"$ref": "#/$defs/distance_fog_with_transition"
 						},
 						"water": {
 							"description": "The fog settings when the camera is in water.",
-							"$ref": "#/$defs/water_distance_fog"
+							"$ref": "#/$defs/distance_fog_with_transition"
 						},
 						"lava": {
 							"description": "The fog settings when the camera is in lava.",
-							"additionalProperties": false,
-							"$ref": "#/$defs/distance_fog"
+							"$ref": "#/$defs/distance_fog_with_transition"
 						},
 						"lava_resistance": {
 							"description": "The fog settings when the camera is in lava and the player has the lava resistance effect active.",
-							"additionalProperties": false,
-							"$ref": "#/$defs/distance_fog"
+							"$ref": "#/$defs/distance_fog_with_transition"
 						},
 						"powder_snow": {
 							"description": "The fog settings when the camera is inside a Powder Snow block.",
-							"additionalProperties": false,
-							"$ref": "#/$defs/distance_fog"
+							"$ref": "#/$defs/distance_fog_with_transition"
 						}
 					}
 				},
@@ -74,6 +70,7 @@
 							"type": "object",
 							"description": "The density settings for different camera locations.",
 							"additionalProperties": false,
+							"not": { "required": ["weather"] },
 							"properties": {
 								"air": {
 									"description": "Fog density values as light passes through air blocks.",
@@ -124,6 +121,7 @@
 	"$defs": {
 		"distance_fog": {
 			"type": "object",
+			"required": ["fog_start", "fog_end", "fog_color", "render_distance_type"],
 			"properties": {
 				"fog_start": {
 					"type": "number",
@@ -131,12 +129,27 @@
 				},
 				"fog_end": {
 					"type": "number",
+					"minimum": 0,
 					"description": "The distance from the player that the fog will become fully opaque. 'fog_end' must be greater than or equal to 'fog_start'."
 				},
 				"fog_color": {
-					"type": "string",
 					"description": "The color that the fog will take on.",
-					"pattern": "^#?[0-9A-Fa-f]{6}$"
+					"oneOf": [
+						{
+							"type": "string",
+							"pattern": "^#[0-9A-Fa-f]{6}$"
+						},
+						{
+							"type": "array",
+							"minItems": 3,
+							"maxItems": 3,
+							"items": {
+								"type": "integer",
+								"minimum": 0,
+								"maximum": 255
+							}
+						}
+					]
 				},
 				"render_distance_type": {
 					"type": "string",
@@ -145,7 +158,7 @@
 				}
 			}
 		},
-		"water_distance_fog": {
+		"distance_fog_with_transition": {
 			"unevaluatedProperties": false,
 			"allOf": [
 				{ "$ref": "#/$defs/distance_fog" },
@@ -160,26 +173,34 @@
 		"transition_fog": {
 			"type": "object",
 			"additionalProperties": false,
+			"required": ["init_fog", "min_percent", "mid_seconds", "mid_percent", "max_seconds"],
 			"description": "Additional fog data which will slowly transition to the distance fog of current biome.",
 			"properties": {
 				"init_fog": {
 					"description": "Initial fog that will slowly transition into water distance fog of the biome when player goes into water.",
+					"unevaluatedProperties": false,
 					"$ref": "#/$defs/distance_fog"
 				},
 				"min_percent": {
 					"type": "number",
+					"minimum": 0,
+					"maximum": 1,
 					"description": "The minimum progress of fog transition."
 				},
 				"mid_seconds": {
 					"type": "number",
+					"minimum": 0,
 					"description": "The time it takes to reach certain progress('mid_percent') of fog transition."
 				},
 				"mid_percent": {
 					"type": "number",
+					"minimum": 0,
+					"maximum": 1,
 					"description": "The progress of fog transition after 'mid_seconds' seconds."
 				},
 				"max_seconds": {
 					"type": "number",
+					"minimum": 0,
 					"description": "Total amount of time it takes to complete fog transition."
 				}
 			}
@@ -187,6 +208,21 @@
 		"density_fog": {
 			"type": "object",
 			"additionalProperties": false,
+			"required": ["max_density"],
+			"if": {
+				"required": ["uniform"],
+				"properties": {
+					"uniform": { "const": true }
+				}
+			},
+			"then": {
+				"not": {
+					"anyOf": [{ "required": ["zero_density_height"] }, { "required": ["max_density_height"] }]
+				}
+			},
+			"else": {
+				"required": ["zero_density_height", "max_density_height"]
+			},
 			"properties": {
 				"max_density": {
 					"type": "number",
@@ -200,10 +236,14 @@
 				},
 				"zero_density_height": {
 					"type": "number",
+					"minimum": -64,
+					"maximum": 320,
 					"description": "The height in blocks that the ground fog will be completely transparent and begin to appear. This value needs to be at least 1 higher than 'max_density_height'"
 				},
 				"max_density_height": {
 					"type": "number",
+					"minimum": -64,
+					"maximum": 320,
 					"description": "The height in blocks that the ground fog will become it's maximum density."
 				}
 			}
@@ -222,13 +262,14 @@
 				},
 				{
 					"type": "string",
-					"pattern": "^#?[0-9A-Fa-f]{6}$"
+					"pattern": "^#[0-9A-Fa-f]{6}$"
 				}
 			]
 		},
 		"media_coefficients": {
 			"type": "object",
 			"additionalProperties": false,
+			"required": ["scattering", "absorption"],
 			"properties": {
 				"scattering": {
 					"description": "Proportion of light that is scattered per block.",
