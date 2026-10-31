@@ -6,7 +6,8 @@
 	"required": ["format_version", "minecraft:item"],
 	"properties": {
 		"format_version": {
-			"type": "string"
+			"type": "string",
+			"enum": ["1.0.0", "1.16.0"]
 		},
 		"minecraft:item": {
 			"type": "object",
@@ -22,7 +23,8 @@
 							"$ref": "../../../../vanilla/definition/identifier.json"
 						},
 						"category": {
-							"$ref": "../../../../vanilla/server/creative_category.json"
+							"type": "string",
+							"enum": ["all", "construction", "nature", "equipment", "items", "commands", "none"]
 						}
 					}
 				},
@@ -119,7 +121,8 @@
 			"$ref": "../../../../vanilla/client/identifiers.json#/$defs/item_texture_identifier"
 		},
 		"minecraft:icon_variant": {
-			"enum": ["wood", "stone", "iron", "gold", "diamond"]
+			"enum": ["wood", "stone", "iron", "gold", "diamond"],
+			"default": "wood"
 		}
 	}
 }
