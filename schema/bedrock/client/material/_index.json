@@ -4,8 +4,10 @@
 	"additionalProperties": false,
 	"properties": {
 		"materials": {
-			"patternProperties": {
-				"^version$": {
+			"type": "object",
+			"required": ["version"],
+			"properties": {
+				"version": {
 					"const": "1.0.0"
 				}
 			},
@@ -18,6 +20,7 @@
 		"material": {
 			"type": "object",
 			"unevaluatedProperties": false,
+			"$comment": "Default annotations describe fresh materials; omitted properties preserve inherited values.",
 			"allOf": [
 				{
 					"$ref": "#/$defs/shader_field"
@@ -50,7 +53,24 @@
 								"properties": {
 									"field": {
 										"type": "string",
-										"enum": ["Position", "Normal", "UV0", "UV1", "UV2", "Color", "BoneId0"]
+										"default": "Position",
+										"enum": [
+											"Position",
+											"Normal",
+											"UV0",
+											"UV1",
+											"UV2",
+											"Color",
+											"BoneId0",
+											"Tangent",
+											"PBRTextureIdx",
+											"PreviousPosition",
+											"HummingbirdPosition",
+											"HummingbirdColor",
+											"HummingbirdAdditional",
+											"Mers",
+											"GeoType"
+										]
 									}
 								}
 							}
@@ -75,7 +95,8 @@
 						},
 						"primitiveMode": {
 							"type": "string",
-							"enum": ["None", "QuadList", "TriangleList", "TriangleStrip", "LineList", "Line"]
+							"enum": ["None", "QuadList", "TriangleList", "TriangleStrip", "LineList", "Line"],
+							"default": "TriangleList"
 						},
 						"+samplerStates": {
 							"$ref": "#/$defs/sampler_states"
@@ -84,9 +105,19 @@
 							"$ref": "#/$defs/sampler_states"
 						},
 						"isAnimatedTexture": {
+							"$comment": "Both 0 and 1 activate the RGBA render-target override; omit this property to avoid that override.",
 							"type": "integer",
 							"minimum": 0,
 							"maximum": 1
+						},
+						"renderTargetFormats": {
+							"type": "array",
+							"items": {
+								"type": "array",
+								"items": {
+									"$ref": "#/$defs/texture_format"
+								}
+							}
 						}
 					}
 				}
@@ -96,7 +127,7 @@
 			"properties": {
 				"vertexShader": {
 					"type": "string",
-					"enum": [
+					"examples": [
 						"shaders/uv.vertex",
 						"shaders/color_uv.vertex",
 						"shaders/position.vertex",
@@ -124,9 +155,9 @@
 						"shaders/rain_snow.vertex"
 					]
 				},
-				"vrGeometryShader": {
+				"geometryShader": {
 					"type": "string",
-					"enum": [
+					"examples": [
 						"shaders/uv.geometry",
 						"shaders/hologram_uv_stereo.geometry",
 						"shaders/color_uv.geometry",
@@ -144,7 +175,7 @@
 				},
 				"fragmentShader": {
 					"type": "string",
-					"enum": [
+					"examples": [
 						"shaders/texture_ccolor.fragment",
 						"shaders/texture.fragment",
 						"shaders/hologram_texture_stereo.fragment",
@@ -198,19 +229,16 @@
 			"type": "object",
 			"properties": {
 				"depthBias": {
-					"type": "number"
+					"type": "number",
+					"default": 0
 				},
 				"slopeScaledDepthBias": {
-					"type": "number"
+					"type": "number",
+					"default": 0
 				},
 				"msaaSupport": {
-					"enum": ["NonMSAA", "MSAA", "Both"]
-				},
-				"depthBiasOGL": {
-					"type": "number"
-				},
-				"slopeScaledDepthBiasOGL": {
-					"type": "number"
+					"enum": ["NonMSAA", "MSAA", "Both"],
+					"default": "NonMSAA"
 				}
 			}
 		},
@@ -266,7 +294,8 @@
 			"type": "object",
 			"properties": {
 				"depthFunc": {
-					"$ref": "#/$defs/depth_test"
+					"$ref": "#/$defs/depth_test",
+					"default": "Less"
 				},
 				"frontFace": {
 					"$ref": "#/$defs/face"
@@ -275,8 +304,8 @@
 					"$ref": "#/$defs/face"
 				},
 				"stencilRefOverride": {
-					"type": "integer",
-					"default": 0,
+					"type": ["boolean", "integer"],
+					"default": false,
 					"minimum": 0,
 					"maximum": 1
 				},
@@ -284,10 +313,12 @@
 					"type": "integer"
 				},
 				"stencilReadMask": {
-					"type": "integer"
+					"type": "integer",
+					"default": 4294967295
 				},
 				"stencilWriteMask": {
-					"type": "integer"
+					"type": "integer",
+					"default": 4294967295
 				}
 			}
 		},
@@ -296,22 +327,20 @@
 			"additionalProperties": false,
 			"properties": {
 				"stencilFunc": {
-					"$ref": "#/$defs/depth_test"
+					"$ref": "#/$defs/depth_test",
+					"default": "Always"
 				},
 				"stencilFailOp": {
-					"$ref": "#/$defs/stencil_op"
+					"$ref": "#/$defs/stencil_op",
+					"default": "Keep"
 				},
 				"stencilDepthFailOp": {
-					"$ref": "#/$defs/stencil_op"
+					"$ref": "#/$defs/stencil_op",
+					"default": "Keep"
 				},
 				"stencilPassOp": {
-					"$ref": "#/$defs/stencil_op"
-				},
-				"stencilPass": {
-					"$ref": "#/$defs/stencil_op"
-				},
-				"depthStencilFaceName": {
-					"type": "string"
+					"$ref": "#/$defs/stencil_op",
+					"default": "Keep"
 				}
 			}
 		},
@@ -319,10 +348,12 @@
 			"type": "object",
 			"properties": {
 				"blendSrc": {
-					"$ref": "#/$defs/factor"
+					"$ref": "#/$defs/factor",
+					"default": "SourceAlpha"
 				},
 				"blendDst": {
-					"$ref": "#/$defs/factor"
+					"$ref": "#/$defs/factor",
+					"default": "OneMinusSrcAlpha"
 				}
 			}
 		},
@@ -345,18 +376,62 @@
 				"properties": {
 					"samplerIndex": {
 						"type": "integer",
-						"minimum": 0
+						"minimum": 0,
+						"maximum": 7
 					},
 					"textureWrap": {
 						"type": "string",
-						"enum": ["Repeat", "Clamp"]
+						"enum": ["Repeat", "Clamp"],
+						"default": "Clamp"
 					},
 					"textureFilter": {
 						"type": "string",
-						"enum": ["Point", "Bilinear", "Trilinear", "MipMapBilinear", "TexelAA", "PCF"]
+						"enum": ["Point", "Bilinear", "Trilinear", "MipMapBilinear", "TexelAA", "PCF"],
+						"default": "Point"
+					},
+					"shaderStage": {
+						"type": "string",
+						"enum": ["Vertex", "Pixel", "Geometry"],
+						"default": "Pixel"
+					},
+					"comparisonFunc": {
+						"$ref": "#/$defs/depth_test"
 					}
 				}
 			}
+		},
+		"texture_format": {
+			"type": "string",
+			"enum": [
+				"UNKNOWN_TEXTURE_FORMAT",
+				"R32G32B32A32_FLOAT",
+				"R16G16B16A16_FLOAT",
+				"R16G16B16A16_UNORM",
+				"R32G32_FLOAT",
+				"R8G8B8A8_UNORM",
+				"R8G8B8A8_UNORM_SRGB",
+				"R10G10B10A2_UNORM",
+				"R16G16_UNORM",
+				"R16G16_UINT",
+				"D32_FLOAT",
+				"R32_FLOAT",
+				"R32_UINT",
+				"R24G8_TYPELESS",
+				"D24_UNORM_S8_UINT",
+				"R24_UNORM_X8_TYPELESS",
+				"D16_UNORM",
+				"R8_UNORM",
+				"R8_UINT",
+				"A8_UNORM",
+				"BC3_UNORM",
+				"R5G6B5_UNORM",
+				"R5G5B5A1_UNORM",
+				"B8G8R8A8_UNORM",
+				"B8G8R8A8_UNORM_SRGB",
+				"BC7_UNORM",
+				"R4G4B4A4_UNORM",
+				"R8G8B8_UNORM"
+			]
 		},
 		"factor": {
 			"type": "string",
@@ -447,9 +522,6 @@
 		"state": {
 			"anyOf": [
 				{
-					"const": "PolygonOffset"
-				},
-				{
 					"const": "Blending",
 					"description": "Enables a color-blending mode for translucent options. Materials may need to adjust the blending factor keys (blendSrc, blendDst, alphaSrc, alphaDst) to use this effectively. (If you're using Vanilla materials that include the Blending state, this is handled for you.)"
 				},
@@ -482,9 +554,6 @@
 				},
 				{
 					"const": "EnableAlphaToCoverage"
-				},
-				{
-					"const": "Wireframe"
 				}
 			]
 		}
