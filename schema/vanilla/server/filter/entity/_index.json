@@ -1553,6 +1553,7 @@
 			"description": "A logical combination of filters.",
 			"type": "object",
 			"additionalProperties": false,
+			"minProperties": 1,
 			"properties": {
 				"AND": {
 					"type": "array",
