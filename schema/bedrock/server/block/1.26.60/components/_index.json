@@ -131,10 +131,8 @@
 	},
 	"patternProperties": {
 		"^(?:(?!^(minecraft):).)+:(?:.)+$": {
-			"type": "object",
 			"title": "Custom Component",
-			"description": "A custom component registered by behavior pack scripts.",
-			"additionalProperties": false
+			"description": "A custom component registered by behavior pack scripts."
 		}
 	}
 }
