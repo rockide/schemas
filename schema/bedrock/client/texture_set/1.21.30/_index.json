@@ -16,7 +16,7 @@
 			"required": ["color"],
 			"properties": {
 				"color": {
-					"description": "Color layer texture reference or uniform RGBA value.",
+					"description": "Color layer texture reference or uniform RGBA value as [R, G, B, A] bytes or #AARRGGBB hex.",
 					"oneOf": [
 						{ "$ref": "#/$defs/texture_name" },
 						{ "$ref": "#/$defs/color_rgba_array" },
@@ -28,15 +28,11 @@
 					"$ref": "#/$defs/texture_name"
 				},
 				"heightmap": {
-					"description": "Heightmap texture reference or uniform value.",
-					"oneOf": [
-						{ "$ref": "#/$defs/texture_name" },
-						{ "$ref": "#/$defs/channel_value" },
-						{ "$ref": "#/$defs/hex_channel" }
-					]
+					"description": "Heightmap texture reference. Uniform values are not supported.",
+					"$ref": "#/$defs/texture_name"
 				},
 				"metalness_emissive_roughness": {
-					"description": "MER texture reference or uniform RGB value.",
+					"description": "MER texture reference or uniform value as [metalness, emissive, roughness] bytes or #MMEERR hex.",
 					"oneOf": [
 						{ "$ref": "#/$defs/texture_name" },
 						{ "$ref": "#/$defs/color_rgb_array" },
@@ -44,7 +40,7 @@
 					]
 				},
 				"metalness_emissive_roughness_subsurface": {
-					"description": "MERS texture reference or uniform RGBA value.",
+					"description": "MERS texture reference or uniform value as [metalness, emissive, roughness, subsurface] bytes or #SSMMEERR hex. Available in format version 1.21.30.",
 					"oneOf": [
 						{ "$ref": "#/$defs/texture_name" },
 						{ "$ref": "#/$defs/color_rgba_array" },
@@ -70,10 +66,11 @@
 		"texture_name": {
 			"type": "string",
 			"minLength": 1,
-			"maxLength": 256
+			"not": { "pattern": "^#" }
 		},
 		"channel_value": {
 			"type": "integer",
+			"$comment": "Authoring requires integer bytes rather than relying on native coercion or clamping.",
 			"minimum": 0,
 			"maximum": 255
 		},
@@ -91,15 +88,11 @@
 		},
 		"hex_rgb": {
 			"type": "string",
-			"pattern": "^#?[0-9A-Fa-f]{6}$"
+			"pattern": "^#[0-9A-Fa-f]{6}$"
 		},
 		"hex_rgba": {
 			"type": "string",
-			"pattern": "^#?[0-9A-Fa-f]{8}$"
-		},
-		"hex_channel": {
-			"type": "string",
-			"pattern": "^#?[0-9A-Fa-f]{2}$"
+			"pattern": "^#[0-9A-Fa-f]{8}$"
 		}
 	}
 }
