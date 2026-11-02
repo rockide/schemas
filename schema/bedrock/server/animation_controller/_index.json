@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "Animation Controller",
 	"type": "object",
-	"additionalProperties": false,
+	"required": ["format_version", "animation_controllers"],
 	"properties": {
 		"format_version": {
 			"anyOf": [
@@ -10,78 +10,38 @@
 					"$ref": "../../../vanilla/definition/format_version.json"
 				},
 				{
-					"enum": ["1.8.0", "1.10.0"]
+					"enum": ["1.8.0", "1.10.0", "1.17.30"]
 				}
-			]
-		},
-		"animation_controllers": {
-			"type": "object",
-			"propertyNames": {
-				"pattern": "^controller\\.animation\\..+$"
-			},
-			"additionalProperties": {
-				"type": "object",
-				"additionalProperties": false,
-				"properties": {
-					"initial_state": {
-						"type": "string"
-					},
-					"states": {
-						"type": "object",
-						"additionalProperties": {
-							"$ref": "#/$defs/state"
-						}
-					}
-				}
-			}
+			],
+			"$comment": "Controller format 1.8.0 or later. Versions below 1.10.0 use legacy parameter/remap arrays; 1.10.0 and later use scalar animation weights. Transition text is lowercased before 1.17.30 and case-preserved from 1.17.30. The engine also checks compatibility with its own game version."
 		}
 	},
-	"$defs": {
-		"state": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"animations": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/animation"
-					}
-				},
-				"on_entry": {
-					"type": "array",
-					"items": {
-						"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
-					}
-				},
-				"on_exit": {
-					"type": "array",
-					"items": {
-						"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
-					}
-				},
-				"transitions": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"additionalProperties": {
-							"$ref": "../../../vanilla/definition/molang.json#/$defs/condition"
-						}
+	"allOf": [
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"type": "string",
+						"pattern": "^1\\.0*[89](?:\\.[0-9]+)?(?![\\s\\S])"
 					}
 				}
+			},
+			"then": {
+				"$ref": "./1.8.0/_index.json"
 			}
 		},
-		"animation": {
-			"oneOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "object",
-					"additionalProperties": {
-						"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"type": "string",
+						"pattern": "^1\\.0*[1-9][0-9]+(?:\\.[0-9]+)?(?![\\s\\S])"
 					}
 				}
-			]
+			},
+			"then": {
+				"$ref": "./1.10.0/_index.json"
+			}
 		}
-	}
+	]
 }
