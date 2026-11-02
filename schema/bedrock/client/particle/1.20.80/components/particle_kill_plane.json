@@ -1,0 +1,11 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:particle_kill_plane",
+	"description": "Expires particles when crossing a plane. A*x + B*y + C*z + D = 0 with the parameters being [ A, B, C, D ]",
+	"type": "array",
+	"minItems": 4,
+	"maxItems": 4,
+	"items": {
+		"type": "number"
+	}
+}

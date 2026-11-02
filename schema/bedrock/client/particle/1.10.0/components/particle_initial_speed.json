@@ -4,14 +4,14 @@
 	"description": "Starts the particle with a specified speed.",
 	"oneOf": [
 		{
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		},
 		{
 			"type": "array",
 			"minItems": 3,
 			"maxItems": 3,
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		}
 	]

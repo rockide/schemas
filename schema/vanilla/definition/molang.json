@@ -51,6 +51,16 @@
 					"type": "number"
 				}
 			]
+		},
+		"number_or_string": {
+			"oneOf": [
+				{
+					"type": "number"
+				},
+				{
+					"$ref": "#/$defs/string"
+				}
+			]
 		}
 	}
 }

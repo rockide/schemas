@@ -4,21 +4,24 @@
 		"linear": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": ["type", "horizontal_range", "input", "nodes"],
+			"required": ["type", "input", "nodes"],
 			"properties": {
 				"type": {
 					"const": "linear"
 				},
 				"horizontal_range": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+					"default": 1
 				},
 				"input": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 				},
 				"nodes": {
 					"type": "array",
+					"minItems": 1,
+					"maxItems": 100,
 					"items": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			}
@@ -26,21 +29,24 @@
 		"bezier": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": ["type", "horizontal_range", "input", "nodes"],
+			"required": ["type", "input", "nodes"],
 			"properties": {
 				"type": {
 					"const": "bezier"
 				},
 				"horizontal_range": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+					"default": 1
 				},
 				"input": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 				},
 				"nodes": {
 					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
 					"items": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			}
@@ -48,21 +54,24 @@
 		"catmull_rom": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": ["type", "horizontal_range", "input", "nodes"],
+			"required": ["type", "input", "nodes"],
 			"properties": {
 				"type": {
 					"const": "catmull_rom"
 				},
 				"horizontal_range": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+					"default": 1
 				},
 				"input": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 				},
 				"nodes": {
 					"type": "array",
+					"minItems": 4,
+					"maxItems": 100,
 					"items": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			}
@@ -70,25 +79,35 @@
 		"bezier_chain": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": ["type", "horizontal_range", "input", "nodes"],
+			"required": ["type", "input", "nodes"],
 			"properties": {
 				"type": {
 					"const": "bezier_chain"
 				},
-				"horizontal_range": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
-				},
 				"input": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 				},
 				"nodes": {
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^((\\d+)\\.)?(\\d+)$": {
+						"^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$": {
 							"type": "object",
 							"additionalProperties": false,
-							"required": ["slope", "value"],
+							"allOf": [
+								{
+									"anyOf": [
+										{ "required": ["value"] },
+										{ "required": ["left_value", "right_value"] }
+									]
+								},
+								{
+									"anyOf": [
+										{ "required": ["slope"] },
+										{ "required": ["left_slope", "right_slope"] }
+									]
+								}
+							],
 							"properties": {
 								"left_slope": {
 									"type": "number"
