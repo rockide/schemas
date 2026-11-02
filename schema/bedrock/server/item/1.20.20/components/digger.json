@@ -15,9 +15,9 @@
 				"required": ["block", "speed"],
 				"properties": {
 					"block": {
-						"$ref": "../../../../../vanilla/server/block_descriptor.json#/$defs/block_without_tags",
+						"$ref": "../../../../../vanilla/server/block_descriptor.json",
 						"title": "Block",
-						"description": "Block identifier"
+						"description": "Block descriptor"
 					},
 					"speed": {
 						"type": "integer",
