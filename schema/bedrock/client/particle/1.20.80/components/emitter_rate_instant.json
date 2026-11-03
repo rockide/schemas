@@ -1,0 +1,14 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_rate_instant",
+	"description": "Emits all particles at once per loop.",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["num_particles"],
+	"properties": {
+		"num_particles": {
+			"description": "Number of particles to emit per loop.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+		}
+	}
+}

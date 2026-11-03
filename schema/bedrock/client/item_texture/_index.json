@@ -4,29 +4,26 @@
 	"description": "The item_texture.json file defines the texture atlas for item textures. It maps texture names to texture file paths, allowing items to reference textures by name. Located at textures/item_texture.json in resource packs.",
 	"type": "object",
 	"additionalProperties": false,
-	"required": ["texture_data"],
 	"properties": {
 		"resource_pack_name": {
 			"type": "string",
 			"description": "The name of the resource pack this atlas belongs to.",
-			"default": "pack.name"
+			"examples": ["pack.name"]
 		},
 		"texture_name": {
 			"type": "string",
-			"description": "The name of the texture atlas. Typically 'atlas.items' for item textures.",
+			"description": "The item atlas resource name. May be omitted to inherit it from the resource stack; if provided, must be 'atlas.items' for built-in item consumers.",
 			"const": "atlas.items"
 		},
 		"padding": {
 			"type": "integer",
 			"description": "The padding in pixels between textures in the atlas to prevent bleeding.",
-			"minimum": 0,
-			"default": 8
+			"default": 0
 		},
 		"num_mip_levels": {
 			"type": "integer",
 			"description": "The number of mipmap levels to generate for the atlas.",
-			"minimum": 0,
-			"default": 4
+			"default": 1
 		},
 		"texture_data": {
 			"type": "object",
@@ -38,19 +35,29 @@
 		"default_leather_color": {
 			"type": "string",
 			"description": "The default color for leather armor textures when undyed in hexadecimal RGB format (e.g., '#A06540').",
-			"$ref": "#/$defs/hex_color"
+			"$ref": "#/$defs/optional_hex_color"
 		},
-		"default_leather_horse_armor_color": {
+		"default_horse_leather_color": {
 			"type": "string",
 			"description": "The default color for leather horse armor textures when undyed in hexadecimal RGB format (e.g., '#A06540').",
-			"$ref": "#/$defs/hex_color"
+			"$ref": "#/$defs/optional_hex_color"
 		}
 	},
 	"$defs": {
 		"hex_color": {
 			"type": "string",
 			"description": "A hexadecimal color string in the format '#RRGGBB'.",
-			"pattern": "^#([0-9a-fA-F]{6})$"
+			"pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
+		},
+		"optional_hex_color": {
+			"anyOf": [
+				{
+					"const": ""
+				},
+				{
+					"$ref": "#/$defs/hex_color"
+				}
+			]
 		},
 		"color": {
 			"oneOf": [
@@ -58,7 +65,6 @@
 					"type": "array",
 					"description": "RGB or RGBA array [0..255].",
 					"minItems": 3,
-					"maxItems": 4,
 					"items": {
 						"type": "integer",
 						"minimum": 0,
@@ -67,6 +73,93 @@
 				},
 				{
 					"$ref": "#/$defs/hex_color"
+				}
+			]
+		},
+		"texture": {
+			"oneOf": [
+				{
+					"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path"
+				},
+				{
+					"$ref": "#/$defs/texture_entry_object"
+				}
+			]
+		},
+		"texture_variant": {
+			"oneOf": [
+				{
+					"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path"
+				},
+				{
+					"$ref": "#/$defs/texture_entry_object",
+					"not": {
+						"required": ["variations"]
+					}
+				}
+			]
+		},
+		"color_matrix": {
+			"type": "object",
+			"additionalProperties": false,
+			"minProperties": 1,
+			"properties": {
+				"r_color": {
+					"$ref": "#/$defs/color"
+				},
+				"g_color": {
+					"$ref": "#/$defs/color"
+				},
+				"b_color": {
+					"$ref": "#/$defs/color"
+				},
+				"a_color": {
+					"$ref": "#/$defs/color"
+				}
+			}
+		},
+		"isotropic": {
+			"oneOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"up": {
+							"type": "boolean"
+						},
+						"down": {
+							"type": "boolean"
+						},
+						"side": {
+							"type": "boolean"
+						},
+						"north": {
+							"type": "boolean"
+						},
+						"south": {
+							"type": "boolean"
+						},
+						"west": {
+							"type": "boolean"
+						},
+						"east": {
+							"type": "boolean"
+						}
+					},
+					"if": {
+						"required": ["side"]
+					},
+					"then": {
+						"properties": {
+							"north": false,
+							"south": false,
+							"west": false,
+							"east": false
+						}
+					}
 				}
 			]
 		},
@@ -80,41 +173,84 @@
 					"description": "Texture file path or array of paths for variants.",
 					"oneOf": [
 						{
-							"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path"
+							"$ref": "#/$defs/texture"
 						},
 						{
 							"type": "array",
-							"minItems": 1,
 							"items": {
-								"oneOf": [
-									{
-										"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path"
-									},
-									{
-										"$ref": "#/$defs/texture_entry_object"
-									}
-								]
+								"$ref": "#/$defs/texture"
 							}
 						}
 					]
+				},
+				"quad": {
+					"type": "boolean",
+					"default": false
+				},
+				"additive": {
+					"type": "boolean",
+					"default": false
+				},
+				"mip_fade_amount": {
+					"type": "number",
+					"default": 0
+				},
+				"mip_fade_color": {
+					"$ref": "#/$defs/color",
+					"default": [0, 0, 0, 0]
 				}
 			}
 		},
 		"texture_entry_object": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": ["path"],
 			"properties": {
 				"path": {
-					"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path"
+					"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path",
+					"default": ""
 				},
 				"overlay_color": {
 					"description": "An optional color to apply as an overlay to the texture, specified as a hex string or RGB/RGBA array.",
-					"$ref": "#/$defs/color"
+					"$ref": "#/$defs/optional_hex_color"
 				},
 				"tint_color": {
 					"description": "An optional color to apply as a tint to the texture, specified as a hex string or RGB/RGBA array.",
+					"oneOf": [
+						{
+							"$ref": "#/$defs/color"
+						},
+						{
+							"$ref": "#/$defs/color_matrix"
+						}
+					],
+					"default": [255, 255, 255, 255]
+				},
+				"tint_map_path": {
+					"$ref": "../../../vanilla/client/paths.json#/$defs/texture_path",
+					"default": ""
+				},
+				"tint_base_color": {
+					"$ref": "#/$defs/color_matrix"
+				},
+				"mip_fade_amount": {
+					"type": "number"
+				},
+				"mip_fade_color": {
 					"$ref": "#/$defs/color"
+				},
+				"weight": {
+					"type": "number",
+					"default": 1
+				},
+				"isotropic": {
+					"$ref": "#/$defs/isotropic",
+					"default": false
+				},
+				"variations": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/texture_variant"
+					}
 				}
 			}
 		}

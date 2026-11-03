@@ -11,7 +11,7 @@
 		"animation_controllers": {
 			"type": "object",
 			"propertyNames": {
-				"pattern": "^controller\\.animation\\..+$"
+				"pattern": "^controller\\.animation\\.[a-zA-Z0-9_.-]+$"
 			},
 			"additionalProperties": {
 				"type": "object",
@@ -22,6 +22,9 @@
 					},
 					"states": {
 						"type": "object",
+						"propertyNames": {
+							"pattern": "^[a-zA-Z0-9_.-]+$"
+						},
 						"additionalProperties": {
 							"$ref": "#/$defs/state"
 						}
@@ -69,6 +72,11 @@
 					"type": "array",
 					"items": {
 						"type": "object",
+						"minProperties": 1,
+						"maxProperties": 1,
+						"propertyNames": {
+							"pattern": "^[a-zA-Z0-9_.-]+$"
+						},
 						"additionalProperties": {
 							"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 						}
@@ -77,17 +85,24 @@
 			}
 		},
 		"animation": {
-			"oneOf": [
-				{
-					"type": "string"
-				},
-				{
+			"type": "object",
+			"minProperties": 1,
+			"maxProperties": 1,
+			"propertyNames": {
+				"pattern": "^[a-zA-Z0-9_.-]+$"
+			},
+			"additionalProperties": {
+				"type": "array",
+				"items": {
 					"type": "object",
+					"propertyNames": {
+						"pattern": "^[0-9]+(\\.[0-9]+)?$"
+					},
 					"additionalProperties": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+						"type": "number"
 					}
 				}
-			]
+			}
 		},
 		"particle_effect": {
 			"type": "object",

@@ -12,7 +12,7 @@
 			"minItems": 2,
 			"maxItems": 2,
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		},
 		"facing_camera_mode": {
@@ -30,22 +30,23 @@
 				"emitter_transform_xy",
 				"emitter_transform_xz",
 				"emitter_transform_yz"
-			]
+			],
+			"default": "lookat_xyz"
 		},
 		"direction": {
 			"description": "Direction source used by facing modes.",
 			"type": "object",
 			"additionalProperties": false,
-			"required": ["mode"],
 			"properties": {
 				"mode": {
 					"type": "string",
-					"enum": ["derive_from_velocity", "custom"]
+					"enum": ["derive_from_velocity", "custom"],
+					"default": "derive_from_velocity"
 				},
 				"min_speed_threshold": {
 					"description": "Minimum speed for derive_from_velocity.",
 					"type": "number",
-					"default": 0.01
+					"default": 0
 				},
 				"custom_direction": {
 					"description": "Custom direction vector.",
@@ -53,15 +54,34 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
+			},
+			"if": {
+				"required": ["mode"],
+				"properties": {
+					"mode": {
+						"const": "custom"
+					}
+				}
+			},
+			"then": {
+				"required": ["custom_direction"]
 			}
 		},
 		"uv": {
 			"description": "UV settings or flipbook animation.",
 			"type": "object",
 			"additionalProperties": false,
+			"if": {
+				"not": {
+					"required": ["flipbook"]
+				}
+			},
+			"then": {
+				"required": ["uv", "uv_size"]
+			},
 			"properties": {
 				"texture_width": {
 					"type": "integer",
@@ -76,7 +96,7 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				},
 				"uv_size": {
@@ -84,7 +104,7 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				},
 				"flipbook": {
@@ -97,7 +117,7 @@
 							"minItems": 2,
 							"maxItems": 2,
 							"items": {
-								"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+								"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 							}
 						},
 						"size_UV": {
@@ -106,7 +126,8 @@
 							"maxItems": 2,
 							"items": {
 								"type": "number"
-							}
+							},
+							"default": [1, 1]
 						},
 						"step_UV": {
 							"type": "array",
@@ -114,14 +135,15 @@
 							"maxItems": 2,
 							"items": {
 								"type": "number"
-							}
+							},
+							"default": [0, 0]
 						},
 						"frames_per_second": {
 							"type": "number",
 							"default": 0
 						},
 						"max_frame": {
-							"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+							"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 						},
 						"stretch_to_lifetime": {
 							"type": "boolean",

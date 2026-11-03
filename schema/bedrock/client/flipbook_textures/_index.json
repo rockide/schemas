@@ -7,7 +7,7 @@
 		"type": "object",
 		"description": "Defines an animated texture with frame timing.",
 		"additionalProperties": false,
-		"required": ["flipbook_texture", "atlas_tile", "ticks_per_frame"],
+		"required": ["atlas_tile"],
 		"properties": {
 			"flipbook_texture": {
 				"description": "Path to the texture file containing animation frames, stacked vertically.",
@@ -18,16 +18,16 @@
 				"$ref": "../../../vanilla/client/identifiers.json#/$defs/terrain_texture_identifier"
 			},
 			"atlas_index": {
-				"type": "integer",
+				"type": "number",
 				"description": "Index in the atlas for textures with variants.",
 				"default": 0
 			},
 			"atlas_tile_variant": {
-				"type": "integer",
+				"type": "number",
 				"description": "Variant index for atlas tiles with multiple options."
 			},
 			"ticks_per_frame": {
-				"type": "integer",
+				"type": "number",
 				"description": "Number of game ticks each frame is displayed.",
 				"default": 1
 			},
@@ -35,12 +35,13 @@
 				"type": "array",
 				"description": "Optional list of frame indices to play in order.",
 				"items": {
-					"type": "integer"
+					"type": "number"
 				}
 			},
 			"replicate": {
-				"type": "integer",
-				"description": "How many times to replicate the texture frames."
+				"type": "number",
+				"description": "How many times to replicate the texture frames.",
+				"default": 1
 			},
 			"blend_frames": {
 				"type": "boolean",

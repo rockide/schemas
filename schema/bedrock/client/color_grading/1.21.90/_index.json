@@ -40,7 +40,6 @@
 									"type": "object",
 									"description": "Optional parameters for temperature based color grading.",
 									"additionalProperties": false,
-									"required": ["enabled"],
 									"properties": {
 										"enabled": {
 											"type": "boolean",
@@ -55,7 +54,12 @@
 										"type": {
 											"type": "string",
 											"description": "Type of temperature adjustment.",
-											"enum": ["white_balance", "color_temperature"]
+											"anyOf": [
+												{ "enum": ["white_balance", "color_temperature"] },
+												{
+													"pattern": "^(?:[wW][hH][iI][tT][eE]_[bB][aA][lL][aA][nN][cC][eE]|[cC][oO][lL][oO][rR]_[tT][eE][mM][pP][eE][rR][aA][tT][uU][rR][eE])(?![\\s\\S])"
+												}
+											]
 										}
 									}
 								}

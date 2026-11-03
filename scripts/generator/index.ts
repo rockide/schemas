@@ -105,7 +105,15 @@ const entries: Entry[] = [
 						enum: soundEventIdentifiers.events,
 					},
 					individual_named_sound_identifier: {
-						enum: individualNamedSoundIdentifiers,
+						anyOf: [
+							{
+								type: "string",
+								maxLength: 256,
+							},
+							{
+								enum: individualNamedSoundIdentifiers,
+							},
+						],
 					},
 					block_sound_identifier: {
 						anyOf: [

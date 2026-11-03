@@ -7,12 +7,12 @@
 	"properties": {
 		"active_time": {
 			"description": "Seconds the emitter emits per loop.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-			"default": 10
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+			"default": 0
 		},
 		"sleep_time": {
 			"description": "Seconds the emitter pauses per loop.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 0
 		}
 	}

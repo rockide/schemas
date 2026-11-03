@@ -1,0 +1,18 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_rate_steady",
+	"description": "Emits particles at a steady or Molang-controlled rate.",
+	"type": "object",
+	"required": ["max_particles", "spawn_rate"],
+	"additionalProperties": false,
+	"properties": {
+		"spawn_rate": {
+			"description": "Particles per second.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+		},
+		"max_particles": {
+			"description": "Maximum number of active particles.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+		}
+	}
+}

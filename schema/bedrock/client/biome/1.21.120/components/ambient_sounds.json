@@ -4,6 +4,52 @@
 	"title": "minecraft:ambient_sounds",
 	"description": "Set the ambient sounds for the biome. These sounds must be in the 'individual_named_sounds' in a 'sounds.json' file.",
 	"additionalProperties": false,
+	"anyOf": [
+		{
+			"required": ["addition"],
+			"properties": {
+				"addition": {
+					"properties": {
+						"asset": { "minLength": 1 }
+					}
+				}
+			}
+		},
+		{
+			"required": ["loop"],
+			"properties": {
+				"loop": { "minLength": 1 }
+			}
+		},
+		{
+			"required": ["mood"],
+			"properties": {
+				"mood": { "minLength": 1 }
+			}
+		},
+		{
+			"required": ["underwater_addition"],
+			"properties": {
+				"underwater_addition": {
+					"properties": {
+						"asset": { "minLength": 1 }
+					}
+				}
+			}
+		},
+		{
+			"required": ["underwater_loop"],
+			"properties": {
+				"underwater_loop": { "minLength": 1 }
+			}
+		},
+		{
+			"required": ["underwater_mood"],
+			"properties": {
+				"underwater_mood": { "minLength": 1 }
+			}
+		}
+	],
 	"properties": {
 		"addition": {
 			"$ref": "#/$defs/sound_addition",

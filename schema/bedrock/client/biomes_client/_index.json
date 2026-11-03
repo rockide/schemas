@@ -5,7 +5,20 @@
 	"properties": {
 		"biomes": {
 			"type": "object",
+			"properties": {
+				"default": {
+					"$ref": "#/$defs/config",
+					"unevaluatedProperties": false,
+					"properties": {
+						"remove_all_prior_fog": {
+							"type": "boolean",
+							"description": "If set to true, all previous fog definitions in resource packs before the current pack will be cleared, effectively making the current resource pack the new starting point for all fogs."
+						}
+					}
+				}
+			},
 			"additionalProperties": {
+				"unevaluatedProperties": false,
 				"$ref": "#/$defs/config"
 			}
 		}
@@ -13,8 +26,17 @@
 	"$defs": {
 		"config": {
 			"type": "object",
-			"additionalProperties": false,
 			"properties": {
+				"fog_color": {
+					"$ref": "#/$defs/color"
+				},
+				"water_fog_color": {
+					"$ref": "#/$defs/color"
+				},
+				"water_fog_distance": {
+					"type": "number",
+					"minimum": 0
+				},
 				"water_surface_color": {
 					"$ref": "#/$defs/color"
 				},
@@ -26,10 +48,6 @@
 				"fog_identifier": {
 					"$ref": "../../../vanilla/client/identifiers.json#/$defs/fog_identifier"
 				},
-				"remove_all_prior_fog": {
-					"type": "boolean",
-					"description": "If set to true, all previous fog definitions in resource packs before the current pack will be cleared, effectively making the current resource pack the new starting point for all fogs."
-				},
 				"inherit_from_prior_fog": {
 					"type": "boolean",
 					"description": "If set to true, the fog_identifier tags from all matching biomes will be combined and create a new merged fog definition for that biome."
@@ -37,9 +55,27 @@
 			}
 		},
 		"color": {
-			"type": "string",
-			"description": "A hexadecimal color code in the format #RRGGBB.",
-			"pattern": "^#([0-9a-fA-F]{6})$"
+			"oneOf": [
+				{
+					"type": "string",
+					"description": "A hexadecimal color code in the format #RRGGBB.",
+					"pattern": "^#([0-9a-fA-F]{6})$"
+				},
+				{
+					"type": "string",
+					"pattern": "^#([0-9a-fA-F]{8})$"
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 4,
+					"items": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 255
+					}
+				}
+			]
 		}
 	}
 }

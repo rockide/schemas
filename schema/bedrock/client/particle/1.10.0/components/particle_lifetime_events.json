@@ -37,7 +37,7 @@
 			"description": "Time-based event triggers.",
 			"type": "object",
 			"propertyNames": {
-				"pattern": "^\\d+(\\.\\d+)?$"
+				"pattern": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$"
 			},
 			"additionalProperties": {
 				"oneOf": [

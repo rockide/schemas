@@ -106,12 +106,6 @@
 							"minimum": -1.0,
 							"maximum": 1.0
 						},
-						"sampleWidth": {
-							"type": "number",
-							"description": "Controls the resolution of the fractal effect. Higher values result in smoother waves. Range [0.01, 1.0].",
-							"minimum": 0.01,
-							"maximum": 1.0
-						},
 						"shape": {
 							"type": "number",
 							"description": "Adjusts the shape of the wave. A value of 1 results in a pure sine wave. Range [1.0, 10.0].",
@@ -148,7 +142,7 @@
 							"maximum": 5.0
 						},
 						"power": {
-							"type": "integer",
+							"type": "number",
 							"description": "Controls how bright the caustics effect appears. Range [1, 6].",
 							"minimum": 1,
 							"maximum": 6

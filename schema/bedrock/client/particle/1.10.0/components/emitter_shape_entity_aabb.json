@@ -12,6 +12,7 @@
 		},
 		"direction": {
 			"description": "Particle emission direction.",
+			"default": "outwards",
 			"oneOf": [
 				{
 					"enum": ["inwards", "outwards"]
@@ -20,9 +21,8 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"default": [0, 0, 0],
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			]

@@ -7,12 +7,12 @@
 	"properties": {
 		"rotation": {
 			"description": "Initial rotation in degrees.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 0
 		},
 		"rotation_rate": {
 			"description": "Spin rate in degrees per second.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 0
 		}
 	}

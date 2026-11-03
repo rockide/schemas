@@ -40,10 +40,9 @@
 	"$defs": {
 		"color_grading": {
 			"type": "object",
-			"required": ["midtones"],
 			"properties": {
 				"midtones": {
-					"additionalProperties": false,
+					"unevaluatedProperties": false,
 					"$ref": "#/$defs/parameters"
 				},
 				"highlights": {
@@ -62,8 +61,8 @@
 								"highlightsMin": {
 									"type": "number",
 									"minimum": 1.0,
-									"maximum": 4.0,
-									"description": "Minimum luminance threshold for highlights [1.0, 4.0]."
+									"maximum": 20.0,
+									"description": "Minimum luminance threshold for highlights [1.0, 20.0]."
 								}
 							}
 						}
@@ -84,9 +83,9 @@
 								},
 								"shadowsMax": {
 									"type": "number",
-									"minimum": 0.1,
+									"minimum": 0.0,
 									"maximum": 1.0,
-									"description": "Maximum luminance threshold for shadows [0.1, 1.0]."
+									"description": "Maximum luminance threshold for shadows [0.0, 1.0]."
 								}
 							}
 						}
@@ -99,8 +98,9 @@
 			"additionalProperties": false,
 			"properties": {
 				"operator": {
+					"type": "string",
 					"description": "Tone mapping operator to apply.",
-					"oneOf": [
+					"anyOf": [
 						{
 							"const": "reinhard",
 							"description": "A low-cost tone mapping operator that remaps HDR color values in the range [0, ∞) to [0, 1). This operator looks especially good when applied to low-contrast scenes whose values are already within the range of [0, 1), but tends to mute higher luminance values."
@@ -124,6 +124,9 @@
 						{
 							"const": "generic",
 							"description": "A generic tone mapping curve that has been hand-tuned by Mojang's artists. It is similar to the other filmic operators but preserves a bit more hue saturation at high luminance regions."
+						},
+						{
+							"pattern": "^(?:[rR][eE][iI][nN][hH][aA][rR][dD](?:_[lL][uU][mM][aA]|_[lL][uU][mM][iI][nN][aA][nN][cC][eE])?|[hH][aA][bB][lL][eE]|[aA][cC][eE][sS]|[gG][eE][nN][eE][rR][iI][cC])(?![\\s\\S])"
 						}
 					]
 				}
@@ -134,38 +137,103 @@
 			"description": "Color grading parameters for midtones, and for when highlights or shadows are not specified.",
 			"properties": {
 				"contrast": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"items": { "type": "number", "minimum": 0.0, "maximum": 4.0 },
+					"oneOf": [
+						{
+							"type": "array",
+							"minItems": 3,
+							"maxItems": 3,
+							"items": { "type": "number", "minimum": 0.0, "maximum": 4.0 }
+						},
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"x": { "type": "number", "minimum": 0.0, "maximum": 4.0 },
+								"y": { "type": "number", "minimum": 0.0, "maximum": 4.0 },
+								"z": { "type": "number", "minimum": 0.0, "maximum": 4.0 }
+							}
+						}
+					],
 					"description": "Contrast adjustment per RGB channel [0.0, 4.0]."
 				},
 				"gain": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"items": { "type": "number", "minimum": 0.0, "maximum": 10.0 },
+					"oneOf": [
+						{
+							"type": "array",
+							"minItems": 3,
+							"maxItems": 3,
+							"items": { "type": "number", "minimum": 0.0, "maximum": 10.0 }
+						},
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"x": { "type": "number", "minimum": 0.0, "maximum": 10.0 },
+								"y": { "type": "number", "minimum": 0.0, "maximum": 10.0 },
+								"z": { "type": "number", "minimum": 0.0, "maximum": 10.0 }
+							}
+						}
+					],
 					"description": "Gain adjustment per RGB channel. [0.0, 10.0]"
 				},
 				"gamma": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"items": { "type": "number", "minimum": 0.0, "maximum": 4.0 },
+					"oneOf": [
+						{
+							"type": "array",
+							"minItems": 3,
+							"maxItems": 3,
+							"items": { "type": "number", "minimum": 0.0, "maximum": 4.0 }
+						},
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"x": { "type": "number", "minimum": 0.0, "maximum": 4.0 },
+								"y": { "type": "number", "minimum": 0.0, "maximum": 4.0 },
+								"z": { "type": "number", "minimum": 0.0, "maximum": 4.0 }
+							}
+						}
+					],
 					"description": "Gamma correction per RGB channel. [0.0, 4.0]"
 				},
 				"offset": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"items": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+					"oneOf": [
+						{
+							"type": "array",
+							"minItems": 3,
+							"maxItems": 3,
+							"items": { "type": "number", "minimum": -1.0, "maximum": 1.0 }
+						},
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"x": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+								"y": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+								"z": { "type": "number", "minimum": -1.0, "maximum": 1.0 }
+							}
+						}
+					],
 					"description": "Offset adjustment per RGB channel. [-1.0, 1.0]"
 				},
 				"saturation": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"items": { "type": "number", "minimum": 0.0, "maximum": 10.0 },
+					"oneOf": [
+						{
+							"type": "array",
+							"minItems": 3,
+							"maxItems": 3,
+							"items": { "type": "number", "minimum": 0.0, "maximum": 10.0 }
+						},
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"x": { "type": "number", "minimum": 0.0, "maximum": 10.0 },
+								"y": { "type": "number", "minimum": 0.0, "maximum": 10.0 },
+								"z": { "type": "number", "minimum": 0.0, "maximum": 10.0 }
+							}
+						}
+					],
 					"description": "Saturation adjustment per RGB channel. [0.0, 10.0]"
 				}
 			}

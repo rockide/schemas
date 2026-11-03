@@ -6,12 +6,12 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"const": "1.10.0"
+			"enum": ["1.10.0", "1.17.30"]
 		},
 		"animation_controllers": {
 			"type": "object",
 			"propertyNames": {
-				"pattern": "^controller\\.animation\\..+$"
+				"pattern": "^controller\\.animation\\.[a-zA-Z0-9_.-]+$"
 			},
 			"additionalProperties": {
 				"type": "object",
@@ -22,6 +22,9 @@
 					},
 					"states": {
 						"type": "object",
+						"propertyNames": {
+							"pattern": "^[a-zA-Z0-9_.-]+$"
+						},
 						"additionalProperties": {
 							"$ref": "#/$defs/state"
 						}
@@ -94,26 +97,35 @@
 					"type": "array",
 					"items": {
 						"type": "object",
+						"minProperties": 1,
+						"maxProperties": 1,
+						"propertyNames": {
+							"pattern": "^[a-zA-Z0-9_.-]+$"
+						},
 						"additionalProperties": {
-							"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
+							"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
 						}
 					}
 				},
 				"variables": {
 					"type": "object",
+					"propertyNames": {
+						"pattern": "^[a-zA-Z0-9_.-]+$"
+					},
 					"additionalProperties": {
 						"type": "object",
 						"additionalProperties": false,
 						"properties": {
 							"input": {
-								"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+								"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 							},
 							"remap_curve": {
 								"type": "object",
-								"patternProperties": {
-									"^[0-9]*$": {
-										"type": "number"
-									}
+								"propertyNames": {
+									"pattern": "^[0-9]+(\\.[0-9]+)?$"
+								},
+								"additionalProperties": {
+									"type": "number"
 								}
 							}
 						}
@@ -128,8 +140,11 @@
 				},
 				{
 					"type": "object",
+					"propertyNames": {
+						"pattern": "^[a-zA-Z0-9_.-]+$"
+					},
 					"additionalProperties": {
-						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 					}
 				}
 			]

@@ -1,0 +1,19 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:particle_initialization",
+	"description": "Runs a per-render Molang expression when the particle is created.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"per_render_expression": {
+			"description": "Molang expression executed for rendering.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 0
+		},
+		"per_update_expression": {
+			"description": "Molang expression executed for updating.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 0
+		}
+	}
+}

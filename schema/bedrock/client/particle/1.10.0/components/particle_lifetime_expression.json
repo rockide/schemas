@@ -7,12 +7,12 @@
 	"properties": {
 		"expiration_expression": {
 			"description": "Expire when non-zero.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 0
 		},
 		"max_lifetime": {
 			"description": "Lifetime in seconds.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		}
 	}
 }

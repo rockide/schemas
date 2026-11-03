@@ -1,0 +1,140 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$defs": {
+		"legacy_streaming_defaults": {
+			"if": {
+				"type": "object",
+				"required": [
+					"stream"
+				],
+				"properties": {
+					"stream": {
+						"const": true
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"allow_concurrent_streaming": {
+						"default": false
+					}
+				}
+			},
+			"else": {
+				"properties": {
+					"allow_concurrent_streaming": {
+						"default": true
+					}
+				}
+			}
+		},
+		"sound_definition": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"sounds"
+			],
+			"properties": {
+				"category": {
+					"type": "string",
+					"default": "",
+					"anyOf": [
+						{
+							"enum": [
+								"ambient",
+								"block",
+								"bottle",
+								"bucket",
+								"hostile",
+								"music",
+								"neutral",
+								"player",
+								"record",
+								"ui",
+								"weather"
+							]
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"sounds": {
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "../../../vanilla/client/paths.json#/$defs/sound_path"
+							},
+							{
+								"$ref": "#/$defs/sound_entry"
+							}
+						]
+					}
+				},
+				"min_distance": {
+					"type": "number",
+					"minimum": 0,
+					"default": 0
+				},
+				"max_distance": {
+					"type": "number",
+					"minimum": 0,
+					"default": 0
+				},
+				"subtitle": {
+					"$ref": "../../../vanilla/client/lang_keys.json",
+					"default": ""
+				},
+				"__use_legacy_max_distance": {
+					"type": "boolean"
+				}
+			}
+		},
+		"sound_entry": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"name"
+			],
+			"properties": {
+				"name": {
+					"$ref": "../../../vanilla/client/paths.json#/$defs/sound_path"
+				},
+				"volume": {
+					"type": "number",
+					"default": 1
+				},
+				"pitch": {
+					"type": "number"
+				},
+				"weight": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 2147483647,
+					"default": 1
+				},
+				"is3D": {
+					"type": "boolean"
+				},
+				"stream": {
+					"type": "boolean",
+					"default": false
+				},
+				"interruptible": {
+					"type": "boolean",
+					"default": true
+				},
+				"load_on_low_memory": {
+					"type": "boolean",
+					"deprecated": true,
+					"description": "Deprecated as of 1.16.0, as all sounds are now loaded on low memory devices."
+				},
+				"allow_concurrent_streaming": {
+					"type": "boolean",
+					"description": "Allow streaming of ordinary sound events to play independent simultaneous instances. Defaults to true in format version 1.26.50 and later."
+				}
+			}
+		}
+	}
+}

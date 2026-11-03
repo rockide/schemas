@@ -53,7 +53,7 @@
 					"type": "array",
 					"description": "Optional. List of item identifiers that will target liquid blocks with aim-assist when being held.",
 					"items": {
-						"$ref": "../../../../vanilla/server/identifiers.json#/$defs/block_identifier"
+						"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier"
 					}
 				}
 			}

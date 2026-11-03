@@ -1,0 +1,59 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_shape_box",
+	"description": "Emits particles from a box.",
+	"type": "object",
+	"required": ["half_dimensions"],
+	"additionalProperties": false,
+	"properties": {
+		"offset": {
+			"description": "Offset from the emitter.",
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"default": [0, 0, 0],
+			"items": {
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			}
+		},
+		"half_dimensions": {
+			"description": "Half-dimensions of the box.",
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			}
+		},
+		"surface_only": {
+			"description": "Emit only from the box surface.",
+			"type": "boolean",
+			"default": false
+		},
+		"direction": {
+			"description": "Particle emission direction.",
+			"default": "outwards",
+			"oneOf": [
+				{
+					"anyOf": [
+						{
+							"enum": ["inwards", "outwards"]
+						},
+						{
+							"type": "string",
+							"pattern": "^(?:[iI][nN][wW][aA][rR][dD][sS]|[oO][uU][tT][wW][aA][rR][dD][sS])$"
+						}
+					]
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+					}
+				}
+			]
+		}
+	}
+}
