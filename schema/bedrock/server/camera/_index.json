@@ -3,12 +3,11 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Camera Preset File",
 	"description": "Schema for camera preset definition files used by behavior packs.",
-	"required": ["format_version"],
+	"required": ["format_version", "minecraft:camera_preset"],
 	"properties": {
 		"format_version": {
-			// TODO: Figure out differences between 1.21.80 and 1.21.90.
-			// Technically they have different parser, but the fields are the same so far.
-			"enum": ["1.19.50", "1.21.60", "1.21.80", "1.21.90"]
+			"type": "string",
+			"enum": ["1.19.50", "1.26.50"]
 		}
 	},
 	"allOf": [
@@ -16,7 +15,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.19.50", "1.21.60"]
+						"enum": ["1.19.50"]
 					}
 				}
 			},
@@ -28,12 +27,12 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.21.80", "1.21.90"]
+						"enum": ["1.26.50"]
 					}
 				}
 			},
 			"then": {
-				"$ref": "./1.21.80/_index.json"
+				"$ref": "./1.26.50/_index.json"
 			}
 		}
 	]
