@@ -39,34 +39,7 @@
 					}
 				},
 				"places_block": {
-					"oneOf": [
-						{
-							"$ref": "../../../../vanilla/server/block_descriptor.json",
-							"description": "A single block identifier."
-						},
-						{
-							"type": "array",
-							"minItems": 1,
-							"description": "An array of weighted block options.",
-							"items": {
-								"type": "object",
-								"title": "Weighted Block",
-								"additionalProperties": false,
-								"required": ["block"],
-								"properties": {
-									"block": {
-										"$ref": "../../../../vanilla/server/block_descriptor.json",
-										"description": "The block identifier."
-									},
-									"weight": {
-										"type": "integer",
-										"minimum": 0,
-										"description": "Optional. Weight for random selection (relative to other blocks)."
-									}
-								}
-							}
-						}
-					],
+					"$ref": "../../../../vanilla/server/block_descriptor.json",
 					"description": "The block to place, or an array of weighted blocks to randomly select from."
 				},
 				"enforce_survivability_rules": {

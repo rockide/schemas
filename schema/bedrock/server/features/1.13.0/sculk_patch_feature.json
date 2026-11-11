@@ -23,6 +23,7 @@
 			"additionalProperties": false,
 			"required": [
 				"description",
+				"can_place_sculk_patch_on",
 				"cursor_count",
 				"charge_amount",
 				"spread_attempts",

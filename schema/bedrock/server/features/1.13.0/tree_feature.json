@@ -14,6 +14,37 @@
 		}
 	},
 	"$defs": {
+		"non_negative_int_range": {
+			"$ref": "../general.json#/$defs/int_range",
+			"minimum": 0,
+			"items": {
+				"minimum": 0
+			},
+			"properties": {
+				"range_min": {
+					"minimum": 0
+				},
+				"range_max": {
+					"minimum": 0
+				}
+			}
+		},
+		"positive_int_range": {
+			"$ref": "#/$defs/non_negative_int_range",
+			"minimum": 1,
+			"items": {
+				"minimum": 1
+			},
+			"required": ["range_min", "range_max"],
+			"properties": {
+				"range_min": {
+					"minimum": 1
+				},
+				"range_max": {
+					"minimum": 1
+				}
+			}
+		},
 		"tree_feature_definition": {
 			"type": "object",
 			"title": "Tree Feature Definition",
@@ -137,6 +168,96 @@
 					"description": "Optional. Mangrove root configuration."
 				}
 			},
+			"allOf": [
+				{
+					"oneOf": [
+						{
+							"properties": {
+								"acacia_trunk": false,
+								"cherry_trunk": false,
+								"fallen_trunk": false,
+								"fancy_trunk": false,
+								"mangrove_trunk": false,
+								"mega_trunk": false,
+								"trunk": false
+							}
+						},
+						{
+							"required": ["acacia_trunk"]
+						},
+						{
+							"required": ["cherry_trunk"]
+						},
+						{
+							"required": ["fallen_trunk"]
+						},
+						{
+							"required": ["fancy_trunk"]
+						},
+						{
+							"required": ["mangrove_trunk"]
+						},
+						{
+							"required": ["mega_trunk"]
+						},
+						{
+							"required": ["trunk"]
+						}
+					]
+				},
+				{
+					"oneOf": [
+						{
+							"properties": {
+								"acacia_canopy": false,
+								"canopy": false,
+								"cherry_canopy": false,
+								"fancy_canopy": false,
+								"mangrove_canopy": false,
+								"mega_canopy": false,
+								"mega_pine_canopy": false,
+								"pine_canopy": false,
+								"roofed_canopy": false,
+								"spruce_canopy": false,
+								"random_spread_canopy": false
+							}
+						},
+						{
+							"required": ["acacia_canopy"]
+						},
+						{
+							"required": ["canopy"]
+						},
+						{
+							"required": ["cherry_canopy"]
+						},
+						{
+							"required": ["fancy_canopy"]
+						},
+						{
+							"required": ["mangrove_canopy"]
+						},
+						{
+							"required": ["mega_canopy"]
+						},
+						{
+							"required": ["mega_pine_canopy"]
+						},
+						{
+							"required": ["pine_canopy"]
+						},
+						{
+							"required": ["roofed_canopy"]
+						},
+						{
+							"required": ["spruce_canopy"]
+						},
+						{
+							"required": ["random_spread_canopy"]
+						}
+					]
+				}
+			],
 			"anyOf": [
 				{
 					"required": ["acacia_trunk"]
@@ -299,11 +420,11 @@
 			"required": ["log_length", "trunk_block"],
 			"properties": {
 				"log_length": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Length of the fallen log."
 				},
 				"stump_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Optional. Height of the stump."
 				},
 				"height_modifier": {
@@ -424,6 +545,7 @@
 					"title": "Mangrove Trunk Height",
 					"description": "Height configuration for mangrove trunk.",
 					"additionalProperties": false,
+					"required": ["base", "height_rand_a", "height_rand_b"],
 					"properties": {
 						"base": {
 							"type": "integer",
@@ -453,11 +575,11 @@
 					"additionalProperties": false,
 					"properties": {
 						"branch_length": {
-							"$ref": "../general.json#/$defs/int_range",
+							"$ref": "#/$defs/non_negative_int_range",
 							"description": "Length for the branch in the Y axis."
 						},
 						"branch_steps": {
-							"$ref": "../general.json#/$defs/int_range",
+							"$ref": "#/$defs/non_negative_int_range",
 							"description": "Number of branches to place."
 						},
 						"branch_chance": {
@@ -506,10 +628,10 @@
 			"title": "Trunk Definition",
 			"description": "Configuration for standard trunk.",
 			"additionalProperties": false,
-			"required": ["trunk_height"],
+			"required": ["trunk_height", "trunk_block"],
 			"properties": {
 				"trunk_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Defines the height of trunk"
 				},
 				"height_modifier": {
@@ -586,15 +708,15 @@
 					"description": "Whether the trunk can grow diagonally."
 				},
 				"lean_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/non_negative_int_range",
 					"description": "Range for lean height in blocks."
 				},
 				"lean_steps": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/non_negative_int_range",
 					"description": "Range for number of lean steps."
 				},
 				"lean_length": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/non_negative_int_range",
 					"description": "Optional. Range for lean length in blocks."
 				}
 			}
@@ -607,11 +729,11 @@
 			"required": ["branch_length", "branch_position", "branch_chance"],
 			"properties": {
 				"branch_length": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Length for the branch in the Y axis."
 				},
 				"branch_position": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Starting Y position for the branch."
 				},
 				"branch_chance": {
@@ -660,7 +782,19 @@
 					}
 				},
 				"branch_horizontal_length": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
+					"minimum": 2,
+					"items": {
+						"minimum": 2
+					},
+					"properties": {
+						"range_min": {
+							"minimum": 2
+						},
+						"range_max": {
+							"minimum": 2
+						}
+					},
 					"description": "Branch length in X/Z axis."
 				},
 				"branch_start_offset_from_top": {
@@ -731,6 +865,7 @@
 			"title": "Branch Canopy Definition",
 			"description": "Canopy configuration for branches.",
 			"additionalProperties": false,
+			"maxProperties": 1,
 			"properties": {
 				"acacia_canopy": {
 					"$ref": "#/$defs/acacia_canopy_definition",
@@ -888,11 +1023,35 @@
 					"description": "The block that forms the canopy of the tree."
 				},
 				"height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
+					"minimum": 4,
+					"items": {
+						"minimum": 4
+					},
+					"properties": {
+						"range_min": {
+							"minimum": 4
+						},
+						"range_max": {
+							"minimum": 4
+						}
+					},
 					"description": "Number of layers for the canopy."
 				},
 				"radius": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
+					"minimum": 3,
+					"items": {
+						"minimum": 3
+					},
+					"properties": {
+						"range_min": {
+							"minimum": 3
+						},
+						"range_max": {
+							"minimum": 3
+						}
+					},
 					"description": "The radius of the canopy."
 				},
 				"trunk_width": {
@@ -956,11 +1115,11 @@
 			],
 			"properties": {
 				"canopy_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Number of layers for the canopy."
 				},
 				"canopy_radius": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Radius of the canopy."
 				},
 				"leaf_placement_attempts": {
@@ -1011,7 +1170,7 @@
 			"required": ["canopy_height", "base_radius", "leaf_block"],
 			"properties": {
 				"canopy_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Number of layers for the canopy."
 				},
 				"base_radius": {
@@ -1042,7 +1201,7 @@
 			"required": ["canopy_height", "base_radius", "radius_step_modifier", "leaf_block"],
 			"properties": {
 				"canopy_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Number of layers for the canopy."
 				},
 				"base_radius": {
@@ -1074,7 +1233,7 @@
 			"required": ["canopy_height", "base_radius", "leaf_block"],
 			"properties": {
 				"canopy_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Number of layers for the canopy."
 				},
 				"base_radius": {
@@ -1129,15 +1288,15 @@
 			"required": ["lower_offset", "upper_offset", "max_radius", "leaf_block"],
 			"properties": {
 				"lower_offset": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Min canopy position offset."
 				},
 				"upper_offset": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/non_negative_int_range",
 					"description": "Max canopy position offset."
 				},
 				"max_radius": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Max radius of the canopy."
 				},
 				"leaf_block": {
@@ -1154,11 +1313,11 @@
 			"required": ["canopy_height", "canopy_radius", "leaf_placement_attempts", "leaf_blocks"],
 			"properties": {
 				"canopy_height": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Number of layers for the canopy."
 				},
 				"canopy_radius": {
-					"$ref": "../general.json#/$defs/int_range",
+					"$ref": "#/$defs/positive_int_range",
 					"description": "Radius of the canopy."
 				},
 				"leaf_placement_attempts": {

@@ -8,7 +8,23 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"enum": ["1.21.40"]
+			"enum": [
+				"1.21.40",
+				"1.21.50",
+				"1.21.60",
+				"1.21.70",
+				"1.21.80",
+				"1.21.90",
+				"1.21.100",
+				"1.21.110",
+				"1.21.111",
+				"1.21.120",
+				"1.21.130",
+				"1.26.0",
+				"1.26.10",
+				"1.26.20",
+				"1.26.30"
+			]
 		}
 	},
 	"oneOf": [
@@ -115,10 +131,6 @@
 		{
 			"required": ["minecraft:height_difference_filter_feature"],
 			"$ref": "../1.13.0/height_difference_filter_feature.json"
-		},
-		{
-			"required": ["minecraft:multipart_block_column_feature"],
-			"$ref": "../1.26.50/multipart_block_column_feature.json"
 		}
 	]
 }

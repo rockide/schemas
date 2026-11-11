@@ -44,12 +44,15 @@
 				},
 				"surface": {
 					"type": "string",
-					"enum": ["ceiling", "floor", "random_horizontal"],
+					"enum": ["ceiling", "floor", "random_horizontal", "wall"],
 					"description": "Optional. Defines the surface that the y-value of the placement position will be snapped to. Valid values: 'ceiling', 'floor', 'random_horizontal'. Defaults to 'floor'."
 				},
 				"allow_air_placement": {
 					"type": "boolean",
 					"description": "Optional. Determines whether the feature can snap through air blocks. Defaults to true."
+				},
+				"allow_non_air_placement": {
+					"type": "boolean"
 				},
 				"allow_underwater_placement": {
 					"type": "boolean",
