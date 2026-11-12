@@ -4,6 +4,35 @@
 	"title": "Loot Table General Types",
 	"description": "Shared type definitions used across loot table components.",
 	"$defs": {
+		"integer_range": {
+			"title": "Integer Range",
+			"oneOf": [
+				{
+					"type": "integer"
+				},
+				{
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"description": "Min max",
+					"items": {
+						"type": "integer"
+					}
+				},
+				{
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"range_min": {
+							"type": "integer"
+						},
+						"range_max": {
+							"type": "integer"
+						}
+					}
+				}
+			]
+		},
 		"levels_range": {
 			"type": "object",
 			"title": "Levels Range",
@@ -12,47 +41,47 @@
 			"additionalProperties": false,
 			"properties": {
 				"min": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 0,
 					"description": "Minimum enchantment level."
 				},
 				"max": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 1,
 					"description": "Maximum enchantment level."
 				}
 			}
 		},
 		"durability_range": {
-			"type": "object",
+			"$ref": "#/$defs/integer_range",
 			"title": "Durability Range",
 			"description": "A range of durability.",
-			"required": ["min", "max"],
-			"additionalProperties": false,
 			"properties": {
-				"min": {
-					"type": "number",
+				"range_min": {
+					"type": "integer",
 					"description": "Minimum durability."
 				},
-				"max": {
-					"type": "number",
+				"range_max": {
+					"type": "integer",
 					"description": "Maximum durability."
 				}
 			}
 		},
 		"count_range": {
-			"type": "object",
+			"$ref": "#/$defs/integer_range",
 			"title": "Count Range",
 			"description": "A range of count values with minimum and maximum.",
-			"required": ["min", "max"],
-			"additionalProperties": false,
+			"minimum": 0,
+			"items": {
+				"minimum": 0
+			},
 			"properties": {
-				"min": {
+				"range_min": {
 					"type": "integer",
 					"minimum": 0,
 					"description": "Minimum count."
 				},
-				"max": {
+				"range_max": {
 					"type": "integer",
 					"minimum": 0,
 					"description": "Maximum count."

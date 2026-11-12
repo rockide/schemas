@@ -181,6 +181,8 @@
 					"condition": true,
 					"chance": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "The base probability (0.0-1.0)."
 					},
 					"operator": true
@@ -203,6 +205,8 @@
 					"condition": true,
 					"chance": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "The base probability (0.0-1.0)."
 					},
 					"looting_multiplier": {
@@ -229,22 +233,32 @@
 					"condition": true,
 					"default_chance": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "Default probability if difficulty not matched."
 					},
 					"peaceful": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "Probability on peaceful difficulty."
 					},
 					"easy": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "Probability on easy difficulty."
 					},
 					"normal": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "Probability on normal difficulty."
 					},
 					"hard": {
 						"type": "number",
+						"minimum": 0,
+						"maximum": 1,
 						"description": "Probability on hard difficulty."
 					},
 					"operator": true
@@ -331,16 +345,8 @@
 				"required": ["condition"]
 			},
 			"then": {
-				"properties": {
-					"condition": true,
-					"match_tool": {
-						"$ref": "#/$defs/match_tool",
-						"description": "The tool item properties to match."
-					},
-					"operator": true
-				},
-				"additionalProperties": false,
-				"required": ["condition", "match_tool"]
+				"$ref": "#/$defs/match_tool",
+				"description": "The tool item properties to match."
 			}
 		},
 		{
@@ -583,7 +589,19 @@
 					"$ref": "../../../vanilla/server/enchantment.json"
 				},
 				"levels": {
-					"$ref": "./general.json#/$defs/levels_range",
+					"$ref": "./general.json#/$defs/integer_range",
+					"minimum": 0,
+					"items": {
+						"minimum": 0
+					},
+					"properties": {
+						"range_min": {
+							"minimum": 0
+						},
+						"range_max": {
+							"minimum": 0
+						}
+					},
 					"description": "The enchantment level or range of levels."
 				}
 			}
