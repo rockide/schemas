@@ -7,10 +7,12 @@
 	"properties": {
 		"distance": {
 			"type": "integer",
+			"minimum": 0,
 			"description": "Distance from the village center to check for players."
 		},
 		"village_border_tolerance": {
 			"type": "integer",
+			"minimum": 0,
 			"default": 10,
 			"description": "Tolerance for village borders in blocks."
 		}

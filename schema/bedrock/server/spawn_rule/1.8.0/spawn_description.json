@@ -13,7 +13,7 @@
 		"population_control": {
 			"type": "string",
 			"description": "The population control group for managing spawn caps.",
-			"enum": ["animal", "water_animal", "ambient", "monster", "cat", "pillager"]
+			"enum": ["animal", "water_animal", "ambient", "monster", "cat", "pillager", "villager"]
 		}
 	}
 }

@@ -7,6 +7,8 @@
 	"properties": {
 		"default": {
 			"type": "integer",
+			"minimum": 0,
+			"default": 100,
 			"description": "Default spawn weight/probability."
 		},
 		"rarity": {

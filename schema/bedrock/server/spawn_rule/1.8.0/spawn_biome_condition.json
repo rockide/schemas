@@ -47,9 +47,6 @@
 		"minecraft:player_in_village_filter": {
 			"$ref": "./player_in_village_filter.json"
 		},
-		"minecraft:spawn_event": {
-			"$ref": "./spawn_event.json"
-		},
 		"minecraft:spawns_above_block_filter": {
 			"$ref": "./spawns_above_block_filter.json"
 		},

@@ -7,10 +7,12 @@
 	"properties": {
 		"min": {
 			"type": "integer",
+			"default": 24,
 			"description": "Minimum Y-coordinate at which this entity can spawn."
 		},
 		"max": {
 			"type": "integer",
+			"default": 128,
 			"description": "Maximum Y-coordinate at which this entity can spawn."
 		}
 	}
