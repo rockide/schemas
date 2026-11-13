@@ -3,26 +3,28 @@
 	"type": "object",
 	"title": "Furnace Recipe",
 	"description": "A smelting/cooking recipe defining input items that can be smelted in furnaces or other cooking stations.",
-	"required": ["description", "input", "output"],
+	"required": ["description", "input", "tags", "output"],
 	"additionalProperties": false,
 	"properties": {
 		"description": {
 			"$ref": "#/$defs/description"
 		},
 		"input": {
-			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"$ref": "../general.json#/$defs/ingredient",
 			"description": "The input item. Can be a simple identifier or include data value."
 		},
 		"output": {
-			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"$ref": "../general.json#/$defs/item_count",
 			"description": "The output item identifier."
 		},
 		"tags": {
-			"type": "array",
-			"items": {
-				"$ref": "../../../../vanilla/server/tags.json#/$defs/recipe_tag"
-			},
+			"$ref": "../general.json#/$defs/station_tags",
 			"description": "Tags that specify which smelting stations can use this recipe."
+		},
+		"priority": {
+			"type": "integer",
+			"default": 0,
+			"description": "The priority of this recipe when multiple recipes match."
 		},
 		"unlock": {
 			"$ref": "../general.json#/$defs/unlock",

@@ -1,0 +1,53 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Material Reduction Recipe",
+	"description": "A material reduction recipe defining the items produced from an input item or tag.",
+	"required": ["description", "input", "tags", "output"],
+	"additionalProperties": false,
+	"properties": {
+		"description": {
+			"$ref": "#/$defs/description"
+		},
+		"input": {
+			"$ref": "../general.json#/$defs/ingredient",
+			"description": "The item or tag to reduce."
+		},
+		"output": {
+			"description": "The output item descriptor or nonempty list of output item descriptors.",
+			"oneOf": [
+				{
+					"type": "object",
+					"$ref": "../general.json#/$defs/item_count"
+				},
+				{
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 9,
+					"items": {
+						"$ref": "../general.json#/$defs/item_count"
+					}
+				}
+			]
+		},
+		"tags": {
+			"$ref": "../general.json#/$defs/station_tags",
+			"description": "Tags that specify which stations can use this recipe."
+		}
+	},
+	"$defs": {
+		"description": {
+			"type": "object",
+			"title": "Description",
+			"description": "The recipe description containing identifier.",
+			"required": ["identifier"],
+			"additionalProperties": false,
+			"properties": {
+				"identifier": {
+					"$ref": "../../../../vanilla/definition/identifier.json",
+					"description": "The unique identifier for this recipe."
+				}
+			}
+		}
+	}
+}

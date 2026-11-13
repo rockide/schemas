@@ -3,33 +3,31 @@
 	"type": "object",
 	"title": "Smithing Transform Recipe",
 	"description": "A smithing table transformation recipe defining how items are upgraded using a smithing template, base item, and addition material.",
-	"required": ["description", "template", "base", "addition", "result"],
+	"$comment": "Current-world authoring requires a template. Native compatibility for effective worlds older than 1.20.0 can use a stored legacy template; that external world predicate is not an authored format_version gate.",
+	"required": ["description", "template", "base", "addition", "result", "tags"],
 	"additionalProperties": false,
 	"properties": {
 		"description": {
 			"$ref": "#/$defs/description"
 		},
 		"template": {
-			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"$ref": "../general.json#/$defs/item",
 			"description": "The smithing template item."
 		},
 		"base": {
-			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"$ref": "../general.json#/$defs/item",
 			"description": "The base item to be transformed."
 		},
 		"addition": {
-			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"$ref": "../general.json#/$defs/item",
 			"description": "The addition material."
 		},
 		"result": {
-			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"$ref": "../general.json#/$defs/item",
 			"description": "The resulting transformed item."
 		},
 		"tags": {
-			"type": "array",
-			"items": {
-				"const": "smithing_table"
-			},
+			"$ref": "../general.json#/$defs/smithing_tags",
 			"description": "Tags that specify this is a smithing_table recipe."
 		}
 	},

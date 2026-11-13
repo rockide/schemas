@@ -3,7 +3,7 @@
 	"type": "object",
 	"title": "Brewing Mix Recipe",
 	"description": "A brewing recipe defining how potions are created by combining a base potion with a reagent in a brewing stand.",
-	"required": ["description", "input", "reagent", "output"],
+	"required": ["description", "input", "reagent", "tags", "output"],
 	"additionalProperties": false,
 	"properties": {
 		"description": {
@@ -11,21 +11,21 @@
 		},
 		"input": {
 			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"minLength": 1,
 			"description": "The input potion type."
 		},
 		"reagent": {
 			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"minLength": 1,
 			"description": "The reagent item that modifies the potion."
 		},
 		"output": {
 			"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier",
+			"minLength": 1,
 			"description": "The output potion type."
 		},
 		"tags": {
-			"type": "array",
-			"items": {
-				"$ref": "../../../../vanilla/server/tags.json#/$defs/recipe_tag"
-			},
+			"$ref": "../general.json#/$defs/station_tags",
 			"description": "Tags that specify this is a brewing_stand recipe."
 		}
 	},
