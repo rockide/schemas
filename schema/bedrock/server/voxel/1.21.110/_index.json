@@ -3,12 +3,24 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Voxel Shape 1.21.110",
 	"description": "A voxel shape definition for a behavior pack.",
+	"$comment": "This single VoxelShapeDocument shape covers the native range 1.21.110 through 1.26.60.",
 	"additionalProperties": false,
 	"required": ["format_version", "minecraft:voxel_shape"],
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"enum": ["1.21.110"]
+			"enum": [
+				"1.21.110",
+				"1.21.120",
+				"1.21.130",
+				"1.26.0",
+				"1.26.10",
+				"1.26.20",
+				"1.26.30",
+				"1.26.40",
+				"1.26.50",
+				"1.26.60"
+			]
 		},
 		"minecraft:voxel_shape": {
 			"type": "object",
@@ -25,6 +37,7 @@
 					"properties": {
 						"identifier": {
 							"$ref": "../../../../vanilla/definition/identifier.json",
+							"maxLength": 256,
 							"description": "Identifier for the voxel shape, in namespace:name format."
 						}
 					}
@@ -54,7 +67,9 @@
 										"minItems": 3,
 										"maxItems": 3,
 										"items": {
-											"type": "integer"
+											"type": "number",
+											"minimum": -14,
+											"maximum": 30
 										}
 									},
 									"max": {
@@ -63,7 +78,9 @@
 										"minItems": 3,
 										"maxItems": 3,
 										"items": {
-											"type": "integer"
+											"type": "number",
+											"minimum": -14,
+											"maximum": 30
 										}
 									}
 								}

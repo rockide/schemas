@@ -6,21 +6,24 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.110"]
+			"type": "string",
+			"enum": [
+				"1.21.110",
+				"1.21.120",
+				"1.21.130",
+				"1.26.0",
+				"1.26.10",
+				"1.26.20",
+				"1.26.30",
+				"1.26.40",
+				"1.26.50",
+				"1.26.60"
+			]
 		}
 	},
 	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"enum": ["1.21.110"]
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.110/_index.json"
-			}
+			"$ref": "./1.21.110/_index.json"
 		}
 	]
 }
