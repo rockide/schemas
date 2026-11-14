@@ -69,11 +69,20 @@
 		"terrain_adaptation": {
 			"type": "string",
 			"enum": ["none", "bury", "beard_thin", "beard_box", "encapsulate"],
+			"default": "none",
 			"description": "How the terrain should adapt relative to the generated structure."
 		},
 		"dimension_padding": {
-			"$ref": "#/$defs/dimension_padding_range",
-			"description": "Padding at world edges."
+			"description": "Padding at world edges.",
+			"oneOf": [
+				{
+					"type": "integer",
+					"minimum": 0
+				},
+				{
+					"$ref": "#/$defs/dimension_padding_range"
+				}
+			]
 		},
 		"liquid_settings": {
 			"type": "string",
@@ -239,19 +248,8 @@
 			"required": ["data", "weight"],
 			"properties": {
 				"data": {
-					"type": "array",
-					"description": "Pool data items.",
-					"items": {
-						"oneOf": [
-							{
-								"type": "string",
-								"description": "Direct pool identifier"
-							},
-							{
-								"$ref": "#/$defs/random_pool_item"
-							}
-						]
-					}
+					"type": "string",
+					"description": "Pool identifier."
 				},
 				"weight": {
 					"type": "integer",
@@ -265,13 +263,13 @@
 			"title": "Random Pool Alias",
 			"description": "Weighted random selection from multiple pools.",
 			"additionalProperties": false,
-			"required": ["alias", "data"],
+			"required": ["alias", "targets"],
 			"properties": {
 				"alias": {
 					"type": "string",
 					"description": "Pool identifier to replace."
 				},
-				"data": {
+				"targets": {
 					"type": "array",
 					"description": "List of weighted pool items.",
 					"items": {
@@ -285,12 +283,8 @@
 			"title": "Random Group Pool Alias",
 			"description": "Grouped pool aliases with weights.",
 			"additionalProperties": false,
-			"required": ["alias", "groups"],
+			"required": ["groups"],
 			"properties": {
-				"alias": {
-					"type": "string",
-					"description": "Pool identifier to replace."
-				},
 				"groups": {
 					"type": "array",
 					"description": "Weighted groups of pool aliases.",
@@ -305,15 +299,10 @@
 								"items": {
 									"oneOf": [
 										{
-											"type": "string",
-											"description": "Direct pool identifier"
+											"$ref": "#/$defs/direct_pool_alias"
 										},
 										{
-											"type": "array",
-											"description": "Nested pool item",
-											"items": {
-												"type": "string"
-											}
+											"$ref": "#/$defs/random_pool_alias"
 										}
 									]
 								}
@@ -346,10 +335,17 @@
 			"title": "Max Distance From Center",
 			"description": "Maximum distance limits for structure pieces.",
 			"additionalProperties": false,
+			"required": ["horizontal"],
 			"properties": {
-				"max_distance": {
+				"horizontal": {
 					"type": "integer",
-					"description": "Maximum distance from center."
+					"minimum": 1,
+					"maximum": 128
+				},
+				"vertical": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 2147483647
 				}
 			}
 		},
@@ -366,14 +362,6 @@
 				"bottom": {
 					"type": "integer",
 					"description": "Bottom padding."
-				},
-				"left": {
-					"type": "integer",
-					"description": "Left padding."
-				},
-				"right": {
-					"type": "integer",
-					"description": "Right padding."
 				}
 			}
 		}
