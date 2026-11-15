@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Precipitation Interactions Component",
+	"description": "Determines how the block will interact with rain and snow.",
+	"additionalProperties": false,
+	"properties": {
+		"precipitation_behavior": {
+			"type": "string",
+			"description": "What behavior should the block have.",
+			"enum": [
+				"none",
+				"obstruct_rain",
+				"obstruct_rain_accumulate_snow",
+				"snowlogging"
+			]
+		}
+	},
+	"required": [
+		"precipitation_behavior"
+	]
+}

@@ -3,11 +3,15 @@
 	"title": "Collision Box Component",
 	"description": "Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled.",
 	"oneOf": [
-		{ "type": "boolean" },
+		{
+			"type": "boolean"
+		},
 		{
 			"type": "array",
 			"maxItems": 16,
-			"items": { "$ref": "#/$defs/collision_box" }
+			"items": {
+				"$ref": "#/$defs/collision_box"
+			}
 		}
 	],
 	"$defs": {
@@ -15,16 +19,30 @@
 			"type": "array",
 			"minItems": 3,
 			"maxItems": 3,
-			"items": { "type": "number" }
+			"items": {
+				"type": "number"
+			}
 		},
 		"bounds_vector": {
 			"type": "array",
 			"minItems": 3,
 			"maxItems": 3,
 			"prefixItems": [
-				{ "type": "number", "minimum": 0, "maximum": 16 },
-				{ "type": "number", "minimum": 0, "maximum": 24 },
-				{ "type": "number", "minimum": 0, "maximum": 16 }
+				{
+					"type": "number",
+					"minimum": 0,
+					"maximum": 16
+				},
+				{
+					"type": "number",
+					"minimum": 0,
+					"maximum": 24
+				},
+				{
+					"type": "number",
+					"minimum": 0,
+					"maximum": 16
+				}
 			],
 			"items": false
 		},
@@ -33,11 +51,51 @@
 			"additionalProperties": false,
 			"properties": {
 				"origin": {
-					"$ref": "#/$defs/vector",
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "number",
+							"minimum": -8.000000476837158,
+							"maximum": 8.000000476837158
+						},
+						{
+							"type": "number",
+							"minimum": 0,
+							"maximum": 24.000000953674316
+						},
+						{
+							"type": "number",
+							"minimum": -8.000000476837158,
+							"maximum": 8.000000476837158
+						}
+					],
+					"items": false,
 					"description": "Minimal position of the bounds of the collision box. Specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
 				},
 				"size": {
-					"$ref": "#/$defs/vector",
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "number",
+							"minimum": -16.000000953674316,
+							"maximum": 16.000000953674316
+						},
+						{
+							"type": "number",
+							"minimum": -24.000000953674316,
+							"maximum": 24.000000953674316
+						},
+						{
+							"type": "number",
+							"minimum": -16.000000953674316,
+							"maximum": 16.000000953674316
+						}
+					],
+					"items": false,
 					"description": "Size of each side of the collision box. Specified as [x, y, z]. origin + size must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
 				},
 				"min": {
