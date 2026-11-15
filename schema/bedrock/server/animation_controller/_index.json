@@ -12,8 +12,7 @@
 				{
 					"enum": ["1.8.0", "1.10.0", "1.17.30"]
 				}
-			],
-			"$comment": "Controller format 1.8.0 or later. Versions below 1.10.0 use legacy parameter/remap arrays; 1.10.0 and later use scalar animation weights. Transition text is lowercased before 1.17.30 and case-preserved from 1.17.30. The engine also checks compatibility with its own game version."
+			]
 		}
 	},
 	"allOf": [

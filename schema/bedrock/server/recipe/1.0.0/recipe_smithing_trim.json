@@ -3,7 +3,6 @@
 	"type": "object",
 	"title": "Smithing Trim Recipe",
 	"description": "A smithing table armor trim recipe defining how armor items are decorated with trim patterns.",
-	"$comment": "Admission depends on the effective world's 1.20.0 compatibility predicate and live trim registries, not on an authored format_version minimum.",
 	"required": ["description", "template", "base", "addition", "tags"],
 	"additionalProperties": false,
 	"properties": {

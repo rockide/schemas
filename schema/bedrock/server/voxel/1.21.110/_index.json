@@ -3,7 +3,6 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Voxel Shape 1.21.110",
 	"description": "A voxel shape definition for a behavior pack.",
-	"$comment": "This single VoxelShapeDocument shape covers the native range 1.21.110 through 1.26.60.",
 	"additionalProperties": false,
 	"required": ["format_version", "minecraft:voxel_shape"],
 	"properties": {

@@ -70,7 +70,6 @@
 		},
 		"channel_value": {
 			"type": "integer",
-			"$comment": "Authoring requires integer bytes rather than relying on native coercion or clamping.",
 			"minimum": 0,
 			"maximum": 255
 		},

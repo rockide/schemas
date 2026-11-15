@@ -3,7 +3,6 @@
 	"type": "object",
 	"title": "Smithing Transform Recipe",
 	"description": "A smithing table transformation recipe defining how items are upgraded using a smithing template, base item, and addition material.",
-	"$comment": "Current-world authoring requires a template. Native compatibility for effective worlds older than 1.20.0 can use a stored legacy template; that external world predicate is not an authored format_version gate.",
 	"required": ["description", "template", "base", "addition", "result", "tags"],
 	"additionalProperties": false,
 	"properties": {

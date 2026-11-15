@@ -20,7 +20,6 @@
 		"material": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$comment": "Default annotations describe fresh materials; omitted properties preserve inherited values.",
 			"allOf": [
 				{
 					"$ref": "#/$defs/shader_field"
