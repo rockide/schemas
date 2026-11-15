@@ -3,6 +3,7 @@
 	"type": "object",
 	"title": "Storage Weight Modifier",
 	"description": "Specifies the maximum weight limit that a storage item can hold",
+	"additionalProperties": false,
 	"properties": {
 		"weight_in_storage_item": {
 			"type": "integer",
