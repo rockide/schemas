@@ -5,7 +5,7 @@ const isLegacyGeometry = (data: unknown): data is LegacyGeometry => {
 	if (typeof data !== "object" || data === null) {
 		return false;
 	}
-	return "format_version" in data && data["format_version"] === "1.8.0";
+	return "format_version" in data && !("minecraft:geometry" in data);
 };
 
 const isGeometry = (data: unknown): data is Geometries => {
@@ -72,7 +72,7 @@ export async function generateClientIdentifiers() {
 	const geometryIdentifiers = await getBedrockJSON<unknown, string[]>({
 		type: "rp",
 		source: "bedrock-samples",
-		pattern: "models/*/**/*.json",
+		pattern: "models/**/*.json",
 		transform: (content) => {
 			if (isLegacyGeometry(content)) {
 				const keys: string[] = [];
@@ -82,13 +82,14 @@ export async function generateClientIdentifiers() {
 						keys.push(id);
 					}
 				}
+				return keys;
 			}
 			if (isGeometry(content)) {
 				return content["minecraft:geometry"].map((geometry) => geometry.description.identifier);
 			}
-			return [];
+			throw new Error("Invalid geometry format:" + JSON.stringify(content));
 		},
-	}).then((arrays) => arrays.flat().sort());
+	}).then((arrays) => Array.from(new Set(arrays.flat().sort())));
 	const animationIdentifiers = await getBedrockJSON<Animations, string[]>({
 		type: "rp",
 		source: "bedrock-samples",
