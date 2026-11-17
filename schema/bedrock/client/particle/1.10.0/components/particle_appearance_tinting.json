@@ -3,6 +3,7 @@
 	"title": "minecraft:particle_appearance_tinting",
 	"description": "Sets the particle color tinting.",
 	"type": "object",
+	"required": ["color"],
 	"additionalProperties": false,
 	"properties": {
 		"color": {
@@ -26,6 +27,9 @@
 								},
 								{
 									"type": "object",
+									"propertyNames": {
+										"pattern": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$"
+									},
 									"additionalProperties": {
 										"$ref": "#/$defs/color"
 									}
@@ -33,7 +37,7 @@
 							]
 						},
 						"interpolant": {
-							"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+							"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 						}
 					}
 				}
@@ -53,9 +57,7 @@
 					"minItems": 3,
 					"maxItems": 4,
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-						"minimum": 0,
-						"maximum": 1
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			]

@@ -3,12 +3,45 @@
 	"type": "object",
 	"title": "Minecraft Bedrock NPC Dialogue 1.14.0",
 	"description": "An NPC dialogue definition document for a behavior pack.",
-	"additionalProperties": false,
 	"required": ["format_version", "minecraft:npc_dialogue"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.14.0"]
+			"oneOf": [
+				{
+					"$comment": "Range parser",
+					"type": "string",
+					"enum": ["1.14.0"]
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 65535
+					},
+					"anyOf": [
+						{
+							"prefixItems": [
+								{
+									"minimum": 2
+								}
+							]
+						},
+						{
+							"prefixItems": [
+								{
+									"const": 1
+								},
+								{
+									"minimum": 14
+								}
+							]
+						}
+					]
+				}
+			]
 		},
 		"minecraft:npc_dialogue": {
 			"$ref": "#/$defs/npc_dialogue_definition"
@@ -20,11 +53,10 @@
 			"title": "NPC Dialogue Definition",
 			"description": "The NPC dialogue definition containing scenes.",
 			"required": ["scenes"],
-			"additionalProperties": false,
 			"properties": {
 				"scenes": {
 					"type": "array",
-					"description": "Array of dialogue scene definitions. Each scene has a scene_tag, optional text, npc_name, buttons, and commands.",
+					"description": "Array of dialogue scene definitions. Each scene has a scene_tag, text, optional npc_name, buttons, and commands.",
 					"items": {
 						"$ref": "#/$defs/dialogue_scene"
 					}
@@ -35,11 +67,11 @@
 			"type": "object",
 			"title": "Dialogue Scene",
 			"description": "A single NPC dialogue scene definition.",
-			"required": ["scene_tag"],
-			"additionalProperties": false,
+			"required": ["scene_tag", "text"],
 			"properties": {
 				"scene_tag": {
 					"type": "string",
+					"minLength": 1,
 					"description": "The name used to call this scene in-game."
 				},
 				"npc_name": {
@@ -55,6 +87,7 @@
 					"description": "Optional. Add or change a name for your NPC dialogue box."
 				},
 				"text": {
+					"$comment": "Accepts number, array, and boolean (but only renders for boolean).",
 					"oneOf": [
 						{
 							"type": "string",
@@ -64,7 +97,7 @@
 							"$ref": "../../../../vanilla/definition/raw_message.json"
 						}
 					],
-					"description": "Optional. The dialogue text displayed in the NPC dialogue box."
+					"description": "The dialogue text displayed in the NPC dialogue box."
 				},
 				"on_open_commands": {
 					"type": "array",
@@ -84,6 +117,7 @@
 				},
 				"buttons": {
 					"type": "array",
+					"maxItems": 6,
 					"description": "Optional. Array of buttons for the NPC dialogue.",
 					"items": {
 						"$ref": "#/$defs/dialogue_button"
@@ -95,11 +129,21 @@
 			"type": "object",
 			"title": "Dialogue Button",
 			"description": "A button in the NPC dialogue.",
-			"required": ["name", "commands"],
-			"additionalProperties": false,
+			"required": ["name"],
+			"not": {
+				"required": ["commands", "url"]
+			},
 			"properties": {
 				"name": {
-					"type": "string",
+					"oneOf": [
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						{
+							"$ref": "../../../../vanilla/definition/raw_message.json"
+						}
+					],
 					"description": "The text displayed on the button."
 				},
 				"commands": {
@@ -109,6 +153,9 @@
 						"type": "string",
 						"description": "A command to execute."
 					}
+				},
+				"url": {
+					"type": "string"
 				}
 			}
 		}

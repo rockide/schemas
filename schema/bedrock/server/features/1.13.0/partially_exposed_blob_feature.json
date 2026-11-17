@@ -56,7 +56,7 @@
 				},
 				"exposed_face": {
 					"type": "string",
-					"enum": ["up", "down", "north", "south", "east", "west"],
+					"enum": ["up", "down"],
 					"description": "Optional. Defines a block face that is allowed to be exposed to air and/or water. Other faces need to be embedded for blocks to be placed. Defaults to upwards face."
 				}
 			}

@@ -6,10 +6,6 @@
 	"additionalProperties": false,
 	"required": ["format_version", "minecraft:geometry"],
 	"properties": {
-		"debug": {
-			"type": "boolean",
-			"description": "Enables debug mode for the geometry file."
-		},
 		"format_version": {
 			"type": "string",
 			"enum": ["1.16.0"]
@@ -40,14 +36,19 @@
 					"properties": {
 						"identifier": {
 							"type": "string",
+							"pattern": "^(?!.*:)geometry\\.[a-zA-Z0-9_.'-:]+(?![\\s\\S])",
 							"description": "Entity definition and Client Block definition files refer to this geometry via this identifier."
 						},
 						"visible_bounds_width": {
 							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38,
 							"description": "Width of the visibility bounding box (in model space units)."
 						},
 						"visible_bounds_height": {
 							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38,
 							"description": "Height of the visible bounding box (in model space units)."
 						},
 						"visible_bounds_offset": {
@@ -56,7 +57,9 @@
 							"minItems": 3,
 							"maxItems": 3,
 							"items": {
-								"type": "number"
+								"type": "number",
+								"minimum": -3.4028234663852886e38,
+								"maximum": 3.4028234663852886e38
 							}
 						},
 						"texture_width": {
@@ -103,7 +106,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"rotation": {
@@ -112,7 +117,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"mirror": {
@@ -121,10 +128,13 @@
 				},
 				"inflate": {
 					"type": "number",
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38,
 					"description": "Grow this box by this additive amount in all directions (in model space units)."
 				},
 				"debug": {
 					"type": "boolean",
+					"const": true,
 					"description": "Enables debug mode for this bone."
 				},
 				"render_group_id": {
@@ -146,13 +156,18 @@
 				"locators": {
 					"type": "object",
 					"description": "Locators associated with this bone. A locator is a point in model space that tracks a particular bone as the bone animates.",
+					"propertyNames": {
+						"pattern": "^[a-zA-Z0-9_.-]+(?![\\s\\S])"
+					},
 					"additionalProperties": {
 						"oneOf": [
 							{
 								"type": "array",
 								"description": "Position of the locator in model space.",
 								"items": {
-									"type": "number"
+									"type": "number",
+									"minimum": -3.4028234663852886e38,
+									"maximum": 3.4028234663852886e38
 								}
 							},
 							{
@@ -166,18 +181,23 @@
 										"type": "array",
 										"description": "Position of the locator in model space.",
 										"items": {
-											"type": "number"
+											"type": "number",
+											"minimum": -3.4028234663852886e38,
+											"maximum": 3.4028234663852886e38
 										}
 									},
 									"rotation": {
 										"type": "array",
 										"description": "Rotation of the locator in model space.",
 										"items": {
-											"type": "number"
+											"type": "number",
+											"minimum": -3.4028234663852886e38,
+											"maximum": 3.4028234663852886e38
 										}
 									},
 									"ignore_inherited_scale": {
 										"type": "boolean",
+										"default": false,
 										"description": "Discard scale inherited from parent bone."
 									}
 								}
@@ -209,7 +229,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"size": {
@@ -218,7 +240,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"rotation": {
@@ -227,7 +251,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"pivot": {
@@ -236,11 +262,15 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"inflate": {
 					"type": "number",
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38,
 					"description": "Grow this box by this additive amount in all directions (in model space units), overrides the bone's inflate field for this cube only."
 				},
 				"mirror": {
@@ -255,7 +285,9 @@
 							"minItems": 2,
 							"maxItems": 2,
 							"items": {
-								"type": "number"
+								"type": "number",
+								"minimum": -3.4028234663852886e38,
+								"maximum": 3.4028234663852886e38
 							}
 						},
 						{
@@ -301,7 +333,9 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"uv_size": {
@@ -310,7 +344,9 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"material_instance": {
@@ -324,9 +360,11 @@
 			"title": "Poly Mesh",
 			"description": "A triangle or quad mesh object. Can be used in conjunction with cubes and texture geometry.",
 			"additionalProperties": false,
+			"required": ["polys"],
 			"properties": {
 				"normalized_uvs": {
 					"type": "boolean",
+					"default": false,
 					"description": "If true, UVs are assumed to be [0-1]. If false, UVs are assumed to be [0-texture_width] and [0-texture_height] respectively."
 				},
 				"positions": {
@@ -337,7 +375,9 @@
 						"minItems": 3,
 						"maxItems": 3,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -349,7 +389,9 @@
 						"minItems": 3,
 						"maxItems": 3,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -361,7 +403,9 @@
 						"minItems": 2,
 						"maxItems": 2,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -382,7 +426,9 @@
 									"minItems": 3,
 									"maxItems": 3,
 									"items": {
-										"type": "number"
+										"type": "number",
+										"minimum": -3.4028234663852886e38,
+										"maximum": 3.4028234663852886e38
 									}
 								}
 							}
@@ -398,6 +444,10 @@
 			"additionalProperties": false,
 			"required": ["texture"],
 			"properties": {
+				"use_pixel_depth": {
+					"type": "boolean",
+					"default": true
+				},
 				"texture": {
 					"type": "string",
 					"description": "The friendly-named texture to use."
@@ -408,7 +458,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"local_pivot": {
@@ -417,7 +469,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"rotation": {
@@ -426,7 +480,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"scale": {
@@ -435,7 +491,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				}
 			}

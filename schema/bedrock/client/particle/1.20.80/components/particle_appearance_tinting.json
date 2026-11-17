@@ -1,0 +1,66 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:particle_appearance_tinting",
+	"description": "Sets the particle color tinting.",
+	"type": "object",
+	"required": ["color"],
+	"additionalProperties": false,
+	"properties": {
+		"color": {
+			"description": "Color or color gradient definition.",
+			"oneOf": [
+				{
+					"$ref": "#/$defs/color"
+				},
+				{
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["gradient", "interpolant"],
+					"properties": {
+						"gradient": {
+							"oneOf": [
+								{
+									"type": "array",
+									"items": {
+										"$ref": "#/$defs/color"
+									}
+								},
+								{
+									"type": "object",
+									"propertyNames": {
+										"pattern": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$"
+									},
+									"additionalProperties": {
+										"$ref": "#/$defs/color"
+									}
+								}
+							]
+						},
+						"interpolant": {
+							"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						}
+					}
+				}
+			]
+		}
+	},
+	"$defs": {
+		"color": {
+			"description": "RGB array [0..1] or hex string (#RRGGBB/#AARRGGBB).",
+			"oneOf": [
+				{
+					"type": "string",
+					"pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 4,
+					"items": {
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+					}
+				}
+			]
+		}
+	}
+}

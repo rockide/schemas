@@ -7,12 +7,12 @@
 	"properties": {
 		"activation_expression": {
 			"description": "Emitter enabled when non-zero.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 1
 		},
 		"expiration_expression": {
 			"description": "Emitter expires when non-zero.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 0
 		}
 	}

@@ -40,7 +40,8 @@
 			"properties": {
 				"name": {
 					"type": "string",
-					"description": "Name of the Aim-Assist Category used during lookup."
+					"pattern": "^[^:]+:[^:]+$",
+					"description": "Namespaced identifier of the Aim-Assist Category used during lookup. Namespace and name must be nonempty and separated by a single ':'."
 				},
 				"priorities": {
 					"$ref": "#/$defs/camera_aim_assist_category_priorities"
@@ -55,10 +56,14 @@
 			"properties": {
 				"block_default": {
 					"type": "integer",
+					"minimum": 0,
+					"maximum": 100,
 					"description": "Optional. Default Aim-Assist targeting priority used for Blocks not found in 'blocks'."
 				},
 				"entity_default": {
 					"type": "integer",
+					"minimum": 0,
+					"maximum": 100,
 					"description": "Optional. Default Aim-Assist targeting priority used for Entities not found in 'entities'."
 				},
 				"blocks": {
@@ -69,6 +74,8 @@
 					},
 					"additionalProperties": {
 						"type": "integer",
+						"minimum": 0,
+						"maximum": 100,
 						"description": "Aim-Assist targeting priority."
 					}
 				},
@@ -80,6 +87,8 @@
 					},
 					"additionalProperties": {
 						"type": "integer",
+						"minimum": 0,
+						"maximum": 100,
 						"description": "Aim-Assist targeting priority."
 					}
 				},
@@ -91,6 +100,8 @@
 					},
 					"additionalProperties": {
 						"type": "integer",
+						"minimum": 0,
+						"maximum": 100,
 						"description": "Aim-Assist targeting priority."
 					}
 				},
@@ -102,6 +113,8 @@
 					},
 					"additionalProperties": {
 						"type": "integer",
+						"minimum": 0,
+						"maximum": 100,
 						"description": "Aim-Assist targeting priority."
 					}
 				}

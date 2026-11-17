@@ -1,0 +1,109 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Animation Controller",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["format_version", "animation_controllers"],
+	"properties": {
+		"format_version": {
+			"type": "string",
+			"pattern": "^1\\.0*[89](?:\\.[0-9]+)?(?![\\s\\S])"
+		},
+		"animation_controllers": {
+			"type": "object",
+			"minProperties": 1,
+			"propertyNames": {
+				"pattern": "^controller\\.animation\\.[a-zA-Z0-9_.-]+(?![\\s\\S])"
+			},
+			"additionalProperties": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["states"],
+				"properties": {
+					"initial_state": {
+						"type": "string"
+					},
+					"states": {
+						"type": "object",
+						"minProperties": 1,
+						"propertyNames": {
+							"$ref": "#/$defs/name"
+						},
+						"additionalProperties": {
+							"$ref": "#/$defs/state"
+						}
+					}
+				}
+			}
+		}
+	},
+	"$defs": {
+		"name": {
+			"pattern": "^[a-zA-Z0-9_.-]+(?![\\s\\S])"
+		},
+		"state": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"animations": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/animation"
+					}
+				},
+				"on_entry": {
+					"type": "array",
+					"items": {
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					}
+				},
+				"on_exit": {
+					"type": "array",
+					"items": {
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					}
+				},
+				"parameters": {
+					"type": "array",
+					"items": {
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					}
+				},
+				"transitions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"minProperties": 1,
+						"maxProperties": 1,
+						"propertyNames": {
+							"$ref": "#/$defs/name"
+						},
+						"additionalProperties": {
+							"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
+						}
+					}
+				}
+			}
+		},
+		"animation": {
+			"type": "object",
+			"minProperties": 1,
+			"maxProperties": 1,
+			"propertyNames": {
+				"$ref": "#/$defs/name"
+			},
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"propertyNames": {
+						"pattern": "^[0-9]+(\\.[0-9]+)?(?![\\s\\S])"
+					},
+					"additionalProperties": {
+						"type": "number"
+					}
+				}
+			}
+		}
+	}
+}

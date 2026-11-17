@@ -36,37 +36,6 @@
 							"description": {
 								"properties": {
 									"identifier": {
-										"const": "minecraft:overworld"
-									}
-								},
-								"required": ["identifier"]
-							}
-						},
-						"required": ["description"]
-					},
-					"then": {
-						"properties": {
-							"components": {
-								"required": ["minecraft:dimension_bounds"]
-							}
-						}
-					},
-					"else": {
-						"properties": {
-							"components": {
-								"properties": {
-									"minecraft:dimension_bounds": false
-								}
-							}
-						}
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"description": {
-								"properties": {
-									"identifier": {
 										"enum": ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"]
 									}
 								},
@@ -80,16 +49,32 @@
 							"components": {
 								"properties": {
 									"minecraft:default_biome": false,
-									"minecraft:dimension_height": false,
 									"minecraft:clouds": false
 								}
 							}
 						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"description": {
+								"properties": {
+									"identifier": {
+										"enum": ["minecraft:nether", "minecraft:the_end"]
+									}
+								},
+								"required": ["identifier"]
+							}
+						},
+						"required": ["description"]
 					},
-					"else": {
+					"then": {
 						"properties": {
 							"components": {
-								"required": ["minecraft:generation"]
+								"properties": {
+									"minecraft:dimension_height": false
+								}
 							}
 						}
 					}
@@ -104,12 +89,14 @@
 			"additionalProperties": false,
 			"properties": {
 				"identifier": {
+					"type": "string",
 					"anyOf": [
 						{
-							"type": "string"
+							"enum": ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"]
 						},
 						{
-							"enum": ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"]
+							"pattern": ":",
+							"not": { "pattern": "^minecraft:" }
 						}
 					]
 				}
@@ -120,10 +107,8 @@
 			"title": "Dimension Components",
 			"description": "Specifies the components that define dimension properties such as bounds and generation.",
 			"additionalProperties": false,
+			"required": ["minecraft:generation"],
 			"properties": {
-				"minecraft:dimension_bounds": {
-					"$ref": "#/$defs/dimension_bounds"
-				},
 				"minecraft:generation": {
 					"$ref": "#/$defs/dimension_generation"
 				},
@@ -155,23 +140,6 @@
 				}
 			}
 		},
-		"dimension_bounds": {
-			"type": "object",
-			"title": "Dimension Bounds",
-			"description": "Defines the minimum and maximum vertical bounds for a dimension.",
-			"required": ["min", "max"],
-			"additionalProperties": false,
-			"properties": {
-				"min": {
-					"type": "integer",
-					"description": "Minimum vertical bound for the dimension."
-				},
-				"max": {
-					"type": "integer",
-					"description": "Maximum vertical bound for the dimension."
-				}
-			}
-		},
 		"dimension_generation": {
 			"type": "object",
 			"title": "Dimension Generation",
@@ -195,7 +163,8 @@
 				"min_y": {
 					"type": "integer",
 					"minimum": -512,
-					"maximum": 512
+					"maximum": 512,
+					"multipleOf": 16
 				},
 				"height_range": {
 					"type": "integer",
@@ -203,7 +172,74 @@
 					"maximum": 1024,
 					"multipleOf": 16
 				}
-			}
+			},
+			"$comment": "Each branch encodes height_range <= 512 - min_y for a 16-aligned min_y.",
+			"anyOf": [
+				{ "properties": { "min_y": { "const": -512 }, "height_range": { "maximum": 1024 } } },
+				{ "properties": { "min_y": { "const": -496 }, "height_range": { "maximum": 1008 } } },
+				{ "properties": { "min_y": { "const": -480 }, "height_range": { "maximum": 992 } } },
+				{ "properties": { "min_y": { "const": -464 }, "height_range": { "maximum": 976 } } },
+				{ "properties": { "min_y": { "const": -448 }, "height_range": { "maximum": 960 } } },
+				{ "properties": { "min_y": { "const": -432 }, "height_range": { "maximum": 944 } } },
+				{ "properties": { "min_y": { "const": -416 }, "height_range": { "maximum": 928 } } },
+				{ "properties": { "min_y": { "const": -400 }, "height_range": { "maximum": 912 } } },
+				{ "properties": { "min_y": { "const": -384 }, "height_range": { "maximum": 896 } } },
+				{ "properties": { "min_y": { "const": -368 }, "height_range": { "maximum": 880 } } },
+				{ "properties": { "min_y": { "const": -352 }, "height_range": { "maximum": 864 } } },
+				{ "properties": { "min_y": { "const": -336 }, "height_range": { "maximum": 848 } } },
+				{ "properties": { "min_y": { "const": -320 }, "height_range": { "maximum": 832 } } },
+				{ "properties": { "min_y": { "const": -304 }, "height_range": { "maximum": 816 } } },
+				{ "properties": { "min_y": { "const": -288 }, "height_range": { "maximum": 800 } } },
+				{ "properties": { "min_y": { "const": -272 }, "height_range": { "maximum": 784 } } },
+				{ "properties": { "min_y": { "const": -256 }, "height_range": { "maximum": 768 } } },
+				{ "properties": { "min_y": { "const": -240 }, "height_range": { "maximum": 752 } } },
+				{ "properties": { "min_y": { "const": -224 }, "height_range": { "maximum": 736 } } },
+				{ "properties": { "min_y": { "const": -208 }, "height_range": { "maximum": 720 } } },
+				{ "properties": { "min_y": { "const": -192 }, "height_range": { "maximum": 704 } } },
+				{ "properties": { "min_y": { "const": -176 }, "height_range": { "maximum": 688 } } },
+				{ "properties": { "min_y": { "const": -160 }, "height_range": { "maximum": 672 } } },
+				{ "properties": { "min_y": { "const": -144 }, "height_range": { "maximum": 656 } } },
+				{ "properties": { "min_y": { "const": -128 }, "height_range": { "maximum": 640 } } },
+				{ "properties": { "min_y": { "const": -112 }, "height_range": { "maximum": 624 } } },
+				{ "properties": { "min_y": { "const": -96 }, "height_range": { "maximum": 608 } } },
+				{ "properties": { "min_y": { "const": -80 }, "height_range": { "maximum": 592 } } },
+				{ "properties": { "min_y": { "const": -64 }, "height_range": { "maximum": 576 } } },
+				{ "properties": { "min_y": { "const": -48 }, "height_range": { "maximum": 560 } } },
+				{ "properties": { "min_y": { "const": -32 }, "height_range": { "maximum": 544 } } },
+				{ "properties": { "min_y": { "const": -16 }, "height_range": { "maximum": 528 } } },
+				{ "properties": { "min_y": { "const": 0 }, "height_range": { "maximum": 512 } } },
+				{ "properties": { "min_y": { "const": 16 }, "height_range": { "maximum": 496 } } },
+				{ "properties": { "min_y": { "const": 32 }, "height_range": { "maximum": 480 } } },
+				{ "properties": { "min_y": { "const": 48 }, "height_range": { "maximum": 464 } } },
+				{ "properties": { "min_y": { "const": 64 }, "height_range": { "maximum": 448 } } },
+				{ "properties": { "min_y": { "const": 80 }, "height_range": { "maximum": 432 } } },
+				{ "properties": { "min_y": { "const": 96 }, "height_range": { "maximum": 416 } } },
+				{ "properties": { "min_y": { "const": 112 }, "height_range": { "maximum": 400 } } },
+				{ "properties": { "min_y": { "const": 128 }, "height_range": { "maximum": 384 } } },
+				{ "properties": { "min_y": { "const": 144 }, "height_range": { "maximum": 368 } } },
+				{ "properties": { "min_y": { "const": 160 }, "height_range": { "maximum": 352 } } },
+				{ "properties": { "min_y": { "const": 176 }, "height_range": { "maximum": 336 } } },
+				{ "properties": { "min_y": { "const": 192 }, "height_range": { "maximum": 320 } } },
+				{ "properties": { "min_y": { "const": 208 }, "height_range": { "maximum": 304 } } },
+				{ "properties": { "min_y": { "const": 224 }, "height_range": { "maximum": 288 } } },
+				{ "properties": { "min_y": { "const": 240 }, "height_range": { "maximum": 272 } } },
+				{ "properties": { "min_y": { "const": 256 }, "height_range": { "maximum": 256 } } },
+				{ "properties": { "min_y": { "const": 272 }, "height_range": { "maximum": 240 } } },
+				{ "properties": { "min_y": { "const": 288 }, "height_range": { "maximum": 224 } } },
+				{ "properties": { "min_y": { "const": 304 }, "height_range": { "maximum": 208 } } },
+				{ "properties": { "min_y": { "const": 320 }, "height_range": { "maximum": 192 } } },
+				{ "properties": { "min_y": { "const": 336 }, "height_range": { "maximum": 176 } } },
+				{ "properties": { "min_y": { "const": 352 }, "height_range": { "maximum": 160 } } },
+				{ "properties": { "min_y": { "const": 368 }, "height_range": { "maximum": 144 } } },
+				{ "properties": { "min_y": { "const": 384 }, "height_range": { "maximum": 128 } } },
+				{ "properties": { "min_y": { "const": 400 }, "height_range": { "maximum": 112 } } },
+				{ "properties": { "min_y": { "const": 416 }, "height_range": { "maximum": 96 } } },
+				{ "properties": { "min_y": { "const": 432 }, "height_range": { "maximum": 80 } } },
+				{ "properties": { "min_y": { "const": 448 }, "height_range": { "maximum": 64 } } },
+				{ "properties": { "min_y": { "const": 464 }, "height_range": { "maximum": 48 } } },
+				{ "properties": { "min_y": { "const": 480 }, "height_range": { "maximum": 32 } } },
+				{ "properties": { "min_y": { "const": 496 }, "height_range": { "maximum": 16 } } }
+			]
 		}
 	}
 }

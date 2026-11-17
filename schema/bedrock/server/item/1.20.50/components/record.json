@@ -1,0 +1,26 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Record Component",
+	"description": "Record Item Component. Used by record items to play music.",
+	"additionalProperties": false,
+	"properties": {
+		"comparator_signal": {
+			"type": "integer",
+			"title": "Comparator Signal",
+			"description": "Signal strength for comparator blocks to use, from 1 - 13",
+			"minimum": 1,
+			"maximum": 13
+		},
+		"duration": {
+			"type": "number",
+			"title": "Duration",
+			"description": "Duration of sound event in seconds, float value"
+		},
+		"sound_event": {
+			"$ref": "../../../../../vanilla/reference/level_sound_custom.json",
+			"title": "Sound Event",
+			"description": "Sound event type"
+		}
+	}
+}

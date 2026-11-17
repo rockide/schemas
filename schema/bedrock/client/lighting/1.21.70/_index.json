@@ -33,60 +33,16 @@
 				"directional_lights": {
 					"type": "object",
 					"description": "Settings for directional lights including the sun and moon.",
-					"additionalProperties": false,
-					"properties": {
-						"orbital": {
-							"type": "object",
-							"description": "Orbital light settings for the sun and moon.",
-							"additionalProperties": false,
-							"required": ["sun", "moon"],
-							"properties": {
-								"sun": {
-									"type": "object",
-									"description": "Light settings for the sun.",
-									"additionalProperties": false,
-									"properties": {
-										"illuminance": {
-											"description": "How bright the sun is, measured in lux (lx).",
-											"$ref": "#/$defs/optkeyframe_number"
-										},
-										"color": {
-											"description": "The RGB color that the sun contributes to direct surface lighting.",
-											"$ref": "#/$defs/optkeyframe_color"
-										}
-									}
-								},
-								"moon": {
-									"type": "object",
-									"description": "Light settings for the moon.",
-									"additionalProperties": false,
-									"properties": {
-										"illuminance": {
-											"description": "How bright the moon is, measured in lux (lx).",
-											"$ref": "#/$defs/optkeyframe_number"
-										},
-										"color": {
-											"description": "The RGB color that the moon contributes to direct surface lighting.",
-											"$ref": "#/$defs/optkeyframe_color"
-										}
-									}
-								},
-								"orbital_offset_degrees": {
-									"description": "The rotational offset of the sun and moon from their standard orbital axis, measured in degrees.",
-									"$ref": "#/$defs/optkeyframe_number"
-								}
-							}
-						}
-					}
+					"$ref": "#/$defs/orbital_lights"
 				},
 				"emissive": {
 					"type": "object",
 					"description": "Settings for emissive light source behavior.",
 					"additionalProperties": false,
-					"required": ["desaturation"],
 					"properties": {
 						"desaturation": {
 							"type": "number",
+							"default": 0.1,
 							"description": "The amount of desaturation to apply to albedo color values during emissive light calculation. Values range from [0.0, 1.0].",
 							"minimum": 0.0,
 							"maximum": 1.0
@@ -100,11 +56,15 @@
 					"properties": {
 						"illuminance": {
 							"type": "number",
+							"minimum": 0,
+							"maximum": 5,
+							"default": 0.02,
 							"description": "How bright the ambient light is, measured in lux (lx). Allowed range is [0.0, 5.0]. Defaults to 0.02 if not provided."
 						},
 						"color": {
 							"description": "The RGB color that the ambient light contributes to surface lighting. Defaults to #FFFFFF if not provided.",
-							"$ref": "#/$defs/color"
+							"$ref": "#/$defs/color",
+							"default": "#FFFFFF"
 						}
 					}
 				},
@@ -115,6 +75,7 @@
 					"properties": {
 						"intensity": {
 							"type": "number",
+							"default": 1,
 							"description": "Scales how much energy the sky contributes to indirect lighting. A value of 1.0 causes the sky to contribute more to indirect light resulting in less dark shadows. Values range from [0.1, 1.0]. Defaults to 1.0 if not provided.",
 							"minimum": 0.1,
 							"maximum": 1.0
@@ -125,12 +86,87 @@
 		}
 	},
 	"$defs": {
+		"orbital_lights": {
+			"type": "object",
+			"description": "Orbital light settings for the sun and moon.",
+			"additionalProperties": false,
+			"properties": {
+				"sun": {
+					"type": "object",
+					"description": "Light settings for the sun.",
+					"additionalProperties": false,
+					"properties": {
+						"illuminance": {
+							"description": "How bright the sun is, measured in lux (lx).",
+							"$ref": "#/$defs/optkeyframe_number",
+							"minimum": 0,
+							"maximum": 110000,
+							"additionalProperties": {
+								"minimum": 0,
+								"maximum": 110000
+							},
+							"default": {
+								"0": 100,
+								"0.05": 100,
+								"0.282": 1,
+								"0.2915": 0.01,
+								"0.292": 0,
+								"0.709": 0,
+								"0.719": 1,
+								"0.95": 100,
+								"1": 100
+							}
+						},
+						"color": {
+							"description": "The RGB color that the sun contributes to direct surface lighting.",
+							"$ref": "#/$defs/optkeyframe_color",
+							"default": "#FFFFFF"
+						}
+					}
+				},
+				"moon": {
+					"type": "object",
+					"description": "Light settings for the moon.",
+					"additionalProperties": false,
+					"properties": {
+						"illuminance": {
+							"description": "How bright the moon is, measured in lux (lx).",
+							"$ref": "#/$defs/optkeyframe_number",
+							"minimum": 0,
+							"maximum": 110000,
+							"additionalProperties": {
+								"minimum": 0,
+								"maximum": 110000
+							},
+							"default": 0.27
+						},
+						"color": {
+							"description": "The RGB color that the moon contributes to direct surface lighting.",
+							"$ref": "#/$defs/optkeyframe_color",
+							"default": "#FFFFFF"
+						}
+					}
+				},
+				"orbital_offset_degrees": {
+					"description": "The rotational offset of the sun and moon from their standard orbital axis, measured in degrees.",
+					"$ref": "#/$defs/optkeyframe_number",
+					"minimum": 0,
+					"maximum": 359.99,
+					"additionalProperties": {
+						"minimum": 0,
+						"maximum": 359.99
+					},
+					"default": 0
+				}
+			}
+		},
 		"color": {
 			"description": "A color value expressed as either an RGB array of three numbers in the 0-255 range, or a six-digit hexadecimal string.",
 			"oneOf": [
 				{
 					"type": "string",
-					"pattern": "^#([0-9a-fA-F]{6})$"
+					"$comment": "Eight-digit hex colors use #AARRGGBB.",
+					"pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
 				},
 				{
 					"type": "array",
@@ -149,7 +185,7 @@
 			"type": "object",
 			"minProperties": 1,
 			"propertyNames": {
-				"pattern": "^\\d+(\\.\\d+)?$"
+				"pattern": "^(?:0+(?:\\.[0-9]+)?|0*1(?:\\.0+)?)$"
 			},
 			"additionalProperties": {
 				"type": "number"
@@ -160,7 +196,7 @@
 			"type": "object",
 			"minProperties": 1,
 			"propertyNames": {
-				"pattern": "^\\d+(\\.\\d+)?$"
+				"pattern": "^(?:0+(?:\\.[0-9]+)?|0*1(?:\\.0+)?)$"
 			},
 			"additionalProperties": {
 				"$ref": "#/$defs/color"

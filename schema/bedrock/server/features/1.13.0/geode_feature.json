@@ -23,6 +23,7 @@
 				"description",
 				"filler",
 				"inner_layer",
+				"alternate_inner_layer",
 				"middle_layer",
 				"outer_layer",
 				"min_outer_wall_distance",
@@ -84,25 +85,25 @@
 				},
 				"min_outer_wall_distance": {
 					"type": "integer",
-					"minimum": 0,
+					"minimum": 1,
 					"maximum": 10,
 					"description": "The minimum distance each distribution point must be from the outer wall."
 				},
 				"max_outer_wall_distance": {
 					"type": "integer",
-					"minimum": 0,
+					"minimum": 1,
 					"maximum": 20,
 					"description": "The maximum distance each distribution point can be from the outer wall."
 				},
 				"min_distribution_points": {
 					"type": "integer",
-					"minimum": 0,
+					"minimum": 1,
 					"maximum": 10,
 					"description": "The minimum number of points inside the distance field that can get generated."
 				},
 				"max_distribution_points": {
 					"type": "integer",
-					"minimum": 0,
+					"minimum": 1,
 					"maximum": 20,
 					"description": "The maximum number of points inside the distance field that can get generated."
 				},

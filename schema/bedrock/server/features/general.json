@@ -17,6 +17,7 @@
 				{
 					"type": "object",
 					"additionalProperties": false,
+					"required": ["range_min", "range_max"],
 					"properties": {
 						"range_min": {
 							"type": "number",

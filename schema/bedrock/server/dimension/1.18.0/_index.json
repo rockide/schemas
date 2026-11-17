@@ -81,6 +81,7 @@
 			"title": "Dimension Components",
 			"description": "Specifies the components that define dimension properties such as bounds and generation.",
 			"additionalProperties": false,
+			"required": ["minecraft:generation"],
 			"properties": {
 				"minecraft:dimension_bounds": {
 					"$ref": "#/$defs/dimension_bounds"

@@ -1,0 +1,23 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Camera Preset 1.26.50",
+	"description": "A camera preset definition for a behavior pack.",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:camera_preset"],
+	"properties": {
+		"format_version": {
+			"type": "string",
+			"enum": ["1.26.50"]
+		},
+		"minecraft:camera_preset": {
+			"$ref": "../1.19.50/_index.json#/$defs/camera_preset_definition",
+			"unevaluatedProperties": false,
+			"properties": {
+				"starting_rot": {
+					"$ref": "../1.19.50/_index.json#/$defs/vec2_array"
+				}
+			}
+		}
+	}
+}

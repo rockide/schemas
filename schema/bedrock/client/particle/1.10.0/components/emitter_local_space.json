@@ -27,15 +27,17 @@
 				"properties": {
 					"rotation": {
 						"const": true
-					},
-					"position": {
-						"const": false
 					}
 				},
-				"required": ["rotation", "position"]
+				"required": ["rotation"]
 			},
 			"then": {
-				"not": {}
+				"properties": {
+					"position": {
+						"const": true
+					}
+				},
+				"required": ["position"]
 			}
 		}
 	]

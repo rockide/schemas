@@ -7,7 +7,7 @@
 	"required": ["minecraft:icon"],
 	"properties": {
 		"minecraft:display_name": {
-			"$ref": "../../1.20.0/components/display_name.json"
+			"$ref": "./display_name.json"
 		},
 		"minecraft:durability": {
 			"$ref": "../../1.20.0/components/durability.json"
@@ -16,7 +16,7 @@
 			"$ref": "../../1.20.0/components/fuel.json"
 		},
 		"minecraft:entity_placer": {
-			"$ref": "../../1.20.0/components/entity_placer.json"
+			"$ref": "./entity_placer.json"
 		},
 		"minecraft:icon": {
 			"$ref": "../../1.20.0/components/icon.json"
@@ -40,13 +40,13 @@
 			"$ref": "../../1.20.10/components/projectile.json"
 		},
 		"minecraft:record": {
-			"$ref": "../../1.20.10/components/record.json"
+			"$ref": "./record.json"
 		},
 		"minecraft:repairable": {
-			"$ref": "../../1.20.10/components/repairable.json"
+			"$ref": "./repairable.json"
 		},
 		"minecraft:shooter": {
-			"$ref": "../../1.20.10/components/shooter.json"
+			"$ref": "./shooter.json"
 		},
 		"minecraft:throwable": {
 			"$ref": "../../1.20.10/components/throwable.json"
@@ -82,7 +82,7 @@
 			"$ref": "../../1.20.30/components/enchantable.json"
 		},
 		"minecraft:food": {
-			"$ref": "../../1.20.30/components/food.json"
+			"$ref": "./food.json"
 		},
 		"minecraft:interact_button": {
 			"$ref": "../../1.20.30/components/interact_button.json"
@@ -92,6 +92,9 @@
 		},
 		"minecraft:use_modifiers": {
 			"$ref": "use_modifiers.json"
+		},
+		"minecraft:allow_off_hand": {
+			"$ref": "./allow_off_hand.json"
 		}
 	},
 	"allOf": [

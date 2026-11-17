@@ -15,29 +15,47 @@
 			"type": "object",
 			"description": "The root object containing default PBR values for blocks, actors, particles, and items.",
 			"additionalProperties": false,
-			"required": ["blocks", "actors", "particles", "items"],
 			"properties": {
 				"blocks": {
-					"$ref": "#/$defs/mers_settings"
+					"$ref": "#/$defs/pbr_settings"
 				},
 				"actors": {
-					"$ref": "#/$defs/mers_settings"
+					"$ref": "#/$defs/pbr_settings"
 				},
 				"particles": {
-					"$ref": "#/$defs/mers_settings"
+					"$ref": "#/$defs/pbr_settings"
 				},
 				"items": {
-					"$ref": "#/$defs/mers_settings"
+					"$ref": "#/$defs/pbr_settings"
 				}
 			}
 		}
 	},
 	"$defs": {
+		"mer_color": {
+			"oneOf": [
+				{
+					"type": "string",
+					"pattern": "^#([0-9a-fA-F]{6})$"
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 255
+					}
+				}
+			]
+		},
 		"mers_color": {
 			"description": "A Metalness, Emissive, Roughness, Subsurface (MERS) color value expressed as either an RGBA array of four numbers in the 0-255 range, or an eight-digit hexadecimal string.",
 			"oneOf": [
 				{
 					"type": "string",
+					"$comment": "Eight-digit hex colors use #AARRGGBB (SSMMEERR for MERS).",
 					"pattern": "^#([0-9a-fA-F]{8})$"
 				},
 				{
@@ -45,23 +63,45 @@
 					"minItems": 4,
 					"maxItems": 4,
 					"items": {
-						"type": "number",
+						"type": "integer",
 						"minimum": 0,
 						"maximum": 255
 					}
 				}
 			]
 		},
+		"mer_settings": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["global_metalness_emissive_roughness"],
+			"properties": {
+				"global_metalness_emissive_roughness": {
+					"$ref": "#/$defs/mer_color"
+				}
+			}
+		},
 		"mers_settings": {
 			"type": "object",
 			"description": "Default MERS value for a category when not defined via texture set.",
 			"additionalProperties": false,
-			"required": ["global_metalness_emissive_roughness_subsurface"],
 			"properties": {
 				"global_metalness_emissive_roughness_subsurface": {
 					"description": "The default metalness, emissive, roughness, and subsurface values applied uniformly across the entire surface.",
-					"$ref": "#/$defs/mers_color"
+					"$ref": "#/$defs/mers_color",
+					"default": [0, 0, 255, 0]
 				}
+			}
+		},
+		"pbr_settings": {
+			"type": "object",
+			"if": {
+				"required": ["global_metalness_emissive_roughness"]
+			},
+			"then": {
+				"$ref": "#/$defs/mer_settings"
+			},
+			"else": {
+				"$ref": "#/$defs/mers_settings"
 			}
 		}
 	}

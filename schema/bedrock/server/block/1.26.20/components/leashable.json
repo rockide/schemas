@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Leashable Component",
+	"description": "Allows a block to have a lead tied to it.",
+	"additionalProperties": false,
+	"properties": {
+		"offset": {
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"type": "number"
+			},
+			"default": [
+				0,
+				0.25,
+				0
+			]
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Minecraft Bedrock Sound Definitions 1.13.0",
+	"type": "object",
+	"properties": {
+		"format_version": {
+			"const": "1.13.0"
+		}
+	},
+	"additionalProperties": {
+		"allOf": [
+			{
+				"$ref": "../_shared.json#/$defs/sound_definition"
+			},
+			{
+				"properties": {
+					"__use_legacy_max_distance": {
+						"const": true,
+						"default": true
+					},
+					"sounds": {
+						"items": {
+							"not": {
+								"required": [
+									"pitch"
+								],
+								"type": "object"
+							},
+							"$ref": "../_shared.json#/$defs/legacy_streaming_defaults"
+						}
+					}
+				}
+			}
+		]
+	}
+}

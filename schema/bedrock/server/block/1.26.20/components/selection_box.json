@@ -1,0 +1,65 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Selection Box Component",
+	"description": "Defines the area of the block that is selected by the player's cursor.",
+	"oneOf": [
+		{
+			"type": "boolean"
+		},
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"origin": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "number",
+							"minimum": -8.000000476837158,
+							"maximum": 8.000000476837158
+						},
+						{
+							"type": "number",
+							"minimum": 0,
+							"maximum": 24.000000953674316
+						},
+						{
+							"type": "number",
+							"minimum": -8.000000476837158,
+							"maximum": 8.000000476837158
+						}
+					],
+					"items": false,
+					"description": "Minimal position of the bounds of the selection box. Specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
+				},
+				"size": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "number",
+							"minimum": -16.000000953674316,
+							"maximum": 16.000000953674316
+						},
+						{
+							"type": "number",
+							"minimum": -24.000000953674316,
+							"maximum": 24.000000953674316
+						},
+						{
+							"type": "number",
+							"minimum": -16.000000953674316,
+							"maximum": 16.000000953674316
+						}
+					],
+					"items": false,
+					"description": "Size of each side of the selection box. Specified as [x, y, z]. origin + size must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
+				}
+			}
+		}
+	]
+}

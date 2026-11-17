@@ -7,11 +7,13 @@
 	"properties": {
 		"per_render_expression": {
 			"description": "Molang expression executed for rendering.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+			"default": 0
 		},
 		"per_update_expression": {
 			"description": "Molang expression executed for updating.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+			"default": 0
 		}
 	}
 }

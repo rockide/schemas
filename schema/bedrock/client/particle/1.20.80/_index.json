@@ -1,0 +1,81 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Minecraft Bedrock Particle Effect 1.20.80",
+	"type": "object",
+	"required": ["format_version", "particle_effect"],
+	"additionalProperties": false,
+	"properties": {
+		"format_version": {
+			"type": "string",
+			"const": "1.20.80"
+		},
+		"particle_effect": {
+			"type": "object",
+			"description": "Root particle effect container.",
+			"additionalProperties": false,
+			"required": ["description", "components"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"description": "General particle effect metadata.",
+					"additionalProperties": false,
+					"required": ["identifier", "basic_render_parameters"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../vanilla/definition/identifier.json"
+						},
+						"basic_render_parameters": {
+							"type": "object",
+							"description": "Basic render parameters like texture and material.",
+							"additionalProperties": false,
+							"required": ["material", "texture"],
+							"properties": {
+								"material": {
+									"$ref": "../1.10.0/material.json"
+								},
+								"texture": {
+									"$ref": "../../../../vanilla/client/paths.json#/$defs/texture_path"
+								}
+							}
+						}
+					}
+				},
+				"curves": {
+					"type": "object",
+					"additionalProperties": false,
+					"patternProperties": {
+						"^variable\\.[a-zA-Z0-9_.]+$": {
+							"oneOf": [
+								{
+									"$ref": "./curves.json#/$defs/linear"
+								},
+								{
+									"$ref": "./curves.json#/$defs/bezier"
+								},
+								{
+									"$ref": "./curves.json#/$defs/catmull_rom"
+								},
+								{
+									"$ref": "./curves.json#/$defs/bezier_chain"
+								}
+							]
+						}
+					}
+				},
+				"events": {
+					"type": "object",
+					"propertyNames": {
+						"minLength": 1
+					},
+					"additionalProperties": {
+						"$ref": "./event.json"
+					}
+				},
+				"components": {
+					"$ref": "./components/_index.json",
+					"description": "Particle and emitter components."
+				}
+			}
+		}
+	}
+}

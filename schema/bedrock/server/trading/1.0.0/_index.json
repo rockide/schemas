@@ -1,25 +1,21 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "object",
-	"title": "Trade Table",
+	"title": "Trade Table 1.0.0",
 	"description": "Defines the items a villager or wandering trader can offer in trades.",
 	"required": ["tiers"],
 	"additionalProperties": false,
 	"properties": {
 		"format_version": {
-			"description": "The format version of the trade table. Use 1.21.80 for strict chance check.",
-			"default": "1.21.80"
+			"type": "string",
+			"description": "The format version of the trade table."
 		},
 		"tiers": {
 			"type": "array",
+			"description": "A list of tiers that define the trades available at each level.",
 			"items": {
 				"$ref": "#/$defs/tier"
-			},
-			"description": "A list of tiers that define the trades available at each level."
-		},
-		"weight": {
-			"type": "integer",
-			"description": "The weight/probability of this trade table being selected when multiple tables exist (e.g., for wandering traders)."
+			}
 		}
 	},
 	"$defs": {
@@ -31,22 +27,22 @@
 			"properties": {
 				"groups": {
 					"type": "array",
+					"description": "A list of trade groups for this tier. Groups allow selecting a subset of trades per interaction.",
 					"items": {
 						"$ref": "#/$defs/group"
-					},
-					"description": "A list of trade groups for this tier. Groups allow selecting a subset of trades per interaction."
+					}
 				},
 				"total_exp_required": {
 					"type": "integer",
-					"default": 0,
-					"description": "The total experience required to unlock this tier."
+					"description": "The total experience required to unlock this tier.",
+					"$comment": "When omitted, the legacy parser falls back to the current tier index."
 				},
 				"trades": {
 					"type": "array",
+					"description": "A list of trades available in this tier.",
 					"items": {
 						"$ref": "#/$defs/trade"
-					},
-					"description": "A list of trades available in this tier. Only one of 'groups' or 'trades' should be used."
+					}
 				}
 			}
 		},
@@ -59,15 +55,15 @@
 			"properties": {
 				"num_to_select": {
 					"type": "integer",
-					"default": 1,
+					"default": -1,
 					"description": "The number of trades to select from this group each time the trades refresh."
 				},
 				"trades": {
 					"type": "array",
+					"description": "A list of trades in this group.",
 					"items": {
 						"$ref": "#/$defs/trade"
-					},
-					"description": "A list of trades in this group."
+					}
 				}
 			}
 		},
@@ -80,37 +76,39 @@
 			"properties": {
 				"wants": {
 					"type": "array",
+					"description": "The items the villager wants in exchange. Usually 1 item, but can be 2 for some trades.",
 					"minItems": 1,
-					"maxItems": 2,
 					"items": {
-						"$ref": "#/$defs/trade_item"
-					},
-					"description": "The items the villager wants in exchange. Usually 1 item, but can be 2 for some trades."
+						"$ref": "#/$defs/trade_item_list"
+					}
 				},
 				"gives": {
 					"type": "array",
+					"description": "The items the villager gives to the player.",
 					"minItems": 1,
-					"maxItems": 1,
 					"items": {
-						"$ref": "#/$defs/trade_item"
-					},
-					"description": "The items the villager gives to the player."
+						"$ref": "#/$defs/trade_item_list"
+					}
 				},
 				"max_uses": {
 					"type": "integer",
-					"default": 12,
-					"description": "The maximum number of times this trade can be used before it is exhausted."
+					"description": "The maximum number of times this trade can be used before it is exhausted.",
+					"default": 7
 				},
 				"reward_exp": {
 					"type": "boolean",
-					"default": true,
-					"description": "Whether this trade rewards the villager with experience when used."
+					"description": "Whether this trade rewards the villager with experience when used.",
+					"default": true
 				},
 				"trader_exp": {
 					"type": "integer",
-					"minimum": 1,
 					"default": 1,
 					"description": "The amount of experience the villager gains when this trade is used."
+				},
+				"weight": {
+					"type": "integer",
+					"minimum": 1,
+					"default": 1
 				}
 			}
 		},
@@ -118,6 +116,7 @@
 			"type": "object",
 			"title": "Trade Item",
 			"description": "An item involved in a trade, either wanted or given.",
+			"required": ["item"],
 			"additionalProperties": false,
 			"properties": {
 				"item": {
@@ -125,56 +124,83 @@
 					"description": "The item identifier."
 				},
 				"quantity": {
+					"description": "The quantity of the item, either as a fixed number or a range.",
 					"oneOf": [
 						{
-							"type": "integer",
-							"minimum": 1
+							"type": "integer"
 						},
 						{
-							"type": "object",
-							"title": "Quantity Range",
-							"description": "A range of possible quantities for the item.",
-							"required": ["min", "max"],
-							"additionalProperties": false,
-							"properties": {
-								"min": {
-									"type": "integer",
-									"minimum": 1,
-									"description": "Minimum quantity."
-								},
-								"max": {
-									"type": "integer",
-									"minimum": 1,
-									"description": "Maximum quantity."
-								}
-							}
+							"$ref": "#/$defs/quantity_range"
 						}
 					],
-					"default": 1,
-					"description": "The quantity of the item, either as a fixed number or a range."
+					"default": 1
 				},
 				"price_multiplier": {
 					"type": "number",
-					"default": 0.05,
-					"description": "A multiplier that adjusts the price based on demand and other factors."
+					"description": "A multiplier that adjusts the price based on demand and other factors.",
+					"default": 0
 				},
 				"filters": {
 					"$ref": "../../../../vanilla/server/filter/entity/_index.json",
 					"description": "Filters that define additional conditions for this trade item."
 				},
 				"functions": {
-					"type": "array",
-					"items": {
-						"$ref": "../../loot_table/function.json"
-					},
-					"description": "Array of functions to apply to the trade item, such as enchantments."
+					"description": "Array of functions to apply to the trade item, such as enchantments.",
+					"anyOf": [
+						{
+							"$ref": "../../loot_table/function.json"
+						},
+						{
+							"type": "array",
+							"items": {
+								"$ref": "../../loot_table/function.json"
+							}
+						}
+					]
+				}
+			}
+		},
+		"trade_item_list": {
+			"title": "Trade Item List",
+			"oneOf": [
+				{
+					"$ref": "#/$defs/trade_item"
 				},
+				{
+					"$ref": "#/$defs/trade_item_choice"
+				}
+			]
+		},
+		"trade_item_choice": {
+			"type": "object",
+			"title": "Trade Item Choice",
+			"required": ["choice"],
+			"additionalProperties": false,
+			"properties": {
 				"choice": {
 					"type": "array",
+					"description": "Alternative items that can be traded. Allows the player to choose from multiple options.",
 					"items": {
 						"$ref": "#/$defs/trade_item"
-					},
-					"description": "Alternative items that can be traded. Allows the player to choose from multiple options."
+					}
+				}
+			}
+		},
+		"quantity_range": {
+			"type": "object",
+			"title": "Quantity Range",
+			"description": "A range of possible quantities for the item.",
+			"additionalProperties": false,
+			"properties": {
+				"min": {
+					"type": "integer",
+					"description": "Minimum quantity.",
+					"default": 1
+				},
+				"max": {
+					"type": "integer",
+					"description": "Maximum quantity.",
+					"default": 1
 				}
 			}
 		}

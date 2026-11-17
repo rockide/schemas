@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Entity Fall On Component",
+	"description": "Configures what distance an entity must fall onto this block to cause the onEntityFallOn block custom component event to be sent to script.",
+	"additionalProperties": false,
+	"properties": {
+		"min_fall_distance": {
+			"title": "Minimum Fall Distance",
+			"description": "The minimum distance in blocks that an entity needs to fall before events are raised.",
+			"type": "number",
+			"default": 0,
+			"minimum": -3.4028234663852886e+38,
+			"maximum": 3.4028234663852886e+38
+		}
+	}
+}

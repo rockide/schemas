@@ -25,6 +25,16 @@
 		}
 	},
 	"$defs": {
+		"molang_scalar": {
+			"anyOf": [
+				{
+					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+				},
+				{
+					"type": ["number", "boolean"]
+				}
+			]
+		},
 		"animation": {
 			"type": "object",
 			"additionalProperties": false,
@@ -42,18 +52,18 @@
 				},
 				"start_delay": {
 					"description": "How long to wait in seconds before playing this animation.  Note that this expression is evaluated once before playing, and only re-evaluated if asked to play from the beginning again.  A looping animation should use 'loop_delay' if it wants a delay between loops.",
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"loop_delay": {
 					"description": "How long to wait in seconds before looping this animation.  Note that this expression is evaluated after each loop and on looping animation only.",
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"anim_time_update": {
 					"description": "How does time pass when playing the animation.  Defaults to \"query.anim_time + query.delta_time\" which means advance in seconds.",
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"blend_weight": {
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"override_previous_animation": {
 					"description": "Reset bones in this animation to the default pose before applying this animation.",
@@ -124,7 +134,9 @@
 				},
 				"animation_length": {
 					"description": "Override calculated value (set as the max keyframe or event time) and set animation length in seconds.",
-					"type": "number"
+					"type": ["number", "boolean"],
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38
 				}
 			}
 		},
@@ -201,7 +213,7 @@
 							"pattern": "^[xyz]$"
 						},
 						"additionalProperties": {
-							"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+							"$ref": "#/$defs/molang_scalar"
 						}
 					}
 				},
@@ -238,24 +250,14 @@
 		"keyframe": {
 			"oneOf": [
 				{
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
-				},
-				{
-					"type": "number"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				{
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"oneOf": [
-							{
-								"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
-							},
-							{
-								"type": "number"
-							}
-						]
+						"$ref": "#/$defs/molang_scalar"
 					}
 				}
 			]
@@ -277,7 +279,7 @@
 					"description": "The name of a locator on the actor where the effect should be located."
 				},
 				"pre_effect_script": {
-					"type": "string",
+					"$ref": "#/$defs/molang_scalar",
 					"description": "A Molang script that will be run when the particle emitter is initialized."
 				},
 				"bind_to_actor": {

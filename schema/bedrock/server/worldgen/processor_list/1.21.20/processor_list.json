@@ -284,23 +284,27 @@
 					"description": "The axis to check distance along."
 				},
 				"min_dist": {
-					"$ref": "#/$defs/int_provider",
+					"type": "integer",
+					"default": 0,
 					"description": "Minimum distance from origin."
 				},
 				"max_dist": {
-					"$ref": "#/$defs/int_provider",
+					"type": "integer",
+					"default": 0,
 					"description": "Maximum distance from origin."
 				},
 				"min_chance": {
 					"type": "number",
 					"minimum": 0,
 					"maximum": 1,
+					"default": 0,
 					"description": "Minimum chance probability."
 				},
 				"max_chance": {
 					"type": "number",
 					"minimum": 0,
 					"maximum": 1,
+					"default": 0,
 					"description": "Maximum chance probability."
 				}
 			}
@@ -538,7 +542,7 @@
 					"description": "The processor type."
 				},
 				"value": {
-					"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/block_identifier",
+					"$ref": "../../../../../vanilla/server/tags.json#/$defs/block_tag",
 					"description": "The tag identifier for blocks to protect."
 				}
 			}

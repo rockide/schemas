@@ -1,0 +1,356 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Minecraft Bedrock Fog Settings 1.26.20",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:fog_settings"],
+	"properties": {
+		"format_version": {
+			"type": "string",
+			"const": "1.26.20",
+			"description": "Resource pack version this fog setting was built for. Minimum version is 1.16.100."
+		},
+		"minecraft:fog_settings": {
+			"type": "object",
+			"description": "Fog settings definition.",
+			"additionalProperties": false,
+			"required": ["description"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"description": "Fog identifier metadata.",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"type": "string",
+							"description": "The identifier for these fog settings. The identifier must include a namespace.",
+							"$ref": "../../../../vanilla/definition/identifier.json"
+						}
+					}
+				},
+				"distance": {
+					"type": "object",
+					"description": "The distance fog settings for different camera locations.",
+					"additionalProperties": false,
+					"properties": {
+						"air": {
+							"description": "The fog settings when the camera is in the air.",
+							"$ref": "#/$defs/distance_fog",
+							"unevaluatedProperties": false
+						},
+						"weather": {
+							"description": "The fog settings for when the camera is in the air with active weather (rain, snow, etc..).",
+							"$ref": "#/$defs/distance_fog",
+							"unevaluatedProperties": false
+						},
+						"water": {
+							"description": "The fog settings when the camera is in water.",
+							"$ref": "#/$defs/water_distance_fog"
+						},
+						"lava": {
+							"description": "The fog settings when the camera is in lava.",
+							"$ref": "#/$defs/distance_fog",
+							"unevaluatedProperties": false
+						},
+						"lava_resistance": {
+							"description": "The fog settings when the camera is in lava and the player has the lava resistance effect active.",
+							"$ref": "#/$defs/distance_fog",
+							"unevaluatedProperties": false
+						},
+						"powder_snow": {
+							"description": "The fog settings when the camera is inside a Powder Snow block.",
+							"$ref": "#/$defs/distance_fog",
+							"unevaluatedProperties": false
+						}
+					}
+				},
+				"volumetric": {
+					"type": "object",
+					"description": "The volumetric fog settings.",
+					"additionalProperties": false,
+					"properties": {
+						"density": {
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"air": {
+									"description": "The density settings for different camera locations.",
+									"$ref": "#/$defs/density_fog"
+								},
+								"weather": {
+									"description": "Fog density values as light passes through air blocks with active weather (rain, snow, etc..).",
+									"$ref": "#/$defs/density_fog"
+								},
+								"water": {
+									"description": "Fog density values as light passes through water blocks.",
+									"$ref": "#/$defs/density_fog"
+								},
+								"lava": {
+									"description": "Fog density values as light passes through lava blocks.",
+									"$ref": "#/$defs/density_fog"
+								},
+								"lava_resistance": {
+									"description": "Fog density values as light passes through lava blocks while the player has lava resistance.",
+									"$ref": "#/$defs/density_fog"
+								}
+							}
+						},
+						"media_coefficients": {
+							"type": "object",
+							"description": "The coefficient settings for the volumetric fog in different blocks.",
+							"additionalProperties": false,
+							"properties": {
+								"air": {
+									"description": "Fog coefficient values while light passes through air.",
+									"$ref": "#/$defs/media_coefficients"
+								},
+								"water": {
+									"description": "Fog coefficient values while light passes through water.",
+									"$ref": "#/$defs/media_coefficients"
+								},
+								"cloud": {
+									"description": "Fog coefficient values while light passes through clouds.",
+									"$ref": "#/$defs/media_coefficients"
+								}
+							}
+						},
+						"henyey_greenstein_g": {
+							"type": "object",
+							"description": "The henyey_greenstein_g settings for the volumetric fog in different blocks.",
+							"additionalProperties": false,
+							"properties": {
+								"air": {
+									"description": "Henyey-Greenstein-G value while light passes through air.",
+									"$ref": "#/$defs/henyey_greenstein"
+								},
+								"water": {
+									"description": "Henyey-Greenstein-G value while light passes through water.",
+									"$ref": "#/$defs/henyey_greenstein"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"$defs": {
+		"distance_fog": {
+			"type": "object",
+			"properties": {
+				"fog_start": {
+					"type": "number",
+					"description": "The distance from the player that the fog will begin to appear. 'fog_start' must be less than or equal to 'fog_end'."
+				},
+				"fog_end": {
+					"type": "number",
+					"minimum": 0,
+					"description": "The distance from the player that the fog will become fully opaque. 'fog_end' must be greater than or equal to 'fog_start'."
+				},
+				"fog_color": {
+					"description": "The color that the fog will take on.",
+					"$ref": "#/$defs/hex_color"
+				},
+				"render_distance_type": {
+					"type": "string",
+					"description": "Determines how distance value is used. Fixed distance is measured in blocks. Dynamic distance is multiplied by the current render distance.",
+					"enum": ["fixed", "render"]
+				}
+			}
+		},
+		"water_distance_fog": {
+			"unevaluatedProperties": false,
+			"allOf": [
+				{ "$ref": "#/$defs/distance_fog" },
+				{
+					"type": "object",
+					"properties": {
+						"transition_fog": { "$ref": "#/$defs/transition_fog" }
+					}
+				}
+			]
+		},
+		"transition_fog": {
+			"type": "object",
+			"additionalProperties": false,
+			"description": "Additional fog data which will slowly transition to the distance fog of current biome.",
+			"properties": {
+				"init_fog": {
+					"description": "Initial fog that will slowly transition into water distance fog of the biome when player goes into water.",
+					"$ref": "#/$defs/distance_fog",
+					"unevaluatedProperties": false
+				},
+				"min_percent": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 1,
+					"description": "The minimum progress of fog transition."
+				},
+				"mid_seconds": {
+					"type": "number",
+					"minimum": 0,
+					"description": "The time it takes to reach certain progress('mid_percent') of fog transition."
+				},
+				"mid_percent": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 1,
+					"description": "The progress of fog transition after 'mid_seconds' seconds."
+				},
+				"max_seconds": {
+					"type": "number",
+					"minimum": 0,
+					"description": "Total amount of time it takes to complete fog transition."
+				}
+			}
+		},
+		"density_fog": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"max_density": {
+					"description": "The maximum amount of opaqueness that the ground fog will take on. A value from [0.0, 1.0].",
+					"$ref": "#/$defs/density_value"
+				},
+				"uniform": {
+					"type": "boolean",
+					"description": "When set to true, the density will be uniform across all heights."
+				},
+				"zero_density_height": {
+					"$ref": "#/$defs/height_value",
+					"description": "The height in blocks that the ground fog will be completely transparent and begin to appear. This value needs to be at least 1 higher than 'max_density_height'"
+				},
+				"max_density_height": {
+					"$ref": "#/$defs/height_value",
+					"description": "The height in blocks that the ground fog will become it's maximum density."
+				}
+			},
+			"if": {
+				"required": ["uniform"],
+				"properties": {
+					"uniform": { "const": true }
+				}
+			},
+			"then": {
+				"properties": {
+					"zero_density_height": false,
+					"max_density_height": false
+				}
+			},
+			"else": {
+				"required": ["zero_density_height", "max_density_height"]
+			}
+		},
+		"hex_color": {
+			"type": "string",
+			"pattern": "^#[0-9A-Fa-f]{6}#"
+		},
+		"color_rgb": {
+			"oneOf": [
+				{ "$ref": "#/$defs/hex_color" },
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 1
+					}
+				}
+			]
+		},
+		"keyframe_map": {
+			"type": "object",
+			"minProperties": 1,
+			"propertyNames": {
+				"pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+			}
+		},
+		"density_value": {
+			"oneOf": [
+				{
+					"type": "number",
+					"minimum": 0,
+					"maximum": 1
+				},
+				{
+					"$ref": "#/$defs/keyframe_map",
+					"additionalProperties": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 1
+					}
+				}
+			]
+		},
+		"height_value": {
+			"oneOf": [
+				{
+					"type": "number",
+					"minimum": -64,
+					"maximum": 320
+				},
+				{
+					"$ref": "#/$defs/keyframe_map",
+					"additionalProperties": {
+						"type": "number",
+						"minimum": -64,
+						"maximum": 320
+					}
+				}
+			]
+		},
+		"color_rgb_value": {
+			"oneOf": [
+				{ "$ref": "#/$defs/color_rgb" },
+				{
+					"$ref": "#/$defs/keyframe_map",
+					"additionalProperties": { "$ref": "#/$defs/color_rgb" }
+				}
+			]
+		},
+		"media_coefficients": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"scattering": {
+					"description": "Proportion of light that is scattered per block.",
+					"$ref": "#/$defs/color_rgb_value"
+				},
+				"absorption": {
+					"description": "Proportion of light that is absorbed (lost) per block.",
+					"$ref": "#/$defs/color_rgb_value"
+				}
+			}
+		},
+		"henyey_greenstein_value": {
+			"oneOf": [
+				{
+					"type": "number",
+					"minimum": -1,
+					"maximum": 1
+				},
+				{
+					"$ref": "#/$defs/keyframe_map",
+					"additionalProperties": {
+						"type": "number",
+						"minimum": -1,
+						"maximum": 1
+					}
+				}
+			]
+		},
+		"henyey_greenstein": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"henyey_greenstein_g": {
+					"description": "Scattering distribution in range [-1.0, 1.0].",
+					"$ref": "#/$defs/henyey_greenstein_value"
+				}
+			}
+		}
+	}
+}

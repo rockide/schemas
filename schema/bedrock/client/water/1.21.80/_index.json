@@ -148,7 +148,7 @@
 							"maximum": 5.0
 						},
 						"power": {
-							"type": "integer",
+							"type": "number",
 							"description": "Controls how bright the caustics effect appears. Range [1, 6].",
 							"minimum": 1,
 							"maximum": 6
@@ -161,7 +161,10 @@
 						},
 						"texture": {
 							"description": "Resource location to a texture for controlling the shape of the caustics. If not supplied, a built-in texture is used automatically.",
-							"$ref": "../../../../vanilla/client/paths.json#/$defs/texture_path"
+							"anyOf": [
+								{ "type": "string" },
+								{ "$ref": "../../../../vanilla/client/paths.json#/$defs/texture_path" }
+							]
 						}
 					}
 				}

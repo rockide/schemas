@@ -17,7 +17,7 @@
 		"animations": {
 			"type": "object",
 			"propertyNames": {
-				"pattern": "^animation\\..+$"
+				"pattern": "^animation\\.[a-zA-Z0-9_.-]+(?![\\s\\S])"
 			},
 			"additionalProperties": {
 				"$ref": "#/$defs/animation"
@@ -25,6 +25,16 @@
 		}
 	},
 	"$defs": {
+		"molang_scalar": {
+			"anyOf": [
+				{
+					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+				},
+				{
+					"type": ["number", "boolean"]
+				}
+			]
+		},
 		"animation": {
 			"type": "object",
 			"additionalProperties": false,
@@ -42,15 +52,15 @@
 				},
 				"start_delay": {
 					"description": "How long to wait in seconds before playing this animation.  Note that this expression is evaluated once before playing, and only re-evaluated if asked to play from the beginning again.  A looping animation should use 'loop_delay' if it wants a delay between loops.",
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"loop_delay": {
 					"description": "How long to wait in seconds before looping this animation.  Note that this expression is evaluated after each loop and on looping animation only.",
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"anim_time_update": {
 					"description": "How does time pass when playing the animation.  Defaults to \"query.anim_time + query.delta_time\" which means advance in seconds.",
-					"$ref": "../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "#/$defs/molang_scalar"
 				},
 				"timeline": {
 					"type": "object",
@@ -73,7 +83,9 @@
 				},
 				"animation_length": {
 					"description": "Override calculated value (set as the max keyframe or event time) and set animation length in seconds.",
-					"type": "number"
+					"type": ["number", "boolean"],
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38
 				}
 			}
 		}

@@ -19,7 +19,7 @@
 			"type": "object",
 			"title": "Feature Rule Definition",
 			"additionalProperties": false,
-			"required": ["description", "conditions", "distribution"],
+			"required": ["description", "conditions"],
 			"properties": {
 				"description": {
 					"type": "object",
@@ -88,6 +88,7 @@
 				},
 				"iterations": {
 					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression",
+					"minimum": 0,
 					"description": "Number of scattered positions to generate."
 				},
 				"scatter_chance": {
@@ -109,13 +110,14 @@
 			}
 		},
 		"scatter_chance": {
-			"type": "object",
 			"title": "Scatter Chance",
 			"description": "Probability that this scatter will occur. Not evaluated each iteration; either no iterations will run, or all will.",
 			"unevaluatedProperties": false,
 			"oneOf": [
 				{
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/expression",
+					"exclusiveMinimum": 0,
+					"maximum": 100
 				},
 				{
 					"type": "object",
