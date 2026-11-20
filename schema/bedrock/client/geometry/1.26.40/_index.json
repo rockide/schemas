@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:geometry"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.26.40"]
+			"type": "string"
 		},
 		"minecraft:geometry": {
 			"type": "array",

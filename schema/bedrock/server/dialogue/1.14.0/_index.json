@@ -10,7 +10,7 @@
 				{
 					"$comment": "Range parser",
 					"type": "string",
-					"enum": ["1.14.0"]
+					"x-format-version": "[1.14.0-latest]"
 				},
 				{
 					"type": "array",

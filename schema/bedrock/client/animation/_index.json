@@ -7,10 +7,10 @@
 		"format_version": {
 			"anyOf": [
 				{
-					"$ref": "../../../vanilla/definition/format_version.json"
+					"x-format-version": "[1.8.0-latest]"
 				},
 				{
-					"enum": ["1.8.0", "1.10.0"]
+					"enum": ["beta"]
 				}
 			]
 		},

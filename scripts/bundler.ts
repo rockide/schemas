@@ -1,4 +1,5 @@
 import path from "node:path/posix";
+import { FormatVersionRange } from "./format_version_range";
 import type { Schema } from "./types";
 import { normalizePath, readJson } from "./utils";
 
@@ -114,6 +115,13 @@ export async function bundleSchema(entryPoint: string): Promise<Schema> {
 			return documents.get(filepath)!;
 		}
 		const schema = await readJson<Schema>(filepath);
+		new SchemaVisitor((node, pointer) => {
+			try {
+				FormatVersionRange.expandSchema(node as Record<string, unknown>);
+			} catch (error) {
+				throw new Error(`${filepath}#${pointer}: ${(error as Error).message}`);
+			}
+		}).visitSchema(schema);
 		documents.set(filepath, schema);
 		return schema;
 	};

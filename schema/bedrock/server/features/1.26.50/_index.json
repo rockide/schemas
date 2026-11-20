@@ -7,8 +7,7 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.26.50", "1.26.60"]
+			"type": "string"
 		}
 	},
 	"oneOf": [

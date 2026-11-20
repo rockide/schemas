@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:client_entity"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"const": "1.8.0"
+			"type": "string"
 		},
 		"minecraft:client_entity": {
 			"$ref": "#/$defs/client_entity"

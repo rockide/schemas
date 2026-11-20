@@ -6,8 +6,7 @@
 	"required": ["format_version", "minecraft:item"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.0.0", "1.16.0"]
+			"type": "string"
 		},
 		"minecraft:item": {
 			"type": "object",

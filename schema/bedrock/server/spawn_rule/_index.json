@@ -3,5 +3,10 @@
 	"type": "object",
 	"title": "Spawn Rule",
 	"description": "Spawn rules definition for Minecraft Bedrock Edition entities.",
+	"properties": {
+		"format_version": {
+			"x-format-version": "[1.8.0-latest]"
+		}
+	},
 	"$ref": "./1.8.0/_index.json"
 }

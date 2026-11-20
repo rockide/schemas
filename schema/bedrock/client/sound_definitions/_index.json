@@ -6,7 +6,7 @@
 		"format_version": {
 			"type": "string",
 			"description": "Sound definitions format version.",
-			"enum": ["1.13.0", "1.14.0", "1.20.20", "1.26.50"]
+			"x-format-version": "[1.13.0-latest]"
 		},
 		"sound_definitions": {
 			"type": "object",
@@ -17,7 +17,7 @@
 		{
 			"if": {
 				"properties": {
-					"format_version": { "const": "1.13.0" }
+					"format_version": { "x-format-version": "[1.13.0-1.14.0)" }
 				}
 			},
 			"then": { "$ref": "./1.13.0/_index.json" }
@@ -25,7 +25,7 @@
 		{
 			"if": {
 				"properties": {
-					"format_version": { "const": "1.14.0" }
+					"format_version": { "x-format-version": "[1.14.0-1.20.20)" }
 				}
 			},
 			"then": { "$ref": "./1.14.0/_index.json" }
@@ -33,7 +33,7 @@
 		{
 			"if": {
 				"properties": {
-					"format_version": { "const": "1.20.20" }
+					"format_version": { "x-format-version": "[1.20.20-1.26.50)" }
 				}
 			},
 			"then": { "$ref": "./1.20.20/_index.json" }
@@ -41,7 +41,7 @@
 		{
 			"if": {
 				"properties": {
-					"format_version": { "const": "1.26.50" }
+					"format_version": { "x-format-version": "[1.26.50-latest]" }
 				}
 			},
 			"then": { "$ref": "./1.26.50/_index.json" }

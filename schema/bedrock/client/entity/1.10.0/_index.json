@@ -8,7 +8,6 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"const": "1.10.0",
 			"description": "Specifies the format version of this client entity definition. Determines which features and syntax are available."
 		},
 		"minecraft:client_entity": {
