@@ -3,6 +3,7 @@
 	"title": "Animation Controller",
 	"type": "object",
 	"required": ["format_version", "animation_controllers"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.8.0-latest]"

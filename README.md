@@ -20,6 +20,8 @@ Format versions are generated through `x-format-version` keyword in the schema.
 }
 ```
 
+`x-format-version-enums` is used to collect all the format versions in the schema and generate an enum for the `format_version` property (root only).
+
 ## generator
 
 Used for generating enums for vanilla identifiers and assets such as particle identifiers, sound paths, etc.

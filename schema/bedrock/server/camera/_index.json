@@ -4,6 +4,7 @@
 	"title": "Minecraft Bedrock Camera Preset File",
 	"description": "Schema for camera preset definition files used by behavior packs.",
 	"required": ["format_version", "minecraft:camera_preset"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.19.50-latest]"

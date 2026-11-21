@@ -4,6 +4,7 @@
 	"title": "Minecraft Bedrock Aim Assist Preset File",
 	"description": "Schema for aim assist preset definition files used by behavior packs.",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.21.50-latest]"

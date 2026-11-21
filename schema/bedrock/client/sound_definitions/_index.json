@@ -2,9 +2,9 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "Minecraft Bedrock Sound Definitions",
 	"type": "object",
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
-			"type": "string",
 			"description": "Sound definitions format version.",
 			"x-format-version": "[1.13.0-latest]"
 		},

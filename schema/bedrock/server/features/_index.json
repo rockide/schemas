@@ -4,6 +4,7 @@
 	"title": "Minecraft Bedrock Features",
 	"description": "Schema for feature definition files used by behavior packs.",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.13.0-latest]"

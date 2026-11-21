@@ -3,6 +3,7 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Client Entity",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.8.0-latest]"

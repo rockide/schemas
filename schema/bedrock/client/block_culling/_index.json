@@ -3,6 +3,7 @@
 	"type": "object",
 	"title": "Block Culling",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.20.60-1.21.80]"

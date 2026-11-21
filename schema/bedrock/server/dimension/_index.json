@@ -4,6 +4,7 @@
 	"title": "Minecraft Bedrock Dimension File",
 	"description": "Schema for custom dimension definition files used by behavior packs.",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"x-format-version": "[1.18.0-latest]"

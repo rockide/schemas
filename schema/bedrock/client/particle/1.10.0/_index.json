@@ -6,8 +6,7 @@
 	"additionalProperties": false,
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"const": "1.10.0"
+			"type": "string"
 		},
 		"particle_effect": {
 			"type": "object",
