@@ -6,14 +6,7 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"anyOf": [
-				{
-					"x-format-version": "[1.0.0-1.20.10)"
-				},
-				{
-					"x-format-version": "[1.20.10-latest]"
-				}
-			]
+			"x-format-version": ["[1.0.0-1.20.10)", "[1.20.10-latest]"]
 		}
 	},
 	"allOf": [

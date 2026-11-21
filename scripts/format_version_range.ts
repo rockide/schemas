@@ -27,16 +27,33 @@ export class FormatVersionRange {
 		if (node === undefined) {
 			return;
 		}
-		if (typeof node !== "string") {
-			throw new Error(`Invalid ${FormatVersionRange.KEYWORD}: "${node}"`);
-		}
 		for (const key of ["anyOf", "enum", "const", "pattern"]) {
 			if (key in schema) {
 				throw new Error(`Cannot use ${FormatVersionRange.KEYWORD} with "${key}"`);
 			}
 		}
 		delete schema[FormatVersionRange.KEYWORD];
-		Object.assign(schema, FormatVersionRange.parse(node).toSchema());
+
+		if (typeof node === "string") {
+			Object.assign(schema, FormatVersionRange.parse(node).toSchema());
+			return;
+		}
+		if (Array.isArray(node)) {
+			const enums: string[] = [];
+			const patterns: unknown[] = [];
+			for (const item of node) {
+				if (typeof item !== "string") {
+					throw new Error(`Invalid ${FormatVersionRange.KEYWORD}: "${item}"`);
+				}
+				const anyOf = FormatVersionRange.parse(item).toSchema().anyOf;
+				enums.push(anyOf[0].enum![0]);
+				patterns.push(anyOf[1]);
+			}
+			Object.assign(schema, { anyOf: [{ enum: enums }, ...patterns] });
+			return;
+		}
+
+		throw new Error(`Invalid ${FormatVersionRange.KEYWORD}: "${node}"`);
 	}
 
 	/**

@@ -10,7 +10,15 @@ Run `bun run compile` to compile the schemas into a single file for each entry p
 
 ### Format Version
 
-Format versions are generated through `x-format-version` keyword in the schema. The `x-format-version` keyword is used to specify the range of format versions that a schema supports. The range is specified using a string in the format `(min-max]`, where `min` and `max` are the minimum and maximum format versions supported by the schema. The `max` value can also be set to `latest`, which indicates that the schema supports all future format versions.
+Format versions are generated through `x-format-version` keyword in the schema.
+
+```json
+{
+	"x-format-version": "[1.0.0-1.20.10)", // for versions 1.0.0 to 1.20.10 (exclusive)
+	"x-format-version": "[1.20.10-latest]", // for versions 1.20.10 and above
+	"x-format-version": ["[1.0.0-1.20.10)", "[1.20.10-latest]"] // can be an array of ranges
+}
+```
 
 ## generator
 
