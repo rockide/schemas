@@ -6,7 +6,7 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.50"]
+			"x-format-version": "[1.21.50-latest]"
 		}
 	},
 	"allOf": [
@@ -14,7 +14,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.21.50"]
+						"x-format-version": "[1.21.50-latest]"
 					}
 				}
 			},

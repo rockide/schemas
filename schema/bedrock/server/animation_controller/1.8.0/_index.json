@@ -6,8 +6,7 @@
 	"required": ["format_version", "animation_controllers"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"pattern": "^1\\.0*[89](?:\\.[0-9]+)?(?![\\s\\S])"
+			"type": "string"
 		},
 		"animation_controllers": {
 			"type": "object",

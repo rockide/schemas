@@ -6,7 +6,7 @@
 	"required": ["format_version", "minecraft:block_culling_rules"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.20.60"]
+			"type": "string"
 		},
 		"minecraft:block_culling_rules": {
 			"type": "object",

@@ -5,8 +5,7 @@
 	"additionalProperties": false,
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"const": "1.8.0"
+			"type": "string"
 		},
 		"animation_controllers": {
 			"type": "object",

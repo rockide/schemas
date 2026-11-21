@@ -4,6 +4,7 @@
 	"description": " Defines Vibrant Visuals atmospheric effects such as horizon blending, scattering strength, and sky colors.",
 	"type": "object",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
 			"description": "The schema version used to parse these atmosphere settings.",

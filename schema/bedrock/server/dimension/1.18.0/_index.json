@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:dimension"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.18.0"]
+			"type": "string"
 		},
 		"minecraft:dimension": {
 			"$ref": "#/$defs/dimension_definition"
