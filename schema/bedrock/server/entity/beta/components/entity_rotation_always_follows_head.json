@@ -1,0 +1,7 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {},
+	"additionalProperties": false,
+	"description": "Keeps the entity's rotation aligned with its head after look behaviors run. This overrides the yaw set by movement components, so it is intended for entities that turn in place."
+}
