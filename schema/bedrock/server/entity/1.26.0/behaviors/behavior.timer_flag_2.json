@@ -72,6 +72,11 @@
 			"minimum": 0,
 			"maximum": 2147483647,
 			"description": ""
+		},
+		"trigger_on_end_when_interrupted": {
+			"type": "boolean",
+			"default": true,
+			"description": "Whether the 'on_end' events run when another goal interrupts this goal before its duration elapses."
 		}
 	},
 	"description": "Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_2 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise."

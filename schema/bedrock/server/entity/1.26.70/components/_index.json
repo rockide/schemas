@@ -120,6 +120,9 @@
 		"minecraft:can_stand_on_powder_snow": {
 			"$ref": "../../1.26.50/components/can_stand_on_powder_snow.json"
 		},
+		"minecraft:can_stand_on_brittle_ice": {
+			"$ref": "../../1.26.60/components/can_stand_on_brittle_ice.json"
+		},
 		"minecraft:cannot_be_attacked": {
 			"$ref": "../../1.26.40/components/cannot_be_attacked.json"
 		},
