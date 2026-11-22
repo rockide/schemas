@@ -2,7 +2,7 @@
 
 Provides JSON Schemas for Minecraft Bedrock Edition add-on development, with `format_version` versioning.
 
-Minecraft version: v1.26.60.29-preview
+Minecraft version: v1.26.60
 
 ## compile
 
