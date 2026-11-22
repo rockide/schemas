@@ -40,14 +40,14 @@ export class FormatVersionRange {
 		}
 		if (Array.isArray(node)) {
 			const enums: string[] = [];
-			const patterns: unknown[] = [];
+			const patterns: Array<{ type: "string"; pattern: string }> = [];
 			for (const item of node) {
 				if (typeof item !== "string") {
 					throw new Error(`Invalid ${FormatVersionRange.KEYWORD}: "${item}"`);
 				}
-				const anyOf = FormatVersionRange.parse(item).toSchema().anyOf;
-				enums.push(anyOf[0].enum![0]);
-				patterns.push(anyOf[1]);
+				const parsed = FormatVersionRange.parse(item);
+				enums.push(parsed.toEnum());
+				patterns.push({ type: "string", pattern: parsed.toRegex() });
 			}
 			Object.assign(schema, { anyOf: [{ enum: enums }, ...patterns] });
 			return;
@@ -66,6 +66,9 @@ export class FormatVersionRange {
 		readonly max: Parts,
 	) {}
 
+	toEnum(): string {
+		return this.min.join(".");
+	}
 	toRegex(): string {
 		const alternatives = [partsRangeRegex(this.min, this.max)];
 
@@ -83,7 +86,7 @@ export class FormatVersionRange {
 		return {
 			anyOf: [
 				{
-					enum: [this.min.join(".")],
+					enum: [this.toEnum()],
 				},
 				{
 					type: "string",
