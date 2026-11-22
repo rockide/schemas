@@ -1,6 +1,5 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
 	"$defs": {
 		"definition": {
 			"type": "object",
@@ -124,6 +123,5 @@
 		}
 	},
 	"$ref": "#/$defs/definition",
-	"additionalProperties": false,
 	"description": "Allows this entity to generate paths by walking around and jumping up and down a block like regular mobs."
 }
