@@ -5,7 +5,7 @@
 	"properties": {
 		"format_version": {
 			"$comment": "1.21.60 not strict, 1.26.50 strict",
-			"x-format-version": "[1.21.60-latest)"
+			"x-format-version": "[1.21.60-latest]"
 		}
 	},
 	"$ref": "./1.26.50/_index.json"
