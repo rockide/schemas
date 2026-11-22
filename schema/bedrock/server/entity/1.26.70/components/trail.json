@@ -1,0 +1,90 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"block_type": {
+			"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/block_identifier",
+			"default": "air",
+			"description": "The type of block that is spawned as a trail behind the entity. Solid blocks cannot be spawned at an offset of (0, 0, 0)."
+		},
+		"extent": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 16,
+			"default": 0,
+			"description": "Maximum horizontal distance from the center at which blocks can be placed."
+		},
+		"offset": {
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"type": "number",
+				"minimum": -3.4028234663852886e38,
+				"maximum": 3.4028234663852886e38
+			},
+			"default": [0, 0, 0],
+			"description": "Offset from the entity's position used to determine where trail blocks are placed and placement checks are applied, capped at 16 blocks away. X and Z are relative to the entity's orientation and rotate to its nearest cardinal facing; Y is a vertical offset."
+		},
+		"place_only_on_block_position_change": {
+			"type": "boolean",
+			"default": false,
+			"description": "When true, trail blocks are only placed on ticks where the bottom of the entity moves into a different block position, or where the entity lands (goes from airborne to grounded). Standing still or moving within the same block does not place blocks. Defaults to false."
+		},
+		"placement_checks": {
+			"type": "string",
+			"enum": ["none", "block", "standard"],
+			"default": "block",
+			"description": "Controls the checks applied at each trail block placement position before placing the trail block. 'none' applies no placement checks, 'block' applies block placement conditions, and 'standard' applies standard block placement rules, including clearance from entities that obstruct block placement."
+		},
+		"placement_conditions": {
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"$ref": "#/$defs/placement_condition"
+			},
+			"default": [
+				{
+					"y_offset": 0,
+					"block_types": ["minecraft:air"]
+				}
+			],
+			"description": "Conditions that must all be satisfied relative to the trail block placement position. Block types within one condition are alternatives. When omitted, defaults to [{ \"y_offset\": 0, \"block_types\": [\"minecraft:air\"] }]."
+		},
+		"placement_filter": {
+			"$ref": "../../../../../vanilla/server/filter/entity/_index.json",
+			"description": "One or more conditions that must be met in order to cause the chosen block type to be placed."
+		},
+		"shape": {
+			"type": "string",
+			"enum": ["corners", "square", "circle"],
+			"default": "corners",
+			"description": "Controls the horizontal placement pattern. 'corners' places four corner blocks, 'square' fills a square, and 'circle' fills a circular disk. Defaults to 'corners'."
+		}
+	},
+	"additionalProperties": false,
+	"description": "Causes an entity to leave a trail of blocks as it moves about the world. Obeys Mob Griefing rules.",
+	"$defs": {
+		"placement_condition": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"block_types": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "../../../../../vanilla/server/block_descriptor.json"
+					},
+					"description": "Block types that satisfy this condition at its vertical offset from the placement position."
+				},
+				"y_offset": {
+					"type": "integer",
+					"minimum": -16,
+					"maximum": 16,
+					"default": 0,
+					"description": "Vertical offset from the trail block placement position. Defaults to 0."
+				}
+			}
+		}
+	}
+}

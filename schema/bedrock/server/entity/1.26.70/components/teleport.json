@@ -1,0 +1,83 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"can_teleport_into_liquid": {
+			"type": "boolean",
+			"default": false,
+			"description": "If set to true, the entity can teleport into blocks that contain liquids, such as water."
+		},
+		"dark_teleport_chance": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/dark_teleport_chance"
+		},
+		"light_teleport_chance": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/light_teleport_chance"
+		},
+		"max_random_teleport_time": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/max_random_teleport_time"
+		},
+		"min_random_teleport_time": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/min_random_teleport_time"
+		},
+		"on_teleport_sound": {
+			"$ref": "../../../../../vanilla/server/level_sound.json",
+			"default": "teleport",
+			"description": "The level sound event which is played after a successful teleportation. Entities without a sound bound to this event play the default teleport sound."
+		},
+		"projectile_filter": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/projectile_filter"
+		},
+		"random_teleport_cube": {
+			"$ref": "../../1.26.60/components/teleport.json#/properties/random_teleport_cube"
+		},
+		"random_teleports": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/random_teleports"
+		},
+		"target_distance": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/target_distance"
+		},
+		"target_teleport_chance": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/target_teleport_chance"
+		},
+		"target_teleport_distance": {
+			"type": "object",
+			"default": {
+				"min": 16,
+				"max": 16
+			},
+			"description": "The minimum and maximum distance the entity can teleport toward the target. Negative values teleport away from the target. Values need to be between -32 and 32.",
+			"additionalProperties": false,
+			"properties": {
+				"max": {
+					"type": "number",
+					"minimum": -32,
+					"maximum": 32,
+					"default": 0
+				},
+				"min": {
+					"type": "number",
+					"minimum": -32,
+					"maximum": 32,
+					"default": 0
+				}
+			}
+		},
+		"target_teleport_offset": {
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"type": "number",
+				"minimum": 0,
+				"maximum": 32
+			},
+			"default": [4, 8, 4],
+			"description": "The maximum random offset, on each axis and in either direction, added to the teleport directional vector. The y offset is rounded down to whole blocks. Values need to be between 0 and 32."
+		},
+		"teleports_on_projectile_hit": {
+			"$ref": "../../legacy/components/teleport.json#/$defs/definition/properties/teleports_on_projectile_hit"
+		}
+	},
+	"additionalProperties": false,
+	"description": "Defines an entity's teleporting behavior."
+}
