@@ -17,6 +17,8 @@ import {
 	generateCommandEnum,
 	generateServerBiomeTag,
 	generateServerEntityComponents,
+	generateServerLevelSound,
+	generateServerParticleType,
 	generateServerPaths,
 	generateServerShapes,
 	generateServerTypeFamily,
@@ -654,6 +656,24 @@ const entries: Entry[] = [
 			const components = await generateServerEntityComponents();
 			return {
 				enum: components,
+			};
+		},
+	},
+	{
+		filepath: "vanilla/server/particle_type.json",
+		content: async () => {
+			const particleTypes = await generateServerParticleType();
+			return {
+				enum: particleTypes,
+			};
+		},
+	},
+	{
+		filepath: "vanilla/server/level_sound.json",
+		content: async () => {
+			const levelSounds = await generateServerLevelSound();
+			return {
+				enum: levelSounds,
 			};
 		},
 	},
