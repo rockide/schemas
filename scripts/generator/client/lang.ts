@@ -18,10 +18,12 @@ export async function generateClientLang() {
 					if (key && value) {
 						langKeys.push(key.trim());
 						if (key.startsWith("itemGroup.name")) {
-							creativeGroups.push(key.trim());
+							const trimmed = key.trim();
+							creativeGroups.push(trimmed, `minecraft:${trimmed}`);
 						}
 					}
 				}
+				creativeGroups.sort((a, b) => a.localeCompare(b));
 				return {
 					langKeys,
 					creativeGroups,
