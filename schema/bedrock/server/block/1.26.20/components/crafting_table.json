@@ -19,7 +19,5 @@
 			"description": "Specifies the language file key that maps to what text will be displayed in the UI of this table."
 		}
 	},
-	"required": [
-		"crafting_tags"
-	]
+	"required": ["crafting_tags"]
 }

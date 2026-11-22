@@ -8,15 +8,8 @@
 		"precipitation_behavior": {
 			"type": "string",
 			"description": "What behavior should the block have.",
-			"enum": [
-				"none",
-				"obstruct_rain",
-				"obstruct_rain_accumulate_snow",
-				"snowlogging"
-			]
+			"enum": ["none", "obstruct_rain", "obstruct_rain_accumulate_snow", "snowlogging"]
 		}
 	},
-	"required": [
-		"precipitation_behavior"
-	]
+	"required": ["precipitation_behavior"]
 }

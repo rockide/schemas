@@ -10,23 +10,9 @@
 			"description": "The list of faces that are considered connected to the circuit.",
 			"items": {
 				"type": "string",
-				"enum": [
-					"north",
-					"east",
-					"south",
-					"west",
-					"up",
-					"down"
-				]
+				"enum": ["north", "east", "south", "west", "up", "down"]
 			},
-			"default": [
-				"down",
-				"up",
-				"north",
-				"south",
-				"west",
-				"east"
-			]
+			"default": ["down", "up", "north", "south", "west", "east"]
 		},
 		"power": {
 			"type": "integer",
@@ -37,14 +23,7 @@
 		"strongly_powered_face": {
 			"description": "The block touching this face will become strongly powered with the signal level strength of 'power'.",
 			"type": "string",
-			"enum": [
-				"north",
-				"east",
-				"south",
-				"west",
-				"up",
-				"down"
-			]
+			"enum": ["north", "east", "south", "west", "up", "down"]
 		},
 		"transform_relative": {
 			"type": "boolean",
@@ -52,7 +31,5 @@
 			"description": "If true, the strongly_powered_face and connected_faces properties will be rotated according to the minecraft:transformation component."
 		}
 	},
-	"required": [
-		"power"
-	]
+	"required": ["power"]
 }

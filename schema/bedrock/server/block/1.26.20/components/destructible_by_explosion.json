@@ -17,9 +17,7 @@
 					"minimum": 0
 				}
 			},
-			"required": [
-				"explosion_resistance"
-			]
+			"required": ["explosion_resistance"]
 		}
 	]
 }

@@ -24,19 +24,14 @@
 					}
 				}
 			},
-			"required": [
-				"seconds_to_destroy"
-			]
+			"required": ["seconds_to_destroy"]
 		}
 	],
 	"$defs": {
 		"item_specific_speed": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"item",
-				"destroy_speed"
-			],
+			"required": ["item", "destroy_speed"],
 			"properties": {
 				"item": {
 					"description": "A filter for the item used while mining.",

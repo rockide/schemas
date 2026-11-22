@@ -4,33 +4,24 @@
 	"title": "Minecraft Bedrock Water Settings 1.21.40",
 	"description": "Water settings for Vibrant Visuals. Defines particle concentrations, waves, and caustics for water rendering.",
 	"additionalProperties": false,
-	"required": [
-		"format_version",
-		"minecraft:water_settings"
-	],
+	"required": ["format_version", "minecraft:water_settings"],
 	"properties": {
 		"format_version": {
 			"type": "string",
 			"description": "The 3-part schema version for parsing these water settings.",
-			"enum": [
-				"1.21.40"
-			]
+			"enum": ["1.21.40"]
 		},
 		"minecraft:water_settings": {
 			"type": "object",
 			"description": "The root object containing water rendering settings.",
 			"additionalProperties": false,
-			"required": [
-				"description"
-			],
+			"required": ["description"],
 			"properties": {
 				"description": {
 					"type": "object",
 					"description": "Metadata that identifies these water settings.",
 					"additionalProperties": false,
-					"required": [
-						"identifier"
-					],
+					"required": ["identifier"],
 					"properties": {
 						"identifier": {
 							"type": "string",

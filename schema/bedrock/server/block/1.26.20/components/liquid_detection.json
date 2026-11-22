@@ -29,26 +29,14 @@
 						"type": "string",
 						"description": "How the block reacts to flowing water.",
 						"default": "blocking",
-						"enum": [
-							"blocking",
-							"broken",
-							"popped",
-							"no_reaction"
-						]
+						"enum": ["blocking", "broken", "popped", "no_reaction"]
 					},
 					"stops_liquid_flowing_from_direction": {
 						"type": "array",
 						"description": "When a block contains a liquid, controls the directions in which the liquid can't flow out from the block.",
 						"items": {
 							"type": "string",
-							"enum": [
-								"up",
-								"down",
-								"north",
-								"south",
-								"east",
-								"west"
-							]
+							"enum": ["up", "down", "north", "south", "east", "west"]
 						}
 					},
 					"use_liquid_clipping": {
@@ -60,7 +48,5 @@
 			}
 		}
 	},
-	"required": [
-		"detection_rules"
-	]
+	"required": ["detection_rules"]
 }

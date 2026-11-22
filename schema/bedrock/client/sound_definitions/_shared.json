@@ -4,9 +4,7 @@
 		"legacy_streaming_defaults": {
 			"if": {
 				"type": "object",
-				"required": [
-					"stream"
-				],
+				"required": ["stream"],
 				"properties": {
 					"stream": {
 						"const": true
@@ -31,9 +29,7 @@
 		"sound_definition": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"sounds"
-			],
+			"required": ["sounds"],
 			"properties": {
 				"category": {
 					"type": "string",
@@ -94,9 +90,7 @@
 		"sound_entry": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"name"
-			],
+			"required": ["name"],
 			"properties": {
 				"name": {
 					"$ref": "../../../vanilla/client/paths.json#/$defs/sound_path"

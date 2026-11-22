@@ -9,9 +9,7 @@
 			"description": "Adds a container to this block.",
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"slot_count"
-			],
+			"required": ["slot_count"],
 			"properties": {
 				"slot_count": {
 					"type": "integer",

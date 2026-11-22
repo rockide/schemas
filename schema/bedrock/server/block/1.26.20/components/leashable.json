@@ -12,11 +12,7 @@
 			"items": {
 				"type": "number"
 			},
-			"default": [
-				0,
-				0.25,
-				0
-			]
+			"default": [0, 0.25, 0]
 		}
 	}
 }
