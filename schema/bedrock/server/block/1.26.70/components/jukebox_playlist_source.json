@@ -1,0 +1,7 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Jukebox Playlist Source",
+	"description": "Allows a jukebox directly below this block to use its existing container as a playlist source. This component is an empty object. It does not create a container and has no effect without one. Requires format_version 1.26.70 or later and the Upcoming Creator Features experiment. To enable it conditionally, define it only in the relevant permutations; omitting it from a permutation does not remove it from the base components.",
+	"additionalProperties": false
+}
