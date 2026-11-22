@@ -335,6 +335,21 @@
 			},
 			{
 				"fileMatch": [
+					"resource_pack/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*RP/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"RP_*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*rp/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"rp_*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"resource_pack/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*RP/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"RP_*/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*rp/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"rp_*/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}"
+				],
+				"url": "./dist/33lvuo5ht8wox.json"
+			},
+			{
+				"fileMatch": [
 					"resource_pack/attachables/**/*.{json,jsonc,json5}",
 					"*RP/attachables/**/*.{json,jsonc,json5}",
 					"RP_*/attachables/**/*.{json,jsonc,json5}",

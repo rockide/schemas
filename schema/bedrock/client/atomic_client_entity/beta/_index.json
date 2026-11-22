@@ -1,0 +1,148 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Atomic Client Entity beta",
+	"required": ["format_version", "minecraft:atomic_client_entity"],
+	"additionalProperties": false,
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:atomic_client_entity": {
+			"type": "object",
+			"title": "Atomic Client Entity Document",
+			"description": "Document structure for Atomic Client Entity JSON files. Simplified format with no component groups or events.",
+			"required": ["description"],
+			"additionalProperties": false,
+			"properties": {
+				"description": {
+					"$ref": "#/$defs/description"
+				},
+				"components": {
+					"$ref": "./components/_index.json",
+					"description": "Component definitions for Atomic Client Entity. Flat component storage with no groups or events."
+				}
+			}
+		}
+	},
+	"$defs": {
+		"description": {
+			"type": "object",
+			"title": "Atomic Client Entity Description",
+			"description": "Description metadata for Atomic Client Entity. Molang expressions are recognized under blend_expression, blend_value, initialize, on_entry, on_exit, pre_animation, events, and transitions. Queries are unsupported. Random/die-roll operations are unsupported in continuously evaluated expressions and may be used in one-shot hooks. Value expressions allow read-only operations, while initialize, pre_animation, and event hooks may assign variables. Animation expressions can read context.key_frame_lerp_fraction, a [0, 1] interpolation fraction.",
+			"required": ["identifier"],
+			"additionalProperties": false,
+			"properties": {
+				"identifier": {
+					"$ref": "../../../../vanilla/definition/identifier.json"
+				},
+				"animations": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"$ref": "../../../../vanilla/client/identifiers.json#/$defs/animation_identifier"
+					}
+				},
+				"geometry": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"$ref": "../../../../vanilla/client/identifiers.json#/$defs/geometry_identifier"
+					}
+				},
+				"materials": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"$ref": "../../../../vanilla/client/identifiers.json#/$defs/material_identifier"
+					}
+				},
+				"particle_effects": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"$ref": "../../../../vanilla/client/identifiers.json#/$defs/particle_identifier"
+					}
+				},
+				"render_controllers": {
+					"type": "array",
+					"default": [],
+					"items": {
+						"$ref": "../../../../vanilla/client/identifiers.json#/$defs/render_controller_identifier"
+					}
+				},
+				"scripts": {
+					"$ref": "#/$defs/scripts"
+				},
+				"sound_effects": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"$ref": "../../../../vanilla/client/identifiers.json#/$defs/sound_identifier"
+					}
+				},
+				"textures": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"$ref": "../../../../vanilla/client/paths.json#/$defs/texture_path"
+					}
+				}
+			}
+		},
+		"scripts": {
+			"type": "object",
+			"title": "Script Description",
+			"description": "Inline scripts for ACE rendering. initialize and pre_animation may assign variables; Molang queries are not supported. Random/die-roll operations are unsupported in continuously evaluated expressions. animate contains aliases that must name animations.",
+			"additionalProperties": false,
+			"properties": {
+				"animate": {
+					"type": "array",
+					"default": [],
+					"items": {
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"$ref": "#/$defs/conditional_animate_entry"
+							}
+						]
+					}
+				},
+				"initialize": {
+					"type": "array",
+					"default": [],
+					"items": {
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					}
+				},
+				"pre_animation": {
+					"type": "array",
+					"default": [],
+					"items": {
+						"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					}
+				}
+			}
+		},
+		"conditional_animate_entry": {
+			"type": "object",
+			"title": "Conditional Animate Entry",
+			"required": ["name"],
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"condition": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
+				},
+				"blend_weight": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/number_or_string"
+				}
+			}
+		}
+	}
+}

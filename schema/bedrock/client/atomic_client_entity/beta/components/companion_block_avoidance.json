@@ -1,0 +1,30 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "minecraft:companion_block_avoidance",
+	"description": "Defines fallback anchor offsets used when the primary companion follow target clips into blocks.",
+	"required": ["backup_anchor_offsets"],
+	"additionalProperties": false,
+	"properties": {
+		"anchor_switch_cooldown": {
+			"type": "integer",
+			"minimum": 0,
+			"default": 200
+		},
+		"backup_anchor_offsets": {
+			"type": "array",
+			"items": {
+				"type": "array",
+				"minItems": 3,
+				"maxItems": 3,
+				"items": {
+					"type": "number"
+				}
+			}
+		},
+		"require_hidden_before_fallback": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

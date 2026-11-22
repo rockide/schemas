@@ -1,0 +1,18 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Atomic Client Entity component definitions",
+	"description": "Component definitions for Atomic Client Entity. Flat component storage with no groups or events.",
+	"additionalProperties": false,
+	"properties": {
+		"minecraft:aabb_dimensions": {
+			"$ref": "./aabb_dimensions.json"
+		},
+		"minecraft:companion_block_avoidance": {
+			"$ref": "./companion_block_avoidance.json"
+		},
+		"minecraft:companion_block_clipping": {
+			"$ref": "./companion_block_clipping.json"
+		}
+	}
+}

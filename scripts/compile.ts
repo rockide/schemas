@@ -156,6 +156,10 @@ const RP_ENTRIES: JsonValidationEntry[] = [
 		url: "./schema/bedrock/client/atmospheric/_index.json",
 	},
 	{
+		fileMatch: "atomic_client_entities/**/*.{json,jsonc,json5}",
+		url: "./schema/bedrock/client/atomic_client_entity/_index.json",
+	},
+	{
 		fileMatch: "attachables/**/*.{json,jsonc,json5}",
 		url: "./schema/bedrock/client/attachable/_index.json",
 	},
