@@ -5,14 +5,7 @@
 	"required": ["format_version", "animations"],
 	"properties": {
 		"format_version": {
-			"anyOf": [
-				{
-					"x-format-version": "[1.8.0-latest]"
-				},
-				{
-					"enum": ["beta"]
-				}
-			]
+			"x-format-version": "[1.8.0-latest]"
 		},
 		"animations": {
 			"type": "object",
