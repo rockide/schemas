@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:camera_preset"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.26.50"]
+			"type": "string"
 		},
 		"minecraft:camera_preset": {
 			"$ref": "../1.19.50/_index.json#/$defs/camera_preset_definition",

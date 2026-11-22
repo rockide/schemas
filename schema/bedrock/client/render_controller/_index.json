@@ -5,14 +5,7 @@
 	"required": ["format_version", "render_controllers"],
 	"properties": {
 		"format_version": {
-			"anyOf": [
-				{
-					"$ref": "../../../vanilla/definition/format_version.json"
-				},
-				{
-					"enum": ["1.8.0"]
-				}
-			]
+			"x-format-version": "[1.8.0-latest]"
 		},
 		"render_controllers": {
 			"type": "object",

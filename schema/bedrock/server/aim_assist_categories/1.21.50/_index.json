@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:aim_assist_categories"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.21.50"]
+			"type": "string"
 		},
 		"minecraft:aim_assist_categories": {
 			"$ref": "#/$defs/camera_aim_assist_categories_definition"

@@ -6,8 +6,7 @@
 	"additionalProperties": false,
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.21.120"]
+			"type": "string"
 		},
 		"minecraft:entity": {
 			"type": "object",

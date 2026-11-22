@@ -4,7 +4,7 @@
 	"type": "object",
 	"properties": {
 		"format_version": {
-			"const": "1.13.0"
+			"type": "string"
 		}
 	},
 	"additionalProperties": {
@@ -21,9 +21,7 @@
 					"sounds": {
 						"items": {
 							"not": {
-								"required": [
-									"pitch"
-								],
+								"required": ["pitch"],
 								"type": "object"
 							},
 							"$ref": "../_shared.json#/$defs/legacy_streaming_defaults"

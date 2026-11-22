@@ -4,9 +4,10 @@
 	"title": "Minecraft Bedrock Biome Definition",
 	"description": "Schema for custom biome definition files used by behavior packs.",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.110", "1.26.0", "1.26.20", "1.26.30"]
+			"x-format-version": "[1.21.110-latest]"
 		}
 	},
 	"allOf": [
@@ -14,7 +15,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.21.110"]
+						"x-format-version": "[1.21.110-1.26.0)"
 					}
 				}
 			},
@@ -26,7 +27,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.26.0"]
+						"x-format-version": "[1.26.0-1.26.20)"
 					}
 				}
 			},
@@ -38,7 +39,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.26.20"]
+						"x-format-version": "[1.26.20-1.26.30)"
 					}
 				}
 			},
@@ -50,7 +51,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.26.30"]
+						"x-format-version": "[1.26.30-latest]"
 					}
 				}
 			},

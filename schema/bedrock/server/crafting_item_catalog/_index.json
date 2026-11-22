@@ -5,8 +5,7 @@
 	"properties": {
 		"format_version": {
 			"$comment": "1.21.60 not strict, 1.26.50 strict",
-			"type": "string",
-			"enum": ["1.21.60", "1.26.50"]
+			"x-format-version": "[1.21.60-latest)"
 		}
 	},
 	"$ref": "./1.26.50/_index.json"

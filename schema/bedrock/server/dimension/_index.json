@@ -4,9 +4,10 @@
 	"title": "Minecraft Bedrock Dimension File",
 	"description": "Schema for custom dimension definition files used by behavior packs.",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
-			"enum": ["1.18.0", "1.26.50"]
+			"x-format-version": "[1.18.0-latest]"
 		}
 	},
 	"allOf": [
@@ -14,7 +15,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.18.0"]
+						"x-format-version": "[1.18.0-1.26.50)"
 					}
 				}
 			},
@@ -26,7 +27,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.26.50"]
+						"x-format-version": "[1.26.50-latest]"
 					}
 				}
 			},

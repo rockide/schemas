@@ -8,7 +8,6 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"const": "1.21.90",
 			"description": "Resource pack version this fog setting was built for. Minimum version is 1.16.100."
 		},
 		"minecraft:fog_settings": {

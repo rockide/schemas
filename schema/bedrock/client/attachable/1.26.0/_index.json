@@ -6,8 +6,7 @@
 	"required": ["format_version", "minecraft:attachable"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"const": "1.26.0"
+			"type": "string"
 		},
 		"minecraft:attachable": {
 			"$ref": "#/$defs/attachable"
