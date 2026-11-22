@@ -2,6 +2,33 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "Minecraft Bedrock Particle Effect",
 	"type": "object",
-	"$ref": "./1.10.0/_index.json",
-	"unevaluatedProperties": false
+	"required": ["format_version"],
+	"x-format-version-enums": true,
+	"properties": {
+		"format_version": {
+			"x-format-version": "[1.10.0-latest)"
+		}
+	},
+	"allOf": [
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.10.0-1.20.80)"
+					}
+				}
+			},
+			"then": { "$ref": "./1.10.0/_index.json" }
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.20.80-latest]"
+					}
+				}
+			},
+			"then": { "$ref": "./1.20.80/_index.json" }
+		}
+	]
 }

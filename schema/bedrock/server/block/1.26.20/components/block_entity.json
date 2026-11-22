@@ -6,9 +6,10 @@
 	"additionalProperties": false,
 	"properties": {
 		"container": {
-			"type": "object",
 			"description": "Adds a container to this block.",
+			"type": "object",
 			"additionalProperties": false,
+			"required": ["slot_count"],
 			"properties": {
 				"slot_count": {
 					"type": "integer",
@@ -18,7 +19,9 @@
 				},
 				"title": {
 					"$ref": "../../../../../vanilla/client/lang_keys.json",
-					"description": "Optional container title, stored as a language file key or raw text. Must be nonempty and at most 256 characters."
+					"description": "Optional container title, stored as a language file key or raw text. Must be nonempty and at most 256 characters.",
+					"minLength": 1,
+					"maxLength": 256
 				}
 			}
 		},
@@ -26,11 +29,6 @@
 			"type": "boolean",
 			"default": false,
 			"description": "Dynamic-properties can store and retrieve variables on a block via scripting, more at https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/blockdynamicpropertiescomponent. "
-		},
-		"entity_storage": {
-			"type": "boolean",
-			"default": false,
-			"description": "Stores serialized entities in this block via scripting."
 		}
 	}
 }

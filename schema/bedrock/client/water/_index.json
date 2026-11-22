@@ -5,10 +5,22 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.80", "1.26.0"]
+			"enum": ["1.21.40", "1.21.80", "1.21.120", "1.26.0", "1.26.20"]
 		}
 	},
 	"allOf": [
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"enum": ["1.21.40"]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.21.40/_index.json"
+			}
+		},
 		{
 			"if": {
 				"properties": {
@@ -25,12 +37,36 @@
 			"if": {
 				"properties": {
 					"format_version": {
+						"enum": ["1.21.120"]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.21.120/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
 						"enum": ["1.26.0"]
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.26.0/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"enum": ["1.26.20"]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.26.20/_index.json"
 			}
 		}
 	]

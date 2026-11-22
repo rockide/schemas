@@ -3,9 +3,10 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Fog Settings",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
-			"enum": ["1.16.100", "1.21.90"]
+			"x-format-version": "[1.16.100-latest]"
 		}
 	},
 	"allOf": [
@@ -13,7 +14,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.16.100"]
+						"x-format-version": "[1.16.100-1.21.0)"
 					}
 				}
 			},
@@ -25,12 +26,36 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.21.90"]
+						"x-format-version": "[1.21.0-1.21.90)"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.21.0/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.21.90-1.26.20)"
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.21.90/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.26.20-latest]"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.26.20/_index.json"
 			}
 		}
 	]

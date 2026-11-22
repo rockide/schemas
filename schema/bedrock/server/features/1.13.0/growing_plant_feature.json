@@ -63,11 +63,18 @@
 				},
 				"growth_direction": {
 					"type": "string",
-					"enum": ["UP", "DOWN"],
+					"anyOf": [
+						{
+							"enum": ["UP", "DOWN"]
+						},
+						{
+							"pattern": "^(?:[Uu][Pp]|[Dd][Oo][Ww][Nn])(?![\\s\\S])"
+						}
+					],
 					"description": "Direction that the plant grows towards."
 				},
 				"age": {
-					"$ref": "#/$defs/int_range",
+					"$ref": "../general.json#/$defs/int_range",
 					"description": "Optional. Age of the head of the plant."
 				},
 				"body_blocks": {

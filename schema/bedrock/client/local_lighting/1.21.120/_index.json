@@ -32,7 +32,7 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number",
+						"type": "integer",
 						"minimum": 0,
 						"maximum": 255
 					}
@@ -51,7 +51,15 @@
 				"light_type": {
 					"type": "string",
 					"description": "The type of local light. Static lights are baked into the scene, while point lights produce sophisticated effects such as diffuse and specular highlights and dynamic shadows.",
-					"enum": ["static_light", "point_light"]
+					"default": "static_light",
+					"anyOf": [
+						{
+							"enum": ["static_light", "point_light"]
+						},
+						{
+							"pattern": "^(?:[sS][tT][aA][tT][iI][cC]_[lL][iI][gG][hH][tT]|[pP][oO][iI][nN][tT]_[lL][iI][gG][hH][tT])$"
+						}
+					]
 				}
 			}
 		}

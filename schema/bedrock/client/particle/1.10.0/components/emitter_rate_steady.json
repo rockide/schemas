@@ -8,13 +8,11 @@
 	"properties": {
 		"spawn_rate": {
 			"description": "Particles per second.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-			"default": 1
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		},
 		"max_particles": {
 			"description": "Maximum number of active particles.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-			"default": 50
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		}
 	}
 }

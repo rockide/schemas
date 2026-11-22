@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$ref": "#/$defs/event",
-	"additionalProperties": false,
+	"unevaluatedProperties": false,
 	"$defs": {
 		"event": {
 			"type": "object",
@@ -60,6 +60,7 @@
 					"title": "Sequence Node",
 					"description": "Executes actions in sequence.",
 					"items": {
+						"unevaluatedProperties": false,
 						"$ref": "#/$defs/event"
 					}
 				},

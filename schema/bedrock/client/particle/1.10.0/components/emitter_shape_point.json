@@ -12,7 +12,7 @@
 			"maxItems": 3,
 			"default": [0, 0, 0],
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		},
 		"direction": {
@@ -20,8 +20,9 @@
 			"type": "array",
 			"minItems": 3,
 			"maxItems": 3,
+			"default": ["math.random(-1, 1)", "math.random(-1, 1)", "math.random(-1, 1)"],
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		}
 	}

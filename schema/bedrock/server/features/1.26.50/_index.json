@@ -7,8 +7,7 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.26.50"]
+			"type": "string"
 		}
 	},
 	"oneOf": [
@@ -118,7 +117,7 @@
 		},
 		{
 			"required": ["minecraft:multipart_block_column_feature"],
-			"$ref": "../1.26.50/multipart_block_column_feature.json"
+			"$ref": "../1.26.40/multipart_block_column_feature.json"
 		},
 		{
 			"required": ["minecraft:multi_block_feature"],

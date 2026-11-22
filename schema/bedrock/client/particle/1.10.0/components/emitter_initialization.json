@@ -7,11 +7,13 @@
 	"properties": {
 		"creation_expression": {
 			"description": "Executed once at emitter startup.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+			"default": 0
 		},
 		"per_update_expression": {
 			"description": "Executed once per emitter update.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
+			"default": 0
 		}
 	}
 }

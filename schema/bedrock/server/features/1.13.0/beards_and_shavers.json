@@ -72,19 +72,23 @@
 					"description": "Y delta for the beard/shaver effect."
 				},
 				"surface_block_type": {
-					"$ref": "../../../../vanilla/server/identifiers.json#/$defs/block_identifier",
+					"$ref": "../../../../vanilla/server/block_descriptor.json",
 					"description": "Block type for the surface."
 				},
 				"subsurface_block_type": {
-					"$ref": "../../../../vanilla/server/identifiers.json#/$defs/block_identifier",
+					"$ref": "../../../../vanilla/server/block_descriptor.json",
 					"description": "Block type for subsurface."
 				},
 				"beard_raggedness_min": {
 					"type": "number",
+					"minimum": 0,
+					"maximum": 1,
 					"description": "Minimum raggedness value for the beard."
 				},
 				"beard_raggedness_max": {
 					"type": "number",
+					"minimum": 0,
+					"maximum": 1,
 					"description": "Maximum raggedness value for the beard."
 				}
 			}

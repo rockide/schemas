@@ -3,23 +3,15 @@
 	"type": "object",
 	"title": "Structure Set",
 	"description": "A Jigsaw Structure Set is a collection of Jigsaw Structures that are placed according to a set of rules.",
+	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.20"]
+			"x-format-version": "[1.21.20-latest]"
 		}
 	},
-	"oneOf": [
+	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"const": "1.21.20"
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.20/_index.json"
-			}
+			"$ref": "./1.21.20/_index.json"
 		}
 	]
 }

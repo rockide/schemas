@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:processor_list"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.21.20"]
+			"type": "string"
 		},
 		"minecraft:processor_list": {
 			"$ref": "./processor_list.json"

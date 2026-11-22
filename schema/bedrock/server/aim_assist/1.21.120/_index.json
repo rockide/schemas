@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:aim_assist_preset"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.21.120"]
+			"type": "string"
 		},
 		"minecraft:aim_assist_preset": {
 			"$ref": "#/$defs/camera_aim_assist_preset_definition"
@@ -53,7 +52,7 @@
 					"type": "array",
 					"description": "Optional. List of item identifiers that will target liquid blocks with aim-assist when being held.",
 					"items": {
-						"$ref": "../../../../vanilla/server/identifiers.json#/$defs/block_identifier"
+						"$ref": "../../../../vanilla/server/identifiers.json#/$defs/item_identifier"
 					}
 				}
 			}

@@ -1,0 +1,19 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_lifetime_expression",
+	"description": "Controls emitter enable/expire states via expressions.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"activation_expression": {
+			"description": "Emitter enabled when non-zero.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 1
+		},
+		"expiration_expression": {
+			"description": "Emitter expires when non-zero.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 0
+		}
+	}
+}

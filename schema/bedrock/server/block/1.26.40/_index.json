@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:block"],
 	"properties": {
 		"format_version": {
-			"$ref": "../../../../vanilla/definition/format_version.json",
-			"const": "1.26.40"
+			"type": "string"
 		},
 		"minecraft:block": {
 			"type": "object",

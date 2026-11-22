@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:spawn_rules"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.8.0"]
+			"type": "string"
 		},
 		"minecraft:spawn_rules": {
 			"$ref": "./spawn_rules.json"

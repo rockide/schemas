@@ -6,10 +6,10 @@
 	"additionalProperties": false,
 	"properties": {
 		"minecraft:destructible_by_explosion": {
-			"$ref": "../../1.19.20/components/destructible_by_explosion.json"
+			"$ref": "./destructible_by_explosion.json"
 		},
 		"minecraft:flammable": {
-			"$ref": "../../1.19.10/components/flammable.json"
+			"$ref": "./flammable.json"
 		},
 		"minecraft:friction": {
 			"$ref": "../../1.19.20/components/friction.json"
@@ -27,10 +27,10 @@
 			"$ref": "../../1.21.70/components/material_instances.json"
 		},
 		"minecraft:collision_box": {
-			"$ref": "../../1.19.50/components/collision_box.json"
+			"$ref": "./collision_box.json"
 		},
 		"minecraft:crafting_table": {
-			"$ref": "../../1.19.50/components/crafting_table.json"
+			"$ref": "./crafting_table.json"
 		},
 		"minecraft:display_name": {
 			"$ref": "../../1.19.60/components/display_name.json"
@@ -39,19 +39,19 @@
 			"$ref": "../../1.19.60/components/placement_filter.json"
 		},
 		"minecraft:selection_box": {
-			"$ref": "../../1.19.60/components/selection_box.json"
+			"$ref": "./selection_box.json"
 		},
 		"minecraft:transformation": {
-			"$ref": "../../1.19.80/components/transformation.json"
+			"$ref": "./transformation.json"
 		},
 		"minecraft:tick": {
-			"$ref": "../../1.21.20/components/tick.json"
+			"$ref": "./tick.json"
 		},
 		"minecraft:entity_fall_on": {
-			"$ref": "../../1.21.20/components/entity_fall_on.json"
+			"$ref": "./entity_fall_on.json"
 		},
 		"minecraft:destructible_by_mining": {
-			"$ref": "../../1.21.30/components/destructible_by_mining.json"
+			"$ref": "./destructible_by_mining.json"
 		},
 		"minecraft:redstone_conductivity": {
 			"$ref": "../../1.21.30/components/redstone_conductivity.json"
@@ -60,7 +60,7 @@
 			"$ref": "../../1.21.70/components/replaceable.json"
 		},
 		"minecraft:destruction_particles": {
-			"$ref": "../../1.21.80/components/destruction_particles.json"
+			"$ref": "./destruction_particles.json"
 		},
 		"minecraft:map_color": {
 			"$ref": "../../1.21.80/components/map_color.json"
@@ -75,22 +75,22 @@
 			"$ref": "../../1.21.120/components/flower_pottable.json"
 		},
 		"minecraft:redstone_producer": {
-			"$ref": "../../1.21.120/components/redstone_producer.json"
+			"$ref": "./redstone_producer.json"
 		},
 		"minecraft:precipitation_interactions": {
-			"$ref": "../../1.21.130/components/precipitation_interactions.json"
+			"$ref": "./precipitation_interactions.json"
 		},
 		"minecraft:connection_rule": {
 			"$ref": "../../1.26.0/components/connection_rule.json"
 		},
 		"minecraft:leashable": {
-			"$ref": "../../1.26.0/components/leashable.json"
+			"$ref": "./leashable.json"
 		},
 		"minecraft:liquid_detection": {
-			"$ref": "../../1.26.0/components/liquid_detection.json"
+			"$ref": "./liquid_detection.json"
 		},
 		"minecraft:redstone_consumer": {
-			"$ref": "../../1.26.0/components/redstone_consumer.json"
+			"$ref": "./redstone_consumer.json"
 		},
 		"minecraft:support": {
 			"$ref": "../../1.26.0/components/support.json"
@@ -102,7 +102,7 @@
 			"$ref": "embedded_visual.json"
 		},
 		"minecraft:geometry": {
-			"$ref": "geometry.json"
+			"$ref": "./geometry.json"
 		},
 		"minecraft:item_visual": {
 			"$ref": "item_visual.json"
@@ -117,7 +117,7 @@
 			"$ref": "sound.json"
 		},
 		"minecraft:block_entity": {
-			"$ref": "block_entity.json"
+			"$ref": "./block_entity.json"
 		}
 	},
 	"patternProperties": {

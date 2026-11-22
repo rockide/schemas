@@ -1,0 +1,31 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:particle_motion_parametric",
+	"description": "Directly controls particle motion.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"relative_position": {
+			"description": "Position relative to the emitter.",
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			}
+		},
+		"direction": {
+			"description": "Particle direction.",
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			}
+		},
+		"rotation": {
+			"description": "Particle rotation.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+		}
+	}
+}

@@ -49,6 +49,7 @@
 				"required_successes": {
 					"type": "integer",
 					"minimum": 1,
+					"maximum": 2147483647,
 					"description": "Optional. Number of valid positions required for placement to succeed. Default is 1."
 				}
 			}
@@ -64,14 +65,14 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": { "type": "integer" },
+					"items": { "type": "integer", "minimum": -2147483648, "maximum": 2147483647 },
 					"description": "Minimum corner [x, y, z]."
 				},
 				"max": {
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": { "type": "integer" },
+					"items": { "type": "integer", "minimum": -2147483648, "maximum": 2147483647 },
 					"description": "Maximum corner [x, y, z]."
 				}
 			}

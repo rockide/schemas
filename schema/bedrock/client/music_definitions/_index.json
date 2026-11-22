@@ -3,6 +3,7 @@
 	"title": "Minecraft Bedrock Music Definitions",
 	"description": "The music_definitions.json file defines which music tracks play in different biomes and game states. Each key is a biome or game state identifier that maps to music event configuration. Located at sounds/music_definitions.json in resource packs.",
 	"type": "object",
+	"propertyNames": { "minLength": 1 },
 	"additionalProperties": {
 		"$ref": "#/$defs/music_definition"
 	},
@@ -17,15 +18,34 @@
 					"description": "The sound event identifier that plays music for this biome/state.",
 					"$ref": "../../../vanilla/client/identifiers.json#/$defs/sound_identifier"
 				},
+				"play_in_order": {
+					"type": "boolean",
+					"default": false
+				},
 				"min_delay": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 0,
+					"default": 0,
 					"description": "Minimum delay in seconds before music starts."
 				},
 				"max_delay": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 0,
+					"default": 0,
 					"description": "Maximum delay in seconds before music starts."
+				},
+				"override_interruptible": {
+					"type": "array",
+					"description": "A list of sound events that can interrupt the music. If any of these events are playing, the music will stop (not the event_name).",
+					"default": [],
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name"],
+						"properties": {
+							"name": { "type": "string" }
+						}
+					}
 				}
 			}
 		}

@@ -3,23 +3,15 @@
 	"type": "object",
 	"title": "Jigsaw Structure",
 	"description": "Jigsaw structures are procedurally generated structures that combine template pools and processors to create complex, varied structures.",
+	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.20"]
+			"x-format-version": "[1.21.20-latest]"
 		}
 	},
-	"oneOf": [
+	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"const": "1.21.20"
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.20/_index.json"
-			}
+			"$ref": "./1.21.20/_index.json"
 		}
 	]
 }

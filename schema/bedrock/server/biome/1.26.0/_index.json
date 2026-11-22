@@ -8,8 +8,7 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"description": "The 3-part schema version for parsing these biome settings.",
-			"enum": ["1.26.0"]
+			"description": "The 3-part schema version for parsing these biome settings."
 		},
 		"minecraft:biome": {
 			"type": "object",

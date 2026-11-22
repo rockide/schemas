@@ -3,23 +3,15 @@
 	"type": "object",
 	"title": "Template Pool",
 	"description": "Used to pair block rules with Structure Templates and to randomly place Structure Templates using a weighted list.",
+	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.20"]
+			"x-format-version": "[1.21.20-latest]"
 		}
 	},
-	"oneOf": [
+	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"const": "1.21.20"
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.20/_index.json"
-			}
+			"$ref": "./1.21.20/_index.json"
 		}
 	]
 }

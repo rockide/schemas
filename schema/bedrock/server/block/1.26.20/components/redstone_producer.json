@@ -1,0 +1,35 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Redstone Producer Component",
+	"description": "If added to a block, indicates that it produces a redstone signal.",
+	"additionalProperties": false,
+	"properties": {
+		"connected_faces": {
+			"type": "array",
+			"description": "The list of faces that are considered connected to the circuit.",
+			"items": {
+				"type": "string",
+				"enum": ["north", "east", "south", "west", "up", "down"]
+			},
+			"default": ["down", "up", "north", "south", "west", "east"]
+		},
+		"power": {
+			"type": "integer",
+			"description": "The strength of the redstone signal produced by this block.",
+			"minimum": 0,
+			"maximum": 15
+		},
+		"strongly_powered_face": {
+			"description": "The block touching this face will become strongly powered with the signal level strength of 'power'.",
+			"type": "string",
+			"enum": ["north", "east", "south", "west", "up", "down"]
+		},
+		"transform_relative": {
+			"type": "boolean",
+			"default": true,
+			"description": "If true, the strongly_powered_face and connected_faces properties will be rotated according to the minecraft:transformation component."
+		}
+	},
+	"required": ["power"]
+}

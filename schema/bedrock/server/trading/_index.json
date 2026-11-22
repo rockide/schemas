@@ -3,9 +3,28 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Trade Table File",
 	"description": "Schema for trade table definition files used by behavior packs.",
+	"x-format-version-enums": true,
+	"properties": {
+		"format_version": {
+			"x-format-version": "[0.0.0-latest]"
+		}
+	},
 	"allOf": [
 		{
-			"$ref": "./1.0.0/_index.json"
+			"if": {
+				"required": ["format_version"],
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.21.30-latest]"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.21.30/_index.json"
+			},
+			"else": {
+				"$ref": "./1.0.0/_index.json"
+			}
 		}
 	]
 }

@@ -6,17 +6,12 @@
 	"additionalProperties": false,
 	"required": ["format_version"],
 	"properties": {
-		"debug": {
-			"type": "boolean",
-			"description": "Enables debug mode for the geometry file."
-		},
 		"format_version": {
-			"type": "string",
-			"enum": ["1.8.0", "1.10.0"]
+			"type": "string"
 		}
 	},
 	"patternProperties": {
-		"^geometry\\.[a-zA-Z0-9_.'-:]+$": {
+		"^geometry\\.[a-zA-Z0-9_.'-:]+(?![\\s\\S])": {
 			"$ref": "#/$defs/geometry"
 		}
 	},
@@ -27,20 +22,20 @@
 			"description": "A named geometry model definition.",
 			"additionalProperties": false,
 			"properties": {
-				"debug": {
-					"type": "boolean",
-					"description": "Enables debug mode for this model."
-				},
 				"cape": {
 					"type": "string",
 					"description": "The name of the cape to use for this model."
 				},
 				"visible_bounds_width": {
 					"type": "number",
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38,
 					"description": "Width of the visible bounds of the model."
 				},
 				"visible_bounds_height": {
 					"type": "number",
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38,
 					"description": "Height of the visible bounds of the model."
 				},
 				"visible_bounds_offset": {
@@ -49,7 +44,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"texturewidth": {
@@ -82,6 +79,7 @@
 				},
 				"reset": {
 					"type": "boolean",
+					"const": true,
 					"description": "Sets the bone rotation to its bind pose."
 				},
 				"neverRender": {
@@ -98,7 +96,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"rotation": {
@@ -107,7 +107,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"bind_pose_rotation": {
@@ -116,7 +118,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"mirror": {
@@ -125,10 +129,13 @@
 				},
 				"inflate": {
 					"type": "number",
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38,
 					"description": "Inflation amount applied to all cubes in the bone."
 				},
 				"debug": {
 					"type": "boolean",
+					"const": true,
 					"description": "Enables debug mode for this bone."
 				},
 				"render_group_id": {
@@ -146,12 +153,15 @@
 				"locators": {
 					"type": "object",
 					"description": "Locators for the bone, keyed by identifier.",
+					"propertyNames": {
+						"pattern": "^[a-zA-Z0-9_.-]+(?![\\s\\S])"
+					},
 					"additionalProperties": {
 						"type": "array",
-						"minItems": 3,
-						"maxItems": 3,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -179,7 +189,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"size": {
@@ -188,7 +200,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"uv": {
@@ -197,11 +211,15 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"inflate": {
 					"type": "number",
+					"minimum": -3.4028234663852886e38,
+					"maximum": 3.4028234663852886e38,
 					"description": "Inflation amount for the cube."
 				},
 				"mirror": {
@@ -215,9 +233,11 @@
 			"title": "Poly Mesh",
 			"description": "A polygonal mesh for the bone.",
 			"additionalProperties": false,
+			"required": ["polys"],
 			"properties": {
 				"normalized_uvs": {
 					"type": "boolean",
+					"default": false,
 					"description": "Whether the UVs are normalized."
 				},
 				"positions": {
@@ -228,7 +248,9 @@
 						"minItems": 3,
 						"maxItems": 3,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -240,7 +262,9 @@
 						"minItems": 3,
 						"maxItems": 3,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -252,7 +276,9 @@
 						"minItems": 2,
 						"maxItems": 2,
 						"items": {
-							"type": "number"
+							"type": "number",
+							"minimum": -3.4028234663852886e38,
+							"maximum": 3.4028234663852886e38
 						}
 					}
 				},
@@ -273,7 +299,9 @@
 									"minItems": 3,
 									"maxItems": 3,
 									"items": {
-										"type": "number"
+										"type": "number",
+										"minimum": -3.4028234663852886e38,
+										"maximum": 3.4028234663852886e38
 									}
 								}
 							}
@@ -289,6 +317,10 @@
 			"additionalProperties": false,
 			"required": ["texture"],
 			"properties": {
+				"use_pixel_depth": {
+					"type": "boolean",
+					"default": true
+				},
 				"texture": {
 					"type": "string",
 					"description": "The texture to use for this mesh."
@@ -299,7 +331,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"local_pivot": {
@@ -308,7 +342,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"rotation": {
@@ -317,7 +353,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				},
 				"scale": {
@@ -326,7 +364,9 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"type": "number"
+						"type": "number",
+						"minimum": -3.4028234663852886e38,
+						"maximum": 3.4028234663852886e38
 					}
 				}
 			}

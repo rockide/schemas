@@ -35,6 +35,7 @@
 				"set_ominous_bottle_amplifier",
 				"set_armor_trim",
 				"set_potion",
+				"carry_over_block_entity_data",
 				"minecraft:set_count",
 				"minecraft:set_data",
 				"minecraft:set_damage",
@@ -61,7 +62,7 @@
 				"minecraft:set_ominous_bottle_amplifier",
 				"minecraft:set_armor_trim",
 				"minecraft:set_potion",
-				"carry_over_block_entity_data"
+				"minecraft:carry_over_block_entity_data"
 			],
 			"description": "The function type."
 		},
@@ -89,7 +90,7 @@
 					"count": {
 						"oneOf": [
 							{
-								"type": "integer",
+								"type": "number",
 								"minimum": 0
 							},
 							{
@@ -99,7 +100,9 @@
 						"description": "The count value or range."
 					},
 					"add": {
-						"type": "boolean"
+						"$comment": "Doesn't do anything, just for bedrock-samples.",
+						"type": "boolean",
+						"doNotSuggest": true
 					}
 				},
 				"required": ["function", "count"]
@@ -120,7 +123,18 @@
 					"data": {
 						"oneOf": [
 							{
-								"type": "integer"
+								"type": "number"
+							},
+							{
+								"$ref": "#/$defs/data_range"
+							}
+						],
+						"description": "The data value or range to set."
+					},
+					"values": {
+						"oneOf": [
+							{
+								"type": "number"
 							},
 							{
 								"$ref": "#/$defs/data_range"
@@ -129,7 +143,15 @@
 						"description": "The data value or range to set."
 					}
 				},
-				"required": ["function", "data"]
+				"required": ["function"],
+				"oneOf": [
+					{
+						"required": ["data"]
+					},
+					{
+						"required": ["values"]
+					}
+				]
 			}
 		},
 		{
@@ -145,11 +167,20 @@
 				"properties": {
 					"function": true,
 					"damage": {
-						"$ref": "#/$defs/damage_range",
+						"oneOf": [
+							{
+								"type": "number"
+							},
+							{
+								"$ref": "#/$defs/damage_range"
+							}
+						],
 						"description": "The damage range."
 					},
 					"add": {
-						"type": "boolean"
+						"$comment": "Doesn't do anything, just for bedrock-samples.",
+						"type": "boolean",
+						"doNotSuggest": true
 					}
 				},
 				"required": ["function", "damage"]
@@ -170,7 +201,7 @@
 					"count": {
 						"oneOf": [
 							{
-								"type": "integer",
+								"type": "number",
 								"minimum": 0
 							},
 							{
@@ -180,7 +211,9 @@
 						"description": "The count value or range."
 					},
 					"limit": {
-						"type": "integer"
+						"$comment": "Doesn't do anything, just for bedrock-samples.",
+						"type": "integer",
+						"doNotSuggest": true
 					}
 				},
 				"required": ["function", "count"]
@@ -201,7 +234,7 @@
 					"levels": {
 						"oneOf": [
 							{
-								"type": "integer",
+								"type": "number",
 								"minimum": 1
 							},
 							{
@@ -344,10 +377,21 @@
 			"then": {
 				"properties": {
 					"function": true,
+					"data": {
+						"oneOf": [
+							{
+								"type": "number"
+							},
+							{
+								"$ref": "#/$defs/data_range"
+							}
+						],
+						"description": "The data value or range to set."
+					},
 					"values": {
 						"oneOf": [
 							{
-								"type": "integer"
+								"type": "number"
 							},
 							{
 								"$ref": "#/$defs/data_range"
@@ -356,7 +400,15 @@
 						"description": "The data value or range to set."
 					}
 				},
-				"required": ["function"]
+				"required": ["function"],
+				"oneOf": [
+					{
+						"required": ["data"]
+					},
+					{
+						"required": ["values"]
+					}
+				]
 			}
 		},
 		{
@@ -374,7 +426,7 @@
 					"values": {
 						"oneOf": [
 							{
-								"type": "integer"
+								"type": "number"
 							},
 							{
 								"$ref": "#/$defs/data_range"
@@ -420,14 +472,8 @@
 					"function": true,
 					"destination": {
 						"type": "string",
-						"description": "The structure destination type. (Note: endcity, ruinedportal, pillageroutpost, ancientcity don't work.)",
+						"description": "The structure destination type.",
 						"enum": [
-							"endcity",
-							"ruinedportal",
-							"buriedtreasure",
-							"pillageroutpost",
-							"bastionremnant",
-							"ancientcity",
 							"minecraft:monument",
 							"minecraft:mansion",
 							"minecraft:buried_treasure",
@@ -439,9 +485,22 @@
 							"minecraft:jungle_temple",
 							"minecraft:swamp_hut",
 							"minecraft:trial_chambers",
+							"minecraft:abandoned_camp_bamboo_jungle",
+							"minecraft:abandoned_camp_birch_forest",
+							"minecraft:abandoned_camp_cherry_grove",
+							"minecraft:abandoned_camp_dappled_forest",
+							"minecraft:abandoned_camp_extreme_hills_plus_trees",
+							"minecraft:abandoned_camp_flower_forest",
+							"minecraft:abandoned_camp_pale_garden",
+							"minecraft:abandoned_camp_swampland",
+							"minecraft:buried_ancient_city",
+							"minecraft:buried_mineshaft",
+							"minecraft:desert_pyramid",
+							"minecraft:warm_ocean_ruins",
 							"monument",
 							"mansion",
 							"buried_treasure",
+							"buriedtreasure",
 							"village_snowy",
 							"village_taiga",
 							"village_plains",
@@ -449,7 +508,19 @@
 							"village_desert",
 							"jungle_temple",
 							"swamp_hut",
-							"trial_chambers"
+							"trial_chambers",
+							"abandoned_camp_bamboo_jungle",
+							"abandoned_camp_birch_forest",
+							"abandoned_camp_cherry_grove",
+							"abandoned_camp_dappled_forest",
+							"abandoned_camp_extreme_hills_plus_trees",
+							"abandoned_camp_flower_forest",
+							"abandoned_camp_pale_garden",
+							"abandoned_camp_swampland",
+							"buried_ancient_city",
+							"buried_mineshaft",
+							"desert_pyramid",
+							"warm_ocean_ruins"
 						]
 					}
 				},
@@ -501,7 +572,20 @@
 						]
 					}
 				},
-				"required": ["function", "type"]
+				"required": ["function", "type"],
+				"if": {
+					"properties": {
+						"type": {
+							"enum": [1, "illager_captain"]
+						}
+					},
+					"required": ["type"]
+				},
+				"then": {
+					"properties": {
+						"patterns": false
+					}
+				}
 			}
 		},
 		{
@@ -589,7 +673,14 @@
 							{
 								"type": "array",
 								"items": {
-									"$ref": "#/$defs/specific_enchant_enchant"
+									"oneOf": [
+										{
+											"$ref": "#/$defs/specific_enchant_enchant"
+										},
+										{
+											"$ref": "../../../vanilla/server/enchantment.json"
+										}
+									]
 								},
 								"description": "An array of specific enchantments to apply."
 							},
@@ -689,20 +780,20 @@
 				"properties": {
 					"function": true,
 					"effects": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"additionalProperties": false,
-							"properties": {
-								"id": {
-									"type": "integer",
-									"description": "Effect type in numeric."
+						"oneOf": [
+							{
+								"$ref": "#/$defs/stew_effect"
+							},
+							{
+								"type": "array",
+								"items": {
+									"$ref": "#/$defs/stew_effect"
 								}
 							}
-						}
+						]
 					}
 				},
-				"required": ["function"]
+				"required": ["function", "effects"]
 			}
 		},
 		{
@@ -720,7 +811,7 @@
 					"amplifier": {
 						"oneOf": [
 							{
-								"type": "integer",
+								"type": "number",
 								"description": "The amplifier level to set on the ominous bottle effect."
 							},
 							{
@@ -728,12 +819,13 @@
 								"additionalProperties": false,
 								"properties": {
 									"min": {
-										"type": "integer"
+										"type": "number"
 									},
 									"max": {
-										"type": "integer"
+										"type": "number"
 									}
-								}
+								},
+								"required": ["min", "max"]
 							}
 						]
 					}
@@ -817,7 +909,7 @@
 							"weakness",
 							"long_weakness",
 							"wither",
-							"turtleMaster",
+							"turtle_master",
 							"long_turtle_master",
 							"strong_turtle_master",
 							"slow_falling",
@@ -825,18 +917,20 @@
 							"wind_charged",
 							"weaving",
 							"oozing",
-							"infested"
+							"infested",
+							"freezing",
+							"long_freezing"
 						]
 					}
 				},
-				"required": ["function"]
+				"required": ["function", "id"]
 			}
 		},
 		{
 			"if": {
 				"properties": {
 					"function": {
-						"const": "carry_over_block_entity_data"
+						"enum": ["carry_over_block_entity_data", "minecraft:carry_over_block_entity_data"]
 					}
 				},
 				"required": ["function"]
@@ -862,12 +956,12 @@
 			"additionalProperties": false,
 			"properties": {
 				"min": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 0,
 					"description": "Minimum count."
 				},
 				"max": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 0,
 					"description": "Maximum count."
 				}
@@ -898,11 +992,11 @@
 			"additionalProperties": false,
 			"properties": {
 				"min": {
-					"type": "integer",
+					"type": "number",
 					"description": "Minimum data value."
 				},
 				"max": {
-					"type": "integer",
+					"type": "number",
 					"description": "Maximum data value."
 				}
 			}
@@ -938,44 +1032,52 @@
 					"$ref": "../../../vanilla/server/enchantment.json"
 				},
 				"level": {
-					"oneOf": [
-						{
-							"type": "integer"
+					"$ref": "./general.json#/$defs/integer_range",
+					"minimum": 1,
+					"items": {
+						"minimum": 1
+					},
+					"properties": {
+						"range_min": {
+							"minimum": 1
 						},
-						{
-							"type": "array",
-							"minItems": 2,
-							"maxItems": 2,
-							"description": "Min max",
-							"items": {
-								"type": "integer"
-							}
+						"range_max": {
+							"minimum": 1
 						}
-					]
+					}
 				}
 			},
 			"required": ["id"],
 			"additionalProperties": false
 		},
 		"banner_color": {
-			"type": "string",
-			"enum": [
-				"black",
-				"red",
-				"green",
-				"brown",
-				"blue",
-				"purple",
-				"cyan",
-				"silver",
-				"gray",
-				"pink",
-				"lime",
-				"yellow",
-				"light_blue",
-				"magenta",
-				"orange",
-				"white"
+			"oneOf": [
+				{
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 15
+				},
+				{
+					"type": "string",
+					"enum": [
+						"black",
+						"red",
+						"green",
+						"brown",
+						"blue",
+						"purple",
+						"cyan",
+						"silver",
+						"gray",
+						"pink",
+						"lime",
+						"yellow",
+						"light_blue",
+						"magenta",
+						"orange",
+						"white"
+					]
+				}
 			]
 		},
 		"banner_pattern": {
@@ -983,14 +1085,48 @@
 			"enum": [
 				"base",
 				"border",
-				"gradient",
+				"bricks",
+				"circle",
 				"creeper",
 				"skull",
+				"cross",
+				"curly_border",
+				"diagonal_up_left",
+				"diagonal_up_right",
+				"diagonal_left",
+				"diagonal_right",
 				"flower",
+				"gradient",
+				"gradient_up",
+				"half_horizontal",
+				"half_horizontal_bottom",
+				"half_vertical",
+				"half_vertical_right",
+				"illager",
 				"mojang",
+				"rhombus",
+				"small_stripes",
+				"square_bottom_left",
+				"square_bottom_right",
+				"square_top_left",
+				"square_top_right",
+				"straight_cross",
+				"stripe_bottom",
+				"stripe_center",
+				"stripe_downleft",
+				"stripe_downright",
+				"stripe_left",
+				"stripe_middle",
+				"stripe_right",
+				"stripe_top",
+				"triangle_bottom",
+				"triangle_top",
+				"triangles_bottom",
+				"triangles_top",
 				"globe",
 				"piglin",
-				"ruminant"
+				"flow",
+				"guster"
 			]
 		},
 		"banner_pattern_item": {
@@ -1005,6 +1141,17 @@
 				"color": {
 					"$ref": "#/$defs/banner_color",
 					"description": "The banner pattern color."
+				}
+			}
+		},
+		"stew_effect": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["id"],
+			"properties": {
+				"id": {
+					"type": "integer",
+					"description": "Effect type in numeric."
 				}
 			}
 		}

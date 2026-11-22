@@ -6,21 +6,12 @@
 	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.110"]
+			"x-format-version": "[1.21.110-latest]"
 		}
 	},
 	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"enum": ["1.21.110"]
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.110/_index.json"
-			}
+			"$ref": "./1.21.110/_index.json"
 		}
 	]
 }

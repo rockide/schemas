@@ -13,10 +13,10 @@
 					"type": "boolean"
 				},
 				{
-					"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+					"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 				}
 			],
-			"default": true
+			"default": 1
 		},
 		"collision_drag": {
 			"description": "Speed reduction while in contact.",
@@ -25,7 +25,8 @@
 		},
 		"coefficient_of_restitution": {
 			"description": "Bounce coefficient.",
-			"type": "number"
+			"type": "number",
+			"default": 0
 		},
 		"collision_radius": {
 			"description": "Collision radius, must be <= 0.5 blocks.",

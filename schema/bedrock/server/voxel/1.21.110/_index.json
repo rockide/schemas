@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:voxel_shape"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.21.110"]
+			"type": "string"
 		},
 		"minecraft:voxel_shape": {
 			"type": "object",
@@ -25,6 +24,7 @@
 					"properties": {
 						"identifier": {
 							"$ref": "../../../../vanilla/definition/identifier.json",
+							"maxLength": 256,
 							"description": "Identifier for the voxel shape, in namespace:name format."
 						}
 					}
@@ -54,7 +54,9 @@
 										"minItems": 3,
 										"maxItems": 3,
 										"items": {
-											"type": "integer"
+											"type": "number",
+											"minimum": -14,
+											"maximum": 30
 										}
 									},
 									"max": {
@@ -63,7 +65,9 @@
 										"minItems": 3,
 										"maxItems": 3,
 										"items": {
-											"type": "integer"
+											"type": "number",
+											"minimum": -14,
+											"maximum": 30
 										}
 									}
 								}

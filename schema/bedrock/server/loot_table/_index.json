@@ -26,7 +26,24 @@
 			"additionalProperties": false,
 			"properties": {
 				"bonus_rolls": {
-					"type": "integer",
+					"oneOf": [
+						{
+							"type": "number"
+						},
+						{
+							"type": "object",
+							"required": ["min", "max"],
+							"additionalProperties": false,
+							"properties": {
+								"min": {
+									"type": "number"
+								},
+								"max": {
+									"type": "number"
+								}
+							}
+						}
+					],
 					"description": "Additional rolls added based on luck attribute."
 				},
 				"conditions": {
@@ -46,7 +63,7 @@
 				"rolls": {
 					"oneOf": [
 						{
-							"type": "integer",
+							"type": "number",
 							"minimum": 0
 						},
 						{
@@ -69,13 +86,13 @@
 			"additionalProperties": false,
 			"properties": {
 				"min": {
-					"type": "integer",
+					"type": "number",
 					"minimum": 0,
 					"description": "Minimum number of rolls."
 				},
 				"max": {
-					"type": "integer",
-					"minimum": 1,
+					"type": "number",
+					"minimum": 0,
 					"description": "Maximum number of rolls."
 				}
 			}

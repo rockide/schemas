@@ -7,10 +7,13 @@
 	"properties": {
 		"min": {
 			"type": "integer",
+			"minimum": 0,
+			"default": 0,
 			"description": "Minimum world age in ticks."
 		},
 		"max": {
 			"type": "integer",
+			"minimum": 0,
 			"description": "Maximum world age in ticks."
 		}
 	}

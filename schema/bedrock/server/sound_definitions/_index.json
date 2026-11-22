@@ -6,7 +6,7 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"enum": ["beta", "1.26.60"],
+			"enum": ["1.26.60"],
 			"default": "1.26.60"
 		},
 		"minecraft:server_sound_definitions": {
@@ -17,6 +17,13 @@
 		}
 	},
 	"$defs": {
+		"non_whitespace_string": {
+			"type": "string",
+			"minLength": 1,
+			"not": {
+				"pattern": "\\s"
+			}
+		},
 		"sound_definition": {
 			"type": "object",
 			"additionalProperties": false,
@@ -33,6 +40,9 @@
 				},
 				"tags": {
 					"type": "object",
+					"propertyNames": {
+						"$ref": "#/$defs/non_whitespace_string"
+					},
 					"additionalProperties": {
 						"$ref": "#/$defs/tag_values"
 					}
@@ -86,12 +96,12 @@
 		"tag_values": {
 			"oneOf": [
 				{
-					"type": "string"
+					"$ref": "#/$defs/non_whitespace_string"
 				},
 				{
 					"type": "array",
 					"items": {
-						"type": "string"
+						"$ref": "#/$defs/non_whitespace_string"
 					}
 				}
 			]

@@ -39,6 +39,8 @@
 				},
 				"minimum_distance_below_surface": {
 					"type": "integer",
+					"minimum": -2147483648,
+					"maximum": 2147483647,
 					"description": "Optional. Minimum distance below surface level required for placement."
 				}
 			}

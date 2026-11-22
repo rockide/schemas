@@ -3,23 +3,15 @@
 	"type": "object",
 	"title": "Processor List",
 	"description": "Rules used by Jigsaw Structures to determine which blocks to modify or replace when placing a Structure Template in the world.",
+	"required": ["format_version"],
 	"properties": {
 		"format_version": {
-			"enum": ["1.21.20"]
+			"x-format-version": "[1.21.20-latest]"
 		}
 	},
-	"oneOf": [
+	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"const": "1.21.20"
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.20/_index.json"
-			}
+			"$ref": "./1.21.20/_index.json"
 		}
 	]
 }

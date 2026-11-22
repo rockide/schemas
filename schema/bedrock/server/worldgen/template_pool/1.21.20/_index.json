@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:template_pool"],
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"enum": ["1.21.20"]
+			"type": "string"
 		},
 		"minecraft:template_pool": {
 			"$ref": "./template_pool.json"

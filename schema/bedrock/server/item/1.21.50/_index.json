@@ -7,8 +7,7 @@
 	"required": ["format_version", "minecraft:item"],
 	"properties": {
 		"format_version": {
-			"$ref": "../../../../vanilla/definition/format_version.json",
-			"const": "1.21.50"
+			"type": "string"
 		},
 		"minecraft:item": {
 			"type": "object",

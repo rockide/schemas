@@ -19,13 +19,22 @@
 				"shadow_style": {
 					"type": "string",
 					"description": "The type of shadows to use. Blocky shadows are pixelated and snapped to the texel grid. Soft shadows have a smooth falloff on edges.",
-					"enum": ["blocky_shadows", "soft_shadows"]
+					"default": "soft_shadows",
+					"anyOf": [
+						{
+							"enum": ["blocky_shadows", "soft_shadows"]
+						},
+						{
+							"pattern": "^(?:[bB][lL][oO][cC][kK][yY]_[sS][hH][aA][dD][oO][wW][sS]|[sS][oO][fF][tT]_[sS][hH][aA][dD][oO][wW][sS])$"
+						}
+					]
 				},
 				"texel_size": {
 					"type": "integer",
 					"description": "The resolution in texels to which shadows will be quantized. Recommended to use the same resolution as block texture assets (e.g. 16 for 16x16px textures).",
 					"default": 16,
-					"minimum": 1
+					"minimum": 1,
+					"maximum": 1024
 				}
 			}
 		}

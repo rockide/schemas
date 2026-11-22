@@ -7,6 +7,7 @@
 	"properties": {
 		"plane_normal": {
 			"description": "Disc plane normal.",
+			"default": [0, 1, 0],
 			"oneOf": [
 				{
 					"enum": ["x", "y", "z"]
@@ -16,7 +17,7 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			]
@@ -28,12 +29,12 @@
 			"maxItems": 3,
 			"default": [0, 0, 0],
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		},
 		"radius": {
 			"description": "Disc radius.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string",
 			"default": 1
 		},
 		"surface_only": {
@@ -43,6 +44,7 @@
 		},
 		"direction": {
 			"description": "Particle emission direction.",
+			"default": "outwards",
 			"oneOf": [
 				{
 					"enum": ["inwards", "outwards"]
@@ -52,7 +54,7 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"items": {
-						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 					}
 				}
 			]

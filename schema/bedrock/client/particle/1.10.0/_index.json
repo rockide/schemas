@@ -6,8 +6,7 @@
 	"additionalProperties": false,
 	"properties": {
 		"format_version": {
-			"type": "string",
-			"$ref": "../../../../vanilla/definition/format_version.json"
+			"type": "string"
 		},
 		"particle_effect": {
 			"type": "object",
@@ -44,7 +43,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^variable.[a-zA-Z0-9_.]+": {
+						"^variable\\.[a-zA-Z0-9_.]+$": {
 							"oneOf": [
 								{
 									"$ref": "./curves.json#/$defs/linear"
@@ -64,6 +63,7 @@
 				},
 				"events": {
 					"type": "object",
+					"propertyNames": { "minLength": 1 },
 					"additionalProperties": {
 						"$ref": "./event.json"
 					}

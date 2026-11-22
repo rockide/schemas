@@ -8,8 +8,7 @@
 	"properties": {
 		"num_particles": {
 			"description": "Number of particles to emit per loop.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-			"default": 10
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		}
 	}
 }

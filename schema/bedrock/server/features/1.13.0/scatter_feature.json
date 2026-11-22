@@ -19,16 +19,7 @@
 			"title": "Scatter Feature Definition",
 			"description": "A single Scatter Feature Definition.",
 			"additionalProperties": false,
-			"required": [
-				"description",
-				"places_feature",
-				"coordinate_eval_order",
-				"iterations",
-				"scatter_chance",
-				"x",
-				"y",
-				"z"
-			],
+			"required": ["description", "places_feature", "iterations"],
 			"properties": {
 				"description": {
 					"type": "object",

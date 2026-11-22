@@ -1,0 +1,14 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_lifetime_once",
+	"description": "Emitter runs once, then expires.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"active_time": {
+			"description": "Seconds the emitter emits.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 0
+		}
+	}
+}

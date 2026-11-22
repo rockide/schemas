@@ -22,7 +22,8 @@
 							"$ref": "../../../../vanilla/definition/identifier.json"
 						},
 						"category": {
-							"$ref": "../../../../vanilla/server/creative_category.json"
+							"type": "string",
+							"enum": ["all", "construction", "nature", "equipment", "items", "commands", "none"]
 						}
 					}
 				},
@@ -119,7 +120,8 @@
 			"$ref": "../../../../vanilla/client/identifiers.json#/$defs/item_texture_identifier"
 		},
 		"minecraft:icon_variant": {
-			"enum": ["wood", "stone", "iron", "gold", "diamond"]
+			"enum": ["wood", "stone", "iron", "gold", "diamond"],
+			"default": "wood"
 		}
 	}
 }

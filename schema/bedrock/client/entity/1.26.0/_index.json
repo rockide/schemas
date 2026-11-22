@@ -8,7 +8,6 @@
 	"properties": {
 		"format_version": {
 			"type": "string",
-			"const": "1.26.0",
 			"description": "Specifies the format version of this client entity definition. Determines which features and syntax are available."
 		},
 		"minecraft:client_entity": {
@@ -107,6 +106,8 @@
 							},
 							{
 								"type": "object",
+								"minProperties": 1,
+								"maxProperties": 1,
 								"propertyNames": {
 									"pattern": "^controller\\.render\\..+$"
 								},
@@ -114,6 +115,9 @@
 									"propertyNames": {
 										"$ref": "../../../../vanilla/client/identifiers.json#/$defs/render_controller_identifier/anyOf/1"
 									}
+								},
+								"additionalProperties": {
+									"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 								}
 							}
 						]
@@ -126,24 +130,20 @@
 					"$ref": "#/$defs/spawn_egg"
 				},
 				"enable_attachables": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"held_item_ignores_lighting": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"held_item_scale": {
-					"oneOf": [
-						{
-							"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
-						},
-						{
-							"type": "number",
-							"minimum": 0
-						}
-					]
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"default": 1
 				},
 				"hide_armor": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		},
@@ -162,8 +162,10 @@
 							},
 							{
 								"type": "object",
+								"minProperties": 1,
+								"maxProperties": 1,
 								"additionalProperties": {
-									"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+									"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 								}
 							}
 						]
@@ -184,25 +186,32 @@
 					}
 				},
 				"scale": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"scaleX": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"scaleY": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"scaleZ": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"scalex": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"scaley": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"scalez": {
-					"$ref": "../../../../vanilla/definition/molang.json#/$defs/string"
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
+				},
+				"parent_setup": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition",
+					"doNotSuggest": true
+				},
+				"hide_held_items": {
+					"$ref": "../../../../vanilla/definition/molang.json#/$defs/condition"
 				},
 				"should_update_bones_and_effects_offscreen": {
 					"description": "Bones and effects will still be updated if the entity is off screen if this expression returns anything other than 0.0.",
@@ -234,6 +243,7 @@
 				},
 				"variables": {
 					"type": "object",
+					"minProperties": 1,
 					"propertyNames": {
 						"pattern": "^variable\\.[a-zA-Z_][a-zA-Z0-9_]*$"
 					},
@@ -256,17 +266,19 @@
 					"$ref": "#/$defs/color"
 				},
 				"texture": {
-					"$ref": "../../../../vanilla/client/identifiers.json#/$defs/item_texture_identifier"
+					"$ref": "../../../../vanilla/client/identifiers.json#/$defs/item_texture_identifier",
+					"default": ""
 				},
 				"texture_index": {
-					"type": "integer"
+					"type": "number",
+					"default": 0
 				}
 			}
 		},
 		"color": {
 			"type": "string",
 			"description": "A hexadecimal color code in the format #RRGGBB.",
-			"pattern": "^#([0-9a-fA-F]{6})$"
+			"pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
 		}
 	}
 }

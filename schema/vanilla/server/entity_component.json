@@ -408,6 +408,7 @@
 		"minecraft:effect.darkness",
 		"minecraft:effect.fatal_poison",
 		"minecraft:effect.fire_resistance",
+		"minecraft:effect.freezing",
 		"minecraft:effect.haste",
 		"minecraft:effect.health_boost",
 		"minecraft:effect.hunger",

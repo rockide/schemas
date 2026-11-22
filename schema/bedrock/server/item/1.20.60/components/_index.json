@@ -7,7 +7,7 @@
 	"required": ["minecraft:icon"],
 	"properties": {
 		"minecraft:display_name": {
-			"$ref": "../../1.20.0/components/display_name.json"
+			"$ref": "../../1.20.50/components/display_name.json"
 		},
 		"minecraft:durability": {
 			"$ref": "../../1.20.0/components/durability.json"
@@ -16,7 +16,7 @@
 			"$ref": "../../1.20.0/components/fuel.json"
 		},
 		"minecraft:entity_placer": {
-			"$ref": "../../1.20.0/components/entity_placer.json"
+			"$ref": "../../1.20.50/components/entity_placer.json"
 		},
 		"minecraft:can_destroy_in_creative": {
 			"$ref": "../../1.20.10/components/can_destroy_in_creative.json"
@@ -37,13 +37,13 @@
 			"$ref": "../../1.20.10/components/projectile.json"
 		},
 		"minecraft:record": {
-			"$ref": "../../1.20.10/components/record.json"
+			"$ref": "../../1.20.50/components/record.json"
 		},
 		"minecraft:repairable": {
-			"$ref": "../../1.20.10/components/repairable.json"
+			"$ref": "../../1.20.50/components/repairable.json"
 		},
 		"minecraft:shooter": {
-			"$ref": "../../1.20.10/components/shooter.json"
+			"$ref": "../../1.20.50/components/shooter.json"
 		},
 		"minecraft:throwable": {
 			"$ref": "../../1.20.10/components/throwable.json"
@@ -79,7 +79,7 @@
 			"$ref": "../../1.20.30/components/enchantable.json"
 		},
 		"minecraft:food": {
-			"$ref": "../../1.20.30/components/food.json"
+			"$ref": "../../1.20.50/components/food.json"
 		},
 		"minecraft:interact_button": {
 			"$ref": "../../1.20.30/components/interact_button.json"
@@ -92,6 +92,9 @@
 		},
 		"minecraft:icon": {
 			"$ref": "icon.json"
+		},
+		"minecraft:allow_off_hand": {
+			"$ref": "../../1.20.50/components/allow_off_hand.json"
 		}
 	},
 	"allOf": [

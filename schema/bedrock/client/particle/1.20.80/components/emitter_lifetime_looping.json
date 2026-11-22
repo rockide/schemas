@@ -1,0 +1,19 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_lifetime_looping",
+	"description": "Emitter loops with active and sleep phases.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"active_time": {
+			"description": "Seconds the emitter emits per loop.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 0
+		},
+		"sleep_time": {
+			"description": "Seconds the emitter pauses per loop.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 0
+		}
+	}
+}

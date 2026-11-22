@@ -54,7 +54,7 @@
 				},
 				"ground_level": {
 					"type": "integer",
-					"minimum": 1,
+					"minimum": 0,
 					"default": 0,
 					"description": "Optional. Specifies which Y coordinate of the structure is considered its ground level. This value determines which layer of the structure is checked by the \"grounded\" and \"leveled\" constraints and is used as a downward vertical offset during placement. If the value exceeds the structure's height, it is clamped to the maximum valid value and a content warning is emitted. Defaults to 0."
 				},

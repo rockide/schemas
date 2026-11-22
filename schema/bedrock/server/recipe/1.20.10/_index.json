@@ -68,6 +68,17 @@
 			"required": ["format_version", "minecraft:recipe_brewing_mix"]
 		},
 		{
+			"title": "Material Reduction Recipe",
+			"properties": {
+				"format_version": true,
+				"minecraft:recipe_material_reduction": {
+					"$ref": "../1.0.0/recipe_material_reduction.json"
+				}
+			},
+			"additionalProperties": false,
+			"required": ["format_version", "minecraft:recipe_material_reduction"]
+		},
+		{
 			"title": "Smithing Transform Recipe",
 			"properties": {
 				"format_version": true,

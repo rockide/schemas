@@ -24,10 +24,8 @@
 				"replaceable_blocks",
 				"ground_block",
 				"vegetation_feature",
-				"surface",
 				"depth",
 				"vertical_range",
-				"vegetation_chance",
 				"horizontal_radius"
 			],
 			"properties": {

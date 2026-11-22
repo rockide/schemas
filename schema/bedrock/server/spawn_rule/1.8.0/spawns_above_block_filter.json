@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "object",
 	"title": "Spawns Above Block Filter",
-	"description": "Filters spawning based on blocks above the spawn location. Note: This item no longer works after format versions of at least 1.18.0.",
+	"description": "Filters spawning based on blocks above the spawn location.",
 	"additionalProperties": false,
 	"properties": {
 		"blocks": {

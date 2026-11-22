@@ -47,7 +47,8 @@
 								"type": "boolean"
 							}
 						]
-					}
+					},
+					"maxProperties": 64
 				},
 				"uv_lock": {
 					"title": "UV Lock",

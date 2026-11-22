@@ -10,9 +10,8 @@
 			"type": "array",
 			"minItems": 3,
 			"maxItems": 3,
-			"default": [0, 0, 0],
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		},
 		"direction": {
@@ -21,13 +20,12 @@
 			"minItems": 3,
 			"maxItems": 3,
 			"items": {
-				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 			}
 		},
 		"rotation": {
 			"description": "Particle rotation.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-			"default": 0
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		}
 	}
 }

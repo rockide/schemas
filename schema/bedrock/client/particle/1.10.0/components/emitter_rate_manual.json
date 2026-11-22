@@ -8,8 +8,7 @@
 	"properties": {
 		"max_particles": {
 			"description": "Maximum number of active particles.",
-			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
-			"default": 50
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/number_or_string"
 		}
 	}
 }

@@ -3,9 +3,10 @@
 	"type": "object",
 	"title": "Minecraft Bedrock Client Attachable",
 	"required": ["format_version"],
+	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
-			"enum": ["1.8.0", "1.10.0", "1.26.0"]
+			"x-format-version": "[1.8.0-latest]"
 		}
 	},
 	"allOf": [
@@ -13,7 +14,7 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.8.0"]
+						"x-format-version": "[1.8.0-1.10.0)"
 					}
 				}
 			},
@@ -25,12 +26,24 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"enum": ["1.10.0", "1.26.0"]
+						"x-format-version": "[1.10.0-1.26.0)"
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.10.0/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.26.0-latest]"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.26.0/_index.json"
 			}
 		}
 	]

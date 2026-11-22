@@ -1,0 +1,79 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "minecraft:emitter_shape_disc",
+	"description": "Spawns particles using a disc shape.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"plane_normal": {
+			"description": "Disc plane normal.",
+			"default": [0, 1, 0],
+			"oneOf": [
+				{
+					"anyOf": [
+						{
+							"enum": ["x", "y", "z"]
+						},
+						{
+							"type": "string",
+							"pattern": "^[xXyYzZ]$"
+						}
+					]
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+					}
+				}
+			]
+		},
+		"offset": {
+			"description": "Offset from the emitter.",
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"default": [0, 0, 0],
+			"items": {
+				"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+			}
+		},
+		"radius": {
+			"description": "Disc radius.",
+			"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression",
+			"default": 1
+		},
+		"surface_only": {
+			"description": "Emit only from the disc edge.",
+			"type": "boolean",
+			"default": false
+		},
+		"direction": {
+			"description": "Particle emission direction.",
+			"default": "outwards",
+			"oneOf": [
+				{
+					"anyOf": [
+						{
+							"enum": ["inwards", "outwards"]
+						},
+						{
+							"type": "string",
+							"pattern": "^(?:[iI][nN][wW][aA][rR][dD][sS]|[oO][uU][tT][wW][aA][rR][dD][sS])$"
+						}
+					]
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"$ref": "../../../../../vanilla/definition/molang.json#/$defs/expression"
+					}
+				}
+			]
+		}
+	}
+}
