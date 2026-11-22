@@ -89,6 +89,12 @@
 			"enum": ["apply_waterlogging", "ignore_waterlogging"],
 			"default": "apply_waterlogging",
 			"description": "How to handle waterloggable blocks overlapping with existing liquid."
+		},
+		"on_placed": {
+			"$comment": "Optional callback run after the structure is placed (26.60 changelog). The creator-exposed interface is still in development and its shape is undocumented, so the value is unconstrained.",
+			"deprecated": true,
+			"doNotSuggest": true,
+			"deprecationMessage": "Internal only"
 		}
 	},
 	"$defs": {
