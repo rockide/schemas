@@ -1,0 +1,20 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Allow Off Hand",
+	"oneOf": [
+		{
+			"type": "boolean"
+		},
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"value": {
+					"type": "boolean",
+					"default": true,
+					"$comment": "Mojang's beta schema defaults value to true; the 1.20.50 schema defaults it to false."
+				}
+			}
+		}
+	]
+}
