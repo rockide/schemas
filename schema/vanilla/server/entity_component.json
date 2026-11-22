@@ -40,6 +40,7 @@
 		"minecraft:can_join_raid",
 		"minecraft:can_power_jump",
 		"minecraft:can_stand_on_powder_snow",
+		"minecraft:can_stand_on_brittle_ice",
 		"minecraft:cannot_be_attacked",
 		"minecraft:celebrate_hunt",
 		"minecraft:collision_box",

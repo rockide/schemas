@@ -7,7 +7,7 @@
 	},
 	"private": true,
 	"devDependencies": {
-		"@minecraft/vanilla-data": "^1.26.60",
+		"@minecraft/vanilla-data": "^1.26.70-preview.26",
 		"@types/bun": "latest",
 		"@types/jsdom": "^30.0.0",
 		"jsdom": "^30.0.1",

@@ -5,7 +5,7 @@
     "": {
       "name": "scripts",
       "devDependencies": {
-        "@minecraft/vanilla-data": "^1.26.60",
+        "@minecraft/vanilla-data": "^1.26.70-preview.26",
         "@types/bun": "latest",
         "@types/jsdom": "^30.0.0",
         "jsdom": "^30.0.1",
@@ -39,7 +39,7 @@
 
     "@exodus/bytes": ["@exodus/bytes@1.15.1", "", { "peerDependencies": { "@noble/hashes": "^1.8.0 || ^2.0.0" }, "optionalPeers": ["@noble/hashes"] }, "sha512-S6mL0yNB/Abt9Ei4tq8gDhcczc4S3+vQ4ra7vxnAf+YHC02srtqxKKZghx2Dq6p0e66THKwR6r8N6P95wEty7Q=="],
 
-    "@minecraft/vanilla-data": ["@minecraft/vanilla-data@1.26.60", "", {}, "sha512-6ARh4/fbNRA4XRRrMO3ys0ldO208ipcpyLAf4tpc3KXw/E6EUeaFKuFqJ2ESMQ6sSUUIfK1dNXm9MtFdWj9BPg=="],
+    "@minecraft/vanilla-data": ["@minecraft/vanilla-data@1.26.70-preview.26", "", {}, "sha512-4niW9A9wXDz/USRaYi9Y3V9BcRIvIKrgNAZOM9KVUlfP1vxCK1QGZW9mKTma/0OEz7Wp42KSsPspmiYcNox15A=="],
 
     "@types/bun": ["@types/bun@1.3.13", "", { "dependencies": { "bun-types": "1.3.13" } }, "sha512-9fqXWk5YIHGGnUau9TEi+qdlTYDAnOj+xLCmSTwXfAIqXr2x4tytJb43E9uCvt09zJURKXwAtkoH4nLQfzeTXw=="],
 
