@@ -239,6 +239,23 @@
 							"type": "boolean"
 						}
 					}
+				},
+				"place_feature": {
+					"type": "object",
+					"title": "Place Feature",
+					"$comment": "Internal-only event response added in preview 26.70.22; shape from that changelog.",
+					"deprecated": true,
+					"doNotSuggest": true,
+					"deprecationMessage": "Internal only",
+					"additionalProperties": false,
+					"properties": {
+						"feature": {
+							"$ref": "../../../../vanilla/server/feature.json"
+						},
+						"target": {
+							"$ref": "../../../../vanilla/server/filter/general.json#/$defs/filter_subject"
+						}
+					}
 				}
 			}
 		}
