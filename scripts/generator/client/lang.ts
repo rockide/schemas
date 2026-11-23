@@ -19,7 +19,7 @@ export async function generateClientLang() {
 						langKeys.push(key.trim());
 						if (key.startsWith("itemGroup.name")) {
 							const trimmed = key.trim();
-							creativeGroups.push(trimmed, `minecraft:${trimmed}`);
+							creativeGroups.push(`minecraft:${trimmed}`);
 						}
 					}
 				}
