@@ -30,8 +30,17 @@
 			"additionalProperties": false,
 			"properties": {
 				"category": {
-					"$ref": "../../../../vanilla/server/creative_category.json",
-					"description": "Determines which category this block will be placed under in the inventory and crafting table container screens."
+					"anyOf": [
+						{
+							"type": "string",
+							"pattern": "^\\S+:\\S+$",
+							"description": "The expandable group that the block is a part of. Must be a namespace and can use vanilla ones"
+						},
+						{
+							"$ref": "../../../../vanilla/server/creative_category.json",
+							"description": "Determines which category this block will be placed under in the inventory and crafting table container screens."
+						}
+					]
 				},
 				"group": {
 					"$ref": "../../../../vanilla/server/creative_group.json",
