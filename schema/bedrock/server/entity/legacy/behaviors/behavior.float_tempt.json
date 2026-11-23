@@ -37,7 +37,6 @@
 		},
 		"on_tempt_start": {
 			"$ref": "../general.json#/$defs/trigger",
-			"additionalProperties": false,
 			"description": "Event to trigger when this mob starts being tempted."
 		},
 		"priority": {
