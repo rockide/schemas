@@ -32,21 +32,26 @@ export async function generateServerEntityComponents() {
 	const pattern = "schema/bedrock/server/entity/*";
 	let latest: string | undefined;
 	let cwd: string = "";
-	for await (let dirpath of new Bun.Glob(pattern).scan({ onlyFiles: false })) {
-		dirpath = dirpath.replace(/\\/g, "/");
-		const version = path.basename(dirpath);
-		if (version === "legacy" || version.endsWith(".json")) {
-			continue;
-		}
-		if (!latest) {
-			latest = version;
-		} else {
-			if (Bun.semver.order(version, latest) === 1) {
+	// beta goes first
+	const betaComponentsPath = "schema/bedrock/server/entity/beta/components/_index.json";
+	if (await Bun.file(betaComponentsPath).exists()) {
+		latest = "beta";
+	} else {
+		for await (let dirpath of new Bun.Glob(pattern).scan({ onlyFiles: false })) {
+			dirpath = dirpath.replace(/\\/g, "/");
+			const version = path.basename(dirpath);
+			if (version === "legacy" || version.endsWith(".json")) {
+				continue;
+			}
+			if (!latest) {
 				latest = version;
+			} else {
+				if (Bun.semver.order(version, latest) === 1) {
+					latest = version;
+				}
 			}
 		}
 	}
-
 	if (!latest) {
 		throw new Error("No valid entity component version found.");
 	}
