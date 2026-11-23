@@ -6,7 +6,7 @@
 	"x-format-version-enums": true,
 	"properties": {
 		"format_version": {
-			"x-format-version": "[1.10.0-latest)"
+			"x-format-version": "[1.10.0-latest]"
 		}
 	},
 	"allOf": [
