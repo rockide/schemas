@@ -1,0 +1,61 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock POI Block 1.26.40",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:poi_block"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:poi_block": {
+			"type": "object",
+			"title": "minecraft:poi_block",
+			"additionalProperties": false,
+			"required": ["description", "blocks"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"title": "minecraft:poi_description",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../../vanilla/definition/identifier.json"
+						}
+					}
+				},
+				"tickets": {
+					"type": "integer",
+					"description": "The number of entities that can reserve a POI of this type.",
+					"minimum": 0,
+					"maximum": 255,
+					"default": 0
+				},
+				"usable_distance": {
+					"type": "integer",
+					"description": "Represents the general distnace that this POI should be usable from",
+					"minimum": 0,
+					"maximum": 255,
+					"default": 1
+				},
+				"blocks": {
+					"type": "array",
+					"description": "List of blocks that represent this POI in a world. Care should be taken to select blocks that will be rare/infrequent in the world.",
+					"items": {
+						"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/block_identifier",
+						"pattern": "^\\w+:\\w+$"
+					}
+				},
+				"tags": {
+					"type": "array",
+					"description": "List of tags for the POI. Tags are used to indicate functionality. E.g. minecraft:bee_home is used to indicate a valid block for a bee's home",
+					"default": [],
+					"items": {
+						"$ref": "../../../../../vanilla/reference/poi_tag.json"
+					}
+				}
+			}
+		}
+	}
+}

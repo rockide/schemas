@@ -1,6 +1,7 @@
 import path from "path/posix";
 import prettier from "prettier";
 import JSONC from "tiny-jsonc";
+import extractBrarchive from "./brarchive";
 import type { RootSchema } from "./types";
 
 /**
@@ -105,13 +106,20 @@ export async function getBedrockFile<U>(options: GetBedrockFileOptions<U>): Prom
 export async function getBedrockJSON<T, U = string>(
 	options: GetBedrockJSONContentOptions<T, U>,
 ): Promise<U[]> {
-	const { pattern, type, source = "bedrock-samples" } = options;
+	const { pattern, type, source = "bedrock-samples", brarchive } = options;
 	const searchPath = source === "bedrock-samples" ? bedrockPath(type) : dataPath(type);
 	const glob = new Bun.Glob(path.join(searchPath, pattern));
 	const results: U[] = [];
 	for await (let file of glob.scan({ onlyFiles: true })) {
-		const content = await readJson<T>(file);
-		results.push(options.transform(content));
+		if (brarchive) {
+			const extracted = await extractBrarchive(file);
+			for (const entry of extracted) {
+				results.push(options.transform(entry.toJson() as T));
+			}
+		} else {
+			const content = await readJson<T>(file);
+			results.push(options.transform(content));
+		}
 	}
 	return results;
 }
@@ -137,6 +145,7 @@ export type GetBedrockFileOptions<U> = {
 export type GetBedrockJSONContentOptions<T, U> = {
 	type: BedrockSubdirType;
 	source?: "bedrock-samples" | "data";
+	brarchive?: boolean;
 	pattern: string;
 	transform: (content: T) => U;
 };

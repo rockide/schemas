@@ -269,6 +269,10 @@
 					]
 				}
 			]
+		},
+		"poi_tag": {
+			"type": "string",
+			"enum": ["minecraft:acquirable_job_site", "minecraft:bee_home", "minecraft:village"]
 		}
 	}
 }

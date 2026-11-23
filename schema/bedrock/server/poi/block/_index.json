@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock POI Block File",
+	"required": ["format_version"],
+	"properties": {
+		"format_version": {
+			"x-format-version": "[1.26.40-latest]"
+		}
+	},
+	"allOf": [
+		{
+			"$ref": "./1.26.40/_index.json"
+		}
+	]
+}

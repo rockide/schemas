@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"anyOf": [
+		{
+			"type": "string",
+			"pattern": "^\\w+:\\w+$"
+		},
+		{
+			"$ref": "../server/tags.json#/$defs/poi_tag"
+		}
+	]
+}
