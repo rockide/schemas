@@ -121,6 +121,10 @@ const BP_ENTRIES: JsonValidationEntry[] = [
 		url: "./schema/bedrock/server/worldgen/structure_metadata/_index.json",
 	},
 	{
+		fileMatch: "shifts.{json,jsonc,json5}",
+		url: "./schema/bedrock/server/shifts/_index.json",
+	},
+	{
 		fileMatch: "entities/**/*.{json,jsonc,json5}",
 		url: "./schema/bedrock/server/entity/_index.json",
 	},

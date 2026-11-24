@@ -1,0 +1,38 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Shifts 1.26.20",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:shifts"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:shifts": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["collections"],
+			"properties": {
+				"collections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["collection", "steps"],
+						"properties": {
+							"collection": {
+								"$ref": "../../../../vanilla/definition/identifier.json#/$defs/no_minecraft"
+							},
+							"steps": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
