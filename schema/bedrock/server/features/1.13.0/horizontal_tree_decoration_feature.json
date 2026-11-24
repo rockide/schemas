@@ -1,0 +1,43 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Horizontal Tree Decoration Feature",
+	"description": "'minecraft:horizontal_tree_decoration_feature' places a block in a random horizontal facing direction",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:horizontal_tree_decoration_feature"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:horizontal_tree_decoration_feature": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["description", "places_block"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../vanilla/definition/identifier.json",
+							"description": "The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename."
+						}
+					}
+				},
+				"places_block": {
+					"$ref": "../../../../vanilla/server/block_descriptor.json",
+					"description": "Block to place."
+				},
+				"allow_adjacent": {
+					"type": "boolean",
+					"description": "Whether neighbors of the same block type are allowed. Will result in blocks being placed with at least one block gap when set to false"
+				},
+				"bark_side_only": {
+					"type": "boolean",
+					"description": "If true, will never place the block on the 'open' side of a block (imagine the block is a fallen tree trunk)."
+				}
+			}
+		}
+	}
+}

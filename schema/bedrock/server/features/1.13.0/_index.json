@@ -112,6 +112,10 @@
 			"$ref": "./tree_feature.json"
 		},
 		{
+			"required": ["minecraft:horizontal_tree_decoration_feature"],
+			"$ref": "./horizontal_tree_decoration_feature.json"
+		},
+		{
 			"required": ["minecraft:height_difference_filter_feature"],
 			"$ref": "./height_difference_filter_feature.json"
 		}
