@@ -26,24 +26,12 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"x-format-version": "[1.21.70-1.21.80)"
+						"x-format-version": "[1.21.70-1.21.90)"
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.21.70/_index.json"
-			}
-		},
-		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"x-format-version": "[1.21.80-1.21.90)"
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.21.80/_index.json"
 			}
 		},
 		{
