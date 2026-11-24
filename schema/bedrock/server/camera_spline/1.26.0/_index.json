@@ -1,0 +1,151 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Camera Spline 1.26.0",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:camera_custom_splines"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:camera_custom_splines": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["splines"],
+			"properties": {
+				"splines": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/spline"
+					}
+				}
+			}
+		}
+	},
+	"$defs": {
+		"spline": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"name",
+				"total_time",
+				"control_points",
+				"progress_key_frames",
+				"rotation_key_frames"
+			],
+			"properties": {
+				"name": {
+					"pattern": "^\\w+:\\w+$"
+				},
+				"total_time": {
+					"type": "number",
+					"minimum": 0
+				},
+				"spline_type": {
+					"type": "string",
+					"enum": ["catmullrom", "linear"]
+				},
+				"control_points": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["position"],
+						"properties": {
+							"position": {
+								"$ref": "#/$defs/vec3"
+							}
+						}
+					}
+				},
+				"progress_key_frames": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["progress", "time"],
+						"properties": {
+							"progress": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 1
+							},
+							"time": {
+								"type": "number",
+								"minimum": 0
+							},
+							"easing": {
+								"$ref": "#/$defs/easing"
+							}
+						}
+					}
+				},
+				"rotation_key_frames": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["rotation", "time"],
+						"properties": {
+							"rotation": {
+								"$ref": "#/$defs/vec3"
+							},
+							"time": {
+								"type": "number",
+								"minimum": 0
+							},
+							"easing": {
+								"$ref": "#/$defs/easing"
+							}
+						}
+					}
+				}
+			}
+		},
+		"vec3": {
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"type": "number"
+			}
+		},
+		"easing": {
+			"type": "string",
+			"enum": [
+				"linear",
+				"spring",
+				"in_quad",
+				"out_quad",
+				"in_out_quad",
+				"in_cubic",
+				"out_cubic",
+				"in_out_cubic",
+				"in_quart",
+				"out_quart",
+				"in_out_quart",
+				"in_quint",
+				"out_quint",
+				"in_out_quint",
+				"in_sine",
+				"out_sine",
+				"in_out_sine",
+				"in_expo",
+				"out_expo",
+				"in_out_expo",
+				"in_circ",
+				"out_circ",
+				"in_out_circ",
+				"in_bounce",
+				"out_bounce",
+				"in_out_bounce",
+				"in_back",
+				"out_back",
+				"in_out_back",
+				"in_elastic",
+				"out_elastic",
+				"in_out_elastic"
+			]
+		}
+	}
+}

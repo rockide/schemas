@@ -110,6 +110,16 @@
 			},
 			{
 				"fileMatch": [
+					"behavior_pack/cameras/splines/**/*.json",
+					"*BP/cameras/splines/**/*.json",
+					"BP_*/cameras/splines/**/*.json",
+					"*bp/cameras/splines/**/*.json",
+					"bp_*/cameras/splines/**/*.json"
+				],
+				"url": "./dist/1xycpaiy4os3e.json"
+			},
+			{
+				"fileMatch": [
 					"behavior_pack/dialogue/**/*.{json,jsonc,json5}",
 					"*BP/dialogue/**/*.{json,jsonc,json5}",
 					"BP_*/dialogue/**/*.{json,jsonc,json5}",

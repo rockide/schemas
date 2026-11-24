@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Camera Spline File",
+	"required": ["format_version"],
+	"properties": {
+		"format_version": {
+			"x-format-version": "[1.26.0-latest]"
+		}
+	},
+	"allOf": [
+		{
+			"$ref": "./1.26.0/_index.json"
+		}
+	]
+}
