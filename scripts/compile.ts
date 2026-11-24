@@ -117,6 +117,10 @@ const BP_ENTRIES: JsonValidationEntry[] = [
 		url: "./schema/bedrock/server/worldgen/jigsaw_structure/_index.json",
 	},
 	{
+		fileMatch: "worldgen/metadata/**/*.{json,jsonc,json5}",
+		url: "./schema/bedrock/server/worldgen/structure_metadata/_index.json",
+	},
+	{
 		fileMatch: "entities/**/*.{json,jsonc,json5}",
 		url: "./schema/bedrock/server/entity/_index.json",
 	},

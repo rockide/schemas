@@ -1,0 +1,61 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "minecraft:jigsaw_structure_metadata",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:jigsaw_structure_metadata"],
+	"properties": {
+		"format_version": {
+			"type": "string",
+			"description": "Format version of the contained metadata registry."
+		},
+		"minecraft:jigsaw_structure_metadata": {
+			"type": "object",
+			"title": "Jigsaw Structure Metadata Registry",
+			"description": "The Jigsaw metadata registry.",
+			"additionalProperties": false,
+			"required": ["metadata"],
+			"properties": {
+				"metadata": {
+					"type": "object",
+					"description": "The registry associating structure locations with generated Jigsaw structure metadata.",
+					"additionalProperties": {
+						"type": "object",
+						"additionalProperties": false,
+						"properties": {
+							"key": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"value": {
+								"$ref": "#/$defs/structure_metadata"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"$defs": {
+		"structure_metadata": {
+			"type": "object",
+			"title": "Jigsaw Structure Metadata",
+			"additionalProperties": false,
+			"required": ["markers", "size"],
+			"properties": {
+				"size": {
+					"$ref": "../1.21.50/_index.json#/$defs/block_pos",
+					"description": "The generated structures bounding size."
+				},
+				"markers": {
+					"type": "array",
+					"description": "The Jigsaw blocks contained within the generated structure.",
+					"items": {
+						"$ref": "../1.21.50/_index.json#/$defs/block_metadata",
+						"title": "Jigsaw Block Metadata"
+					}
+				}
+			}
+		}
+	}
+}
