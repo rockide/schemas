@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Camera List File",
+	"required": ["format_version"],
+	"properties": {
+		"format_version": {
+			"x-format-version": "[1.19.50-latest]"
+		}
+	},
+	"allOf": [
+		{
+			"$ref": "./1.19.50/_index.json"
+		}
+	]
+}

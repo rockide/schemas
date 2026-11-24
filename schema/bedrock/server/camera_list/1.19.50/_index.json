@@ -1,0 +1,30 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Camera List 1.19.50",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:camera_list"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:camera_list": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["identifier", "cameras"],
+			"properties": {
+				"identifier": {
+					"pattern": "^\\w+:\\w+$"
+				},
+				"cameras": {
+					"type": "array",
+					"minItems": 1,
+					"uniqueItems": true,
+					"items": {
+						"$ref": "../../../../vanilla/server/camera_preset.json"
+					}
+				}
+			}
+		}
+	}
+}

@@ -90,6 +90,16 @@
 			},
 			{
 				"fileMatch": [
+					"behavior_pack/cameras/lists/**/*.json",
+					"*BP/cameras/lists/**/*.json",
+					"BP_*/cameras/lists/**/*.json",
+					"*bp/cameras/lists/**/*.json",
+					"bp_*/cameras/lists/**/*.json"
+				],
+				"url": "./dist/3219ctmanzc7q.json"
+			},
+			{
+				"fileMatch": [
 					"behavior_pack/cameras/presets/**/*.{json,jsonc,json5}",
 					"*BP/cameras/presets/**/*.{json,jsonc,json5}",
 					"BP_*/cameras/presets/**/*.{json,jsonc,json5}",
