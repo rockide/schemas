@@ -17,17 +17,7 @@
 			"required": ["description"],
 			"properties": {
 				"description": {
-					"type": "object",
-					"title": "Description",
-					"description": "Item description metadata",
-					"additionalProperties": false,
-					"required": ["identifier"],
-					"properties": {
-						"identifier": {
-							"$ref": "../../../../vanilla/definition/identifier.json",
-							"description": "Item identifier"
-						}
-					}
+					"$ref": "../1.20.0/_index.json#/properties/minecraft:item/properties/description"
 				},
 				"components": {
 					"$ref": "./components/_index.json"

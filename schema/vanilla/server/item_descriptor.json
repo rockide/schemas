@@ -6,6 +6,17 @@
 			"$ref": "./identifiers.json#/$defs/item_identifier"
 		},
 		{
+			"$comment": "BDS (1.26.70 preview) reads { \"item\": <identifier> } in item components (food, repairable, storage_item) at every component format_version; item must be a string and unknown members are rejected.",
+			"type": "object",
+			"required": ["item"],
+			"additionalProperties": false,
+			"properties": {
+				"item": {
+					"$ref": "./identifiers.json#/$defs/item_identifier"
+				}
+			}
+		},
+		{
 			"type": "object",
 			"required": ["tags"],
 			"additionalProperties": false,

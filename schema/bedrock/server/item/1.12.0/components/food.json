@@ -57,7 +57,17 @@
 				"type": "object",
 				"title": "Effect",
 				"additionalProperties": false,
+				"required": ["name"],
 				"properties": {
+					"name": {
+						"$ref": "../../../../../vanilla/definition/effect_definition.json#/properties/name"
+					},
+					"duration": {
+						"$ref": "../../../../../vanilla/definition/effect_definition.json#/properties/duration"
+					},
+					"amplifier": {
+						"$ref": "../../../../../vanilla/definition/effect_definition.json#/properties/amplifier"
+					},
 					"chance": {
 						"type": "number",
 						"minimum": 0,
@@ -65,12 +75,7 @@
 						"default": 1,
 						"description": "Chance for effect to apply (0-1)"
 					}
-				},
-				"allOf": [
-					{
-						"$ref": "../../../../../vanilla/definition/effect_definition.json"
-					}
-				]
+				}
 			}
 		},
 		"remove_effects": {

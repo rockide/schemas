@@ -94,7 +94,7 @@
 			"$ref": "../../1.20.60/components/icon.json"
 		},
 		"minecraft:custom_components": {
-			"$ref": "../../1.20.80/components/custom_components.json"
+			"$ref": "custom_components.json"
 		},
 		"minecraft:damage_absorption": {
 			"$ref": "damage_absorption.json"
@@ -103,20 +103,15 @@
 			"$ref": "durability_sensor.json"
 		},
 		"minecraft:allow_off_hand": {
-			"$ref": "../../1.20.50/components/allow_off_hand.json"
+			"$ref": "../../1.20.20/components/allow_off_hand.json"
 		}
 	},
 	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"minecraft:food": true
-				},
-				"required": ["minecraft:food"]
-			},
-			"then": {
-				"required": ["minecraft:food", "minecraft:use_modifiers"]
-			}
+			"$ref": "../../1.20.50/components/_index.json#/allOf/0"
+		},
+		{
+			"$ref": "../../1.20.50/components/_index.json#/allOf/1"
 		},
 		{
 			"if": {
@@ -126,7 +121,37 @@
 				"required": ["minecraft:damage_absorption"]
 			},
 			"then": {
-				"required": ["minecraft:damage_absorption", "minecraft:durability"]
+				"required": ["minecraft:durability"],
+				"properties": {
+					"minecraft:durability": {
+						"properties": {
+							"max_durability": {
+								"exclusiveMinimum": 0
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"$comment": "BDS (1.26.70 preview) warns when minecraft:durability_sensor has no minecraft:durability with a positive max_durability (format_version 1.21.10 to 1.26.20).",
+			"if": {
+				"properties": {
+					"minecraft:durability_sensor": true
+				},
+				"required": ["minecraft:durability_sensor"]
+			},
+			"then": {
+				"required": ["minecraft:durability"],
+				"properties": {
+					"minecraft:durability": {
+						"properties": {
+							"max_durability": {
+								"exclusiveMinimum": 0
+							}
+						}
+					}
+				}
 			}
 		}
 	]

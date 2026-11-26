@@ -94,7 +94,7 @@
 			"$ref": "use_modifiers.json"
 		},
 		"minecraft:allow_off_hand": {
-			"$ref": "./allow_off_hand.json"
+			"$ref": "../../1.20.20/components/allow_off_hand.json"
 		}
 	},
 	"allOf": [
@@ -106,7 +106,38 @@
 				"required": ["minecraft:food"]
 			},
 			"then": {
-				"required": ["minecraft:food", "minecraft:use_modifiers"]
+				"required": ["minecraft:use_modifiers"],
+				"properties": {
+					"minecraft:use_modifiers": {
+						"required": ["use_duration"],
+						"properties": {
+							"use_duration": {
+								"exclusiveMinimum": 0
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"minecraft:shooter": true
+				},
+				"required": ["minecraft:shooter"]
+			},
+			"then": {
+				"required": ["minecraft:use_modifiers"],
+				"properties": {
+					"minecraft:use_modifiers": {
+						"required": ["use_duration"],
+						"properties": {
+							"use_duration": {
+								"exclusiveMinimum": 0
+							}
+						}
+					}
+				}
 			}
 		}
 	]

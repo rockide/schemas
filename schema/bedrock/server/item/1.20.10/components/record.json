@@ -3,6 +3,7 @@
 	"type": "object",
 	"title": "Record Component",
 	"description": "Record Item Component. Used by record items to play music.",
+	"required": ["sound_event"],
 	"additionalProperties": false,
 	"properties": {
 		"comparator_signal": {
@@ -18,7 +19,7 @@
 			"description": "Duration of sound event in seconds, float value"
 		},
 		"sound_event": {
-			"$ref": "../../../../../vanilla/client/identifiers.json#/$defs/sound_event_identifier",
+			"$ref": "../../../../../vanilla/server/level_sound.json",
 			"title": "Sound Event",
 			"description": "Sound event type"
 		}

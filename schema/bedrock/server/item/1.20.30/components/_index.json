@@ -89,9 +89,15 @@
 		},
 		"minecraft:interact_button": {
 			"$ref": "interact_button.json"
+		},
+		"minecraft:allow_off_hand": {
+			"$ref": "../../1.20.20/components/allow_off_hand.json"
 		}
 	},
 	"allOf": [
+		{
+			"$ref": "../../1.20.20/components/_index.json#/allOf/0"
+		},
 		{
 			"if": {
 				"properties": {
@@ -100,7 +106,33 @@
 				"required": ["minecraft:food"]
 			},
 			"then": {
-				"required": ["minecraft:food", "minecraft:use_duration"]
+				"required": ["minecraft:use_duration"],
+				"properties": {
+					"minecraft:use_duration": {
+						"not": {
+							"anyOf": [
+								{
+									"const": 0
+								},
+								{
+									"type": "object",
+									"properties": {
+										"value": {
+											"const": 0
+										}
+									},
+									"required": ["value"]
+								},
+								{
+									"type": "object",
+									"not": {
+										"required": ["value"]
+									}
+								}
+							]
+						}
+					}
+				}
 			}
 		}
 	]

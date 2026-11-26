@@ -94,20 +94,15 @@
 			"$ref": "icon.json"
 		},
 		"minecraft:allow_off_hand": {
-			"$ref": "../../1.20.50/components/allow_off_hand.json"
+			"$ref": "../../1.20.20/components/allow_off_hand.json"
 		}
 	},
 	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"minecraft:food": true
-				},
-				"required": ["minecraft:food"]
-			},
-			"then": {
-				"required": ["minecraft:food", "minecraft:use_modifiers"]
-			}
+			"$ref": "../../1.20.50/components/_index.json#/allOf/0"
+		},
+		{
+			"$ref": "../../1.20.50/components/_index.json#/allOf/1"
 		}
 	]
 }
