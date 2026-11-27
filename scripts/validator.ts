@@ -1,12 +1,41 @@
 import { existsSync } from "node:fs";
-import { dirname, isAbsolute, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { readJson } from "./utils";
 
 interface RefIssue {
 	schema: string;
 	ref: string;
 	resolved: string;
-	kind: "missing" | "fragment";
+	kind: "missing" | "fragment" | "forward";
+}
+
+const LABELS: Record<RefIssue["kind"], string> = {
+	missing: "MISSING",
+	fragment: "INVALID FRAGMENT",
+	forward: "NEWER VERSION",
+};
+
+const VERSION_FOLDER = /^\d+(?:\.\d+)+$/;
+
+function compareVersions(a: string, b: string): number {
+	const x = a.split(".").map(Number);
+	const y = b.split(".").map(Number);
+	for (let i = 0; i < Math.max(x.length, y.length); i++) {
+		const d = (x[i] ?? 0) - (y[i] ?? 0);
+		if (d !== 0) return d;
+	}
+	return 0;
+}
+
+/** True when a file in one version folder refers into a newer sibling version folder (or `beta`). */
+function refersToNewerVersion(fromFile: string, target: string): boolean {
+	const from = relative(process.cwd(), resolve(fromFile)).split(sep);
+	const to = relative(process.cwd(), target).split(sep);
+	let i = 0;
+	while (i < from.length - 1 && from[i] === to[i]) i++;
+	if (!VERSION_FOLDER.test(from[i] ?? "")) return false;
+	if (to[i] === "beta") return true;
+	return VERSION_FOLDER.test(to[i] ?? "") && compareVersions(to[i], from[i]) > 0;
 }
 
 function collectRefs(value: unknown, refs: string[]): void {
@@ -92,6 +121,9 @@ async function main() {
 				issues.push({ schema: file, ref, resolved: resolved.path, kind: "missing" });
 				continue;
 			}
+			if (refersToNewerVersion(file, resolved.path)) {
+				issues.push({ schema: file, ref, resolved: resolved.path, kind: "forward" });
+			}
 			if (resolved.fragment !== undefined && resolved.fragment !== "") {
 				let target = parsedFiles.get(resolved.path);
 				if (target === undefined) {
@@ -115,12 +147,12 @@ async function main() {
 	}
 
 	for (const i of issues) {
-		console.log(`${i.kind === "missing" ? "MISSING" : "INVALID FRAGMENT"}: ${i.ref}`);
+		console.log(`${LABELS[i.kind]}: ${i.ref}`);
 		console.log(`  in:       ${i.schema}`);
 		console.log(`  resolved: ${i.resolved}`);
 	}
 
-	console.error(`\n${issues.length} missing $ref target(s).`);
+	console.error(`\n${issues.length} $ref issue(s).`);
 	process.exit(1);
 }
 
