@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Atomic Client Entity",
+	"required": ["format_version"],
+	"properties": {
+		"format_version": {
+			"enum": ["beta"]
+		}
+	},
+	"allOf": [
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"enum": ["beta"]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./beta/_index.json"
+			}
+		}
+	]
+}

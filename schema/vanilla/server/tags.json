@@ -189,8 +189,11 @@
 						"has_structure_trail_ruins",
 						"high_seas",
 						"hills",
+						"hosted_ores",
 						"ice",
+						"ice_caves",
 						"ice_plains",
+						"intrusive_deposits",
 						"jagged_peaks",
 						"jungle",
 						"legacy",
@@ -208,6 +211,9 @@
 						"nether",
 						"nether_wastes",
 						"netherwart_forest",
+						"no_dirt",
+						"no_glow_lichen",
+						"no_granite",
 						"no_legacy_worldgen",
 						"oak_forest",
 						"ocean",
@@ -263,6 +269,10 @@
 					]
 				}
 			]
+		},
+		"poi_tag": {
+			"type": "string",
+			"enum": ["minecraft:acquirable_job_site", "minecraft:bee_home", "minecraft:village"]
 		}
 	}
 }

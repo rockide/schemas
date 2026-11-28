@@ -1,0 +1,48 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock POI Tag 1.26.40",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:poi_tag"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:poi_tag": {
+			"type": "object",
+			"title": "minecraft:poi_tag",
+			"additionalProperties": false,
+			"required": ["description"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"title": "minecraft:poi_tag_description",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../../vanilla/definition/identifier.json"
+						}
+					}
+				},
+				"children": {
+					"$ref": "#/$defs/tag_list",
+					"description": "List of more specific tags that inherits all tags and meaning of this tag"
+				},
+				"parents": {
+					"$ref": "#/$defs/tag_list",
+					"description": "List of more broad tags that this tag will inherit"
+				}
+			}
+		}
+	},
+	"$defs": {
+		"tag_list": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"$ref": "../../../../../vanilla/reference/poi_tag.json"
+			}
+		}
+	}
+}

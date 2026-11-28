@@ -2,7 +2,7 @@ export class FormatVersionRange {
 	private static readonly REGEX = /^\[(\d+\.\d+\.\d+)-(\d+\.\d+\.\d+|latest)([\])])$/;
 	private static readonly KEYWORD = "x-format-version";
 	// TODO: Add a way to get the latest game version from the schema instead of hardcoding it here.
-	private static readonly LATEST_GAME_VERSION = "1.26.60";
+	private static readonly LATEST_GAME_VERSION = "1.26.70";
 
 	static parse(annotation: string): FormatVersionRange {
 		const match = annotation.replace(/\s/g, "").match(FormatVersionRange.REGEX);

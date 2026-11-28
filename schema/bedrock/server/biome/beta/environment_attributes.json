@@ -1,0 +1,92 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Environment Attributes",
+	"description": "A collection with unique Environment Attributes.",
+	"additionalProperties": false,
+	"properties": {
+		"minecraft:experimental_bool_attr": {
+			"$ref": "#/$defs/bool_attribute",
+			"description": "Experimental environment attribute that holds a bool type."
+		},
+		"minecraft:experimental_color_attr": {
+			"$ref": "#/$defs/color_attribute",
+			"description": "Experimental environment attribute that holds a color type."
+		},
+		"minecraft:experimental_float_attr_1": {
+			"$ref": "#/$defs/float_attribute",
+			"description": "Experimental environment attribute that holds a float type."
+		},
+		"minecraft:experimental_float_attr_2": {
+			"$ref": "#/$defs/float_attribute",
+			"description": "Experimental environment attribute that holds a float type."
+		}
+	},
+	"$defs": {
+		"bool_attribute": {
+			"type": "object",
+			"title": "Bool Environment Attribute",
+			"description": "Environment attribute that can hold a value of type bool.",
+			"required": ["operation", "value"],
+			"additionalProperties": false,
+			"properties": {
+				"value": {
+					"type": "boolean"
+				},
+				"operation": {
+					"type": "string",
+					"title": "Bool Attribute Operation",
+					"enum": ["override", "alpha_blend", "and", "nand", "or", "nor", "xor", "xnor"]
+				}
+			}
+		},
+		"color_attribute": {
+			"type": "object",
+			"title": "Color Environment Attribute",
+			"description": "Environment attribute that can hold a value of type color.",
+			"required": ["operation", "value"],
+			"additionalProperties": false,
+			"properties": {
+				"value": {
+					"title": "Color255RGBA",
+					"oneOf": [
+						{
+							"type": "string",
+							"pattern": "^#[a-fA-F0-9]{8}$"
+						},
+						{
+							"type": "array",
+							"minItems": 4,
+							"maxItems": 4,
+							"items": {
+								"type": "integer"
+							}
+						}
+					]
+				},
+				"operation": {
+					"type": "string",
+					"title": "Color Attribute Operation",
+					"enum": ["override", "alpha_blend", "add", "subtract", "multiply"]
+				}
+			}
+		},
+		"float_attribute": {
+			"type": "object",
+			"title": "Float Environment Attribute",
+			"description": "Environment attribute that can hold a value of type float.",
+			"required": ["operation", "value"],
+			"additionalProperties": false,
+			"properties": {
+				"operation": {
+					"type": "string",
+					"title": "Float Attribute Operation",
+					"enum": ["override", "alpha_blend", "add", "subtract", "multiply", "minimum", "maximum"]
+				},
+				"value": {
+					"type": "number"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Vertical Speed Filter",
+	"$comment": "Experimental (preview 26.70.21): compares an entity's signed vertical speed in meters per second.",
+	"properties": {
+		"test": true,
+		"subject": true,
+		"operator": true,
+		"value": {
+			"type": "number",
+			"description": "A floating point value."
+		}
+	},
+	"required": ["value"]
+}

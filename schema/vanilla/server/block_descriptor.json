@@ -2172,6 +2172,25 @@
 				},
 				{
 					"if": {
+						"properties": { "name": { "enum": ["minecraft:brittle_ice"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"age": {
+										"type": "integer",
+										"enum": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+									}
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
 						"properties": { "name": { "enum": ["minecraft:brown_candle"] } },
 						"required": ["name"]
 					},
@@ -2529,6 +2548,105 @@
 						"required": ["name"]
 					},
 					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:calcite_double_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:calcite_pillar"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": { "pillar_axis": { "type": "string", "enum": ["y", "x", "z"] } }
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:calcite_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:calcite_stairs"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:corner": {
+										"type": "string",
+										"enum": ["none", "inner_left", "inner_right", "outer_left", "outer_right"]
+									},
+									"upside_down_bit": { "type": "boolean" },
+									"weirdo_direction": { "type": "integer", "enum": [0, 1, 2, 3] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:calcite_wall"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"wall_connection_type_east": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_north": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_south": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_west": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_post_bit": { "type": "boolean" }
+								}
+							}
+						}
+					}
 				},
 				{
 					"if": {
@@ -3158,6 +3276,13 @@
 				},
 				{
 					"if": {
+						"properties": { "name": { "enum": ["minecraft:chiseled_packed_ice"] } },
+						"required": ["name"]
+					},
+					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
 						"properties": { "name": { "enum": ["minecraft:chiseled_polished_blackstone"] } },
 						"required": ["name"]
 					},
@@ -3194,6 +3319,13 @@
 				{
 					"if": {
 						"properties": { "name": { "enum": ["minecraft:chiseled_sandstone"] } },
+						"required": ["name"]
+					},
+					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:chiseled_soulshale"] } },
 						"required": ["name"]
 					},
 					"then": { "properties": { "states": false } }
@@ -5803,25 +5935,6 @@
 						"required": ["name"]
 					},
 					"then": { "properties": { "states": false } }
-				},
-				{
-					"if": {
-						"properties": { "name": { "enum": ["minecraft:disc_press"] } },
-						"required": ["name"]
-					},
-					"then": {
-						"properties": {
-							"states": {
-								"additionalProperties": false,
-								"properties": {
-									"minecraft:cardinal_direction": {
-										"type": "string",
-										"enum": ["south", "west", "north", "east"]
-									}
-								}
-							}
-						}
-					}
 				},
 				{
 					"if": {
@@ -12239,6 +12352,98 @@
 				},
 				{
 					"if": {
+						"properties": { "name": { "enum": ["minecraft:packed_ice_brick_double_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:packed_ice_brick_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:packed_ice_brick_stairs"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:corner": {
+										"type": "string",
+										"enum": ["none", "inner_left", "inner_right", "outer_left", "outer_right"]
+									},
+									"upside_down_bit": { "type": "boolean" },
+									"weirdo_direction": { "type": "integer", "enum": [0, 1, 2, 3] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:packed_ice_brick_wall"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"wall_connection_type_east": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_north": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_south": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_west": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_post_bit": { "type": "boolean" }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:packed_ice_bricks"] } },
+						"required": ["name"]
+					},
+					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
 						"properties": { "name": { "enum": ["minecraft:packed_mud"] } },
 						"required": ["name"]
 					},
@@ -13335,6 +13540,190 @@
 				},
 				{
 					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite"] } },
+						"required": ["name"]
+					},
+					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_brick_double_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_brick_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_brick_stairs"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:corner": {
+										"type": "string",
+										"enum": ["none", "inner_left", "inner_right", "outer_left", "outer_right"]
+									},
+									"upside_down_bit": { "type": "boolean" },
+									"weirdo_direction": { "type": "integer", "enum": [0, 1, 2, 3] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_brick_wall"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"wall_connection_type_east": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_north": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_south": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_west": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_post_bit": { "type": "boolean" }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_bricks"] } },
+						"required": ["name"]
+					},
+					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_double_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_stairs"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:corner": {
+										"type": "string",
+										"enum": ["none", "inner_left", "inner_right", "outer_left", "outer_right"]
+									},
+									"upside_down_bit": { "type": "boolean" },
+									"weirdo_direction": { "type": "integer", "enum": [0, 1, 2, 3] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:polished_calcite_wall"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"wall_connection_type_east": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_north": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_south": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_west": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_post_bit": { "type": "boolean" }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
 						"properties": { "name": { "enum": ["minecraft:polished_cinnabar"] } },
 						"required": ["name"]
 					},
@@ -14206,6 +14595,7 @@
 							"states": {
 								"additionalProperties": false,
 								"properties": {
+									"locked": { "type": "boolean" },
 									"minecraft:cardinal_direction": {
 										"type": "string",
 										"enum": ["south", "west", "north", "east"]
@@ -15666,6 +16056,7 @@
 							"states": {
 								"additionalProperties": false,
 								"properties": {
+									"bottom": { "type": "boolean" },
 									"stability": { "type": "integer", "enum": [0, 1, 2, 3, 4, 5, 6, 7] },
 									"stability_check": { "type": "boolean" }
 								}
@@ -16185,6 +16576,98 @@
 				},
 				{
 					"if": { "properties": { "name": { "enum": ["minecraft:snow"] } }, "required": ["name"] },
+					"then": { "properties": { "states": false } }
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:snow_brick_double_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:snow_brick_slab"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:vertical_half": { "type": "string", "enum": ["bottom", "top"] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:snow_brick_stairs"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"minecraft:corner": {
+										"type": "string",
+										"enum": ["none", "inner_left", "inner_right", "outer_left", "outer_right"]
+									},
+									"upside_down_bit": { "type": "boolean" },
+									"weirdo_direction": { "type": "integer", "enum": [0, 1, 2, 3] }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:snow_brick_wall"] } },
+						"required": ["name"]
+					},
+					"then": {
+						"properties": {
+							"states": {
+								"additionalProperties": false,
+								"properties": {
+									"wall_connection_type_east": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_north": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_south": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_connection_type_west": {
+										"type": "string",
+										"enum": ["none", "short", "tall"]
+									},
+									"wall_post_bit": { "type": "boolean" }
+								}
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": { "name": { "enum": ["minecraft:snow_bricks"] } },
+						"required": ["name"]
+					},
 					"then": { "properties": { "states": false } }
 				},
 				{
@@ -18065,6 +18548,7 @@
 							"states": {
 								"additionalProperties": false,
 								"properties": {
+									"locked": { "type": "boolean" },
 									"minecraft:cardinal_direction": {
 										"type": "string",
 										"enum": ["south", "west", "north", "east"]

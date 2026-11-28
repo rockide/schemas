@@ -24,6 +24,7 @@ import {
 	generateServerTypeFamily,
 } from "./server";
 import { generateServerBlockStates } from "./server/block_states";
+import { generateServerPOITags } from "./server/poi";
 
 const entries: Entry[] = [
 	{
@@ -399,6 +400,7 @@ const entries: Entry[] = [
 		load: true,
 		content: async (json) => {
 			const biomeTags = await generateServerBiomeTag();
+			const poiTags = await generateServerPOITags();
 			json["$defs"]["biome_tag"] = {
 				anyOf: [
 					{
@@ -409,6 +411,10 @@ const entries: Entry[] = [
 						enum: biomeTags,
 					},
 				],
+			};
+			json["$defs"]["poi_tag"] = {
+				type: "string",
+				enum: poiTags,
 			};
 			return json;
 		},

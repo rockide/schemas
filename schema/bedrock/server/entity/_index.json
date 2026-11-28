@@ -314,12 +314,40 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"x-format-version": "[1.26.60-latest]"
+						"x-format-version": "[1.26.60-1.26.70)"
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.26.60/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.26.70-latest]"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.26.70/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"anyOf": [
+							{
+								"enum": ["beta"]
+							}
+						]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./beta/_index.json"
 			}
 		}
 	]

@@ -7,10 +7,11 @@
 	},
 	"private": true,
 	"devDependencies": {
-		"@minecraft/vanilla-data": "^1.26.60",
+		"@minecraft/vanilla-data": "^1.26.70-preview.26",
 		"@types/bun": "latest",
 		"@types/jsdom": "^30.0.0",
 		"jsdom": "^30.0.1",
+		"json5": "^2.2.3",
 		"prettier": "^3.8.3",
 		"prettier-plugin-organize-imports": "^4.3.0",
 		"tiny-jsonc": "^1.0.2"
@@ -200,6 +201,26 @@
 			},
 			{
 				"fileMatch": [
+					"behavior_pack/poi/blocks/**/*.{json,jsonc,json5}",
+					"*BP/poi/blocks/**/*.{json,jsonc,json5}",
+					"BP_*/poi/blocks/**/*.{json,jsonc,json5}",
+					"*bp/poi/blocks/**/*.{json,jsonc,json5}",
+					"bp_*/poi/blocks/**/*.{json,jsonc,json5}"
+				],
+				"url": "./dist/2958g4ri14l7i.json"
+			},
+			{
+				"fileMatch": [
+					"behavior_pack/poi/tags/**/*.{json,jsonc,json5}",
+					"*BP/poi/tags/**/*.{json,jsonc,json5}",
+					"BP_*/poi/tags/**/*.{json,jsonc,json5}",
+					"*bp/poi/tags/**/*.{json,jsonc,json5}",
+					"bp_*/poi/tags/**/*.{json,jsonc,json5}"
+				],
+				"url": "./dist/uv9a2uo6yz4j.json"
+			},
+			{
+				"fileMatch": [
 					"behavior_pack/recipes/**/*.{json,jsonc,json5}",
 					"*BP/recipes/**/*.{json,jsonc,json5}",
 					"BP_*/recipes/**/*.{json,jsonc,json5}",
@@ -332,6 +353,21 @@
 					"rp_*/subpacks/*/atmospherics/**/*.{json,jsonc,json5}"
 				],
 				"url": "./dist/30moloeacw9sa.json"
+			},
+			{
+				"fileMatch": [
+					"resource_pack/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*RP/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"RP_*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*rp/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"rp_*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"resource_pack/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*RP/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"RP_*/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"*rp/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}",
+					"rp_*/subpacks/*/atomic_client_entities/**/*.{json,jsonc,json5}"
+				],
+				"url": "./dist/33lvuo5ht8wox.json"
 			},
 			{
 				"fileMatch": [

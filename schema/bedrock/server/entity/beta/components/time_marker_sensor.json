@@ -1,0 +1,33 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"required": ["triggers"],
+	"properties": {
+		"triggers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"description": "A world clock time marker to listen for, and the event to fire when it fires.",
+				"required": ["clock", "on_time_marker", "time_marker"],
+				"additionalProperties": false,
+				"properties": {
+					"clock": {
+						"type": "string",
+						"description": "The name of the world clock to listen to."
+					},
+					"on_time_marker": {
+						"$ref": "../../legacy/general.json#/$defs/trigger",
+						"description": "Event to fire on this entity when the time marker fires."
+					},
+					"time_marker": {
+						"type": "string",
+						"description": "The name of the time marker on the clock to listen for."
+					}
+				}
+			},
+			"description": "The world clock time markers to listen for. Entries identical to an earlier entry are ignored."
+		}
+	},
+	"additionalProperties": false,
+	"description": "A component that fires events on this entity when named time markers fire on named world clocks."
+}

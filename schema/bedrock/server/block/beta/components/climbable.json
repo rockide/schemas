@@ -1,0 +1,20 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Climbable",
+	"description": "Defines the climbable properties of this block.",
+	"$comment": "Requires format_version beta and the Upcoming Creator Features experiment (26.70.24).",
+	"required": ["can_climb"],
+	"additionalProperties": false,
+	"properties": {
+		"can_climb": {
+			"type": "boolean",
+			"description": "Whether an entity can climb this block when its feet are sharing the same position as the block."
+		},
+		"can_hold_position_while_sneaking": {
+			"type": "boolean",
+			"default": false,
+			"description": "Whether the player can stop descending and hold their position when sneaking. Defaults to false."
+		}
+	}
+}

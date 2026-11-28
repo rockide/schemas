@@ -1,0 +1,20 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Projectile",
+	"description": "Projectile item component. Projectile items shoot out, like an arrow",
+	"additionalProperties": false,
+	"required": ["projectile_entity"],
+	"properties": {
+		"minimum_critical_power": {
+			"type": "number",
+			"default": -1,
+			"description": "How long you must charge a projectile for it to critically hit",
+			"$comment": "From format_version 1.26.70 the default is -1; negative values disable critical hits."
+		},
+		"projectile_entity": {
+			"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/entity_identifier",
+			"description": "The entity to be fired as a projectile"
+		}
+	}
+}

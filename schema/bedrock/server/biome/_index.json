@@ -58,6 +58,22 @@
 			"then": {
 				"$ref": "./1.26.30/_index.json"
 			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"anyOf": [
+							{
+								"enum": ["beta"]
+							}
+						]
+					}
+				}
+			},
+			"then": {
+				"$ref": "./beta/_index.json"
+			}
 		}
 	]
 }

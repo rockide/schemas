@@ -1,0 +1,43 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Minecraft Bedrock Biome Definition beta",
+	"description": "Contains a description and components to define a Server Biome.",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:biome"],
+	"properties": {
+		"format_version": {
+			"type": "string",
+			"description": "The 3-part schema version for parsing these biome settings."
+		},
+		"minecraft:biome": {
+			"type": "object",
+			"title": "Biome Definition",
+			"description": "Contains a description and components to define a Server Biome.",
+			"additionalProperties": false,
+			"required": ["description", "components"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"title": "Biome Description",
+					"description": "Contains non-component settings for a Server Biome.",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../vanilla/definition/identifier.json",
+							"description": "The name of the Server Biome, used by other features like the '/locate biome' command. Must match the name of a Biome defined by the game or a behavior pack."
+						}
+					}
+				},
+				"components": {
+					"$ref": "../1.26.30/components/_index.json"
+				},
+				"environment_attributes": {
+					"$ref": "./environment_attributes.json",
+					"description": "Environment attributes for this Biome."
+				}
+			}
+		}
+	}
+}

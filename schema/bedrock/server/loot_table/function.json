@@ -941,6 +941,11 @@
 					"dynamic_properties": {
 						"type": "boolean",
 						"default": false
+					},
+					"entity_storage": {
+						"type": "boolean",
+						"default": false,
+						"$comment": "Requires the Upcoming Creator Features experiment (added in preview 26.70.20). When true, stored entities are copied from the block entity to the dropped item without being released."
 					}
 				},
 				"required": ["function"]

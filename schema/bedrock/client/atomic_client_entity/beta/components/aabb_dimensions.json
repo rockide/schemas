@@ -1,0 +1,18 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "minecraft:aabb_dimensions",
+	"description": "AABB dimensions for Atomic Client Entities.",
+	"required": ["height", "width"],
+	"additionalProperties": false,
+	"properties": {
+		"height": {
+			"type": "number",
+			"minimum": 0
+		},
+		"width": {
+			"type": "number",
+			"minimum": 0
+		}
+	}
+}

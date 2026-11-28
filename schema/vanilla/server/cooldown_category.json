@@ -6,6 +6,7 @@
 		{
 			"enum": [
 				"minecraft:chorusfruit",
+				"minecraft:editor_comment",
 				"minecraft:ender_pearl",
 				"minecraft:goat_horn",
 				"minecraft:shield",

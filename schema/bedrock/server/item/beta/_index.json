@@ -1,0 +1,41 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Item beta",
+	"description": "Item definition file for behavior packs (format_version beta)",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:item"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:item": {
+			"type": "object",
+			"title": "Item",
+			"description": "Root item object",
+			"additionalProperties": false,
+			"required": ["description", "components"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"title": "Description",
+					"description": "Item description metadata",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../vanilla/definition/identifier.json",
+							"description": "Item identifier"
+						},
+						"menu_category": {
+							"$ref": "../1.20.20/menu_category.json"
+						}
+					}
+				},
+				"components": {
+					"$ref": "./components/_index.json"
+				}
+			}
+		}
+	}
+}

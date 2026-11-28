@@ -122,6 +122,10 @@
 		{
 			"required": ["minecraft:multi_block_feature"],
 			"$ref": "../1.26.40/multi_block_feature.json"
+		},
+		{
+			"required": ["minecraft:crevasse_feature"],
+			"$ref": "./crevasse_feature.json"
 		}
 	]
 }

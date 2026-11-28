@@ -1,0 +1,87 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Crevasse Feature",
+	"additionalProperties": false,
+	"required": ["format_version", "minecraft:crevasse_feature"],
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:crevasse_feature": {
+			"$ref": "#/$defs/crevasse_feature_definition",
+			"deprecated": true,
+			"doNotSuggest": true,
+			"deprecationMessage": "Internal only"
+		}
+	},
+	"$defs": {
+		"crevasse_feature_definition": {
+			"type": "object",
+			"title": "Crevasse Feature Definition",
+			"$comment": "Internal-only world generation feature added in preview 26.70.20; not available for creator content. Shape from the 26.70.20 changelog.",
+			"additionalProperties": false,
+			"required": ["description"],
+			"properties": {
+				"description": {
+					"type": "object",
+					"description": "Metadata that identifies this feature.",
+					"additionalProperties": false,
+					"required": ["identifier"],
+					"properties": {
+						"identifier": {
+							"$ref": "../../../../vanilla/definition/identifier.json",
+							"description": "The identifier for this feature. The identifier must include a namespace and must match the filename."
+						}
+					}
+				},
+				"max_length": {
+					"type": "integer",
+					"minimum": 4,
+					"maximum": 16,
+					"default": 16,
+					"description": "Maximum end-to-end length in blocks, from 4 to 16; defaults to 16"
+				},
+				"max_width": {
+					"type": "integer",
+					"minimum": 2,
+					"maximum": 8,
+					"default": 4,
+					"description": "Maximum cross-section width in blocks, from 2 to 8; defaults to 4"
+				},
+				"min_footprint": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 32,
+					"default": 10,
+					"description": "Minimum connected horizontal footprint required before carving, from 1 to 32 blocks; defaults to 10"
+				},
+				"twistiness": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 16,
+					"default": 4,
+					"description": "Amount of horizontal curvature, from 0.0 to 16.0; defaults to 4.0"
+				},
+				"carve_depth": {
+					"$ref": "../general.json#/$defs/int_range",
+					"default": [6, 10],
+					"description": "Range used to select the carve depth below the origin terrain surface, from 4 to 32 blocks; defaults to [6, 10]"
+				},
+				"fill_depth": {
+					"$ref": "../general.json#/$defs/int_range",
+					"default": [4, 6],
+					"description": "Range used to select the fill depth below the origin terrain surface, from 0 to 32 blocks; defaults to [4, 6]"
+				},
+				"surface_block": {
+					"$ref": "../../../../vanilla/server/block_descriptor.json",
+					"description": "Optional block placed over the crevasse opening; omitted by default"
+				},
+				"fill_block": {
+					"$ref": "../../../../vanilla/server/block_descriptor.json",
+					"description": "Optional block placed at or below the selected fill depth; omitted by default"
+				}
+			}
+		}
+	}
+}

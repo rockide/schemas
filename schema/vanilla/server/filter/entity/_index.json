@@ -63,6 +63,7 @@
 						"has_target",
 						"has_trade_supply",
 						"home_distance",
+						"horizontal_speed",
 						"hourly_clock_time",
 						"in_block",
 						"in_caravan",
@@ -134,10 +135,12 @@
 						"random_chance",
 						"redstone_strength_at_position",
 						"rider_count",
+						"speed",
 						"surface_mob",
 						"taking_fire_damage",
 						"target_distance",
 						"trusts",
+						"vertical_speed",
 						"was_last_hurt_by",
 						"weather",
 						"weather_at_position",
@@ -517,6 +520,19 @@
 					},
 					"then": {
 						"$ref": "./filters/home_distance.json"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"test": {
+								"const": "horizontal_speed"
+							}
+						},
+						"required": ["test"]
+					},
+					"then": {
+						"$ref": "./filters/horizontal_speed.json"
 					}
 				},
 				{
@@ -1446,6 +1462,19 @@
 					"if": {
 						"properties": {
 							"test": {
+								"const": "speed"
+							}
+						},
+						"required": ["test"]
+					},
+					"then": {
+						"$ref": "./filters/speed.json"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"test": {
 								"const": "surface_mob"
 							}
 						},
@@ -1492,6 +1521,19 @@
 					},
 					"then": {
 						"$ref": "./filters/trusts.json"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"test": {
+								"const": "vertical_speed"
+							}
+						},
+						"required": ["test"]
+					},
+					"then": {
+						"$ref": "./filters/vertical_speed.json"
 					}
 				},
 				{
