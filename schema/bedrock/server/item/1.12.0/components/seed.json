@@ -10,11 +10,38 @@
 			"description": "Block identifier that grows from this seed"
 		},
 		"plant_at": {
-			"type": "array",
 			"description": "Block identifiers this seed can be planted on",
-			"items": {
-				"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/block_identifier"
-			}
+			"oneOf": [
+				{
+					"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/block_identifier"
+				},
+				{
+					"type": "array",
+					"items": {
+						"$ref": "../../../../../vanilla/server/identifiers.json#/$defs/block_identifier"
+					}
+				}
+			]
+		},
+		"plant_at_any_solid_surface": {
+			"type": "boolean"
+		},
+		"plant_at_face": {
+			"type": "string",
+			"enum": [
+				"down",
+				"up",
+				"north",
+				"south",
+				"west",
+				"east",
+				"DOWN",
+				"UP",
+				"NORTH",
+				"SOUTH",
+				"WEST",
+				"EAST"
+			]
 		}
 	}
 }

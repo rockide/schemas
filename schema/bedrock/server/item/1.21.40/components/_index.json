@@ -90,7 +90,7 @@
 			"$ref": "../../1.20.60/components/icon.json"
 		},
 		"minecraft:custom_components": {
-			"$ref": "../../1.20.80/components/custom_components.json"
+			"$ref": "../../1.21.10/components/custom_components.json"
 		},
 		"minecraft:damage_absorption": {
 			"$ref": "../../1.21.10/components/damage_absorption.json"
@@ -114,70 +114,44 @@
 			"$ref": "block_placer.json"
 		},
 		"minecraft:allow_off_hand": {
-			"$ref": "../../1.20.50/components/allow_off_hand.json"
+			"$ref": "../../1.20.20/components/allow_off_hand.json"
 		}
 	},
 	"allOf": [
 		{
-			"if": {
-				"properties": {
-					"minecraft:food": true
-				},
-				"required": ["minecraft:food"]
-			},
-			"then": {
-				"required": ["minecraft:food", "minecraft:use_modifiers"]
-			}
+			"$ref": "../../1.20.50/components/_index.json#/allOf/0"
+		},
+		{
+			"$ref": "../../1.20.50/components/_index.json#/allOf/1"
+		},
+		{
+			"$ref": "../../1.21.10/components/_index.json#/allOf/2"
+		},
+		{
+			"$ref": "../../1.21.10/components/_index.json#/allOf/3"
+		},
+		{
+			"$ref": "../../1.21.30/components/_index.json#/allOf/4"
+		},
+		{
+			"$ref": "../../1.21.30/components/_index.json#/allOf/5"
 		},
 		{
 			"if": {
 				"properties": {
-					"minecraft:damage_absorption": true
-				},
-				"required": ["minecraft:damage_absorption"]
-			},
-			"then": {
-				"required": ["minecraft:damage_absorption", "minecraft:durability"]
-			}
-		},
-		{
-			"if": {
-				"properties": {
-					"minecraft:bundle_interaction": true
-				},
-				"required": ["minecraft:bundle_interaction"]
-			},
-			"then": {
-				"required": ["minecraft:bundle_interaction", "minecraft:storage_item"]
-			}
-		},
-		{
-			"if": {
-				"properties": {
-					"minecraft:storage_item": true
-				},
-				"required": ["minecraft:storage_item"]
-			},
-			"then": {
-				"properties": {
-					"minecraft:max_stack_size": {
-						"oneOf": [
-							{
-								"const": 1
-							},
-							{
-								"type": "object",
-								"additionalProperties": false,
-								"properties": {
-									"value": {
-										"const": 1
-									}
-								}
+					"minecraft:block_placer": {
+						"properties": {
+							"replace_block_item": {
+								"const": true
 							}
-						]
+						},
+						"required": ["replace_block_item"]
 					}
 				},
-				"required": ["minecraft:storage_item", "minecraft:max_stack_size"]
+				"required": ["minecraft:block_placer"]
+			},
+			"else": {
+				"required": ["minecraft:icon"]
 			}
 		}
 	]

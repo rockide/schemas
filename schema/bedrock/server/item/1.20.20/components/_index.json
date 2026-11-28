@@ -80,6 +80,48 @@
 		},
 		"minecraft:wearable": {
 			"$ref": "wearable.json"
+		},
+		"minecraft:allow_off_hand": {
+			"$ref": "./allow_off_hand.json"
 		}
-	}
+	},
+	"allOf": [
+		{
+			"if": {
+				"properties": {
+					"minecraft:shooter": true
+				},
+				"required": ["minecraft:shooter"]
+			},
+			"then": {
+				"required": ["minecraft:use_duration"],
+				"properties": {
+					"minecraft:use_duration": {
+						"not": {
+							"anyOf": [
+								{
+									"const": 0
+								},
+								{
+									"type": "object",
+									"properties": {
+										"value": {
+											"const": 0
+										}
+									},
+									"required": ["value"]
+								},
+								{
+									"type": "object",
+									"not": {
+										"required": ["value"]
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		}
+	]
 }

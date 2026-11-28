@@ -14,12 +14,49 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"x-format-version": "[1.10.0-1.20.0)"
+						"x-format-version": "[1.10.0-1.16.100)"
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.12.0/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.16.100-1.16.100]"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.16.100/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"$comment": "BDS (1.26.70 preview) treats 1.16.101 to 1.16.x like 1.16.0, unlike 1.16.100 and 1.17.0.",
+						"x-format-version": "[1.16.101-1.17.0)"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.12.0/_index.json"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"format_version": {
+						"x-format-version": "[1.17.0-1.20.0)"
+					}
+				}
+			},
+			"then": {
+				"$ref": "./1.16.100/_index.json"
 			}
 		},
 		{
@@ -86,24 +123,12 @@
 			"if": {
 				"properties": {
 					"format_version": {
-						"x-format-version": "[1.20.60-1.20.80)"
+						"x-format-version": "[1.20.60-1.21.10)"
 					}
 				}
 			},
 			"then": {
 				"$ref": "./1.20.60/_index.json"
-			}
-		},
-		{
-			"if": {
-				"properties": {
-					"format_version": {
-						"x-format-version": "[1.20.80-1.21.10)"
-					}
-				}
-			},
-			"then": {
-				"$ref": "./1.20.80/_index.json"
 			}
 		},
 		{

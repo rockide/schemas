@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Components",
+	"description": "Item components",
+	"additionalProperties": false,
+	"properties": {
+		"minecraft:max_damage": {
+			"$ref": "../../1.12.0/components/max_damage.json"
+		},
+		"minecraft:foil": {
+			"$ref": "../../1.12.0/components/foil.json"
+		},
+		"minecraft:block": {
+			"$ref": "../../1.12.0/components/block.json"
+		},
+		"minecraft:camera": {
+			"$ref": "../../1.12.0/components/camera.json"
+		},
+		"minecraft:seed": {
+			"$ref": "../../1.12.0/components/seed.json"
+		}
+	}
+}
