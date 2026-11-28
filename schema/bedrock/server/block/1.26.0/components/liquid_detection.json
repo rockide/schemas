@@ -3,6 +3,7 @@
 	"type": "object",
 	"title": "Liquid Detection Component",
 	"description": "The definitions for how a block behaves when detecting liquid.",
+	"required": ["detection_rules"],
 	"additionalProperties": false,
 	"properties": {
 		"detection_rules": {

@@ -29,6 +29,7 @@
 						"type": "object",
 						"title": "Permutation",
 						"additionalProperties": false,
+						"required": ["condition", "components"],
 						"properties": {
 							"condition": {
 								"$ref": "../../../../vanilla/definition/molang.json#/$defs/string",
@@ -41,10 +42,12 @@
 						}
 					}
 				}
-			}
-		},
-		"use_beta_features": {
-			"type": "boolean"
+			},
+			"allOf": [
+				{
+					"$ref": "../1.19.70/constraints.json"
+				}
+			]
 		}
 	}
 }

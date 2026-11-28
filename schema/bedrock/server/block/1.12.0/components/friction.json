@@ -1,24 +1,8 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"oneOf": [
-		{
-			"type": "number",
-			"default": 0.1,
-			"description": "Sets the friction property for this block."
-		},
-		{
-			"type": "object",
-			"title": "Friction",
-			"description": "Property describing the friction for this block. Friction affects an entity's movements when it walks on the block.",
-			"additionalProperties": false,
-			"properties": {
-				"friction": {
-					"type": "number",
-					"default": 0.1,
-					"description": "Sets the friction property for this block."
-				}
-			},
-			"required": ["friction"]
-		}
-	]
+	"type": "number",
+	"description": "Sets the friction property for this block.",
+	"default": 0.1,
+	"minimum": 0.1,
+	"maximum": 1
 }

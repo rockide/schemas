@@ -7,58 +7,36 @@
 			"type": "boolean"
 		},
 		{
+			"$ref": "#/$defs/collision_box"
+		},
+		{
+			"type": "array",
+			"maxItems": 16,
+			"items": {
+				"$ref": "#/$defs/collision_box"
+			}
+		}
+	],
+	"$defs": {
+		"collision_box": {
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
 				"origin": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"prefixItems": [
-						{
-							"type": "number",
-							"minimum": -8.000000476837158,
-							"maximum": 8.000000476837158
-						},
-						{
-							"type": "number",
-							"minimum": 0,
-							"maximum": 24.000000953674316
-						},
-						{
-							"type": "number",
-							"minimum": -8.000000476837158,
-							"maximum": 8.000000476837158
-						}
-					],
-					"items": false,
+					"$ref": "#/$defs/origin",
 					"description": "Minimal position of the bounds of the collision box. Specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
 				},
 				"size": {
-					"type": "array",
-					"minItems": 3,
-					"maxItems": 3,
-					"prefixItems": [
-						{
-							"type": "number",
-							"minimum": -16.000000953674316,
-							"maximum": 16.000000953674316
-						},
-						{
-							"type": "number",
-							"minimum": -24.000000953674316,
-							"maximum": 24.000000953674316
-						},
-						{
-							"type": "number",
-							"minimum": -16.000000953674316,
-							"maximum": 16.000000953674316
-						}
-					],
-					"items": false,
+					"$ref": "#/$defs/size",
 					"description": "Size of each side of the collision box. Specified as [x, y, z]. origin + size must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
 				}
 			}
+		},
+		"origin": {
+			"$ref": "../../1.19.50/components/collision_box.json#/$defs/origin"
+		},
+		"size": {
+			"$ref": "../../1.19.50/components/collision_box.json#/$defs/size"
 		}
-	]
+	}
 }

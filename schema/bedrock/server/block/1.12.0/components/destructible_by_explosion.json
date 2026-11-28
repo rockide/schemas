@@ -13,10 +13,11 @@
 			"properties": {
 				"explosion_resistance": {
 					"type": "number",
-					"description": "Sets the explosion resistance for the block. Greater values result in greater resistance to explosions. The scale will be different for different explosion power levels. A negative value or 0 means it will easily explode; larger numbers increase level of resistance.",
-					"default": 0
+					"minimum": 0,
+					"description": "Sets the explosion resistance for the block. Greater values result in greater resistance to explosions. The scale will be different for different explosion power levels. A negative value or 0 means it will easily explode; larger numbers increase level of resistance."
 				}
-			}
+			},
+			"required": ["explosion_resistance"]
 		}
 	]
 }

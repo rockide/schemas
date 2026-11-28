@@ -23,9 +23,6 @@
 					"$ref": "./components/_index.json"
 				}
 			}
-		},
-		"use_beta_features": {
-			"type": "boolean"
 		}
 	}
 }

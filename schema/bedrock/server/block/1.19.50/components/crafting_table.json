@@ -3,13 +3,15 @@
 	"type": "object",
 	"title": "Crafting Table Component",
 	"description": "Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes.",
+	"required": ["crafting_tags"],
 	"additionalProperties": false,
 	"properties": {
 		"crafting_tags": {
 			"type": "array",
 			"description": "Defines the tags recipes should define to be crafted on this table. Limited to 64 tags. Each tag is limited to 64 characters.",
 			"items": {
-				"$ref": "../../../../../vanilla/server/tags.json#/$defs/recipe_tag"
+				"$ref": "../../../../../vanilla/server/tags.json#/$defs/recipe_tag",
+				"maxLength": 64
 			},
 			"maxItems": 64
 		},

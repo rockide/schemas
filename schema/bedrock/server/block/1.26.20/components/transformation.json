@@ -6,55 +6,131 @@
 	"additionalProperties": false,
 	"properties": {
 		"rotation": {
-			"type": "array",
 			"description": "The block's rotation in increments of 90 degrees.",
-			"items": {
-				"type": "number",
-				"multipleOf": 90
-			},
-			"minItems": 3,
-			"maxItems": 3,
-			"default": [0, 0, 0]
+			"default": [0, 0, 0],
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "number",
+						"multipleOf": 90
+					},
+					"minItems": 3,
+					"maxItems": 3
+				},
+				{
+					"$ref": "#/$defs/rotation_object"
+				}
+			]
 		},
 		"rotation_pivot": {
-			"type": "array",
 			"description": "The point to apply rotation around.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3,
-			"default": [0, 0, 0]
+			"default": [0, 0, 0],
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 3,
+					"maxItems": 3
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
 		},
 		"scale": {
-			"type": "array",
 			"description": "The block's scale.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3,
-			"default": [1, 1, 1]
+			"default": [1, 1, 1],
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 3,
+					"maxItems": 3
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
 		},
 		"scale_pivot": {
-			"type": "array",
 			"description": "The point to apply scale around.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3,
-			"default": [0, 0, 0]
+			"default": [0, 0, 0],
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 3,
+					"maxItems": 3
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
 		},
 		"translation": {
-			"type": "array",
 			"description": "The block's translation.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3,
-			"default": [0, 0, 0]
+			"default": [0, 0, 0],
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 3,
+					"maxItems": 3
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
+		}
+	},
+	"$defs": {
+		"vec3_object": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"x": {
+					"type": "number",
+					"default": 0
+				},
+				"y": {
+					"type": "number",
+					"default": 0
+				},
+				"z": {
+					"type": "number",
+					"default": 0
+				}
+			}
+		},
+		"rotation_object": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"x": {
+					"type": "number",
+					"default": 0,
+					"multipleOf": 90
+				},
+				"y": {
+					"type": "number",
+					"default": 0,
+					"multipleOf": 90
+				},
+				"z": {
+					"type": "number",
+					"default": 0,
+					"multipleOf": 90
+				}
+			}
 		}
 	}
 }

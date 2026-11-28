@@ -6,49 +6,87 @@
 	"additionalProperties": false,
 	"properties": {
 		"rotation": {
-			"type": "array",
 			"description": "The block's rotation in increments of 90 degrees.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3
+			"anyOf": [
+				{
+					"$ref": "#/$defs/vec3_array"
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
 		},
 		"rotation_pivot": {
-			"type": "array",
 			"description": "The point to apply rotation around.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3
+			"anyOf": [
+				{
+					"$ref": "#/$defs/vec3_array"
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
 		},
 		"scale": {
-			"type": "array",
 			"description": "The block's scale.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3
+			"anyOf": [
+				{
+					"$ref": "#/$defs/vec3_array"
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
 		},
 		"scale_pivot": {
-			"type": "array",
 			"description": "The point to apply scale around.",
+			"anyOf": [
+				{
+					"$ref": "#/$defs/vec3_array"
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
+		},
+		"translation": {
+			"description": "The block's translation.",
+			"anyOf": [
+				{
+					"$ref": "#/$defs/vec3_array"
+				},
+				{
+					"$ref": "#/$defs/vec3_object"
+				}
+			]
+		}
+	},
+	"$defs": {
+		"vec3_array": {
+			"type": "array",
 			"items": {
 				"type": "number"
 			},
 			"minItems": 3,
 			"maxItems": 3
 		},
-		"translation": {
-			"type": "array",
-			"description": "The block's translation.",
-			"items": {
-				"type": "number"
-			},
-			"minItems": 3,
-			"maxItems": 3
+		"vec3_object": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"x": {
+					"type": "number",
+					"default": 0
+				},
+				"y": {
+					"type": "number",
+					"default": 0
+				},
+				"z": {
+					"type": "number",
+					"default": 0
+				}
+			}
 		}
 	}
 }

@@ -5,7 +5,7 @@
 	"description": "Configures what distance an entity must fall onto this block to cause the onEntityFallOn block custom component event to be sent to script.",
 	"additionalProperties": false,
 	"properties": {
-		"minimum_fall_distance": {
+		"min_fall_distance": {
 			"title": "Minimum Fall Distance",
 			"description": "The minimum distance in blocks that an entity needs to fall before events are raised.",
 			"type": "number",

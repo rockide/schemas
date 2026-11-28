@@ -20,14 +20,26 @@
 					"$ref": "../../../../../vanilla/reference/block_geometry.json"
 				},
 				"bone_visibility": {
-					"title": "Bone Visibility",
-					"description": "An optional list of true/false values that define the visibility of individual bones in the geometry file. In order to set up bone_visibility, the geometry file name must be entered as an identifier. After the identifier has been specified, bone_visibility can be defined based on the names of the bones in the specified geometry file on a true/false basis. Note that all bones default to true, so bones should only be defined if they are being set to false. Including bones set to true will work the same as the default.",
-					"type": "object",
-					"additionalProperties": {
-						"type": "boolean"
-					}
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/bone_visibility"
+				},
+				"culling": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling"
+				},
+				"culling_layer": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling_layer"
+				},
+				"n_way_visual_rotation": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/n_way_visual_rotation"
+				},
+				"culling_shape": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling_shape"
 				}
-			}
+			},
+			"allOf": [
+				{
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/allOf/0"
+				}
+			]
 		}
 	]
 }

@@ -13,8 +13,8 @@
 			"properties": {
 				"seconds_to_destroy": {
 					"type": "number",
-					"description": "Sets the number of seconds it takes to destroy the block with base equipment. Greater numbers result in greater mining times.",
-					"default": 0
+					"minimum": 0,
+					"description": "Sets the number of seconds it takes to destroy the block with base equipment. Greater numbers result in greater mining times."
 				},
 				"item_specific_speeds": {
 					"type": "array",
@@ -23,7 +23,8 @@
 						"$ref": "#/$defs/item_specific_speed"
 					}
 				}
-			}
+			},
+			"required": ["seconds_to_destroy"]
 		}
 	],
 	"$defs": {

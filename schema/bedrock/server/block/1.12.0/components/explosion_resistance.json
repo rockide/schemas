@@ -3,6 +3,7 @@
 	"oneOf": [
 		{
 			"type": "number",
+			"minimum": 0,
 			"default": 0.0,
 			"description": "Sets the explosion resistance for this block."
 		},
@@ -14,6 +15,7 @@
 			"properties": {
 				"resistance": {
 					"type": "number",
+					"minimum": 0,
 					"default": 0.0,
 					"description": "Sets the explosion resistance for this block."
 				}

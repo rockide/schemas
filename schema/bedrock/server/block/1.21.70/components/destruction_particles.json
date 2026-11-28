@@ -9,7 +9,8 @@
 			"type": "integer",
 			"description": "Number of particles to spawn of destruction.",
 			"default": 100,
-			"maximum": 255
+			"maximum": 255,
+			"minimum": 0
 		},
 		"texture": {
 			"$ref": "../../../../../vanilla/client/identifiers.json#/$defs/terrain_texture_identifier",

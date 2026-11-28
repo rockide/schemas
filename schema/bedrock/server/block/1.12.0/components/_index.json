@@ -28,14 +28,47 @@
 		},
 		"minecraft:block_light_emission": {
 			"$ref": "block_light_emission.json"
+		},
+		"minecraft:light_emission": {
+			"$ref": "light_emission.json"
+		},
+		"minecraft:light_dampening": {
+			"$ref": "light_dampening.json"
+		},
+		"minecraft:block_light_filter": {
+			"$ref": "block_light_filter.json"
+		},
+		"minecraft:destructible_by_mining": {
+			"$ref": "destructible_by_mining.json"
+		},
+		"minecraft:destructible_by_explosion": {
+			"$ref": "destructible_by_explosion.json"
+		},
+		"minecraft:tick": {
+			"$ref": "tick.json"
+		},
+		"minecraft:entity_fall_on": {
+			"$ref": "entity_fall_on.json"
+		},
+		"minecraft:custom_components": {
+			"$ref": "custom_components.json"
 		}
 	},
 	"patternProperties": {
-		"^tag:.+$": {
+		"^tag:[a-zA-Z0-9_.:-]+$": {
 			"type": "object",
 			"title": "Block Tag",
 			"description": "Block tag",
 			"additionalProperties": false
+		},
+		"^(?:(?!^(minecraft):).)+:(?:.)+$": {
+			"$ref": "#/$defs/custom_component"
+		}
+	},
+	"$defs": {
+		"custom_component": {
+			"title": "Custom Component",
+			"description": "A custom component registered by behavior pack scripts."
 		}
 	}
 }

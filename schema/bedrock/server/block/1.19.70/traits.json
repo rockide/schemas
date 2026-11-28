@@ -35,8 +35,8 @@
 				"direction": {
 					"type": "string",
 					"title": "Facing",
-					"description": "The direction the block parts are placed starting from 'minecraft:multi_block_part' permutation '0' to permutation 'parts'. Default value is 'up'.",
-					"enum": ["down", "up"]
+					"description": "The direction the block parts are placed starting from 'minecraft:multi_block_part' permutation '0' to permutation 'parts'. Default value is 'up'. Horizontal directions require Upcoming Creator Features before format version 1.26.50.",
+					"enum": ["down", "up", "north", "south", "east", "west"]
 				},
 				"enabled_states": {
 					"type": "array",
@@ -118,5 +118,37 @@
 				}
 			}
 		}
-	}
+	},
+	"allOf": [
+		{
+			"if": {
+				"required": ["minecraft:multi_block"]
+			},
+			"then": {
+				"allOf": [
+					{
+						"not": {
+							"required": ["minecraft:connection"]
+						}
+					},
+					{
+						"not": {
+							"required": ["minecraft:placement_position"]
+						}
+					}
+				],
+				"properties": {
+					"minecraft:placement_direction": {
+						"properties": {
+							"enabled_states": {
+								"items": {
+									"const": "minecraft:cardinal_direction"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	]
 }

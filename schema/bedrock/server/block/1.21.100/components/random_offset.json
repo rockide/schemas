@@ -31,7 +31,9 @@
 				},
 				"steps": {
 					"type": "integer",
-					"description": "Number of steps between the range."
+					"description": "Number of steps between the range.",
+					"default": 0,
+					"minimum": 0
 				}
 			}
 		},
@@ -40,15 +42,20 @@
 			"title": "Range",
 			"description": "Range of values between two numbers.",
 			"additionalProperties": false,
-			"required": ["min", "max"],
 			"properties": {
 				"min": {
 					"type": "number",
-					"description": "Minimum value of the range."
+					"description": "Minimum value of the range.",
+					"default": 0,
+					"minimum": -8.000000476837158,
+					"maximum": 8.000000476837158
 				},
 				"max": {
 					"type": "number",
-					"description": "Maximum value of the range."
+					"description": "Maximum value of the range.",
+					"default": 0,
+					"minimum": -8.000000476837158,
+					"maximum": 8.000000476837158
 				}
 			}
 		}

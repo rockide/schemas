@@ -15,16 +15,16 @@
 			"$ref": "../../1.19.20/components/friction.json"
 		},
 		"minecraft:light_emission": {
-			"$ref": "../../1.19.10/components/light_emission.json"
+			"$ref": "../../1.12.0/components/light_emission.json"
 		},
 		"minecraft:loot": {
 			"$ref": "../../1.19.10/components/loot.json"
 		},
 		"minecraft:light_dampening": {
-			"$ref": "../../1.19.40/components/light_dampening.json"
+			"$ref": "../../1.12.0/components/light_dampening.json"
 		},
 		"minecraft:material_instances": {
-			"$ref": "../../1.21.70/components/material_instances.json"
+			"$ref": "material_instances.json"
 		},
 		"minecraft:collision_box": {
 			"$ref": "./collision_box.json"
@@ -36,7 +36,7 @@
 			"$ref": "../../1.19.60/components/display_name.json"
 		},
 		"minecraft:placement_filter": {
-			"$ref": "../../1.19.60/components/placement_filter.json"
+			"$ref": "./placement_filter.json"
 		},
 		"minecraft:selection_box": {
 			"$ref": "./selection_box.json"
@@ -57,13 +57,13 @@
 			"$ref": "../../1.21.30/components/redstone_conductivity.json"
 		},
 		"minecraft:replaceable": {
-			"$ref": "../../1.21.70/components/replaceable.json"
+			"$ref": "../../1.21.60/components/replaceable.json"
 		},
 		"minecraft:destruction_particles": {
 			"$ref": "./destruction_particles.json"
 		},
 		"minecraft:map_color": {
-			"$ref": "../../1.21.80/components/map_color.json"
+			"$ref": "map_color.json"
 		},
 		"minecraft:random_offset": {
 			"$ref": "../../1.21.100/components/random_offset.json"
@@ -81,7 +81,7 @@
 			"$ref": "./precipitation_interactions.json"
 		},
 		"minecraft:connection_rule": {
-			"$ref": "../../1.26.0/components/connection_rule.json"
+			"$ref": "./connection_rule.json"
 		},
 		"minecraft:leashable": {
 			"$ref": "./leashable.json"
@@ -122,8 +122,24 @@
 	},
 	"patternProperties": {
 		"^(?:(?!^(minecraft):).)+:(?:.)+$": {
-			"title": "Custom Component",
-			"description": "A custom component registered by behavior pack scripts."
+			"$ref": "../../1.12.0/components/_index.json#/$defs/custom_component"
 		}
-	}
+	},
+	"allOf": [
+		{
+			"not": {
+				"required": ["minecraft:crafting_table", "minecraft:block_entity"],
+				"properties": {
+					"minecraft:block_entity": {
+						"required": ["container"]
+					}
+				}
+			}
+		},
+		{
+			"not": {
+				"required": ["minecraft:redstone_consumer", "minecraft:redstone_producer"]
+			}
+		}
+	]
 }

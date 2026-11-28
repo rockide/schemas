@@ -1,0 +1,40 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Placement Filter Component",
+	"description": "Sets rules for under what conditions the block can be placed and survive.",
+	"additionalProperties": false,
+	"properties": {
+		"conditions": {
+			"type": "array",
+			"description": "List of conditions where the block can be placed/survive. Limited to 64 conditions.",
+			"default": [],
+			"items": {
+				"type": "object",
+				"title": "Condition",
+				"additionalProperties": false,
+				"properties": {
+					"allowed_faces": {
+						"type": "array",
+						"description": "List of describing which face(s) this block can be placed on.",
+						"default": ["down", "up", "north", "south", "west", "east"],
+						"items": {
+							"type": "string",
+							"enum": ["down", "up", "north", "south", "west", "east"]
+						}
+					},
+					"block_filter": {
+						"type": "array",
+						"description": "List of blocks that this block can be placed against in the allowed_faces direction. Limited to 64 blocks.",
+						"default": [],
+						"items": {
+							"$ref": "../../../../../vanilla/server/block_descriptor.json"
+						},
+						"maxItems": 64
+					}
+				}
+			},
+			"maxItems": 64
+		}
+	}
+}

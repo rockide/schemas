@@ -1,0 +1,88 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Block States",
+	"description": "Define custom states for a block that can be referenced in permutation. Each state must contain an array or a \"values\" with an array or a \"min\"/\"max\" range",
+	"additionalProperties": false,
+	"patternProperties": {
+		"^\\S+$": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/string_values"
+				},
+				{
+					"$ref": "#/$defs/boolean_values"
+				},
+				{
+					"$ref": "#/$defs/integer_values"
+				},
+				{
+					"type": "object",
+					"title": "Values",
+					"description": "Must be assigned an array or a \"range\"",
+					"additionalProperties": false,
+					"required": ["values"],
+					"properties": {
+						"values": {
+							"oneOf": [
+								{
+									"$ref": "#/$defs/string_values",
+									"minItems": 1,
+									"maxItems": 16,
+									"uniqueItems": true
+								},
+								{
+									"$ref": "#/$defs/boolean_values",
+									"minItems": 1,
+									"maxItems": 16,
+									"uniqueItems": true
+								},
+								{
+									"$ref": "#/$defs/integer_values",
+									"minItems": 1,
+									"maxItems": 16,
+									"uniqueItems": true
+								},
+								{
+									"type": "object",
+									"title": "Integer Range Values",
+									"description": "Defines the minimum and maximum integer values for the property.",
+									"additionalProperties": false,
+									"required": ["min", "max"],
+									"properties": {
+										"min": {
+											"type": "integer"
+										},
+										"max": {
+											"type": "integer"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"$defs": {
+		"string_values": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"boolean_values": {
+			"type": "array",
+			"items": {
+				"type": "boolean"
+			}
+		},
+		"integer_values": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		}
+	}
+}

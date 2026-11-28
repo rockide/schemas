@@ -14,6 +14,9 @@
 			}
 		]
 	},
+	"propertyNames": {
+		"pattern": "^[a-zA-Z0-9_.:*]+$"
+	},
 	"$defs": {
 		"material_instance": {
 			"type": "object",
@@ -21,11 +24,6 @@
 			"description": "A material instance definition to map to a material instance in a geometry file.",
 			"additionalProperties": false,
 			"properties": {
-				"alpha_masked_tint": {
-					"type": "boolean",
-					"default": false,
-					"description": "Is the tint multiplied by the alpha channel of the texture (similar to grass_block's sides). Requires a \"tint_method\" other than \"none\" and a \"render_method\" set to \"opaque\""
-				},
 				"ambient_occlusion": {
 					"description": "If this material has ambient occlusion applied when lighting, shadows will be created around and underneath the block. Decimal value controls exponent applied to a value after lighting.",
 					"default": true,
