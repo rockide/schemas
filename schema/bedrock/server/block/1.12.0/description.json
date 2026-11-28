@@ -10,11 +10,6 @@
 			"$ref": "../../../../vanilla/definition/identifier.json",
 			"description": "Block identifier"
 		},
-		"is_experimental": {
-			"type": "boolean",
-			"default": false,
-			"description": "If this block is experimental, it will only be registered if the world is marked as experimental."
-		},
 		"menu_category": {
 			"type": "object",
 			"title": "Menu Category",
@@ -22,21 +17,22 @@
 			"additionalProperties": false,
 			"properties": {
 				"category": {
+					"$ref": "../../../../vanilla/server/creative_category.json",
+					"description": "Determines which category this block will be placed under in the inventory and crafting table container screens."
+				},
+				"group": {
+					"description": "Specifies the language file key that maps to which expandable/collapsible group this block will be a part of within a category.",
 					"anyOf": [
+						{
+							"$ref": "../../../../vanilla/server/creative_group.json"
+						},
 						{
 							"type": "string",
 							"pattern": "^\\S+:\\S+$",
+							"maxLength": 256,
 							"description": "The expandable group that the block is a part of. Must be a namespace and can use vanilla ones"
-						},
-						{
-							"$ref": "../../../../vanilla/server/creative_category.json",
-							"description": "Determines which category this block will be placed under in the inventory and crafting table container screens."
 						}
 					]
-				},
-				"group": {
-					"$ref": "../../../../vanilla/server/creative_group.json",
-					"description": "Specifies the language file key that maps to which expandable/collapsible group this block will be a part of within a category."
 				},
 				"is_hidden_in_commands": {
 					"type": "boolean",

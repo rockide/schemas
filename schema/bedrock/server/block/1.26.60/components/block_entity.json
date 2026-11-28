@@ -6,18 +6,7 @@
 	"additionalProperties": false,
 	"properties": {
 		"container": {
-			"description": "Adds a container to this block.",
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["slot_count"],
-			"properties": {
-				"slot_count": {
-					"type": "integer",
-					"description": "Sets the number of slots in the container.",
-					"minimum": 1,
-					"maximum": 54
-				}
-			}
+			"$ref": "../../1.26.20/components/block_entity.json#/properties/container"
 		},
 		"dynamic_properties": {
 			"type": "boolean",

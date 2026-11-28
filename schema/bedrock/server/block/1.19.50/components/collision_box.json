@@ -15,7 +15,8 @@
 			"items": {
 				"$ref": "#/$defs/collision_box"
 			},
-			"minItems": 1
+			"minItems": 1,
+			"maxItems": 16
 		}
 	],
 	"$defs": {
@@ -24,24 +25,106 @@
 			"additionalProperties": false,
 			"properties": {
 				"origin": {
-					"type": "array",
-					"description": "Minimal position of the bounds of the collision box. Specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 24, 8), inclusive.",
-					"items": {
-						"type": "number"
-					},
-					"minItems": 3,
-					"maxItems": 3
+					"$ref": "#/$defs/origin",
+					"description": "Minimal position of the bounds of the collision box. Specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
 				},
 				"size": {
-					"type": "array",
-					"description": "Size of each side of the collision box. Specified as [x, y, z]. origin + size must be in the range (-8, 0, -8) to (8, 24, 8), inclusive.",
-					"items": {
-						"type": "number"
-					},
-					"minItems": 3,
-					"maxItems": 3
+					"$ref": "#/$defs/size",
+					"description": "Size of each side of the collision box. Specified as [x, y, z]. origin + size must be in the range (-8, 0, -8) to (8, 24, 8), inclusive."
 				}
 			}
+		},
+		"origin_x": {
+			"type": "number",
+			"minimum": -8.000000476837158,
+			"maximum": 8.000000476837158
+		},
+		"origin_y": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 24.000000953674316
+		},
+		"size_xz": {
+			"type": "number",
+			"minimum": -16.000000953674316,
+			"maximum": 16.000000953674316
+		},
+		"size_y": {
+			"type": "number",
+			"minimum": -24.000000953674316,
+			"maximum": 24.000000953674316
+		},
+		"origin": {
+			"oneOf": [
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"$ref": "#/$defs/origin_x"
+						},
+						{
+							"$ref": "#/$defs/origin_y"
+						},
+						{
+							"$ref": "#/$defs/origin_x"
+						}
+					],
+					"items": false
+				},
+				{
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"x": {
+							"$ref": "#/$defs/origin_x"
+						},
+						"y": {
+							"$ref": "#/$defs/origin_y"
+						},
+						"z": {
+							"$ref": "#/$defs/origin_x"
+						}
+					}
+				}
+			]
+		},
+		"size": {
+			"oneOf": [
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"$ref": "#/$defs/size_xz"
+						},
+						{
+							"$ref": "#/$defs/size_y"
+						},
+						{
+							"$ref": "#/$defs/size_xz"
+						}
+					],
+					"items": false
+				},
+				{
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"x": {
+							"$ref": "#/$defs/size_xz"
+						},
+						"y": {
+							"$ref": "#/$defs/size_y"
+						},
+						"z": {
+							"$ref": "#/$defs/size_xz"
+						}
+					}
+				}
+			]
 		}
 	}
 }

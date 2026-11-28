@@ -65,30 +65,10 @@
 					]
 				},
 				"n_way_visual_rotation": {
-					"type": "object",
-					"title": "NWayVisualRotation",
-					"description": "Optional object that maps x/y/z axes to block state names that drive visual-only geometry rotation.",
-					"additionalProperties": false,
-					"properties": {
-						"x": {
-							"default": "",
-							"description": "Block state name that controls visual rotation around the x axis.",
-							"maxLength": 256,
-							"type": "string"
-						},
-						"y": {
-							"default": "",
-							"description": "Block state name that controls visual rotation around the y axis.",
-							"maxLength": 256,
-							"type": "string"
-						},
-						"z": {
-							"default": "",
-							"description": "Block state name that controls visual rotation around the z axis.",
-							"maxLength": 256,
-							"type": "string"
-						}
-					}
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/n_way_visual_rotation"
+				},
+				"culling_shape": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling_shape"
 				}
 			},
 			"allOf": [

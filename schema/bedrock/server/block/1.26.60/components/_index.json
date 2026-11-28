@@ -15,16 +15,16 @@
 			"$ref": "../../1.19.20/components/friction.json"
 		},
 		"minecraft:light_emission": {
-			"$ref": "../../1.19.10/components/light_emission.json"
+			"$ref": "../../1.12.0/components/light_emission.json"
 		},
 		"minecraft:loot": {
 			"$ref": "../../1.19.10/components/loot.json"
 		},
 		"minecraft:light_dampening": {
-			"$ref": "../../1.19.40/components/light_dampening.json"
+			"$ref": "../../1.12.0/components/light_dampening.json"
 		},
 		"minecraft:material_instances": {
-			"$ref": "../../1.21.70/components/material_instances.json"
+			"$ref": "../../1.26.20/components/material_instances.json"
 		},
 		"minecraft:crafting_table": {
 			"$ref": "../../1.26.20/components/crafting_table.json"
@@ -33,7 +33,7 @@
 			"$ref": "../../1.19.60/components/display_name.json"
 		},
 		"minecraft:placement_filter": {
-			"$ref": "../../1.19.60/components/placement_filter.json"
+			"$ref": "../../1.26.20/components/placement_filter.json"
 		},
 		"minecraft:selection_box": {
 			"$ref": "../../1.26.20/components/selection_box.json"
@@ -54,13 +54,13 @@
 			"$ref": "../../1.21.30/components/redstone_conductivity.json"
 		},
 		"minecraft:replaceable": {
-			"$ref": "../../1.21.70/components/replaceable.json"
+			"$ref": "../../1.21.60/components/replaceable.json"
 		},
 		"minecraft:destruction_particles": {
 			"$ref": "../../1.26.20/components/destruction_particles.json"
 		},
 		"minecraft:map_color": {
-			"$ref": "../../1.21.80/components/map_color.json"
+			"$ref": "../../1.26.20/components/map_color.json"
 		},
 		"minecraft:random_offset": {
 			"$ref": "../../1.21.100/components/random_offset.json"
@@ -78,7 +78,7 @@
 			"$ref": "../../1.26.20/components/precipitation_interactions.json"
 		},
 		"minecraft:connection_rule": {
-			"$ref": "../../1.26.0/components/connection_rule.json"
+			"$ref": "../../1.26.20/components/connection_rule.json"
 		},
 		"minecraft:leashable": {
 			"$ref": "../../1.26.20/components/leashable.json"
@@ -131,8 +131,15 @@
 	},
 	"patternProperties": {
 		"^(?:(?!^(minecraft):).)+:(?:.)+$": {
-			"title": "Custom Component",
-			"description": "A custom component registered by behavior pack scripts."
+			"$ref": "../../1.12.0/components/_index.json#/$defs/custom_component"
 		}
-	}
+	},
+	"allOf": [
+		{
+			"$ref": "../../1.26.20/components/_index.json#/allOf/0"
+		},
+		{
+			"$ref": "../../1.26.20/components/_index.json#/allOf/1"
+		}
+	]
 }

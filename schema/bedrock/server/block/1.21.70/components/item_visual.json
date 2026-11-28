@@ -8,7 +8,7 @@
 	"properties": {
 		"geometry": {
 			"description": "The 'minecraft:geometry' component that will be used for the item.",
-			"$ref": "../../1.20.60/components/geometry.json"
+			"$ref": "../../1.20.10/components/geometry.json"
 		},
 		"material_instances": {
 			"description": "The 'minecraft:material_instances' component that will be used for the item.",

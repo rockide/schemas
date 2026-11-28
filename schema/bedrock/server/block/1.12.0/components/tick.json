@@ -3,6 +3,7 @@
 	"type": "object",
 	"title": "Tick Component",
 	"description": "Causes the block to tick based on a regular interval equal to a number of ticks randomly chosen from the interval_range parameter.",
+	"required": ["interval_range"],
 	"additionalProperties": false,
 	"properties": {
 		"interval_range": {

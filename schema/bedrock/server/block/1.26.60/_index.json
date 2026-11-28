@@ -17,10 +17,15 @@
 			"required": ["description"],
 			"properties": {
 				"description": {
-					"$ref": "../1.26.40/description.json"
+					"$ref": "../1.26.20/description.json"
 				},
 				"components": {
-					"$ref": "./components/_index.json"
+					"$ref": "./components/_index.json",
+					"dependentRequired": {
+						"minecraft:geometry": ["minecraft:material_instances"],
+						"minecraft:material_instances": ["minecraft:geometry"],
+						"minecraft:flower_pottable": ["minecraft:geometry", "minecraft:material_instances"]
+					}
 				},
 				"permutations": {
 					"type": "array",
@@ -29,6 +34,7 @@
 						"type": "object",
 						"title": "Permutation",
 						"additionalProperties": false,
+						"required": ["condition", "components"],
 						"properties": {
 							"condition": {
 								"$ref": "../../../../vanilla/definition/molang.json#/$defs/string",
@@ -47,6 +53,26 @@
 										"not": {
 											"required": ["minecraft:block_entity"]
 										}
+									},
+									{
+										"not": {
+											"required": ["minecraft:embedded_visual"]
+										}
+									},
+									{
+										"not": {
+											"required": ["minecraft:flower_pottable"]
+										}
+									},
+									{
+										"not": {
+											"required": ["minecraft:item_visual"]
+										}
+									},
+									{
+										"not": {
+											"required": ["minecraft:support"]
+										}
 									}
 								]
 							}
@@ -56,12 +82,9 @@
 			},
 			"allOf": [
 				{
-					"$ref": "../1.26.40/constraints.json"
+					"$ref": "../1.19.70/constraints.json"
 				}
 			]
-		},
-		"use_beta_features": {
-			"type": "boolean"
 		}
 	}
 }

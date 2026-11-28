@@ -17,7 +17,8 @@
 			"items": {
 				"type": "string",
 				"enum": ["north", "south", "east", "west"]
-			}
+			},
+			"maxItems": 4
 		}
 	}
 }

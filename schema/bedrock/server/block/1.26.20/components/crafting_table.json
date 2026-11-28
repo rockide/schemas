@@ -16,7 +16,8 @@
 		},
 		"table_name": {
 			"$ref": "../../../../../vanilla/client/lang_keys.json",
-			"description": "Specifies the language file key that maps to what text will be displayed in the UI of this table."
+			"description": "Specifies the language file key that maps to what text will be displayed in the UI of this table.",
+			"maxLength": 256
 		}
 	},
 	"required": ["crafting_tags"]

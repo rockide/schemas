@@ -3,12 +3,12 @@
 	"type": "object",
 	"title": "Precipitation Interactions Component",
 	"description": "Determines how the block will interact with rain and snow.",
+	"required": ["precipitation_behavior"],
 	"additionalProperties": false,
 	"properties": {
 		"precipitation_behavior": {
 			"type": "string",
 			"description": "What behavior should the block have.",
-			"default": "none",
 			"enum": ["none", "obstruct_rain", "obstruct_rain_accumulate_snow", "snowlogging"]
 		}
 	}

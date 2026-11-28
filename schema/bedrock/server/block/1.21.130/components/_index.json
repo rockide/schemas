@@ -6,7 +6,7 @@
 	"additionalProperties": false,
 	"properties": {
 		"minecraft:destructible_by_explosion": {
-			"$ref": "../../1.19.20/components/destructible_by_explosion.json"
+			"$ref": "../../1.12.0/components/destructible_by_explosion.json"
 		},
 		"minecraft:flammable": {
 			"$ref": "../../1.19.10/components/flammable.json"
@@ -15,16 +15,16 @@
 			"$ref": "../../1.19.20/components/friction.json"
 		},
 		"minecraft:light_emission": {
-			"$ref": "../../1.19.10/components/light_emission.json"
+			"$ref": "../../1.12.0/components/light_emission.json"
 		},
 		"minecraft:loot": {
 			"$ref": "../../1.19.10/components/loot.json"
 		},
 		"minecraft:light_dampening": {
-			"$ref": "../../1.19.40/components/light_dampening.json"
+			"$ref": "../../1.12.0/components/light_dampening.json"
 		},
 		"minecraft:material_instances": {
-			"$ref": "../../1.21.70/components/material_instances.json"
+			"$ref": "../../1.21.120/components/material_instances.json"
 		},
 		"minecraft:collision_box": {
 			"$ref": "../../1.19.50/components/collision_box.json"
@@ -45,10 +45,10 @@
 			"$ref": "../../1.19.80/components/transformation.json"
 		},
 		"minecraft:tick": {
-			"$ref": "../../1.21.20/components/tick.json"
+			"$ref": "../../1.12.0/components/tick.json"
 		},
 		"minecraft:entity_fall_on": {
-			"$ref": "../../1.21.20/components/entity_fall_on.json"
+			"$ref": "../../1.12.0/components/entity_fall_on.json"
 		},
 		"minecraft:destructible_by_mining": {
 			"$ref": "../../1.21.30/components/destructible_by_mining.json"
@@ -60,10 +60,10 @@
 			"$ref": "../../1.21.60/components/liquid_detection.json"
 		},
 		"minecraft:replaceable": {
-			"$ref": "../../1.21.70/components/replaceable.json"
+			"$ref": "../../1.21.60/components/replaceable.json"
 		},
 		"minecraft:destruction_particles": {
-			"$ref": "../../1.21.80/components/destruction_particles.json"
+			"$ref": "../../1.21.70/components/destruction_particles.json"
 		},
 		"minecraft:map_color": {
 			"$ref": "../../1.21.80/components/map_color.json"
@@ -72,7 +72,7 @@
 			"$ref": "../../1.21.90/components/geometry.json"
 		},
 		"minecraft:item_visual": {
-			"$ref": "../../1.21.90/components/item_visual.json"
+			"$ref": "../../1.21.120/components/item_visual.json"
 		},
 		"minecraft:random_offset": {
 			"$ref": "../../1.21.100/components/random_offset.json"
@@ -90,19 +90,18 @@
 			"$ref": "../../1.21.120/components/redstone_producer.json"
 		},
 		"minecraft:precipitation_interactions": {
-			"$ref": "precipitation_interactions.json"
+			"$ref": "../../1.21.120/components/precipitation_interactions.json"
 		}
 	},
 	"patternProperties": {
-		"^tag:.+$": {
+		"^tag:[a-zA-Z0-9_.:-]+$": {
 			"type": "object",
 			"title": "Block Tag",
 			"description": "Block tag",
 			"additionalProperties": false
 		},
 		"^(?:(?!^(minecraft):).)+:(?:.)+$": {
-			"title": "Custom Component",
-			"description": "A custom component registered by behavior pack scripts."
+			"$ref": "../../1.12.0/components/_index.json#/$defs/custom_component"
 		}
 	}
 }

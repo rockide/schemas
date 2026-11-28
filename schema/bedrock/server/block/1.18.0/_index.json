@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Block (1.18.0)",
+	"description": "Block definition schema for format version 1.18.0.",
+	"additionalProperties": false,
+	"properties": {
+		"format_version": {
+			"type": "string"
+		},
+		"minecraft:block": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"description": {
+					"$ref": "../1.12.0/description.json"
+				},
+				"components": {
+					"$ref": "./components/_index.json"
+				}
+			}
+		}
+	},
+	"required": ["format_version", "minecraft:block"]
+}

@@ -36,8 +36,25 @@
 							}
 						]
 					}
+				},
+				"culling": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling"
+				},
+				"culling_layer": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling_layer"
+				},
+				"n_way_visual_rotation": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/n_way_visual_rotation"
+				},
+				"culling_shape": {
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/properties/culling_shape"
 				}
-			}
+			},
+			"allOf": [
+				{
+					"$ref": "../../1.19.40/components/geometry.json#/anyOf/1/allOf/0"
+				}
+			]
 		}
 	]
 }

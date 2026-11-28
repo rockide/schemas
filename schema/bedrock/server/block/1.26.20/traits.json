@@ -79,7 +79,7 @@
 					"description": "Which states to enable. Must specify at least one. Options: [\"minecraft:cardinal_direction\", \"minecraft:facing_direction\", \"minecraft:corner_and_cardinal_direction\", \"minecraft:sixteen_way_rotation\"].",
 					"items": {
 						"type": "string",
-						"title": "Placement Position Enabled State",
+						"title": "Placement Direction Enabled State",
 						"enum": [
 							"minecraft:cardinal_direction",
 							"minecraft:corner_and_cardinal_direction",
@@ -147,6 +147,51 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		{
+			"properties": {
+				"minecraft:placement_direction": {
+					"allOf": [
+						{
+							"if": {
+								"required": ["y_rotation_offset"]
+							},
+							"then": {
+								"properties": {
+									"enabled_states": {
+										"contains": {
+											"enum": [
+												"minecraft:cardinal_direction",
+												"minecraft:facing_direction",
+												"minecraft:sixteen_way_rotation"
+											]
+										}
+									}
+								}
+							}
+						},
+						{
+							"if": {
+								"required": ["blocks_to_corner_with"],
+								"properties": {
+									"blocks_to_corner_with": {
+										"minItems": 1
+									}
+								}
+							},
+							"then": {
+								"properties": {
+									"enabled_states": {
+										"contains": {
+											"const": "minecraft:corner_and_cardinal_direction"
+										}
+									}
+								}
+							}
+						}
+					]
 				}
 			}
 		}

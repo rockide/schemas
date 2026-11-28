@@ -12,7 +12,7 @@
 		},
 		"material_instances": {
 			"description": "The 'minecraft:material_instances' component that will be used for the embedded block.",
-			"$ref": "../../1.21.70/components/material_instances.json"
+			"$ref": "material_instances.json"
 		}
 	}
 }

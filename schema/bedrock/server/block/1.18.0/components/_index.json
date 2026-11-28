@@ -1,0 +1,65 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"title": "Components",
+	"description": "Block components",
+	"additionalProperties": false,
+	"properties": {
+		"minecraft:loot": {
+			"$ref": "../../1.12.0/components/loot.json"
+		},
+		"minecraft:destroy_time": {
+			"$ref": "../../1.12.0/components/destroy_time.json"
+		},
+		"minecraft:explosion_resistance": {
+			"$ref": "../../1.12.0/components/explosion_resistance.json"
+		},
+		"minecraft:friction": {
+			"$ref": "../../1.12.0/components/friction.json"
+		},
+		"minecraft:flammable": {
+			"$ref": "../../1.12.0/components/flammable.json"
+		},
+		"minecraft:map_color": {
+			"$ref": "../../1.12.0/components/map_color.json"
+		},
+		"minecraft:block_light_emission": {
+			"$ref": "../../1.12.0/components/block_light_emission.json"
+		},
+		"minecraft:light_emission": {
+			"$ref": "../../1.12.0/components/light_emission.json"
+		},
+		"minecraft:light_dampening": {
+			"$ref": "../../1.12.0/components/light_dampening.json"
+		},
+		"minecraft:block_light_filter": {
+			"$ref": "../../1.12.0/components/block_light_filter.json"
+		},
+		"minecraft:destructible_by_mining": {
+			"$ref": "../../1.12.0/components/destructible_by_mining.json"
+		},
+		"minecraft:destructible_by_explosion": {
+			"$ref": "../../1.12.0/components/destructible_by_explosion.json"
+		},
+		"minecraft:tick": {
+			"$ref": "../../1.12.0/components/tick.json"
+		},
+		"minecraft:entity_fall_on": {
+			"$ref": "../../1.12.0/components/entity_fall_on.json"
+		},
+		"minecraft:custom_components": {
+			"$ref": "../../1.12.0/components/custom_components.json"
+		}
+	},
+	"patternProperties": {
+		"^tag:[a-zA-Z0-9_.:-]+$": {
+			"type": "object",
+			"title": "Block Tag",
+			"description": "Block tag",
+			"additionalProperties": false
+		},
+		"^(?:(?!^(minecraft):).)+:(?:.)+$": {
+			"$ref": "../../1.12.0/components/_index.json#/$defs/custom_component"
+		}
+	}
+}
